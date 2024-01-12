@@ -4,8 +4,10 @@
 - Class-based or Classless?
 	- Class Idea: 
 		- Choose a race (determines base stats and stat growth)
+			- Have race select how fast stats grow rather than just a starting bonus, it can just be a modifier applied during exp gain.
 		- Choose a weapon type (influenced by race selection)
 		- Class is automatically determined (labeled) by this combination.
+			- Maybe do classless and just be you can do anything, but char total combat level chooses enemy level, so spreading too thin will kill your char?
 		- Ex: Human with Sword + Shield = Fighter.  Elf + Bow = Ranger.
 - Chosen at creation, or unlocked at a certain level?
 - Locked after chosen, or changable?
