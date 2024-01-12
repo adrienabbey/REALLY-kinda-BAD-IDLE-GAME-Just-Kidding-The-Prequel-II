@@ -17,9 +17,12 @@
 	- Leveless leaves all "progression" to be determined by stats and equipment.
 	- Leveled allows for simpler balancing
 - Primary stats?
-	- Strength (damage multiplier?)
-	- Dexterity (chance to hit/dodge?)
-	- Constitution (determines hitpoints and regen rate?)
+	- Strength (damage multiplier? stamina modifier)
+	- Agility (atk speed, dodge chance)
+	- Dexterity (chance to hit, atk speed secondary modifier)
+	- Constitution ( Hitpoints and stamina total and regen)
+	- Willpower (health modifier and magic regen)
+	- Intelligence (Magic amount and power)
 ## Skills
 - Talent tree?
 	- More complicated, but more "normal"
@@ -32,18 +35,24 @@
 ## Inventory
 - Do characters have equipment?
 	- What equipment slots, if any?
+		- I would say start with just "armor" slot, and "weapon" slot, and then maybe add it to be chest, off-hand, etc
 	- Do characters have an inventory system for unequipped items?
+		-Brandon votes yes inventory, but not part of Min Val Product
 	- What does equipment provide?  Simple bonuses to stats?
+		-Brandon votes again start with just simple adding dmg reduction, then adding bonuses to stats or skills, or even special effects.
+	- This is actually where I think it will be easiest to add lots late game, making more equipment is just adding its info
 ### A very basic equipment system idea:
 - Equipment provides a simple, flat bonus based on equipment type:
 	- Weapons determine base damage
 	- Armor determines damage reduction
 - Equipment automatically upgrades as "loot" is found or crafted.
 - This leaves open the opportunity to implement a proper inventory system
+- Brandon ( I love this as a MVP point)
 ## Quests
 - Very basic introductory quests to direct players in how to play the game.
 - Basic long-term goals with rewards (giving directed progression)
 - This  open the door for more interesting quest implementation later, which could introduce lore and stories.
+	- These seem more like when we have MVP out, maybe when we near MVP completion we should compile a list of things we wanna add, and then we can vote on an order, or maybe we can rotate taking turns picking a feature to add
 ## Activities
 - A system where the players decide what their character does over a period of time.
 - Lets players direct character progression.  Examples:
@@ -51,6 +60,7 @@
 	- Delve (enter a dungeon for combat and loot)
 	- Train (increase certain skills or stats much faster)
 	- Craft (create better equipment)
+	- Maybe different "gathering" activities like mining, farming etc
 # Implementation Ideas
 - Minimize to system tray (optionally).
 - Event log.  Be able to see what happened while minimized.
