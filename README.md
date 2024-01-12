@@ -4,7 +4,7 @@
 
 ## TO-DO
 
-1. Submit Team names 
+1. Submit Team names
 2. ~~Make Github Repo and have everyone clone~~
 3. Pick a “theme”.  Suggestion: try Kingdom of Loathing for thematic ideas.
 4. Decide on complexity.  Suggestion: look at Progress Quest for a very “simple” start.
