@@ -6,6 +6,7 @@
 2. ~~Make Github Repo and have everyone clone~~
 3. Pick a “theme”.  Suggestion: try Kingdom of Loathing for thematic ideas.
 4. Decide on complexity.  Suggestion: look at Progress Quest for a very “simple” start.
+5. Use this to replace the google docs version? or maybe just use google docs form as our purposely terrible format goofy thing for presentation.
 
 # Ideas to be expanded
 * The player's idle progress could be calculated by tracking their starting time, active Jobs, and end time. When they start again we track the time and calculate what would have been gained.
