@@ -76,6 +76,11 @@
     - Train (increase certain skills or stats much faster)
     - Craft (create better equipment)
     - Maybe different "gathering" activities like mining, farming etc
+   
+## Economy 
+- Money System that buys items/gear. 
+- Shop/Merchant 
+- Town area 
 
 ## Implementation Ideas
 
