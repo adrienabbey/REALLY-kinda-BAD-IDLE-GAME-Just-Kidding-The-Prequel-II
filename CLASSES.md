@@ -1,5 +1,5 @@
 # Java Classes
-An early list of classes that we'll likely need to implement:
+Work in progress.  An early list of classes that we'll likely need to implement:
 - Front End
 - Driver
 - Gear
