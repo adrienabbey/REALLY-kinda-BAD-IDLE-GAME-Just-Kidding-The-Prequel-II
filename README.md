@@ -41,3 +41,5 @@
 * Server, Web Interface
 * Friends, Parties
 * Live dungeon feature
+* Thesaurus feature
+* Presentation mode
