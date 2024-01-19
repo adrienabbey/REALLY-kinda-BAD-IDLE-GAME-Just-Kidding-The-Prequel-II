@@ -9,7 +9,7 @@
 3. ~~Pick a “theme”.  Suggestion: try Kingdom of Loathing for thematic ideas.~~
 4. ~~Decide on complexity.  Suggestion: look at Progress Quest for a very “simple” start.~~
 5. ~~Use this to replace the google docs version? or maybe just use google docs form as our purposely terrible format goofy thing for presentation.~~
-6. Implement everything in the [Minimal Viable Product](MVP.md) documentation.
+6. Implement everything in the [Minimal Viable Product](./MVP.md) documentation.
 
 ## Ideas to be expanded
 
@@ -25,7 +25,7 @@
 
 ## Features to be implemented
 
-* See [Minimal Viable Product](MVP.md) documentation
+* See the [Minimal Viable Product](./MVP.md) documentation
 
 ## STRETCH Goals
 
