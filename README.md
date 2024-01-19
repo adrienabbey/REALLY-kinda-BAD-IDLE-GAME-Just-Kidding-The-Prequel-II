@@ -43,3 +43,7 @@
 * Live dungeon feature
 * Thesaurus feature
 * Presentation mode
+* Downgrades
+    * Debt Traps
+* Art Mode
+* Cheat Codes
