@@ -15,13 +15,13 @@
 
 * The player's idle progress could be calculated by tracking their starting time, active Jobs, and end time. When they start again we track the time and calculate what would have been gained.
 * Exploration of the human condition.
-    * The player is *the disclaimer window*.  This isn't obvious at first.
-    * Start with no equipment.  Discover later that you're like characters from the Wizard of Oz, looking to find intellect, courage, and such.  And the best way to do that is to gather the best organs from slain enemies and equip them.
+  * The player is *the disclaimer window*.  This isn't obvious at first.
+  * Start with no equipment.  Discover later that you're like characters from the Wizard of Oz, looking to find intellect, courage, and such.  And the best way to do that is to gather the best organs from slain enemies and equip them.
 
 ## Topics to be Researched
 
 * Save files?
-    * Probably reasonable to just implement a basic method to save/load Java objects.
+  * Probably reasonable to just implement a basic method to save/load Java objects.
 
 ## Features to be implemented
 
@@ -37,6 +37,6 @@
 * Thesaurus feature
 * Presentation mode
 * Downgrades
-    * Debt Traps
+  * Debt Traps
 * Art Mode
 * Cheat Codes
