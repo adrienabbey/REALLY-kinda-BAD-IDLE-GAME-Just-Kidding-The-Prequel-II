@@ -9,6 +9,11 @@ class GameCharacter {
    private int muscle;
    private int brain;
    private int heart;
+   private double health;
+   private int maxHealth;
+   private double mana;
+   private int maxMana;
+   private int dice;
 
    // TODO: What do these stats do?
    // TODO: When do these stats increase, if at all?
@@ -19,10 +24,30 @@ class GameCharacter {
       this.muscle = muscle;
       this.brain = brain;
       this.heart = heart;
+      this.maxHealth = 10 + (5 * heart);
+      this.health = maxHealth;
+      this.maxMana = 10 + (5 * brain);
+      this.mana = maxMana;
+      // TODO - Probably need to balance these stats.
    }
 
    /* Methods */
    public void attack(GameCharacter target) {
+      dice = (int) (Math.random() * 20) + 1;
+      int damage = muscle * (dice / 20);
+      dice = (int) (Math.random() * 20) + 1;
+      // int resist = target.getSkin(); // This is for if we add complexity later
+      if(dice == 20) {
+         System.out.println("Critical Hit!");
+         target.health -= damage * 2;
+      }
+      else if(dice == 1) {
+         System.out.println("Critical Miss!");
+         health -= 1;
+      }
+      else {
+         target.health -= damage;
+      }
       // Method used when a character attacks another character.
       // TODO: Implementation.
    }

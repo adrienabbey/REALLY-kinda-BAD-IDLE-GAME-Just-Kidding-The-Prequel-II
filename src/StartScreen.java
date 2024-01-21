@@ -1,0 +1,5 @@
+class StartScreen{
+    public StartScreen(){
+        
+    }
+}

@@ -1,5 +1,0 @@
-class GUI{
-    public GUI(){
-
-    }
-}
