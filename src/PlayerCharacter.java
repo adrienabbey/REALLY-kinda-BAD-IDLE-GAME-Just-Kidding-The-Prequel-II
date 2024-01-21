@@ -14,6 +14,8 @@ class PlayerCharacter extends GameCharacter {
    private int gold;
    private int potionBeltSize;
    private int potionCount;
+   private boolean isAwake = true;
+   private int timeToWake = 0;
    // TODO: Implement the "Gear" class so players can have equipment:
    // private Gear inventory;
 
@@ -68,6 +70,7 @@ class PlayerCharacter extends GameCharacter {
          return potionCount;
       } else {
          // Too many potions, discard any extras:
+         // TODO - Wait, are we letting them buy more potions than they have room for and just throwing them away? ROFL
          potionCount = potionBeltSize;
          return potionCount;
       }
@@ -85,6 +88,16 @@ class PlayerCharacter extends GameCharacter {
    }
 
    public boolean drinkPotion() {
+      if(!isAwake){
+         isAwake = true;
+         timeToWake = 0;
+         potionCount--;
+         return true;
+      }else if (potionCount > 0) {
+         
+         potionCount--;
+         return true;
+      }
       // TODO: What does drinking a potion do?
       // TODO: What if there's no more potions to drink?
       return false;
