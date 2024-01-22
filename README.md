@@ -38,5 +38,8 @@
 * Presentation mode
 * Downgrades
   * Debt Traps
+* Scripted Events
 * Art Mode
 * Cheat Codes
+* Unreal Engine full-screen loading screen, but only for the main menu, complete with animations, music and sound.
+ * Clicking start or load immediately closes the Unreal Engine part and immediately starts opening janky Java Swing windows.
