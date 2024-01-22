@@ -2,14 +2,14 @@ import javax.swing.*;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-class Town extends JFrame {
-    public Town(PlayerCharacter player){
+class Dungeon extends JFrame {
+    public Dungeon(PlayerCharacter player) {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
 
-        JPanel town = new JPanel();
+        JPanel dungeon = new JPanel();
 
-        this.getContentPane().add(town);
+        this.getContentPane().add(dungeon);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
