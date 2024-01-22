@@ -11,6 +11,7 @@ class PlayerCharacter extends GameCharacter {
    private static final int startingHeart = 3;
 
    /* Fields */
+   private int statpoints;
    private int gold;
    private int potionBeltSize;
    private int potionCount;
