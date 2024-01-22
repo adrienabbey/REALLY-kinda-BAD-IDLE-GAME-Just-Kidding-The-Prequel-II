@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -25,13 +26,17 @@ class World extends JFrame{
         JButton town = new JButton("Town");
         JButton dungeon = new JButton("Dungeon");
 
+        world.add(Box.createVerticalGlue());
+        world.add(quit);
+        world.add(Box.createRigidArea(new Dimension(0, 20)));
+        world.add(town);
+        world.add(Box.createRigidArea(new Dimension(0, 20)));
+        world.add(dungeon);
+        world.add(Box.createVerticalGlue());
+
         quit.setAlignmentX(BOTTOM_ALIGNMENT);
         town.setAlignmentX(BOTTOM_ALIGNMENT);
         dungeon.setAlignmentX(BOTTOM_ALIGNMENT);
-
-        world.add(quit);
-        world.add(town);
-        world.add(dungeon);
 
         quit.addActionListener(e -> {
             System.exit(0);
