@@ -19,7 +19,6 @@ class CharacterCreation extends JFrame{
     public CharacterCreation() throws IOException{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
-        // MyFrame frame = new MyFrame();
 
         JPanel create = new JPanel(); // Create panel where you create your character
         create.setLayout(new BoxLayout(create, BoxLayout.Y_AXIS));
