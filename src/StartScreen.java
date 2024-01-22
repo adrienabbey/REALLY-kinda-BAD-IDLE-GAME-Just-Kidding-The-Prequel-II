@@ -1,7 +1,10 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.io.IOException;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Font;
+
 import javax.swing.*;
 // TODO Narrow the swing down to what we actually need
 
@@ -13,7 +16,11 @@ class StartScreen extends JFrame{
         // TODO - Add a info button or something to explain the game
         JPanel start = new JPanel(); // Start panel where you select new game, load, or quit
         start.setLayout(new BoxLayout(start, BoxLayout.Y_AXIS));
+        //Icon newGameIcon = new ImageIcon("assets/images/newGame.PNG");
         JButton newGame = new JButton("New Game");
+        newGame.setFont(new Font("Dialog", Font.BOLD, 12));
+        newGame.setBackground(Color.WHITE);
+        newGame.setForeground(Color.RED);
         JButton loadGame = new JButton("Load Game");
         JButton quit = new JButton("Quit");
         start.add(Box.createVerticalGlue());
