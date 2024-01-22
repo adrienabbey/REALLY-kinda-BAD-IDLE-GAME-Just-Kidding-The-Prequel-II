@@ -1,6 +1,11 @@
 import java.awt.Color;
 import java.awt.Dimension;
+<<<<<<< HEAD
+=======
+import java.io.IOException;
+>>>>>>> d0fbe75c7cdee48083d21238def60671ae045c1d
 import java.awt.Font;
+
 
 import javax.swing.*;
 // TODO Narrow the swing down to what we actually need
@@ -30,7 +35,12 @@ class StartScreen extends JFrame{
         quit.setAlignmentX(CENTER_ALIGNMENT);
 
         newGame.addActionListener(e -> {
-            new CharacterCreation();
+            try {
+                new CharacterCreation();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
             this.dispose();
         });
         loadGame.addActionListener(e -> {
@@ -42,7 +52,7 @@ class StartScreen extends JFrame{
         });
 
         this.getContentPane().add(start);
-        this.setSize(300, 300);
+        this.setSize(900, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
