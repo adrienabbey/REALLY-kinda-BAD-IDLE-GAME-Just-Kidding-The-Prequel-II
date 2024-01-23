@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+// This class manages the screen for creating a new character
 class CharacterCreation extends JFrame{
 
     private int statPoints = 10;
@@ -20,6 +21,7 @@ class CharacterCreation extends JFrame{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
 
+        // This is all the physical gui elements and their properties
         JPanel create = new JPanel(); // Create panel where you create your character
         create.setLayout(new BoxLayout(create, BoxLayout.Y_AXIS));
         // TODO - Make sure this is long enough to fit all the names we want to allow
@@ -43,16 +45,14 @@ class CharacterCreation extends JFrame{
         JButton weaker = new JButton("Weaker");
         JButton stronger = new JButton("Stronger");
         JLabel muscleLabel = new JLabel("Muscle: " + muscle);
-        muscleLabel.setAlignmentX(RIGHT_ALIGNMENT);
         JButton dumber = new JButton("Dumber");
         JButton smarter = new JButton("Smarter");
         JLabel brainLabel = new JLabel("Brain: " + brain);
-        brainLabel.setAlignmentX(RIGHT_ALIGNMENT);
         JButton softer = new JButton("Softer");
         JButton tougher = new JButton("Tougher");
         JLabel heartLabel = new JLabel("Heart: " + heart);
-        heartLabel.setAlignmentX(RIGHT_ALIGNMENT);
 
+        // This section adds the components and controls layout
         stats.add(weaker);
         stats.add(stronger);
         stats.add(muscleLabel);
@@ -62,6 +62,10 @@ class CharacterCreation extends JFrame{
         stats.add(softer);
         stats.add(tougher);
         stats.add(heartLabel);
+
+        muscleLabel.setAlignmentX(RIGHT_ALIGNMENT);
+        brainLabel.setAlignmentX(RIGHT_ALIGNMENT);
+        heartLabel.setAlignmentX(RIGHT_ALIGNMENT);
 
         charPanel.add(Box.createHorizontalGlue());
         charPanel.add(pic);
@@ -81,6 +85,12 @@ class CharacterCreation extends JFrame{
         create.add(submit);
         create.add(Box.createVerticalGlue());
 
+        name.setAlignmentX(CENTER_ALIGNMENT);
+        points.setAlignmentX(CENTER_ALIGNMENT);
+        message.setAlignmentX(CENTER_ALIGNMENT);
+        submit.setAlignmentX(CENTER_ALIGNMENT);
+
+        // This section allows the buttons to interact with the functions of the game
         weaker.addActionListener(e -> {
             if(muscle > 0){
                 muscle--;
@@ -169,6 +179,7 @@ class CharacterCreation extends JFrame{
             this.dispose();
         });
 
+        // Properties of the screen itself, will soon be moved to a separate manager class
         this.getContentPane().add(create);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
