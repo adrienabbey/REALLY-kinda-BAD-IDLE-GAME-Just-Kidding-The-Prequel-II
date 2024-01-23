@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
-import java.awt.GraphicsDevice;
+//import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Font;
 
