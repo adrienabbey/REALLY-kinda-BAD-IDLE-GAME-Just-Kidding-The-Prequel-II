@@ -4,13 +4,15 @@ import java.io.IOException;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Font;
-
 import javax.swing.*;
 // TODO Narrow the swing down to what we actually need
 
 
 // This class is just the intro starting screen with the buttons to start a new game, load a game, read directions, or quit
 class StartScreen extends JFrame{
+    /**
+     * This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
+     */ 
     public StartScreen(){
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
@@ -41,6 +43,8 @@ class StartScreen extends JFrame{
         quit.setAlignmentX(CENTER_ALIGNMENT);
 
         // Buttons to interact with the functions of the game
+
+        // Create new Character
         newGame.addActionListener(e -> {
             try {
                 new CharacterCreation();
@@ -49,10 +53,14 @@ class StartScreen extends JFrame{
             }
             this.dispose();
         });
+
+        // Load a saved game
         loadGame.addActionListener(e -> {
             new LoadScreen();
             this.dispose();
         });
+
+        // Quit the game
         quit.addActionListener(e -> {
             System.exit(0);
         });

@@ -9,10 +9,16 @@ import java.io.File;
 import java.io.IOException;
 
 class Town extends JFrame {
+    /**
+     * This function hosts the town screen with buttons to buy potions or leave
+     * @param player The player character object
+     * @throws IOException
+     */
     public Town(PlayerCharacter player) throws IOException{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
 
+        // This is all the physical gui elements and their properties
         JPanel town = new JPanel();
         town.setLayout(new BoxLayout(town, BoxLayout.X_AXIS));
 
@@ -26,6 +32,7 @@ class Town extends JFrame {
         JButton buy = new JButton("Buy");
         JButton leave = new JButton("Leave");
 
+        // This section adds the components and controls layout
         buttons.add(Box.createVerticalGlue());
         buttons.add(buy);
         buttons.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -45,6 +52,7 @@ class Town extends JFrame {
         town.add(buttons);
         town.add(Box.createVerticalGlue());
 
+        // Buy button adds a potion to the player's inventory
         buy.addActionListener(e -> {
             try{
                 player.addPotion(1);
@@ -53,6 +61,8 @@ class Town extends JFrame {
                 e1.printStackTrace();
             }
         });
+
+        // Leave button takes you back to the world map
         leave.addActionListener(e -> {
             try {
                 new World(player);
@@ -62,6 +72,7 @@ class Town extends JFrame {
             this.dispose();
         });
 
+        // This section sets the properties of the window, soon to be managed in the driver
         this.getContentPane().add(town);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);

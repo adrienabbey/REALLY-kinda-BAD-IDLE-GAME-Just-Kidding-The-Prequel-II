@@ -17,6 +17,11 @@ class CharacterCreation extends JFrame{
     private int brain = 0;
     private int heart = 0;
 
+    /**
+     * This function hosts the character creation screen
+     * It lets you assign stats, name your character, and then instantiates a PlayerCharacter object and launches to the map
+     * @throws IOException
+     */
     public CharacterCreation() throws IOException{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
@@ -91,6 +96,8 @@ class CharacterCreation extends JFrame{
         submit.setAlignmentX(CENTER_ALIGNMENT);
 
         // This section allows the buttons to interact with the functions of the game
+
+        // Reduce Strength
         weaker.addActionListener(e -> {
             if(muscle > 0){
                 muscle--;
@@ -104,6 +111,8 @@ class CharacterCreation extends JFrame{
                 this.repaint();
             }
         });
+
+        // Increase Strength
         stronger.addActionListener(e -> {
             if(statPoints > 0){
                 muscle++;
@@ -117,6 +126,8 @@ class CharacterCreation extends JFrame{
                 this.repaint();
             }
         });
+
+        // Reduce Intelligence
         dumber.addActionListener(e -> {
             if(brain > 0){
                 brain--;
@@ -130,6 +141,8 @@ class CharacterCreation extends JFrame{
                 this.repaint();
             }
         });
+
+        // Increase Intelligence
         smarter.addActionListener(e -> {
             if(statPoints > 0){
                 brain++;
@@ -143,6 +156,8 @@ class CharacterCreation extends JFrame{
                 this.repaint();
             }
         });
+
+        // Reduce Constitution
         softer.addActionListener(e -> {
             if(heart > 0){
                 heart--;
@@ -156,6 +171,8 @@ class CharacterCreation extends JFrame{
                 this.repaint();
             }
         });
+
+        // Increase Constitution
         tougher.addActionListener(e -> {
             if(statPoints > 0){
                 heart++;
@@ -169,6 +186,8 @@ class CharacterCreation extends JFrame{
                 this.repaint();
             }
         });
+
+        // Submit character
         submit.addActionListener(e -> {
             PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10*statPoints, 1, 0);
             try {

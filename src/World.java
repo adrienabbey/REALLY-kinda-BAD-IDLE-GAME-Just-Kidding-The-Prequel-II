@@ -9,12 +9,18 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 class World extends JFrame{
+    /**
+     * This function hosts the world map screen with buttons to go to town or dungeon
+     * @param player The player character object
+     * @throws IOException
+     */
     public World(PlayerCharacter player) throws IOException{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
         BufferedImage picture = ImageIO.read(new File("assets/images/World.png"));
         
-        JPanel world = new JPanel(){
+        // This is all the physical gui elements and their properties
+        JPanel world = new JPanel(){ // This code puts the world map image as the background to the panel
             @Override
             protected void paintComponent(Graphics g){
                 super.paintComponent(g);
@@ -26,6 +32,7 @@ class World extends JFrame{
         JButton town = new JButton("Town");
         JButton dungeon = new JButton("Dungeon");
 
+        // This section adds the components and controls layout
         world.add(Box.createVerticalGlue());
         world.add(quit);
         world.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -38,9 +45,12 @@ class World extends JFrame{
         town.setAlignmentX(BOTTOM_ALIGNMENT);
         dungeon.setAlignmentX(BOTTOM_ALIGNMENT);
 
+        // Quit button exits the game
         quit.addActionListener(e -> {
             System.exit(0);
         });
+
+        // Town button takes you to the town
         town.addActionListener(e -> {
             try {
                 new Town(player);
@@ -49,6 +59,8 @@ class World extends JFrame{
             }
             this.dispose();
         });
+
+        // Dungeon button takes you to the dungeon
         dungeon.addActionListener(e -> {
             try {
                 new Dungeon(player);
@@ -58,6 +70,7 @@ class World extends JFrame{
             this.dispose();
         });
 
+        // This section sets the properties of the JFrame, will soon be managed in driver likely
         this.getContentPane().add(world);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
