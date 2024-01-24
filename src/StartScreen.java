@@ -1,8 +1,5 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.io.IOException;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Font;
 import javax.swing.*;
 // TODO Narrow the swing down to what we actually need
@@ -14,12 +11,9 @@ class StartScreen extends JPanel{
      * This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
      */ 
     public StartScreen(){
-        // GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        // GraphicsDevice device = env.getDefaultScreenDevice();
 
         // This block of code is all the physical gui elements and their properties
         // TODO - Add a info button or something to explain the game
-        //JPanel start = new JPanel(); // Start panel where you select new game, load, or quit
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //Icon newGameIcon = new ImageIcon("assets/images/newGame.PNG");
         JButton newGame = new JButton("New Game");
@@ -47,12 +41,10 @@ class StartScreen extends JPanel{
         // Create new Character
         newGame.addActionListener(e -> {
             try {
-                //JPanel cc = new CharacterCreation();
                 Driver.changePanel("cc");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            //this.dispose();
         });
 
         // Load a saved game
@@ -64,12 +56,5 @@ class StartScreen extends JPanel{
         quit.addActionListener(e -> {
             System.exit(0);
         });
-
-        // Properties of the screen itself, will soon be moved to a separate manager class
-        // this.getContentPane().add(start);
-        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // this.setResizable(false);
-        // this.setVisible(true);
-        // device.setFullScreenWindow(this);
     }
 }

@@ -186,6 +186,7 @@ class CharacterCreation extends JPanel{
             PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10*statPoints, 1, 0);
             try {
                 Driver.setPlayer(player);
+                Driver.addCharScreen();
                 Driver.changePanel("world");
             } catch (Exception e1) {
                 e1.printStackTrace();

@@ -15,7 +15,7 @@ class PlayerCharacter extends GameCharacter {
    private static final int startingHeart = 3;
 
    /* Fields */
-   private int statpoints;
+   // private int statpoints;
    private int gold;
    private int potionBeltSize;
    private int potionCount;
@@ -123,4 +123,5 @@ class PlayerCharacter extends GameCharacter {
    public int getGold() {  return gold;   }
    public int addGold(int collectedGold) {   return gold += collectedGold; }
    public int setGold(int newGoldBalance) {  return gold = newGoldBalance; }
+   public boolean isAwake() { return isAwake; }
 }

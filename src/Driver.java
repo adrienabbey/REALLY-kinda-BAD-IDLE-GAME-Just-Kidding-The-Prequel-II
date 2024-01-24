@@ -11,10 +11,31 @@ class Driver extends JFrame{
     private static JPanel driverPanel = new JPanel();
     private static CardLayout cardLayout = new CardLayout();
     private static PlayerCharacter player;
+    private static JPanel world = new JPanel();
+    private static JPanel dungeon = new JPanel();
+    private static Dungeon combat = new Dungeon();
+    try {
+        private static World map = new World(){ // This code puts the world map image as the background to the panel
+            @Override
+            protected void paintComponent(Graphics g){
+                super.paintComponent(g);
+                g.drawImage(picture, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    // private static World map = new World(){ // This code puts the world map image as the background to the panel
+    //     @Override
+    //     protected void paintComponent(Graphics g){
+    //         super.paintComponent(g);
+    //         g.drawImage(picture, 0, 0, getWidth(), getHeight(), this);
+    //     }
+    // };
 
     public static void main(String[] args) throws Exception{
         new Driver();
-    }
+    } 
 
     public Driver() throws Exception{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -25,18 +46,13 @@ class Driver extends JFrame{
         StartScreen start = new StartScreen();
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
-        //JPanel charPanel = new CharacterPanel();
+        // JPanel charPanel = new CharacterScreen();
         //JPanel dice = new BigDiceEnergy();
         //JPanel inventory = new Inventory();
-        World world = new World(){ // This code puts the world map image as the background to the panel
-            @Override
-            protected void paintComponent(Graphics g){
-                super.paintComponent(g);
-                g.drawImage(picture, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
+        // JPanel world = new JPanel();
         Town town = new Town();
-        //JPanel dungeon = new Dungeon();
+        // JPanel dungeon = new JPanel();
+        // Dungeon combat = new Dungeon();
 
         driverPanel.setLayout(cardLayout);
         driverPanel.add(start, "start");
@@ -47,7 +63,7 @@ class Driver extends JFrame{
         //driverPanel.add(inventory, "inventory");
         driverPanel.add(world, "world");
         driverPanel.add(town, "town");
-        //driverPanel.add(dungeon, "dungeon");
+        driverPanel.add(dungeon, "dungeon");
 
         cardLayout.show(driverPanel, "start");
 
@@ -59,11 +75,15 @@ class Driver extends JFrame{
         device.setFullScreenWindow(this);
     }
 
-    public static void changePanel(String panel){
-        cardLayout.show(driverPanel, panel);
+    public static void addCharScreen(){
+        CharacterScreen charScreen = new CharacterScreen();
+        world.add(charScreen);
+        world.add(map);
+        dungeon.add(charScreen);
+        dungeon.add(combat);
+        driverPanel.add(new CharacterScreen(), "charScreen");
     }
-
-    public static void setPlayer(PlayerCharacter player){
-        Driver.player = player;
-    }
+    public static PlayerCharacter getPlayer(){ return player;  }
+    public static void changePanel(String panel){   cardLayout.show(driverPanel, panel);    }
+    public static void setPlayer(PlayerCharacter player){   Driver.player = player; }
 }
