@@ -1,17 +1,19 @@
 # Project Proposal Overview
 ## Table of Contents:
 I. Team Details
+
 II. Project Synopsis 
+
 III. Three components of complexity
 
 ## I. Team Details
 Team Name: Bad team
 
 Team Members:
-Muhammed Abushamma
-Adrien Abbey
-Luke Davidson
-Brandon Walker
+* Muhammed Abushamma
+* Adrien Abbey
+* Luke Davidson
+* Brandon Walker
 
 
 ## II. Synopsis:
