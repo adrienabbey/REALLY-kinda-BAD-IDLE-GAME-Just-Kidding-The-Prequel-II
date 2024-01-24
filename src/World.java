@@ -1,11 +1,5 @@
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 class World extends JPanel{
@@ -15,18 +9,6 @@ class World extends JPanel{
      * @throws IOException
      */
     public World() throws IOException{
-        // GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        // GraphicsDevice device = env.getDefaultScreenDevice();
-        // BufferedImage picture = ImageIO.read(new File("assets/images/World.png"));
-        
-        // // This is all the physical gui elements and their properties
-        // JPanel world = new JPanel(){ // This code puts the world map image as the background to the panel
-        //     @Override
-        //     protected void paintComponent(Graphics g){
-        //         super.paintComponent(g);
-        //         g.drawImage(picture, 0, 0, getWidth(), getHeight(), this);
-        //     }
-        // };
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         JButton quit = new JButton("Quit");
         JButton town = new JButton("Town");
@@ -53,28 +35,19 @@ class World extends JPanel{
         // Town button takes you to the town
         town.addActionListener(e -> {
             try {
-                new Town();
+                Driver.changePanel("town");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            // this.dispose();
         });
 
         // Dungeon button takes you to the dungeon
         dungeon.addActionListener(e -> {
             try {
-                new Dungeon();
+                Driver.changePanel("dungeon");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            // this.dispose();
         });
-
-        // This section sets the properties of the JFrame, will soon be managed in driver likely
-        // this.getContentPane().add(world);
-        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // this.setResizable(false);
-        // this.setVisible(true);
-        // device.setFullScreenWindow(this);
     }
 }

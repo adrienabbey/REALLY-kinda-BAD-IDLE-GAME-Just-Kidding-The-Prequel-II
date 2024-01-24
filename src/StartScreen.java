@@ -57,8 +57,7 @@ class StartScreen extends JPanel{
 
         // Load a saved game
         loadGame.addActionListener(e -> {
-            new LoadScreen();
-            // this.dispose();
+            Driver.changePanel("load");
         });
 
         // Quit the game

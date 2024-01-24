@@ -1,22 +1,30 @@
 import javax.swing.*;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 
-class Dungeon extends JFrame {
+class Dungeon extends JPanel {
     /**
      * This function hosts the dungeon screen with buttons to go to town or use a potion
      * @param player The player character object
      */
     public Dungeon() {
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = env.getDefaultScreenDevice();
 
-        JPanel dungeon = new JPanel();
+        // TODO add the actual enemy generation and combat here
 
-        this.getContentPane().add(dungeon);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setVisible(true);
-        device.setFullScreenWindow(this);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        JButton run = new JButton("Run");
+
+        add(Box.createVerticalGlue());
+        add(run);
+        add(Box.createVerticalGlue());
+
+        run.setAlignmentX(CENTER_ALIGNMENT);
+
+        run.addActionListener(e -> {
+            try {
+                Driver.changePanel("world");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 }

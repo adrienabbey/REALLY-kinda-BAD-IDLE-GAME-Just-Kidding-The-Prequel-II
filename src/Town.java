@@ -1,26 +1,18 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-class Town extends JFrame {
+class Town extends JPanel {
     /**
      * This function hosts the town screen with buttons to buy potions or leave
      * @param player The player character object
      * @throws IOException
      */
     public Town() throws IOException{
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = env.getDefaultScreenDevice();
-
-        // This is all the physical gui elements and their properties
-        JPanel town = new JPanel();
-        town.setLayout(new BoxLayout(town, BoxLayout.X_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
         JPanel charPanel = new JPanel(); // Character panel where you see and set stats for your character
         charPanel.setLayout(new BoxLayout(charPanel, BoxLayout.X_AXIS));
@@ -46,11 +38,14 @@ class Town extends JFrame {
         charPanel.add(pic);
         charPanel.add(Box.createVerticalGlue());
 
-        town.add(Box.createVerticalGlue());
-        town.add(charPanel);
-        town.add(Box.createRigidArea(new Dimension(20, 0)));
-        town.add(buttons);
-        town.add(Box.createVerticalGlue());
+        add(Box.createVerticalGlue());
+        add(charPanel);
+        add(Box.createRigidArea(new Dimension(20, 0)));
+        add(buttons);
+        add(Box.createVerticalGlue());
+
+        charPanel.setAlignmentX(CENTER_ALIGNMENT);
+        buttons.setAlignmentX(CENTER_ALIGNMENT);
 
         // Buy button adds a potion to the player's inventory
         buy.addActionListener(e -> {
@@ -65,18 +60,10 @@ class Town extends JFrame {
         // Leave button takes you back to the world map
         leave.addActionListener(e -> {
             try {
-                new World();
+                Driver.changePanel("world");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            this.dispose();
         });
-
-        // This section sets the properties of the window, soon to be managed in the driver
-        this.getContentPane().add(town);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setVisible(true);
-        device.setFullScreenWindow(this);
     }
 }

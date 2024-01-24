@@ -23,7 +23,7 @@ class Driver extends JFrame{
 
         // This panel will be for any screens before a character has been loaded, which will be a solo screen at a time
         StartScreen start = new StartScreen();
-        //JPanel load = new LoadScreen();
+        LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         //JPanel charPanel = new CharacterPanel();
         //JPanel dice = new BigDiceEnergy();
@@ -35,18 +35,18 @@ class Driver extends JFrame{
                 g.drawImage(picture, 0, 0, getWidth(), getHeight(), this);
             }
         };
-        // JPanel town = new Town();
+        Town town = new Town();
         //JPanel dungeon = new Dungeon();
 
         driverPanel.setLayout(cardLayout);
         driverPanel.add(start, "start");
-        //driverPanel.add(load, "load");
+        driverPanel.add(load, "load");
         driverPanel.add(cc, "cc");
         // driverPanel.add(charPanel, "charPanel");
         //driverPanel.add(dice, "dice");
         //driverPanel.add(inventory, "inventory");
         driverPanel.add(world, "world");
-        // driverPanel.add(town, "town");
+        driverPanel.add(town, "town");
         //driverPanel.add(dungeon, "dungeon");
 
         cardLayout.show(driverPanel, "start");
@@ -66,11 +66,4 @@ class Driver extends JFrame{
     public static void setPlayer(PlayerCharacter player){
         Driver.player = player;
     }
-
-    // public static void changePanel(JPanel panel){
-    //     driverPanel.removeAll();
-    //     driverPanel.add(panel);
-    //     driverPanel.revalidate();
-    //     driverPanel.repaint();
-    // }
 }
