@@ -1,6 +1,4 @@
 import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -22,11 +20,8 @@ class CharacterCreation extends JPanel{
      * @throws IOException
      */
     public CharacterCreation() throws IOException{
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = env.getDefaultScreenDevice();
 
         // This is all the physical gui elements and their properties
-        // JPanel create = new JPanel(); // Create panel where you create your character
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         // TODO - Make sure this is long enough to fit all the names we want to allow
         JTextField name = new JTextField(12);
@@ -190,20 +185,11 @@ class CharacterCreation extends JPanel{
         submit.addActionListener(e -> {
             PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10*statPoints, 1, 0);
             try {
-                // JPanel world = new World();
                 Driver.setPlayer(player);
                 Driver.changePanel("world");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            //this.dispose();
         });
-
-        // Properties of the screen itself, will soon be moved to a separate manager class
-        // this.getContentPane().add(create);
-        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // this.setResizable(false);
-        // this.setVisible(true);
-        // device.setFullScreenWindow(this);
     }
 }
