@@ -11,14 +11,18 @@ class Dungeon extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+        // This is creating all the objects that will be displayed on the screen
         JButton run = new JButton("Run");
 
+        // This is adding all objects to the screen, and controlling layout
         add(Box.createVerticalGlue());
         add(run);
         add(Box.createVerticalGlue());
 
+        // control the layout of the buttons
         run.setAlignmentX(CENTER_ALIGNMENT);
 
+        // This button will be used to run away from combat
         run.addActionListener(e -> {
             try {
                 Driver.changePanel("world");

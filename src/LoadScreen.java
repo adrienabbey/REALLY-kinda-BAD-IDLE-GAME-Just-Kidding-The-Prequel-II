@@ -2,7 +2,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import java.awt.Dimension;
-import javax.swing.Box; // Import the missing Box class
+import javax.swing.Box;
 
 class LoadScreen extends JPanel{
     public LoadScreen(){
