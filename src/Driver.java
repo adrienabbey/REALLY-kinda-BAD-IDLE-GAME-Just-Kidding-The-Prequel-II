@@ -14,33 +14,27 @@ class Driver extends JFrame{
     private static JPanel world = new JPanel();
     private static JPanel dungeon = new JPanel();
     private static Dungeon combat = new Dungeon();
-    try {
-        private static World map = new World(){ // This code puts the world map image as the background to the panel
-            @Override
-            protected void paintComponent(Graphics g){
-                super.paintComponent(g);
-                g.drawImage(picture, 0, 0, getWidth(), getHeight(), this);
+    // private static BufferedImage picture = ImageIO.read(new File("assets/images/World.png"));
+    private static World map = new World(){ // This code puts the world map image as the background to the panel
+        @Override
+        protected void paintComponent(Graphics g){
+            super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/World.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        };
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    // private static World map = new World(){ // This code puts the world map image as the background to the panel
-    //     @Override
-    //     protected void paintComponent(Graphics g){
-    //         super.paintComponent(g);
-    //         g.drawImage(picture, 0, 0, getWidth(), getHeight(), this);
-    //     }
-    // };
+            // g.drawImage(ImageIO.read(new File("assets/images/World.png")), 0, 0, getWidth(), getHeight(), this);
+        }
+    };
 
     public static void main(String[] args) throws Exception{
         new Driver();
-    } 
+    }
 
     public Driver() throws Exception{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
-        BufferedImage picture = ImageIO.read(new File("assets/images/World.png"));
 
         // This panel will be for any screens before a character has been loaded, which will be a solo screen at a time
         StartScreen start = new StartScreen();

@@ -8,7 +8,7 @@ class World extends JPanel{
      * @param player The player character object
      * @throws IOException
      */
-    public World() throws IOException{
+    public World(){
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         JButton quit = new JButton("Quit");
         JButton town = new JButton("Town");
