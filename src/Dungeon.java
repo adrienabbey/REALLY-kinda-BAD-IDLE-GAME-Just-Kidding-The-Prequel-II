@@ -7,7 +7,7 @@ class Dungeon extends JFrame {
      * This function hosts the dungeon screen with buttons to go to town or use a potion
      * @param player The player character object
      */
-    public Dungeon(PlayerCharacter player) {
+    public Dungeon() {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
 

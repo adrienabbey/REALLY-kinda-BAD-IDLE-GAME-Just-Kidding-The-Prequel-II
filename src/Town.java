@@ -14,7 +14,7 @@ class Town extends JFrame {
      * @param player The player character object
      * @throws IOException
      */
-    public Town(PlayerCharacter player) throws IOException{
+    public Town() throws IOException{
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
 
@@ -55,7 +55,7 @@ class Town extends JFrame {
         // Buy button adds a potion to the player's inventory
         buy.addActionListener(e -> {
             try{
-                player.addPotion(1);
+                // player.addPotion(1);
             } catch (Exception e1){
                 // TODO - Make this notify the user in window
                 e1.printStackTrace();
@@ -65,7 +65,7 @@ class Town extends JFrame {
         // Leave button takes you back to the world map
         leave.addActionListener(e -> {
             try {
-                new World(player);
+                new World();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

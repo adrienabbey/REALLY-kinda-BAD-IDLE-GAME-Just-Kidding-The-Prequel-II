@@ -5,12 +5,11 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 // This class manages the screen for creating a new character
-class CharacterCreation extends JFrame{
+class CharacterCreation extends JPanel{
 
     private int statPoints = 10;
     private int muscle = 0;
@@ -27,8 +26,8 @@ class CharacterCreation extends JFrame{
         GraphicsDevice device = env.getDefaultScreenDevice();
 
         // This is all the physical gui elements and their properties
-        JPanel create = new JPanel(); // Create panel where you create your character
-        create.setLayout(new BoxLayout(create, BoxLayout.Y_AXIS));
+        // JPanel create = new JPanel(); // Create panel where you create your character
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         // TODO - Make sure this is long enough to fit all the names we want to allow
         JTextField name = new JTextField(12);
         name.setMaximumSize(name.getPreferredSize());
@@ -78,17 +77,17 @@ class CharacterCreation extends JFrame{
         charPanel.add(stats);
         charPanel.add(Box.createHorizontalGlue());
 
-        create.add(Box.createVerticalGlue());
-        create.add(name);
-        create.add(Box.createRigidArea(new Dimension(0, 10)));
-        create.add(points);
-        create.add(Box.createRigidArea(new Dimension(0, 10)));
-        create.add(message);
-        create.add(Box.createRigidArea(new Dimension(0, 10)));
-        create.add(charPanel);
-        create.add(Box.createRigidArea(new Dimension(0, 10)));
-        create.add(submit);
-        create.add(Box.createVerticalGlue());
+        add(Box.createVerticalGlue());
+        add(name);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(points);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(message);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(charPanel);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(submit);
+        add(Box.createVerticalGlue());
 
         name.setAlignmentX(CENTER_ALIGNMENT);
         points.setAlignmentX(CENTER_ALIGNMENT);
@@ -191,18 +190,20 @@ class CharacterCreation extends JFrame{
         submit.addActionListener(e -> {
             PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10*statPoints, 1, 0);
             try {
-                new World(player);
-            } catch (IOException e1) {
+                // JPanel world = new World();
+                Driver.setPlayer(player);
+                Driver.changePanel("world");
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            this.dispose();
+            //this.dispose();
         });
 
         // Properties of the screen itself, will soon be moved to a separate manager class
-        this.getContentPane().add(create);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setVisible(true);
-        device.setFullScreenWindow(this);
+        // this.getContentPane().add(create);
+        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // this.setResizable(false);
+        // this.setVisible(true);
+        // device.setFullScreenWindow(this);
     }
 }
