@@ -14,3 +14,6 @@ Added a barely functional placeholder character creation and world map, with but
 Realized we need a seperate class that manages all the interface screen to help clean up code and make later adjustments easier, dreading it, but also getting working on it.
 
 Fixed all my comments to be javadocs for the functions, and then a little more organized and useful otherwise.
+
+1/24/2024
+Cleaned up GUI code so it is all maintained by the driver frame, there is some tweaking needed on the world, dungeon and town maps to for layout, and changes will likely be made to all screens for style.
