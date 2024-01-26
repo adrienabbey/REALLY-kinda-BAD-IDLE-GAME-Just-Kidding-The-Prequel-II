@@ -11,14 +11,20 @@ class GameCharacter {
    private int heart;
    private double health;
    private int maxHealth;
-   private double mana;
-   private int maxMana;
+   private double magic;
+   private int maxMagic;
    private int dice;
 
    // TODO: What do these stats do?
    // TODO: When do these stats increase, if at all?
 
-   /* Constructor */
+   /**
+    * Constructor for GameCharacter class
+    * @param name sets the name of the character
+    * @param muscle how hard the character hits
+    * @param brain how strong the characters magic is
+    * @param heart how much health the character has
+    */
    public GameCharacter(String name, int muscle, int brain, int heart) {
       this.name = name;
       this.muscle = muscle;
@@ -26,12 +32,15 @@ class GameCharacter {
       this.heart = heart;
       this.maxHealth = 10 + (5 * heart);
       this.health = maxHealth;
-      this.maxMana = 10 + (5 * brain);
-      this.mana = maxMana;
+      this.maxMagic = 10 + (5 * brain);
+      this.magic = maxMagic;
       // TODO - Probably need to balance these stats.
    }
 
-   /* Methods */
+   /**
+    * This function is used to attack another character
+    * @param target the character that is being attacked
+    */
    public void attack(GameCharacter target) {
       dice = (int) (Math.random() * 20) + 1;
       int damage = muscle * (dice / 20);
@@ -52,41 +61,19 @@ class GameCharacter {
       // TODO: Implementation.
    }
 
-   // Facts are stubborn things, but stats are pliable.
-
-   public String getName() {
-      return name;
-   }
-
-   public String setName(String newName) {
-      name = newName;
-      return name;
-   }
-
-   public int getMuscle() {
-      return muscle;
-   }
-
-   public int setMuscle(int newMuscle) {
-      muscle = newMuscle;
-      return muscle;
-   }
-
-   public int getBrain() {
-      return brain;
-   }
-
-   public int setBrain(int newBrain) {
-      brain = newBrain;
-      return brain;
-   }
-
-   public int getHeart() {
-      return heart;
-   }
-
-   public int setHeart(int newHeart) {
-      heart = newHeart;
-      return heart;
-   }
+   // Getters and Setters
+   public String getName() {  return name;   }
+   public String setName(String newName) {   return name = newName;  }
+   public int getMuscle() {   return muscle; }
+   public int setMuscle(int newMuscle) {  return muscle = newMuscle; }
+   public int getBrain() { return brain;  }
+   public int setBrain(int newBrain) { return brain = newBrain;   }
+   public int getHeart() { return heart;  }
+   public int setHeart(int newHeart) { return heart = newHeart;   }
+   public double getHealth() { return health; }
+   public double setHealth(double newHealth) { return health = newHealth; }
+   public int getMaxHealth() { return maxHealth; }
+   public double getMagic() { return magic; }
+   public double setMagic(double newMagic) { return magic = newMagic; }
+   public int getMaxMagic() { return maxMagic; }
 }
