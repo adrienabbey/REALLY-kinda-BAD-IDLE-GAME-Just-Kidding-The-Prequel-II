@@ -1,10 +1,8 @@
 # Project Proposal Overview
-> Maybe include our team name, members, class, date, etc.
 
 ## Table of Contents
-> Do we need a ToC?  If so, links would be nice.
 
-I. Team Details
+I. - [Team Details](#Team-Details)
 
 II. Project Synopsis 
 
