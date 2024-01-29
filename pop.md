@@ -33,4 +33,4 @@ These are all features which enhance the idle combat system, including monster d
 ### Documentation
 > Muhammed Abushamma
 
-Documentation is important, apparently.
+Documentation is important, apparently. Documenting the requirements, project descriptions, summaries, goals, and meetings in an essential aspect to the software development process. Included in this aspect is also the playtesting, debugging, and assuring quality of the product during each iteration phase. 
