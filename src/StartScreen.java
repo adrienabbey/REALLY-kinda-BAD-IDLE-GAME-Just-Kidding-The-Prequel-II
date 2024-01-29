@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.*;
+import java.util.ArrayList;
 // TODO Narrow the swing down to what we actually need
 
 
@@ -16,12 +17,17 @@ class StartScreen extends JPanel{
         // TODO - Add a info button or something to explain the game
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //Icon newGameIcon = new ImageIcon("assets/images/newGame.PNG");
-        JButton newGame = new JButton("New Game");
-        newGame.setFont(new Font("Dialog", Font.BOLD, 12));
-        newGame.setBackground(Color.WHITE);
-        newGame.setForeground(Color.RED);
-        JButton loadGame = new JButton("Load Game");
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
         JButton quit = new JButton("Quit");
+        buttons.add(quit);
+        JButton newGame = new JButton("New Game");
+        buttons.add(newGame);
+        newGame.setFont(new Font("Dialog", Font.BOLD, 12));
+        JButton loadGame = new JButton("Load Game");
+        buttons.add(loadGame);
+
+        JButton instructions = new JButton("Instructions");
+        buttons.add(instructions);
 
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
@@ -29,12 +35,24 @@ class StartScreen extends JPanel{
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(loadGame);
         add(Box.createRigidArea(new Dimension(0, 10)));
+        add(instructions);
+        add(Box.createRigidArea(new Dimension(0, 10)));
         add(quit);
         add(Box.createVerticalGlue());
 
-        newGame.setAlignmentX(CENTER_ALIGNMENT);
-        loadGame.setAlignmentX(CENTER_ALIGNMENT);
-        quit.setAlignmentX(CENTER_ALIGNMENT);
+
+        //For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
+            buttons.get(i).setBackground(Color.WHITE);
+            buttons.get(i).setForeground(Color.RED);
+
+            if (i == 0) {
+                buttons.get(0).setAlignmentX(CENTER_ALIGNMENT);
+                buttons.get(0).setBackground(Color.RED);
+                buttons.get(0).setForeground(Color.WHITE);
+            }
+        }
 
         // Buttons to interact with the functions of the game
 
