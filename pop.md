@@ -30,7 +30,7 @@ The core of this project is an idle combat loop.  Selecting a dungeon (from the 
 
 These are all features which enhance the idle combat system, including monster design, dungeon design (which determines difficulty of enemies), equipment, and upgrades.  Initially these will be very simple, but additional enhancements and new features will be included if time permits.
 
-### Documentation
+### Documentation, Quality Assurance 
 > Muhammed Abushamma
 
 Documentation is important, apparently. Documenting the requirements, project descriptions, summaries, goals, and meetings in an essential aspect to the software development process. Included in this aspect is also the playtesting, debugging, and assuring quality of the product during each iteration phase. 
