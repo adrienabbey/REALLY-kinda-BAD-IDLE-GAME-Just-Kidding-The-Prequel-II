@@ -88,11 +88,11 @@ class Driver extends JFrame{
      */
     public static void addCharScreen(){
         CharacterScreen charScreen = new CharacterScreen();
+        driverPanel.add(charScreen, "charScreen");
         world.add(charScreen);
         world.add(map);
         dungeon.add(charScreen);
         dungeon.add(combat);
-        // driverPanel.add(new CharacterScreen(), "charScreen");
     }
 
 

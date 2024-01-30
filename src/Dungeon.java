@@ -8,6 +8,9 @@ class Dungeon extends JPanel {
     public Dungeon() {
 
         // TODO add the actual enemy generation and combat here
+        // Monster enemy = new Monster();
+        // PlayerCharacter player = Driver.getPlayer();
+        // Dice dice = new Dice(100);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

@@ -124,4 +124,10 @@ class PlayerCharacter extends GameCharacter {
    public int addGold(int collectedGold) {   return gold += collectedGold; }
    public int setGold(int newGoldBalance) {  return gold = newGoldBalance; }
    public boolean isAwake() { return isAwake; }
+   public void setAwake(boolean awake) { 
+      isAwake = awake;
+      if(!isAwake){
+         timeToWake = 3;
+      }
+   }
 }

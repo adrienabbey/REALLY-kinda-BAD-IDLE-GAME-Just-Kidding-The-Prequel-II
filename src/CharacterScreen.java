@@ -1,9 +1,7 @@
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-
 import java.awt.Dimension;
-
 import javax.swing.Box;
 
 class CharacterScreen extends JPanel{
