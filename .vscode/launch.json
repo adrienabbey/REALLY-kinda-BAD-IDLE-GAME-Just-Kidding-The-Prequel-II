@@ -6,6 +6,13 @@
       "name": "Driver",
       "request": "launch",
       "mainClass": "Driver",
+      "projectName": "REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II_f3a7ab94"
+    },
+    {
+      "type": "java",
+      "name": "Driver",
+      "request": "launch",
+      "mainClass": "Driver",
       "projectName": "REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II_cc90c8ce"
     },
     {

@@ -1,12 +1,4 @@
-# Project Proposal Overview
-
-## Table of Contents
-
-- [I. Team Details](#I.-Team-Details)
-
-- [II. Synopsis](#II.-Synopsis)
-
-- [III. Three components of complexity](#III.-Three-components-of-complexity)
+# Project Overview Proposal
 
 ## I. Team Details
 Team Name: B.A.D. (B.A.D. at Development) at Development team
@@ -18,15 +10,27 @@ Team Members:
 * Brandon Walker
 
 ## II. Synopsis
-This project involves building, playtesting, and delivering an idle medieval-themed game loosely based on the idle game Melvor Idle and Kingdom of Loathing. This idle game will include various components of gameplay such as an idle combat system, and world map. With some stretch goals including crafting, inventory, a leveling system, and skill mechanisms.
+This project is focused on creating an fantasy idle game loosely inspired by Melvor Idle and Kingdom of Loathing. This idle game will include various components of gameplay such as an idle combat system, player progression, saving/loading, and world map. Some stretch goals include crafting, inventory, a leveling system, and skill mechanisms.
 
-## III. Three components of complexity
-> Note: Should this be *implementation* complexity, or *separation of complexity*, such that we have enough work to split among group members?  Documentation complexity should probably also be included here.
-> (Brandon) I recommend the first be a dungeon/combat loop, the second being the store and how it ties in with our fainting in the dungeon mechanic and then third being the GUI
-> As I am pretty sure we are supposed to have *seperation of complexity*.
+## III. Main Components
+The core of this project will be written in Java using Visual Studio Code.
 
-The first component of complexity is implementing the game mechanics in Java using a Visual Studio Code environment. This is where the backend of the project will be built and where the various basis of the mechanisms of the game developed. 
+### UI
+> Luke Davidson
 
-The second component of the complexity is the frontend component and the implementation of a game GUI. This component will also include the creation of assets used for the game.  **(isn't this also Java?  It really isn't seperate so much as a distinction)**
+The UI will include a main menu, character load and save menus, a world map, town map, character status menu, and a combat interface.  Additional UI elements will be added or adjusted as needed.
 
-The third component of complexity is the quality assurance and playtesting segment, where the preliminary versions of the product will be analyzed, scrutinized, improved, and quality assured. Finding bugs and fixing them if possible will also be included in this component.  **(Having a functional project is *not* a requirement for this course.  I'm inclined to put more emphasis on stretch-goals than balance, as that might help sell our "product" better on resumes.)**
+### Idle Combat
+> Brandon Walker
+
+The core of this project is an idle combat loop.  Selecting a dungeon (from the world map) determines which enemies the player encounters (and thus the difficulty of combat).  The player then encounters enemies and engages in combat automatically with limited to no player interaction required.  The lack of user interaction is an intentional design decision.
+
+### Supporting Systems
+> Adrien Abbey
+
+These are all features which enhance the idle combat system, including monster design, dungeon design (which determines difficulty of enemies), equipment, and upgrades.  Initially these will be very simple, but additional enhancements and new features will be included if time permits.
+
+### Documentation, Quality Assurance 
+> Muhammed Abushamma
+
+Documentation is important, apparently. Documenting the requirements, project descriptions, summaries, goals, and meetings in an essential aspect to the software development process. Included in this aspect is also the playtesting, debugging, and assuring quality of the product during each iteration phase. 

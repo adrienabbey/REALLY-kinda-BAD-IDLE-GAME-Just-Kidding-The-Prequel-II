@@ -48,8 +48,9 @@ class Driver extends JFrame{
         StartScreen start = new StartScreen();
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
+        GameInstructions instructions = new GameInstructions();
         // JPanel charPanel = new CharacterScreen();
-        //JPanel dice = new BigDiceEnergy();
+        //JPanel dice = new Dice();
         //JPanel inventory = new Inventory();
         // JPanel world = new JPanel();
         Town town = new Town();
@@ -64,6 +65,7 @@ class Driver extends JFrame{
         driverPanel.add(start, "start");
         driverPanel.add(load, "load");
         driverPanel.add(cc, "cc");
+        driverPanel.add(instructions, "instructions");
         // driverPanel.add(charPanel, "charPanel");
         //driverPanel.add(dice, "dice");
         //driverPanel.add(inventory, "inventory");
