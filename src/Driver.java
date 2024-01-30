@@ -28,7 +28,7 @@ class Driver extends JFrame{
             }
         }
     };
-
+    
     public static void main(String[] args) throws Exception{
         new Driver();
     }
