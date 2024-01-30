@@ -70,6 +70,11 @@ class StartScreen extends JPanel{
             Driver.changePanel("load");
         });
 
+        //View Game instructions
+        instructions.addActionListener(e -> {
+            Driver.changePanel("instructions");
+        });
+
         // Quit the game
         quit.addActionListener(e -> {
             System.exit(0);
