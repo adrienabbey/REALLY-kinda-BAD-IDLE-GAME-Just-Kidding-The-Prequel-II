@@ -11,6 +11,7 @@ class Dungeon extends JPanel {
         // Monster enemy = new Monster();
         // PlayerCharacter player = Driver.getPlayer();
         // Dice dice = new Dice(100);
+        // int roll = dice.roll();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

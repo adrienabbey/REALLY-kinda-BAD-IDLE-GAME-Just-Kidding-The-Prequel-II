@@ -13,7 +13,7 @@ class GameCharacter {
    private int maxHealth;
    private double magic;
    private int maxMagic;
-   private int dice;
+   private Dice dice = new Dice(20);
 
    // TODO: What do these stats do?
    // TODO: When do these stats increase, if at all?
