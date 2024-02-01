@@ -10,7 +10,7 @@
 * Definitions:
     * Project Manager: Everyone occupies this role to some degree and decides what each task they'll work on. These decisions will be made on an personal basis (for individual tasks), or a group basis for collaborative tasks (project managers duties overlaps withs functional manager and team leader in our group).
 
-    * Scrum Master:  Is a servant for the team. Keeps meeting short and on topic and writes teh details of meeting in an entry loacted the `minute-meetings` folder.
+    * Documentor:  Is a servant for the team. Keeps meeting short and on topic and writes the details of meeting in an entry loacted the `minute-meetings` folder.
 
     * Developer: Everyone member of our team will occupy this role. Responsible for building the actual product and meeting deadlines for deliverables. Will work on the functionality of the project.
 
@@ -28,4 +28,8 @@
 * Luke Davidson: Quality Assurance 
 
 ## Milestones
-* Important Milestones that some combine the development methodology with constraints you cannot change (e.g., how long the course is).
+* Minimum Viable Product Implementation:
+
+* Various stretch goals regarding additional components for the game. 
+
+* Code freeze - End of development - April 5th. 
