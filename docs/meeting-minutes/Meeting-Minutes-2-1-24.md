@@ -1,6 +1,6 @@
 # Meeting Minutes
 **Date: 2/1/24**
-changes
+
 ## Agenda
 1. Item 1: SDP 
 2. Item 2: Roles
