@@ -8,20 +8,23 @@
 
 ## Roles
 * Definitions:
-* Project Manager: Everyone occupies this role and decides what each task they'll work on (project managers duties overlaps withs functional manager and team leader in our group).
+* Project Manager: Everyone occupies this role and decides what each task they'll work on. These decisions will be made on an personal basis (for individual tasks), or a group basis for collaborative tasks (project managers duties overlaps withs functional manager and team leader in our group).
 
 * Scrum Master:  Is a servant for the team. Keeps meeting short and on topic and writes teh details of meeting in an entry loacted the `minute-meetings` folder.
 
-* Developer: Responsible fro building the actual product and meeting deadlines for deliverables. Will work on the functionality of the project.
-* Product Owner:
+* Developer: Everyone member of our team will occupy this role. Responsible for building the actual product and meeting deadlines for deliverables. Will work on the functionality of the project.
+
+* Product Owner: Responsible for defining and prioritizing product backlog and aligning the team to work on the most valuable features.
+
+* Quality Assurance: Converts project requiremenst into tests and assures proper process adherence. Reviews and approves significant changes to the project.  
 
 ## Team Member Roles:
-* Adiren Abbey: Project owner
-* Brandon Walker:
-* Muhammed Abushamma: Scrum Master
-* Luke Davidson:
+* Adiren Abbey: Product owner 
+* Brandon Walker: 
+* Muhammed Abushamma: Scrum Master, Quality Assurance
+* Luke Davidson: Quality Assurance
 
-**Everyone occupies the project manager role.**
+**Everyone occupies the project manager and developer roles.**
  
 
 * Product Owner: 
