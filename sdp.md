@@ -24,7 +24,7 @@
 
 * Adiren Abbey: Product owner 
 * Brandon Walker: Project manager
-* Muhammed Abushamma: Scrum Master
+* Muhammed Abushamma: Documentor, quality assurance
 * Luke Davidson: Quality Assurance 
 
 ## Milestones
