@@ -8,15 +8,15 @@
 
 ## Roles
 * Definitions:
-* Project Manager: Everyone occupies this role to some degree and decides what each task they'll work on. These decisions will be made on an personal basis (for individual tasks), or a group basis for collaborative tasks (project managers duties overlaps withs functional manager and team leader in our group).
+    * Project Manager: Everyone occupies this role to some degree and decides what each task they'll work on. These decisions will be made on an personal basis (for individual tasks), or a group basis for collaborative tasks (project managers duties overlaps withs functional manager and team leader in our group).
 
-* Scrum Master:  Is a servant for the team. Keeps meeting short and on topic and writes teh details of meeting in an entry loacted the `minute-meetings` folder.
+    * Scrum Master:  Is a servant for the team. Keeps meeting short and on topic and writes teh details of meeting in an entry loacted the `minute-meetings` folder.
 
-* Developer: Everyone member of our team will occupy this role. Responsible for building the actual product and meeting deadlines for deliverables. Will work on the functionality of the project.
+    * Developer: Everyone member of our team will occupy this role. Responsible for building the actual product and meeting deadlines for deliverables. Will work on the functionality of the project.
 
-* Product Owner: Responsible for defining and prioritizing product backlog and aligning the team to work on the most valuable features.
+    * Product Owner: Responsible for defining and prioritizing product backlog and aligning the team to work on the most valuable features.
 
-* Quality Assurance: Converts project requiremenst into tests and assures proper process adherence. Reviews and approves significant changes to the project.  
+    * Quality Assurance: Converts project requiremenst into tests and assures proper process adherence. Reviews and approves significant changes to the project.  
 
 ## Team Member Roles:
 **Everyone occupies the developer roles.**
