@@ -8,3 +8,6 @@
 
 ## Milestones
 * Important Milestones that some combine the development methodology with constraints you cannot change (e.g., how long the course is).
+
+## Contributors
+* Muhammed Abushamma
