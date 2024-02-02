@@ -1,35 +1,40 @@
 # Software Development Plan
 
 ## Administrivia
-* Meeting details: By default, every tuesday and thursday after class (12:20pm) we will meet for approximately 30 minutes to 2 hours. Depending on availability these times and dates can be changed. 
+
+* Meeting details: We will meet tuesday and thursday after class (12:20pm) as needed. Depending on availability these times and dates can be changed.
 
 ## Development Methodology
-* Agile - We will develop the project through an iterative approach. Each iterative cycle will be comprised on collaborative sprints. Each sprint will be include these general steps: Planning, design, developing, testing, deploying, and then review. We will repeat this process until each implementation for the project has been fully developed and tested. 
+
+* Agile - We will develop the project through an iterative approach. Each iterative cycle will be comprised on collaborative sprints. Each sprint will be include these general steps: Planning, design, developing, testing, deploying, and then review. We will repeat this process until each implementation for the project has been fully developed and tested.
 
 ## Roles
+
 * Definitions:
-    * Project Manager: Everyone occupies this role to some degree and decides what each task they'll work on. These decisions will be made on an personal basis (for individual tasks), or a group basis for collaborative tasks (project managers duties overlaps withs functional manager and team leader in our group).
 
-    * Documentor:  Is a servant for the team. Keeps meeting short and on topic and writes the details of meeting in an entry loacted the `minute-meetings` folder.
+    * Project Manager (PM): Everyone occupies this role. Decides what functions the project will have, sets an MVP and stretch goals.
 
-    * Developer: Everyone member of our team will occupy this role. Responsible for building the actual product and meeting deadlines for deliverables. Will work on the functionality of the project.
+    * Docudementor:  Is a servant for the team. Keeps meeting short and on topic and writes the details of meetings in an entry loacted in the `minute-meetings` folder.
 
-    * Product Owner: Responsible for defining and prioritizing product backlog and aligning the team to work on the most valuable features.
+    * Developer (Dev): Every member of our team will occupy this role. Responsible for building the actual product and meeting deadlines for deliverables. Will work on the functionality of the project.
 
-    * Quality Assurance: Converts project requiremenst into tests and assures proper process adherence. Reviews and approves significant changes to the project.  
+    * Product Owner (PO): Responsible for defining and prioritizing product backlog and aligning the team to work on the most valuable features.
 
-## Team Member Roles:
-**Everyone occupies the developer roles.**
-**These roles are not set in stone and due to the small team size team members might need to occupy other roles**
+    * Quality Assurance (QA): Every member of our team will be fulfilling this role. Converts project requirements into tests and assures proper process adherence. Reviews and approves significant changes to the project.  
 
-* Adiren Abbey: Product owner 
-* Brandon Walker: Project manager
-* Muhammed Abushamma: Documentor, quality assurance
-* Luke Davidson: Quality Assurance 
+## Team Member Roles
+
+*These roles are not set in stone and due to the small team size team members might need to occupy other roles*
+
+* Adrien Abbey: PO, PM, Dev, QA
+* Brandon Walker: PM, Dev, QA
+* Muhammed Abushamma: Docudementor, PM, Dev, QA
+* Luke Davidson: PM, Dev, QA
 
 ## Milestones
+
 * Minimum Viable Product Implementation:
 
-* Various stretch goals regarding additional components for the game. 
+* Various stretch goals regarding additional components for the game.
 
-* Code freeze - End of development - April 5th. 
+* Code freeze - End of development - April 5th.
