@@ -38,3 +38,7 @@
 * Various stretch goals regarding additional components for the game.
 
 * Code freeze - End of development - April 5th.
+
+## Signatures
+
+* Brandon Walker
