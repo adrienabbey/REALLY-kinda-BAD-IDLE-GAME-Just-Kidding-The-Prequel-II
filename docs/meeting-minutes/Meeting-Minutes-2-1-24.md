@@ -23,9 +23,9 @@
     * Action Item 2:
     * Action Item 3: 
 * Group Member `Luke Davidson`
-    * Action Item 1:
-    * Action Item 2:
-    * Action Item 3:
+    * Action Item 1: Design and implement start screen background
+    * Action Item 2: re-format character creation
+    * Action Item 3: Re-format start screen
 * Group Member `Adrien Abbey`
     * Action Item 1: Monster class, implement a very basic monster for testing/combat
     * Action Item 2: Possibly look into implementing character save/load functions
@@ -40,3 +40,4 @@
 * Muhammed Abushamma
 * Brandon Walker
 * Adrien Abbey
+* Luke Davidson
