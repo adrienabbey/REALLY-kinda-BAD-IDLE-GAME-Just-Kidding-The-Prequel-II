@@ -6,7 +6,7 @@
 
 ## Development Methodology
 
-* Agile - We will develop the project through an iterative approach. Each iterative cycle will be comprised on collaborative sprints. Each sprint will be include these general steps: Planning, design, developing, testing, deploying, and then review. We will repeat this process until each implementation for the project has been fully developed and tested.
+* We are using an Agile-esque - We have issues registered on github, which just all of the features or functions we need to implement. The issues get assigned to individuals in what we are thinking of as individual sprints. This allows each member to have drastically different schedules of contribution, and allows for the fact that we have not mastered estimating how long jobs will take. Each member makes a new branch when they start on an assigned issue, and then when finished they submit it for merge with main, and it gets checked over and tested by at least 2 other members of the team. Everyone works together on deciding what features to implement, or how to approach any major design dicisions that affect the whole project.
 
 ## Roles
 
