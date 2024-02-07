@@ -16,9 +16,8 @@
 ## Action Items (what we plan to start working on, like a personal sprint) 
 
 * Group Member `Brandon Walker`
-    * Action Item 1:
-    * Action Item 2:
-    * Action Item 3: 
+    * Action Item 1: Basic dice implementation.
+    * Action Item 2: Basic combat loop for MVP.
 * Group Member `Muhammed Abushamma`
     * Action Item 1:
     * Action Item 2:
