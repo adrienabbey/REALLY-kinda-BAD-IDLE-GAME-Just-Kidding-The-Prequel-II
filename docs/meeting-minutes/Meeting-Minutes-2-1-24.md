@@ -13,7 +13,7 @@
 2. Response to Item 2: Assigned roles
 3. Response to Item 3: In order to not have to 2 people approve of every signature to each meeting minutes document, a new branch will be created and signatures (commits with your name) will be performed there. Then, that branch will be merged to main.
 
-## Action Items (tentaive, do we want to add this for this meeting?)
+## Action Items (what we plan to start working on, like a personal sprint) 
 
 * Group Member `Brandon Walker`
     * Action Item 1:
@@ -28,16 +28,16 @@
     * Action Item 2:
     * Action Item 3:
 * Group Member `Adrien Abbey`
-    * Action Item 1:
-    * Action Item 2:
-    * Action Item 3:
+    * Action Item 1: Monster class, implement a very basic monster for testing/combat
+    * Action Item 2: Possibly look into implementing character save/load functions
 
 ## To-Do
 
 1. Determine which development methodology we specifically want.
 1. Assign finalized roles.
 
-## Contributors
+## Sign-off
 
 * Muhammed Abushamma
 * Brandon Walker
+* Adrien Abbey
