@@ -17,3 +17,6 @@ Fixed all my comments to be javadocs for the functions, and then a little more o
 
 1/24/2024
 Cleaned up GUI code so it is all maintained by the driver frame, there is some tweaking needed on the world, dungeon and town maps to for layout, and changes will likely be made to all screens for style.
+
+1/24/2024 to 2/8/2024
+Halt in coding while we generate an SDP, implement meeting minutes, and document signing.
