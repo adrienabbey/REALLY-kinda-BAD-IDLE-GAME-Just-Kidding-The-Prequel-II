@@ -19,9 +19,8 @@
     * Action Item 1: Basic dice implementation.
     * Action Item 2: Basic combat loop for MVP.
 * Group Member `Muhammed Abushamma`
-    * Action Item 1:
-    * Action Item 2:
-    * Action Item 3: 
+    * Action Item 1: Help with any functions or implementations that need to be developed.
+    * Action Item 2: Document meeting minutes, project changes, and sprints.
 * Group Member `Luke Davidson`
     * Action Item 1: Design and implement start screen background
     * Action Item 2: re-format character creation
