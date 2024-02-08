@@ -21,3 +21,6 @@ Cleaned up GUI code so it is all maintained by the driver frame, there is some t
 1/30/2024
 Cleaned up GUI code to remove commented out snippets no longer needed.
 Start creating combat loop.
+
+1/31/2024 to 2/8/2024
+Halt in coding while we generate an SDP, implement meeting minutes, and document signing.
