@@ -33,7 +33,9 @@
 
 ## Milestones
 
-* Minimum Viable Product Implementation:
+* Minimum Viable Product Implementation: March 8th
+
+* Design and Requirements specifications: February 26th
 
 * Various stretch goals regarding additional components for the game.
 
@@ -41,7 +43,7 @@
 
 ## Signatures
 
-* Brandon Walker
-* Adrien Abbey
-* Muhammed Abushamma
-* Luke Davidson
+* Brandon Walker 
+* 
+* 
+* 
