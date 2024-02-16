@@ -33,17 +33,15 @@
 
 ## Milestones
 
-* Minimum Viable Product Implementation: March 8th
-
 * Design and Requirements specifications: February 26th
 
 * Various stretch goals regarding additional components for the game.
 
-* Code freeze - End of development - April 5th.
+* MVP Implementation - End of development - April 5th.
 
 ## Signatures
 
-* Brandon Walker 
 * 
+* Luke Davidson 
 * 
 * 
