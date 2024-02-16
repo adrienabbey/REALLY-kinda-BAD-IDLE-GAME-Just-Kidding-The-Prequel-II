@@ -19,6 +19,7 @@
 
 ## Contributors
 Remove this line. Each Member should directly add their name as a _separate commit_ from the creation of the meeting-minutes.md file
-* Group Member
-* Group Member
-* Group Member
+*
+*
+*
+*
