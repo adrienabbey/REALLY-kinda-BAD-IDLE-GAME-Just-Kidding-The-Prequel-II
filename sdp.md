@@ -40,11 +40,11 @@
 * MVP Implementation - End of development - April 5th.
 
 ## Change Log
-- Adjusted Design and Requirement specification due date to March 4th, as originally intended.  Numbers are hard.  Dates are harder.  Four people not noticing the wrong date on the document they just signed?  Normal.
+- Adrien just thought that 26 was bigger than 4, and so it was obviously the date he wanted. Adjusted Design and Requirement specification due date to March 4th, as originally intended.  Numbers are hard.  Dates are harder.  Four people not noticing the wrong date on the document they just signed?  Normal.
 
 ## Signatures
 
 * Adrien Abbey
 * Muhammed Abushamma
-* 
+* Brandon Walker
 * 
