@@ -33,15 +33,18 @@
 
 ## Milestones
 
-* Design and Requirements specifications: February 26th
+* Design and Requirements specifications: March 4th
 
 * Various stretch goals regarding additional components for the game.
 
 * MVP Implementation - End of development - April 5th.
 
+## Change Log
+- Adjusted Design and Requirement specification due date to March 4th, as originally intended.  Numbers are hard.  Dates are harder.  Four people not noticing the wrong date on the document they just signed?  Normal.
+
 ## Signatures
 
-* Brandon Walker
-* Luke Davidson 
 * Adrien Abbey
-* Muhammed Abushamma
+*  
+* 
+* 
