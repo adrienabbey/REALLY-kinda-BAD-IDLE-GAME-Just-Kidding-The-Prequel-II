@@ -1,5 +1,5 @@
 /* 
- * Player Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Monster Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
  * Adrien Abbey et al. Feb. 2024
  */
 
