@@ -19,6 +19,7 @@ class Monster extends GameCharacter {
 
     /* Fields */
     String description;
+    int goldRewarded;
 
     /* Constructor */
 
@@ -43,6 +44,7 @@ class Monster extends GameCharacter {
                 this.setMuscle(2);
                 this.setBrain(2);
                 this.setHealth(2);
+                this.goldRewarded = 2;
                 break;
             case HOBOGOBLIN:
                 this.setName("Hobo Goblin");
@@ -51,6 +53,7 @@ class Monster extends GameCharacter {
                 this.setMuscle(4);
                 this.setBrain(4);
                 this.setHeart(4);
+                this.goldRewarded = 4;
                 break;
         }
     }
