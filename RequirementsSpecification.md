@@ -1,17 +1,18 @@
 # Minimal Viable Product
 
-- R1: The user shall be able to choose between loading a save, or creating a new character.
-- R1.1: The user shall be able to save their character.
-- R1.2: A character shall consist of a name, muscle stat, brain stat, and heart stat.
-- R2: The user will start at a world map screen upon picking a character, loaded or fresh.
-- R2.1: The map screen will have a selection for a town shop and a dungeon.
-- R3: The town shop will sell potions to heal the adventurer.
-- R4: The dungeon will be where the primary combat loop takes place.
-- R4.1: Combat hits and damage will be affected by dice rolls.
-- R4.2: If the players HP hits 0, they can't continue combat until either a certain amount of time, or until healed with a potion.
-- R4.3: Defeating enemies will drop gold.
-- R5: The player will have gear consisting of a weapon, armor and head-piece.
-- R5.1: This gear will be obtained by defeating enemies in the dungeon, and will be affected by dice rolls.
+- R1: The game will be operated via a graphical interface and buttons that will be on screen.
+- R2: The user shall be able to choose between loading a save, or creating a new character.
+- R2.1: The user shall be able to save their character.
+- R2.2: A character shall consist of a name, muscle stat, brain stat, and heart stat.
+- R3: The user will start at a world map screen upon picking a character, loaded or fresh.
+- R3.1: The map screen will have a selection for a town shop and a dungeon.
+- R4: The town shop will sell potions to heal the adventurer.
+- R5: The dungeon will be where the primary combat loop takes place.
+- R5.1: Combat hits and damage will be affected by dice rolls.
+- R5.2: If the players HP hits 0, they can't continue combat until either a certain amount of time, or until healed with a potion.
+- R5.3: Defeating enemies will drop gold.
+- R6: The player will have gear consisting of a weapon, armor and head-piece.
+- R6.1: This gear will be obtained by defeating enemies in the dungeon, and will be affected by dice rolls.
 
 Work in progress.  Based on whiteboard notes, Jan. 16, 2024
 
