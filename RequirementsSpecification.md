@@ -1,5 +1,13 @@
 # Minimal Viable Product
 
+R1: The user shall be able to choose between loading a save, or creating a new character.
+R1.1: The user shall be able to save their character.
+R1.2: A character shall consist of a name, muscle stat, brain stat, and heart stat.
+R2: The user will start at a world map screen upon picking a character, loaded or fresh.
+R2.1: The map screen will have a selection for a town shop and a dungeon.
+R3: The town shop will sell potions to heal the adventurer.
+R4: The dungeon will be where the primary combat loop takes place.
+
 Work in progress.  Based on whiteboard notes, Jan. 16, 2024
 
 ## UI
