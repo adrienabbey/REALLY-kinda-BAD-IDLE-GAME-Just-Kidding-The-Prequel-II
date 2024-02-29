@@ -1,6 +1,13 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.ArrayList;
 // TODO Narrow the swing down to what we actually need
@@ -8,29 +15,46 @@ import java.util.ArrayList;
 
 // This class is just the intro starting screen with the buttons to start a new game, load a game, read directions, or quit
 class StartScreen extends JPanel{
+    @Override
+    protected void paintComponent(Graphics g) {
+
+    super.paintComponent(g);
+        try {
+            g.drawImage(ImageIO.read(new File("assets/images/startScreenTest.jpg")), 0, 0, getWidth(), getHeight(), this);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+}
     /**
      * This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
      */ 
-    public StartScreen(){
+    public StartScreen() throws IOException{
 
         // This block of code is all the physical gui elements and their properties
         // TODO - Add a info button or something to explain the game
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        //Icon newGameIcon = new ImageIcon("assets/images/newGame.PNG");
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         JButton quit = new JButton("Quit");
         buttons.add(quit);
         JButton newGame = new JButton("New Game");
         buttons.add(newGame);
-        newGame.setFont(new Font("Dialog", Font.BOLD, 12));
         JButton loadGame = new JButton("Load Game");
         buttons.add(loadGame);
 
         JButton instructions = new JButton("Instructions");
         buttons.add(instructions);
 
+        Color customColor = new Color(46, 86, 161);
+        JLabel title = new JLabel("B.A.D Idle Game");
+        title.setFont(new Font("Arial", Font.BOLD, 128));
+        title.setForeground(customColor);
+        title.setAlignmentX(CENTER_ALIGNMENT);
+
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
+        add(title);
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(newGame);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(loadGame);
@@ -44,13 +68,18 @@ class StartScreen extends JPanel{
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-            buttons.get(i).setBackground(Color.WHITE);
-            buttons.get(i).setForeground(Color.RED);
+            buttons.get(i).setPreferredSize(new Dimension(60, 80));
+            buttons.get(i).setMaximumSize(new Dimension(600, 500));
+            buttons.get(i).setBackground(customColor);
+            buttons.get(i).setForeground(Color.WHITE);
+            buttons.get(i).setFont(new Font("Arial", Font.BOLD, 32));
 
             if (i == 0) {
                 buttons.get(0).setAlignmentX(CENTER_ALIGNMENT);
                 buttons.get(0).setBackground(Color.RED);
                 buttons.get(0).setForeground(Color.WHITE);
+                buttons.get(i).setPreferredSize(new Dimension(60, 80));
+                buttons.get(i).setMaximumSize(new Dimension(400, 500));
             }
         }
 
