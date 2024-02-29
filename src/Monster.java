@@ -18,8 +18,8 @@ class Monster extends GameCharacter {
     }
 
     /* Fields */
-    String description;
-    int goldRewarded;
+    private String description;
+    private int goldRewarded;
 
     /* Constructor */
 
@@ -60,11 +60,28 @@ class Monster extends GameCharacter {
 
     /* Functions */
 
+    /**
+     * @param description Monsters have feelings, and sometimes they just need
+     *                    to let it all out. Or be told what they are. By
+     *                    others. They're just monsters. They don't have
+     *                    feelings. Be mean. Be descriptive. Tell the monster
+     *                    what you think of it.
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * @return Returns a string description of the monster. Very descriptive.
+     */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * @return Returns the amount of gold rewarded for slaying this creature.
+     */
+    public int getGoldReward() {
+        return goldRewarded;
     }
 }
