@@ -1,6 +1,8 @@
 # Requirements Speficiations
 
 1. The game will be operated via a graphical interface and buttons that will be on screen.
+    1. The whole interface will be controlled from a central Driver to remove window swaps when changing screens and unify the screens.
+    2. The game will have a start screen for choosing character, reading instructions, or exiting.
 2. The user shall be able to choose between loading a save, or creating a new character.
     1. The user shall be able to save and load their character.
     2. A character shall consist of a name, muscle stat, brain stat, and heart stat.
