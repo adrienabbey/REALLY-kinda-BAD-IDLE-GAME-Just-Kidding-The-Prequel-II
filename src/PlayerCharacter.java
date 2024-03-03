@@ -3,11 +3,13 @@
  * Adrien Abbey, et al., Jan. 2024
  */
 
+import java.io.Serializable;
+
 /**
  * Player Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
  * This class manages the player character's stats and some inventory for now
  */
-class PlayerCharacter extends GameCharacter {
+class PlayerCharacter extends GameCharacter implements Serializable {
    /* Variables */
    // TODO: Determine base "starting" stats:
    private static final int startingMuscle = 3;
@@ -47,6 +49,7 @@ class PlayerCharacter extends GameCharacter {
 
    /**
     * This function sets the size of the players potion belt
+    * 
     * @param newPotionBeltSize the new size of the potion belt
     * @return true if the potion belt size is set, false if it is not
     */
@@ -63,6 +66,7 @@ class PlayerCharacter extends GameCharacter {
 
    /**
     * This function adds potions to the players inventory
+    * 
     * @param numPotions the number of potions to add
     * @return the number of potions in the players inventory
     */
@@ -77,13 +81,15 @@ class PlayerCharacter extends GameCharacter {
          return potionCount;
       } else {
          // Too many potions, discard any extras:
-         // TODO - Wait, are we letting them buy more potions than they have room for and just throwing them away? ROFL
+         // TODO - Wait, are we letting them buy more potions than they have room for and
+         // just throwing them away? ROFL
          potionCount = potionBeltSize;
          return potionCount;
       }
    }
 
-   // TODO: What does this do? there is a method for drink, and a method to add, so I am not sure what unique purpose this fills
+   // TODO: What does this do? there is a method for drink, and a method to add, so
+   // I am not sure what unique purpose this fills
    public boolean setPotion(int newPotionCount) {
       if (newPotionCount > 0 && newPotionCount < potionBeltSize) {
          potionCount = newPotionCount;
@@ -97,16 +103,16 @@ class PlayerCharacter extends GameCharacter {
 
    /**
     * This function is used to drink a potion
+    * 
     * @return true if the potion is drank, false if it is not
     */
    public boolean drinkPotion() {
-      if(!isAwake){
+      if (!isAwake) {
          isAwake = true;
          timeToWake = 0;
          potionCount--;
          return true;
-      }else if (potionCount > 0) {
-         
+      } else if (potionCount > 0) {
          potionCount--;
          return true;
       }
@@ -118,10 +124,27 @@ class PlayerCharacter extends GameCharacter {
    // I LOVE GOOOOOOOLD!
 
    // Getters and Setters
-   public int getPotionCount() { return potionCount;  }
-   public int getPotionBeltSize() { return potionBeltSize;  }
-   public int getGold() {  return gold;   }
-   public int addGold(int collectedGold) {   return gold += collectedGold; }
-   public int setGold(int newGoldBalance) {  return gold = newGoldBalance; }
-   public boolean isAwake() { return isAwake; }
+   public int getPotionCount() {
+      return potionCount;
+   }
+
+   public int getPotionBeltSize() {
+      return potionBeltSize;
+   }
+
+   public int getGold() {
+      return gold;
+   }
+
+   public int addGold(int collectedGold) {
+      return gold += collectedGold;
+   }
+
+   public int setGold(int newGoldBalance) {
+      return gold = newGoldBalance;
+   }
+
+   public boolean isAwake() {
+      return isAwake;
+   }
 }
