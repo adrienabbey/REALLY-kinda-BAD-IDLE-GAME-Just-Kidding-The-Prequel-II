@@ -28,7 +28,7 @@
     * Action Item 2: Possibly look into implementing character save/load functions
 
 ## Contributors
-* 
+* Muhammed Abushamma
 *
 *
 *
