@@ -15,8 +15,8 @@ NOTE: This is intended to be merged with design documentation from the others wo
         2.  
             1.  
             2.  
-3.  
-    1.  
+3. This map will be the primary way the player will move and decide what to do with their character. 
+    1.  These buttons will take the player to their respective screens. (Town screen for the town button, character screen for the charcter button, etc.)
 4.  
     1.  
     2.  
