@@ -2,7 +2,7 @@
 
 ## Administrivia
 
-* Meeting details: We will meet tuesday and thursday after class (12:20pm) as needed. Depending on availability these times and dates can be changed.
+* Meeting details: We shall meet three times per month starting the month of Feburary until the month of April. Each meeting will usually take place on tuesday or thursday after class (12:20pm). Depending on availability these times and dates can be changed.
 
 ## Development Methodology
 
