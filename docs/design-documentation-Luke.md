@@ -11,7 +11,6 @@ NOTE: This is intended to be merged with design documentation from the others wo
 2.  
     1.  
     2.  
-    3.  
         1.  
         2.  
             1.  
