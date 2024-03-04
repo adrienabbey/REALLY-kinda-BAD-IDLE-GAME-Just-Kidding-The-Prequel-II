@@ -31,9 +31,8 @@
     6. If the monster hits 0 HP, the player is rewarded with gold, and a chance at equipment upgrades.
         1. After defeating a monster, a new monster replaces it.
     7. The player can choose to withdraw from the dungeon at any time.
-        1. However, any current combat must resolve first.  
-        2. After the user clicks the withdraw button, the current combat will resolve normally.
-        3. Withdrawing from a dungeon without dying will return the player to the map screen.
+        1. After the user clicks the withdraw button, the current combat will resolve normally.
+        2. Withdrawing from a dungeon without dying will return the player to the map screen.
 6. The player will have gear consisting of a weapon, armor and head-piece.
     1. This gear will be obtained by defeating enemies in the dungeon.
         1. The chance at an upgrade is based on the current dungeon level, current gear levels, and the disparity between those levels.
