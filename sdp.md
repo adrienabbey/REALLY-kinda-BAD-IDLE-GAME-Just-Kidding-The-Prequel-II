@@ -2,7 +2,7 @@
 
 ## Administrivia
 
-* Meeting details: We shall meet three times per month starting the month of Feburary until the month of April. Each meeting will usually take place on tuesday or thursday after class (12:20pm). Depending on availability these times and dates can be changed.
+* Meeting details: We shall meet three times per month on the month of Feburary, and meet one to two times during the month of March and April. Meetings will usually take place after class on tuesday or thursday around 12:20pm or through discord. Each meeting-minutes documet can summarize an aggregation of smaller discussions had over discord or in-person, which could happen over the course of several days. Depending on availability these times and dates can be changed.
 
 ## Development Methodology
 
