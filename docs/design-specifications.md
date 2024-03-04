@@ -14,8 +14,8 @@
         2.  The player's carried potion count will be integer field of the player character.
             1.  Likewise, the potion belt size will also be an integer field of the player character.
             2.  Upgrading the potion belt size will be done from the town screen, requiring an exponentially scaling sum of gold.
-3. 
-    1. 
+3. This map will be the primary way the player will move and decide what to do with their character.
+    1. These buttons will take the player to their respective screens. (Town screen for the town button, character screen for the charcter button, etc.)
 4. The town shop is a seperate GUI window that uses the following functions:
     1. The player's potion belt is upgraded here.  The player can choose to spend a scaling amount of gold to upgrade their belt size.  Larger sizes require exponentially more gold.  This will be implemented as a Shop class function.  A UI button will call the funciton.  Exact costs TBD.
     2. The player can also buy potions here.  Each potion will have a fixed gold cost.  This will also be a Shop class function, called by a UI button.
