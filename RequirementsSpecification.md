@@ -3,10 +3,10 @@
 1. The game will be operated via a graphical interface and buttons that will be on screen.
     1. The whole interface will be controlled from a central Driver to remove window swaps when changing screens and unify the screens.
     2. The game will have a start screen for choosing character, reading instructions, or exiting.
+    3. There will be a character screen so the user can see their characters condition.
 2. The user shall be able to choose between loading a save, or creating a new character.
     1. The user shall be able to save and load their character.
-    2. There will be a character screen so the user can see their characters condition.
-    3. A character shall consist of a name, muscle stat, brain stat, and heart stat.
+    2. A character shall consist of a name, muscle stat, brain stat, and heart stat.
         1. The character will have equipment (weapon, armor, hat), and some amount of gold.
         2. The character will have a potion belt (upgradable) which can be filled with potions.
             1. The potion belt has a maximum number of potions that can be carried.
