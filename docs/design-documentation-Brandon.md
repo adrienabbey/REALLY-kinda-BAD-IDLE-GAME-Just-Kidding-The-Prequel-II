@@ -21,12 +21,12 @@ NOTE: This is intended to be merged with design documentation from the others wo
     1.  
     2.  
     3.  
-5.  
-    1.  
-        1.  
-        2.  
-    2.  
-        1.  
+5. Implement a dungeon class which will load a corresponding screen from the driver class, combat functions will run in the combat class which will simulate combat based on the character and randomly selected monsters stats.
+    1. The button on the world map will perform a check on player status before moving to the dungeon
+        1. There will be multiple functions in the Dungeon class to initialize each dungeon.
+        2. We will make a list of available monsters that the dungeon class will select from.
+    2. The character screen or dungeon screen will have a button to control magic use.
+        1. 
         2.  
         3.  
     3.  
