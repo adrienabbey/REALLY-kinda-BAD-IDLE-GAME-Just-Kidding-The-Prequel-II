@@ -13,7 +13,7 @@
             2. Upgrading the potion belt will increase this maximum.
 3. The user will start at a world map screen upon picking a character, loaded or fresh.
     1. The map screen will have a selection for a town shop and a selection of dungeons of increasing difficulty.
-4. The town shop will sell potions to heal the adventurer.  Towns are entered from the map screen.
+4. The town shop will sell potions to heal the adventurer. The town is entered from the map screen.
     1. The player's potion belt can be upgraded in size.  This is the primary method of spending gold.
     2. The player can buy potions to refill their belt.
     3. The player can also use a potion to restore their health here.
