@@ -1,45 +1,50 @@
 NOTE: This is intended to be merged with design documentation from the others working on this project!
 
 # Design Specification Documenation
+
 > This document should one for one describe how each requirement will be met through implementation details. Where appropriate provide graphics (e.g., mock-ups) that show what an interface should look like. In the coming days, we will also discuss different types of ways of describing interactions (e.g., data flow diagrams, swim lanes, sequence diagrams) which might be useful to include, as well.
 
-## Adrien's Design Specs
-### Saving and Loading the Player Character
-- Players should be able to save and close the game without losing progression.
-    - This should probably happen only outside dungeons.
-    - This could also be done automatically when transitioning into/out of dungeons.
-- Everything relevant to the player's character *should be* a part of the player character object.
-- Thus, saving the player character object to the disk *should be* all that is needed.
-    - This is done by implementing serializable on the Player Character class, and writing two functions to save and load that object to the disk.
-    - These functions are written and currently exist in the Driver class.
-    - The UI and/or driver class will need to call these functions when appropriate.
-- Currently, the save file has a fixed name (meaning only one save file).
-    - Stretch goal: Implement the ability to have more than one save file, choose the save location.
+1. Implement a base start screen class that will guide the player in their journey. This start screen will consist of buttons that will prompt them for a "New Game", "Load Game", "Instructions", and "Quit".  Other important screens will be the world map and town. The world map will help the player navigate through the gameplay loop. It will have buttons to go into dungeons to start combat, and a button to go to the shop to allow the player to buy potions to give their character effects. *See picture at end of document for early mockups of what these screens would look like*
+    1.  We will use a driver class that will help in providing a smoother user experience. This will be where the buttons on the start screen call to, allowing them to move to the character creation screen, load game screen, and the instructions screen.
+    2.  These buttons will call to the driver to help guide the player to where they need to go. 
+2. Saving and loading the Player Character is done by implementing serializable on the Player Character class.  This enables saving the Player Character object to a file.  Public functions to do this are implemented in the Driver class.  The GUI will enable loading or saving the character.
+    1. Loading a character is done from the main menu.  Saving a character is done in-game.
+        1. From the main menu, the player can optionally load an existing character.  This loads the Player Character object from the save file, which then proceeds to the map screen.
+        2. Saving the character can be done any time outside a dungeon.  This will be done either by clicking a GUI button on the world map, or automatically whenever transitioning into/out of a dungeon (to be determined).
+            1. Saving is done much like loading, where the Player Character object is serialized and written to the save file.
+    2.  
+    3.  The Player Character object includes fields for the character's name, its stats (muscle, brain, heart), current gold, as well as the following:
+        1.  The player's equipment will consist of a weapon, armor, and a hat.  These will likely be simple integer fields.
+        2.  The player's carried potion count will be integer field of the player character.
+            1.  Likewise, the potion belt size will also be an integer field of the player character.
+            2.  Upgrading the potion belt size will be done from the town screen, requiring an exponentially scaling sum of gold.
+3.  
+    1.  
+4.  
+    1.  
+    2.  
+    3.  
+5. Implement a dungeon class which will load a corresponding screen from the driver class, combat functions will run in the combat class which will simulate combat based on the character and randomly selected monsters stats.
+    1. The button on the world map will perform a check on player status before moving to the dungeon
+        1. There will be multiple functions in the Dungeon class to initialize each dungeon.
+        2. We will make a list of available monsters that the dungeon class will select from.
+    2. The character screen or dungeon screen will have a button to control magic use, when the player characters attack function runs, it will check selection and run relevant functions.
+        1. There will be a function for offensive spell use, and a function for healing spell use, this function will use a dice roll, the players current mana and the players brain stat to decide if a spell is cast, and how powerful the affect, and then will apply the health or damage, and drain the mana.
+    3. The combat class will call the dice class and get stats from the player and monster.
+        1. The combat class will check if either player or monster is dead between each attack, calling in a loop until combat is exited from a death or the player running.
+    4.  
+    5. There is a "isAwake" flag in the playerCharacter class, that is checked, and when set to false starts a timer which is removed and the flag reset in the potion drinking function
+        1. When the players awake flag is triggered to false, it will also kick the player back to the world map in the same function call.
+    6. TThe combat class upon monster death will call a function to award gold based on monster, and another function that will use a dice function to determine if the player gets a +1 to an equipment slot.
+        1. The combat function after doing rewards, and checking combat flags, will call a function to generate a new monster and enter back into combat loop.
+    7. There will be a button to exit the dungeon.
+        1. The function for the button will set a flag that combat will check before loading the next monster, and if set, will kick the player back to the world map.
+        2. The combat loop will call the screen change function in the driver to the world map
+6.  The player's gear will be implemented as simple integer fields of the Player Character object.
+    1. Defeating monsters in dungeons will offer a chance to upgrade a piece of equipment.  This will be done using an Equipment Upgrade class with functions that determine the chance to upgrade after every fight.
+        1. This function will compare the enemy's stats against the player's stats to determine this chance, where a stronger enemy will increase the chances, while a weaker enemy may reduce this chance to zero.  The exact algorithm is TBD.
+        2.  If an upgrade is rewarded, it will upgrade a single piece of equipment.  Which piece of equipment is upgraded will be randomly chosen by another algorithm, weighted more favorably towards weaker items.
 
-### Implement the Monster Class, Monster Design
-- Combat with monsters is a key function of this game's design.
-- Having a variety of monsters to fight helps not only add flavor to the game, but also creates a difficulty scale, where the player fights easy monsters to get strong enough to fight harder monsters, creating a sense of progression besides just bigger numbers.
-- Monsters currently have predefined names, descriptions, statistics (muscle, brain, heart), and a fixed amount of gold they drop when defeated.
-    - TODO: Add more monster designs.  Currently there's only two 'easy' monsters.
-        - This includes unique names and descriptions, as well as stats.
-            - Stats should have some uniqueness to them.  Ex: strong but fragile attackers, sturdy but weak tanks, etc.
-    - TODO: Since we're implementing multiple dungeons, we need a variety of monster types for each dungeon.
-    - TODO: Consider implementing "bosses".
-        - As originally discussed, every X fights, the "boss" spawns and fights the player.
-        - The boss is stronger than normal enemies, making it a harder (but more rewarding) fight.
-
-### Implement Equipment
-- The player's primary form of progression is in the form of their equipment.
-    - This is because the player does NOT gain levels like many other games.
-    - We have stretch goals to implement a skill system, but that is unlikely to be implemented before our current due date.
-- Players 'find' equipment as they fight monsters in the dungeon.
-    - This is completely automatic.  The player has zero control over this.
-    - After every fight, there is a chance to find a better piece of equipment.
-        - If the found item is better, it automatically equips in place of the old item.
-        - The chance of the upgrade depends on the level difference between the player's equipment level and the defeated monster's level.
-            - NOTE: Monster "level" is likely just going to be the sum of its stats, then normalized.  TBD.
-            - A much lower level item is much more likely to upgrade.
-            - Only a single item can upgrade each fight.
-            - It's possible to have disparity in equipment levels.  It's more liklely to upgrade a lower level item than a higher level item, but not impossible.
-            - Bosses, if implemented, will likely have better chances at item upgrades.
-            - Fighting 'weak' enemies will likely eventually drop the chance of upgrade to zero due to level differences.
+# Images
+ - This image is from an early meeting where we were planning out what screens we needed and what they needed to have on them.
+ ![White borad drawings of gameplay screens](images/MockUp.png)
