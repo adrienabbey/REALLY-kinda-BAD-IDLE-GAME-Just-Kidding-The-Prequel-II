@@ -22,9 +22,7 @@
         1. There are multiple dungeons to choose from, each with a different difficulty level.
         2. Each dungeon will have a list of monsters that can spawn in them.
     2. The player can toggle between offensive and healing magic with a button.
-        1. Offensive magic will randomly cast attack spells during combat.  This helps combat resolve faster.
-        2. healing magic will randomly cast healing spells during combat.  This helps the player fight longer.
-        3. Casting this way is based on a random dice roll, influenced by their brain statistic and their remaining mana points.
+        1. Casting this way is based on a random dice roll, influenced by their brain statistic and their remaining mana points.
     3. Combat hits and damage will be affected by dice rolls.
         1. The player and the enemy monster take turns attacking each other.
     4. The player can click a button to use a potion from their belt to heal.
