@@ -4,8 +4,8 @@
 
 ## Agenda
 1. Submit Final Software Development Plan (SDP)
-2. Work requirement and design specification documents. Finish by March 4th as per our SDP.
-3. Continue working on the implementation of the game. Will be based on design specifiation documention after its completed.
+2. Worked on requirement and design specification documents. Finish by March 4th as per our SDP.
+4. Continue working on the implementation of the game. Will be based on design specifiation documention after its completed.
 
 
 ## Notes
