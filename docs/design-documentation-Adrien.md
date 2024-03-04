@@ -20,10 +20,10 @@ NOTE: This is intended to be merged with design documentation from the others wo
             2.  Upgrading the potion belt size will be done from the town screen, requiring an exponentially scaling sum of gold.
 3.  
     1.  
-4.  
-    1.  
-    2.  
-    3.  
+4. The town shop is a seperate GUI window that uses the following functions:
+    1. The player's potion belt is upgraded here.  The player can choose to spend a scaling amount of gold to upgrade their belt size.  Larger sizes require exponentially more gold.  This will be implemented as a Shop class function.  A UI button will call the funciton.  Exact costs TBD.
+    2. The player can also buy potions here.  Each potion will have a fixed gold cost.  This will also be a Shop class function, called by a UI button.
+    3. The player can also use a potion from their belt to heal themselves here.  The exact formula for how much a potion heals is TBD.
 5. Implement a dungeon class which will load a corresponding screen from the driver class, combat functions will run in the combat class which will simulate combat based on the character and randomly selected monsters stats.
     1. The button on the world map will perform a check on player status before moving to the dungeon
         1. There will be multiple functions in the Dungeon class to initialize each dungeon.
