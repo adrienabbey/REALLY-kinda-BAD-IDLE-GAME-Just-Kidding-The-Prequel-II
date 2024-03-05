@@ -37,3 +37,9 @@
     1. This gear will be obtained by defeating enemies in the dungeon.
         1. The chance at an upgrade is based on the current dungeon level, current gear levels, and the disparity between those levels.
         2. Each combat will upgrade a single piece of equipment, at most.  Lower level gear has a higher chance to upgrade than those with higher levels.
+
+## Signatures
+- 
+- 
+- 
+- 
