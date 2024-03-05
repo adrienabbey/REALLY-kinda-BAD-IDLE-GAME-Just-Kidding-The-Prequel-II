@@ -1,9 +1,7 @@
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,7 +20,7 @@ class StartScreen extends JPanel{
         try {
             g.drawImage(ImageIO.read(new File("assets/images/startScreenTest.jpg")), 0, 0, getWidth(), getHeight(), this);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            //Auto-generated catch block
             e.printStackTrace();
         }
 }
@@ -32,7 +30,6 @@ class StartScreen extends JPanel{
     public StartScreen() throws IOException{
 
         // This block of code is all the physical gui elements and their properties
-        // TODO - Add a info button or something to explain the game
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         JButton quit = new JButton("Quit");
@@ -84,7 +81,6 @@ class StartScreen extends JPanel{
         }
 
         // Buttons to interact with the functions of the game
-
         // Create new Character
         newGame.addActionListener(e -> {
             try {
