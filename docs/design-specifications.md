@@ -41,9 +41,13 @@
         1. This function will compare the enemy's stats against the player's stats to determine this chance, where a stronger enemy will increase the chances, while a weaker enemy may reduce this chance to zero.  The exact algorithm is TBD.
         2.  If an upgrade is rewarded, it will upgrade a single piece of equipment.  Which piece of equipment is upgraded will be randomly chosen by another algorithm, weighted more favorably towards weaker items.
 
+## Images
+ - This image is from an early meeting where we were planning out what screens we needed and what they needed to have on them.
+ ![White borad drawings of gameplay screens](images/MockUp.png)
+
 ## Signatures
 
-- 
+- Adrien Abbey
 - Luke Davidson
 - 
 - 
