@@ -1,4 +1,4 @@
-# Requirements Speficiations
+# Requirements Specificiations Document
 
 1. The game will be operated via a graphical interface and buttons that will be on screen.
     1. The whole interface will be controlled from a central Driver to remove window swaps when changing screens and unify the screens.
