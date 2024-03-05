@@ -1,5 +1,5 @@
 # Meeting Minutes
-**Date: 2/20/24-2/28/24 (Summary of the multitude of miscellaneaous miniture meetings that took place over from the 20th of Feburrary to the 28th, both in-person and through discord.**
+**Date: 2/20/24-2/28/24 (Summary of the multitude of miscellaneaous miniature meetings that took place over from the 20th of February to the 28th, both in-person and through discord.**
 
 
 ## Agenda
