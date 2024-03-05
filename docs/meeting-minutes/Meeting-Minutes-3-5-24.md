@@ -25,8 +25,8 @@
     * Action Item 2: re-format character creation
     * Action Item 3: Re-format start screen
 * Group Member `Adrien Abbey`
-    * Action Item 1: Monster class, implement a very basic monster for testing/combat
-    * Action Item 2: Possibly look into implementing character save/load functions
+    * Action Item 1: Implement potion functions for the town shop
+    * Action Item 2: Implement the equipment class, gear upgrade functions
  
 ## To-Do
 1. Finish the second and finalized version of the design and requiremnets documents. Add evaluation methods to requirements.
@@ -35,4 +35,4 @@
 * Muhammed Abushamma
 * Brandon Walker
 * Luke Davidson
-*
+* Adrien Abbey
