@@ -33,15 +33,19 @@
 
 ## Milestones
 
-* Minimum Viable Product Implementation:
+* Design and Requirements specifications: March 4th
 
 * Various stretch goals regarding additional components for the game.
 
-* Code freeze - End of development - April 5th.
+* MVP Implementation - End of development - April 5th.
+
+## Change Log
+
+* Adrien just thought that 26 was bigger than 4, and so it was obviously the date he wanted. Adjusted Design and Requirement specification due date to March 4th, as originally intended.  Numbers are hard.  Dates are harder.  Four people not noticing the wrong date on the document they just signed?  Normal.
 
 ## Signatures
 
-* Brandon Walker
 * Adrien Abbey
 * Muhammed Abushamma
+* Brandon Walker
 * Luke Davidson
