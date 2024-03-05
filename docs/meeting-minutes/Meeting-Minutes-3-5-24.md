@@ -10,7 +10,7 @@
 
 ## Notes
 1. Submitted first version of both design and requirement documents to Github project repo.
-2. Revised SDP to include modofied meeting-minutes schedule.
+2. Revised SDP to include modified meeting-minutes schedule.
 3. Merged StartScreen to main, will continue working on UI and implementing monster/dungeon functionality. 
 
 ## Action Items (what we plan to start working on, like a personal sprint) 
@@ -33,6 +33,6 @@
 
 ## Contributors
 * Muhammed Abushamma
-*
+* Brandon Walker
 *
 *
