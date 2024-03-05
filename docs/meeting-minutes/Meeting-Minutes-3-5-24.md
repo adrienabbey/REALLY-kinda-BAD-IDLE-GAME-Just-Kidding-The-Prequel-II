@@ -4,7 +4,7 @@
 
 ## Agenda
 1. Revising Software Development Plan (SDP)
-2. Finish and submit design and requirement documents.
+2. Finish and submit first version of design and requirement documents.
 3. Continue implement the game.
 
 
@@ -29,7 +29,7 @@
     * Action Item 2: Possibly look into implementing character save/load functions
  
 ## To-Do
-1. Work on second and finalized version of the design and requiremnets document. Add evaluation methods to requirements.
+1. Finish the second and finalized version of the design and requiremnets documents. Add evaluation methods to requirements.
 
 ## Contributors
 * Muhammed Abushamma
