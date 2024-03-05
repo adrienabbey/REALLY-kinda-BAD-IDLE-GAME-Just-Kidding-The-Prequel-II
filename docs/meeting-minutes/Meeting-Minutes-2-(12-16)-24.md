@@ -29,6 +29,6 @@
 
 ## Contributors
 * Muhammed Abushamma
-*
+* Brandon Walker
 *
 *
