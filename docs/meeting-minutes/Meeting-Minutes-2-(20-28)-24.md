@@ -31,5 +31,5 @@
 ## Contributors
 * Muhammed Abushamma
 * Brandon Walker
-*
+* Luke Davidson
 *
