@@ -33,7 +33,9 @@
 
 ## Milestones
 
-* Design and Requirements specifications: March 4th
+* Preliminary version of Design and Requirements specifications: March 4th
+
+* Finalized version of Design and Requirements specifications: March 21st 
 
 * Various stretch goals regarding additional components for the game.
 
