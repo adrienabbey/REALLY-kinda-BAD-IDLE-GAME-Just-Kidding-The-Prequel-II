@@ -5,7 +5,7 @@
 ## Agenda
 1. Revising Software Development Plan (SDP)
 2. Finish and submit first version of design and requirement documents.
-3. Continue implement the game.
+3. Continue to implement the game.
 
 
 ## Notes
