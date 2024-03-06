@@ -34,4 +34,8 @@ class CharacterScreen extends JPanel{
         add(gold);
         add(Box.createVerticalGlue());
     }
+
+    public void update(){
+        this.repaint();
+    }
 }

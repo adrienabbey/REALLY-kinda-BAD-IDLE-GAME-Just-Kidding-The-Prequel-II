@@ -1,6 +1,9 @@
 import javax.swing.*;
 
 class Dungeon extends JPanel {
+    private Monster enemy;
+    private PlayerCharacter player;
+    private Dice dice = new Dice(20);
     /**
      * This function hosts the dungeon screen with buttons to go to town or use a potion
      * @param player The player character object
@@ -8,10 +11,13 @@ class Dungeon extends JPanel {
     public Dungeon() {
 
         // TODO add the actual enemy generation and combat here
-        // Monster enemy = new Monster();
-        // PlayerCharacter player = Driver.getPlayer();
-        // Dice dice = new Dice(100);
-        // int roll = dice.roll();
+        if(dice.roll() > 10){
+            enemy = new Monster(Monster.MonsterName.PETROCK);
+        }
+        else{
+            enemy = new Monster(Monster.MonsterName.HOBOGOBLIN);
+        }
+        player = Driver.getPlayer();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -34,5 +40,9 @@ class Dungeon extends JPanel {
                 e1.printStackTrace();
             }
         });
+    }
+
+    public void update(){
+        this.repaint();
     }
 }
