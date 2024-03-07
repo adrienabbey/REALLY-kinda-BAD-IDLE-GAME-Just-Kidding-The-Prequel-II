@@ -24,3 +24,6 @@ Start creating combat loop.
 
 1/31/2024 to 2/8/2024
 Halt in coding while we generate an SDP, implement meeting minutes, and document signing.
+
+3/7/2027
+Finish combat loop, add the necessary buttons to dungeon, and magicAttack/magicHeal to gameCharacter
