@@ -1,30 +1,37 @@
-// Import the necessary libraries for audio processing and file handling
 import javax.sound.sampled.*;
 import java.io.File;
 
 public class MusicPlayer {
+    // Keep track of the current clip
+    // This is used to stop the current music when a new one starts
+    private static Clip currentClip = null;
 
-    // Method to play music
     public static void playMusic(String filePath) {
         // Create a new thread to play the music
+        // This allows the music to play in the background without        blocking the rest of your program
         new Thread(() -> {
             try {
+                 // If there's a clip playing, stop it before starting the new one
+                // This ensures that only one music track plays at a time
+                if (currentClip != null && currentClip.isRunning()) {
+                    currentClip.stop();
+                }
+
                 // Create a File object with the provided file path
                 File musicPath = new File(filePath);
 
-                // Check if the file exists
                 if (musicPath.exists()) {
                     // Create an AudioInputStream from the file
                     AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                    // Get a clip resource to play the audio
-                    Clip clip = AudioSystem.getClip();
-                    // Open the audio clip
-                    clip.open(audioInput);
-                    // Start playing the audio clip
-                    clip.start();
+                    Clip clip = AudioSystem.getClip(); // Get a clip resource
+                    clip.open(audioInput); // Open the audio clip
+                    clip.start(); // Start playing the audio clip
+
+                    // Save the current clip
+                    // This allows us to stop it when a new one starts
+                    currentClip = clip;
 
                 } else {
-                    // If the file doesn't exist, print an error message
                     System.out.println("Can't find file");
                 }
             } catch (Exception ex) {
@@ -35,3 +42,6 @@ public class MusicPlayer {
         }).start();
     }
 }
+
+
+

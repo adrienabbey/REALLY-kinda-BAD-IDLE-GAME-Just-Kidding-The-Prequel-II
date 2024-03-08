@@ -51,6 +51,8 @@ class Driver extends JFrame {
     public Driver() throws Exception {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
+        MusicPlayer.playMusic("assets\\images\\Music\\Brilliant Epic Fantasy Music Copyright Free.wav");
+        
 
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time
@@ -103,6 +105,7 @@ class Driver extends JFrame {
         dungeon.add(charScreen);
         dungeon.add(combat);
         MusicPlayer.playMusic("assets\\images\\Music\\Court and Page - Silent Partner.wav");
+        
         // driverPanel.add(new CharacterScreen(), "charScreen");
     }
 

@@ -26,6 +26,7 @@ class Dungeon extends JPanel {
         run.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
+                MusicPlayer.playMusic("assets\\images\\Music\\Court and Page - Silent Partner.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
