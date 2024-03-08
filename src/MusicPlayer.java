@@ -8,7 +8,7 @@ public class MusicPlayer {
 
     public static void playMusic(String filePath) {
         // Create a new thread to play the music
-        // This allows the music to play in the background without        blocking the rest of your program
+        // This allows the music to play in the background without blocking the rest of your program
         new Thread(() -> {
             try {
                  // If there's a clip playing, stop it before starting the new one
