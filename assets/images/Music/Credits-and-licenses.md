@@ -8,6 +8,7 @@ Music promoted by Audio Library https://youtu.be/8TKy9bzrk24
 * Title: Day Of Recon by Max Surla, Media Right Productions
 Genre and Mood: Cinematic + Dark
 License: You're free to use this song and monetize your videos.
+Source: https://www.youtube.com/watch?v=omF3PuWuATE
 
 * Title: Court and Page by Silent Partner
 Genre and Mood: Ambient + Dark
@@ -18,8 +19,10 @@ Source: https://www.youtube.com/watch?v=eZ_r1H9vHkI&list=PLBTAnqebSfx20bAUX-x5SR
 * Title: Village Consort
 Genre: Country & Folk
 Mood: Dramatic
+Source: https://www.youtube.com/watch?v=eZ_r1H9vHkI
 
 * Uskudara Gideriken by Turku, Nomads of the Silk Road is licensed under a Attribution License.
+* Source: https://freemusicarchive.org/music/Turku_Nomads_of_the_Silk_Road/Alleys_of_Istanbul/01_-Uskudara_Gideriken/
 
 * Now We Ride by Alexander Nakarada | https://www.serpentsoundstudios.com
 Music promoted by https://www.free-stock-music.com
