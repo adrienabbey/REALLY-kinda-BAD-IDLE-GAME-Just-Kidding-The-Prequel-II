@@ -8,7 +8,8 @@ This github repo contains the project deliverables, source code, and documentati
 ## Synopsis
 This project is focused on creating an fantasy idle game loosely inspired by Melvor Idle and Kingdom of Loathing. This idle game will include various components of gameplay such as an idle combat system, player progression, saving/loading, and world map. Some stretch goals include crafting, inventory, a leveling system, and skill mechanisms. The creation of this game was done to practice the software developent process and methodology. We used a method similar to agile during the development of this project. The specifics of the method used is decsribed in the sofwtare development plan (sdp.md) document.
 
-## Contributors and Roles (see Software Development plan for project role definitions)
+## Contributors and Roles 
+(see Software Development plan for project role definitions)
 - Adrien Abbey: PO, PM, Dev, QA
 - Brandon Walker: PM, Dev, QA
 - Muhammed Abushamma: Docudementor, PM, Dev, QA
