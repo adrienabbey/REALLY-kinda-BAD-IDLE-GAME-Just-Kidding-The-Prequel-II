@@ -12,7 +12,7 @@ class Dungeon extends JPanel {
      */
     public Dungeon() {
         try {
-            backgroundImage = ImageIO.read(new File("assets/images/Dungeon2.png"));
+            backgroundImage = ImageIO.read(new File("assets/images/Dungeon.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

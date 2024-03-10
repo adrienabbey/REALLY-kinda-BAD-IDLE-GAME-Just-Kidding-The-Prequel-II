@@ -51,7 +51,7 @@ class Driver extends JFrame {
     public Driver() throws Exception {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
-        MusicPlayer.playMusic("assets\\images\\Music\\Brilliant Epic Fantasy Music Copyright Free.wav");
+        MusicPlayer.playMusic("assets\\images\\Music\\Brilliant1.wav");
         
 
         // This panel will be for any screens before a character has been loaded, which
@@ -69,7 +69,7 @@ class Driver extends JFrame {
         // Dungeon combat = new Dungeon();
 
         world.setLayout(new GridLayout(1, 1));
-        dungeon.setLayout(new GridLayout(2, 2));
+        dungeon.setLayout(new GridLayout(1, 1));
 
         driverPanel.setLayout(cardLayout);
         driverPanel.add(start, "start");
