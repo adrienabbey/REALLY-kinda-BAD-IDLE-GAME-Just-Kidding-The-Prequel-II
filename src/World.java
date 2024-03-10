@@ -36,7 +36,7 @@ class World extends JPanel{
         town.addActionListener(e -> {
             try {
                 Driver.changePanel("town");
-                MusicPlayer.playMusic("assets\\images\\Music\\Village Consort.wav");
+                MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -47,7 +47,7 @@ class World extends JPanel{
         dungeon.addActionListener(e -> {
             try {
                 Driver.changePanel("dungeon");
-                MusicPlayer.playMusic("assets\\images\\Music\\Day Of Recon - Max Surla_Media Right Productions.wav");
+                MusicPlayer.playMusic("assets/images/Music/Day Of Recon - Max Surla_Media Right Productions.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
