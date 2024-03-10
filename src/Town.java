@@ -16,7 +16,7 @@ class Town extends JPanel {
 
         JPanel charPanel = new JPanel(); // Character panel where you see and set stats for your character
         charPanel.setLayout(new BoxLayout(charPanel, BoxLayout.X_AXIS));
-        BufferedImage image = ImageIO.read(new File("assets/images/town2.png"));
+        BufferedImage image = ImageIO.read(new File("assets/images/town3.png"));
         JLabel pic = new JLabel(new ImageIcon(image));
 
         JPanel buttons = new JPanel();

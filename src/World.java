@@ -19,7 +19,7 @@ class World extends JPanel{
         add(quit);
         add(Box.createRigidArea(new Dimension(600, 20)));
         add(town);
-        add(Box.createRigidArea(new Dimension(700, 20)));
+        add(Box.createRigidArea(new Dimension(400, 20)));
         add(dungeon);
         add(Box.createVerticalGlue());
 
