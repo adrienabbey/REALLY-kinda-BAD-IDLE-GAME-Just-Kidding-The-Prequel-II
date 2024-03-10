@@ -17,9 +17,9 @@ class World extends JPanel{
         // This section adds the components and controls layout
         add(Box.createVerticalGlue());
         add(quit);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(600, 20)));
         add(town);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(700, 20)));
         add(dungeon);
         add(Box.createVerticalGlue());
 

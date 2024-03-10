@@ -29,7 +29,7 @@ class Driver extends JFrame {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/World.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/World7.jpg")), 0, 0, getWidth(), getHeight(), this);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -68,7 +68,7 @@ class Driver extends JFrame {
         // JPanel dungeon = new JPanel();
         // Dungeon combat = new Dungeon();
 
-        world.setLayout(new GridLayout(2, 2));
+        world.setLayout(new GridLayout(1, 1));
         dungeon.setLayout(new GridLayout(2, 2));
 
         driverPanel.setLayout(cardLayout);
