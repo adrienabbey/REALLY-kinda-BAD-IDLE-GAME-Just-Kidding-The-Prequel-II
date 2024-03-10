@@ -13,6 +13,7 @@ class World extends JPanel{
         JButton quit = new JButton("Quit");
         JButton town = new JButton("Town");
         JButton dungeon = new JButton("Dungeon");
+        JButton leave = new JButton("<- Leave");
 
         // This section adds the components and controls layout
         add(Box.createVerticalGlue());
@@ -21,11 +22,14 @@ class World extends JPanel{
         add(town);
         add(Box.createRigidArea(new Dimension(400, 20)));
         add(dungeon);
+        add(Box.createRigidArea(new Dimension(400, 20)));
+        add(leave);
         add(Box.createVerticalGlue());
 
         quit.setAlignmentX(BOTTOM_ALIGNMENT);
         town.setAlignmentX(BOTTOM_ALIGNMENT);
         dungeon.setAlignmentX(BOTTOM_ALIGNMENT);
+        leave.setAlignmentX(BOTTOM_ALIGNMENT);;
 
         // Quit button exits the game
         quit.addActionListener(e -> {

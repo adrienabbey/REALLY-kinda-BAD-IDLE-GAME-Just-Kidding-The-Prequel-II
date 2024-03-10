@@ -1,7 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,42 +27,39 @@ class Town extends JPanel {
      * @throws IOException
      */
     public Town() throws IOException{
-        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColor = new Color(46, 86, 161);
 
         JButton buy = new JButton("Buy");
         buttons.add(buy);
-        JButton leave = new JButton("Leave");
+        JButton leave = new JButton("<- Leave");
         buttons.add(leave);
+        JButton button3 = new JButton("button");
+        buttons.add(button3);
 
-
-        //For loop that formats all the buttons
-        for (int i = 0; i < buttons.size(); i++){
-            buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-            buttons.get(i).setPreferredSize(new Dimension(60, 80));
-            buttons.get(i).setMaximumSize(new Dimension(600, 500));
-            buttons.get(i).setBackground(customColor);
-            buttons.get(i).setForeground(Color.WHITE);
-            buttons.get(i).setFont(new Font("Arial", Font.BOLD, 32));
-        }
-
-
-
-
-
-
-
-
-        // This section adds the components and controls layout
+        // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
+        add(Box.createRigidArea(new Dimension(100, 350)));
         add(buy);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(button3);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
         add(Box.createVerticalGlue());
 
-        buy.setAlignmentX(CENTER_ALIGNMENT);
-        leave.setAlignmentX(CENTER_ALIGNMENT);
+        //For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
+
+            buttons.get(i).setPreferredSize(new Dimension(200, 80));
+            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setBackground(customColor);
+            buttons.get(i).setForeground(Color.WHITE);
+            buttons.get(i).setFont(new Font("Arial", Font.BOLD, 24));
+        }
+
+
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
@@ -85,6 +81,11 @@ class Town extends JPanel {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
+        });
+
+        // Button for other things dont know what yet
+        leave.addActionListener(e -> {
+
         });
     }
 }
