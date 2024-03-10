@@ -4,8 +4,24 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
+
 
 class Town extends JPanel {
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+    }
     /**
      * This function hosts the town screen with buttons to buy potions or leave
      * @param player The player character object
@@ -13,39 +29,43 @@ class Town extends JPanel {
      */
     public Town() throws IOException{
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
+        Color customColor = new Color(46, 86, 161);
 
-        JPanel charPanel = new JPanel(); // Character panel where you see and set stats for your character
-        charPanel.setLayout(new BoxLayout(charPanel, BoxLayout.X_AXIS));
-        BufferedImage image = ImageIO.read(new File("assets/images/town3.png"));
-        JLabel pic = new JLabel(new ImageIcon(image));
-
-        JPanel buttons = new JPanel();
-        buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
         JButton buy = new JButton("Buy");
+        buttons.add(buy);
         JButton leave = new JButton("Leave");
+        buttons.add(leave);
+
+
+        //For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
+            buttons.get(i).setPreferredSize(new Dimension(60, 80));
+            buttons.get(i).setMaximumSize(new Dimension(600, 500));
+            buttons.get(i).setBackground(customColor);
+            buttons.get(i).setForeground(Color.WHITE);
+            buttons.get(i).setFont(new Font("Arial", Font.BOLD, 32));
+        }
+
+
+
+
+
+
+
 
         // This section adds the components and controls layout
-        buttons.add(Box.createVerticalGlue());
-        buttons.add(buy);
-        buttons.add(Box.createRigidArea(new Dimension(0, 20)));
-        buttons.add(leave);
-        buttons.add(Box.createVerticalGlue());
+        add(Box.createVerticalGlue());
+        add(buy);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(leave);
+        add(Box.createVerticalGlue());
 
         buy.setAlignmentX(CENTER_ALIGNMENT);
         leave.setAlignmentX(CENTER_ALIGNMENT);
 
-        charPanel.add(Box.createVerticalGlue());
-        charPanel.add(pic);
-        charPanel.add(Box.createVerticalGlue());
-
-        add(Box.createVerticalGlue());
-        add(charPanel);
-        add(Box.createRigidArea(new Dimension(20, 0)));
-        add(buttons);
-        add(Box.createVerticalGlue());
-
-        charPanel.setAlignmentX(CENTER_ALIGNMENT);
-        buttons.setAlignmentX(CENTER_ALIGNMENT);
+        this.setAlignmentX(CENTER_ALIGNMENT);
 
         // Buy button adds a potion to the player's inventory
         buy.addActionListener(e -> {
