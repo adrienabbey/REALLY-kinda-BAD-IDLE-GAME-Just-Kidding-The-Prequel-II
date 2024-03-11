@@ -29,11 +29,12 @@ class Town extends JPanel {
     public Town() throws IOException{
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColor = new Color(46, 86, 161);
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
 
         JButton buy = new JButton("Buy");
         buttons.add(buy);
-        JButton leave = new JButton("<- Leave");
+        JButton leave = new JButton("Leave");
         buttons.add(leave);
         JButton button3 = new JButton("button");
         buttons.add(button3);
@@ -54,11 +55,10 @@ class Town extends JPanel {
 
             buttons.get(i).setPreferredSize(new Dimension(200, 80));
             buttons.get(i).setMaximumSize(new Dimension(200, 80));
-            buttons.get(i).setBackground(customColor);
-            buttons.get(i).setForeground(Color.WHITE);
-            buttons.get(i).setFont(new Font("Arial", Font.BOLD, 24));
+            buttons.get(i).setBackground(customColorBrown);
+            buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
         }
-
 
 
         this.setAlignmentX(CENTER_ALIGNMENT);

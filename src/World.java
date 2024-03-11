@@ -1,6 +1,12 @@
 import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
 
 class World extends JPanel{
     /**
@@ -10,21 +16,48 @@ class World extends JPanel{
      */
     public World(){
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
+
+
         JButton quit = new JButton("Quit");
+        buttons.add(quit);
         JButton town = new JButton("Town");
+        buttons.add(town);
         JButton dungeon = new JButton("Dungeon");
-        JButton leave = new JButton("<- Leave");
+        buttons.add(dungeon);
+        JButton leave = new JButton("Leave");
+        buttons.add(leave);
 
         // This section adds the components and controls layout
         add(Box.createVerticalGlue());
-        add(quit);
-        add(Box.createRigidArea(new Dimension(600, 20)));
-        add(town);
-        add(Box.createRigidArea(new Dimension(400, 20)));
-        add(dungeon);
-        add(Box.createRigidArea(new Dimension(400, 20)));
+        add(Box.createRigidArea(new Dimension(10, 20)));
         add(leave);
+        add(Box.createRigidArea(new Dimension(235, 20)));
+        add(town);
+        add(Box.createRigidArea(new Dimension(235, 20)));
+        add(dungeon);
+        add(Box.createRigidArea(new Dimension(235, 20)));
+        add(quit);
         add(Box.createVerticalGlue());
+
+        //For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).setPreferredSize(new Dimension(200, 80));
+            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setBackground(customColorBrown);
+            buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
+
+            if (i == 0) {
+                buttons.get(0).setAlignmentX(CENTER_ALIGNMENT);
+                buttons.get(0).setBackground(Color.RED);
+                buttons.get(0).setForeground(Color.WHITE);
+                buttons.get(i).setPreferredSize(new Dimension(200, 80));
+                buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            }
+        }
 
         quit.setAlignmentX(BOTTOM_ALIGNMENT);
         town.setAlignmentX(BOTTOM_ALIGNMENT);

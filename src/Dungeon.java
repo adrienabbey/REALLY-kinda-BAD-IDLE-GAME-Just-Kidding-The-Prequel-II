@@ -19,15 +19,18 @@ class Dungeon extends JPanel {
 
         // TODO add the actual enemy generation and combat here
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         
 
         // This is creating all the objects that will be displayed on the screen
         JButton run = new JButton("Run");
+        JButton leave = new JButton("Leave");
 
         // This is adding all objects to the screen, and controlling layout
         add(Box.createVerticalGlue());
         add(run);
+        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(leave);
         add(Box.createVerticalGlue());
 
         // control the layout of the buttons
@@ -35,6 +38,15 @@ class Dungeon extends JPanel {
 
         // This button will be used to run away from combat
         run.addActionListener(e -> {
+            try {
+                Driver.changePanel("world");
+                MusicPlayer.playMusic("assets/images/Music/Court and Page - Silent Partner.wav");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
                 MusicPlayer.playMusic("assets/images/Music/Court and Page - Silent Partner.wav");
