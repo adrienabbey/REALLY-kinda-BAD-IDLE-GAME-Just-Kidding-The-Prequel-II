@@ -24,9 +24,8 @@ class StartScreen extends JPanel{
             e.printStackTrace();
         }
 }
-    /**
-     * This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
-     */ 
+    // This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
+    
     public StartScreen() throws IOException{
 
         // This block of code is all the physical gui elements and their properties

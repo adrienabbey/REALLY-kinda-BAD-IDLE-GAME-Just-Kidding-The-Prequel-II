@@ -27,10 +27,14 @@ class Town extends JPanel {
      * @throws IOException
      */
     public Town() throws IOException{
+        PlayerCharacter player = Driver.getPlayer();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
+
+        //Whenever calling a getter for the player, it breaks it.
+        JLabel name = new JLabel("Name: ");
 
         JButton buy = new JButton("Buy");
         buttons.add(buy);
@@ -38,10 +42,12 @@ class Town extends JPanel {
         buttons.add(leave);
         JButton button3 = new JButton("button");
         buttons.add(button3);
+        
 
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
-        add(Box.createRigidArea(new Dimension(100, 350)));
+        // add(name);
+        // add(Box.createRigidArea(new Dimension(100, 350)));
         add(buy);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(button3);
@@ -59,7 +65,6 @@ class Town extends JPanel {
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
         }
-
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
