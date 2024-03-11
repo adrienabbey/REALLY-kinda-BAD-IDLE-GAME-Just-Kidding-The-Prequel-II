@@ -47,7 +47,7 @@ class Town extends JPanel {
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         // add(name);
-        // add(Box.createRigidArea(new Dimension(100, 350)));
+        add(Box.createRigidArea(new Dimension(100, 350)));
         add(buy);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(button3);
