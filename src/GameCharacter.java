@@ -13,7 +13,8 @@ class GameCharacter {
    private int maxHealth;
    private double magic;
    private int maxMagic;
-   private int dice;
+   //private int dice;
+   private Dice dice = new Dice(20);
 
    // TODO: What do these stats do?
    // TODO: When do these stats increase, if at all?
@@ -42,15 +43,15 @@ class GameCharacter {
     * @param target the character that is being attacked
     */
    public void attack(GameCharacter target) {
-      dice = (int) (Math.random() * 20) + 1;
-      int damage = muscle * (dice / 20);
-      dice = (int) (Math.random() * 20) + 1;
+      dice.roll();
+      int damage = muscle * (dice.getLast() / 20);
+      dice.roll();
       // int resist = target.getSkin(); // This is for if we add complexity later
-      if(dice == 20) {
+      if(dice.getLast() == 20) {
          System.out.println("Critical Hit!");
          target.health -= damage * 2;
       }
-      else if(dice == 1) {
+      else if(dice.getLast() == 1) {
          System.out.println("Critical Miss!");
          health -= 1;
       }
@@ -59,6 +60,42 @@ class GameCharacter {
       }
       // Method used when a character attacks another character.
       // TODO: Implementation.
+   }
+
+   public void magicAttack(GameCharacter target){
+      dice.roll();
+      int damage = brain * (dice.getLast() / 20);
+      dice.roll();
+      if(dice.getLast() == 20) {
+         System.out.println("Critical Hit!");
+         target.health -= damage * 2;
+      }
+      else if(dice.getLast() == 1) {
+         System.out.println("Critical Miss!");
+         health -= 1;
+      }
+      else {
+         target.health -= damage;
+      }
+      magic -= 1;
+   }
+
+   public void magicHeal(){
+      dice.roll();
+      int heal = brain * (dice.getLast() / 20);
+      dice.roll();
+      if(dice.getLast() == 20) {
+         System.out.println("Critical Heal!");
+         health += heal * 2;
+      }
+      else if(dice.getLast() == 1) {
+         System.out.println("Critical Miss!");
+         health -= 1;
+      }
+      else {
+         health += heal;
+      }
+      magic -= 1;
    }
 
    // Getters and Setters

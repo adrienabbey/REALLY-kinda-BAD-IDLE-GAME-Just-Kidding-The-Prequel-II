@@ -18,5 +18,12 @@ Fixed all my comments to be javadocs for the functions, and then a little more o
 1/24/2024
 Cleaned up GUI code so it is all maintained by the driver frame, there is some tweaking needed on the world, dungeon and town maps to for layout, and changes will likely be made to all screens for style.
 
-1/24/2024 to 2/8/2024
+1/30/2024
+Cleaned up GUI code to remove commented out snippets no longer needed.
+Start creating combat loop.
+
+1/31/2024 to 2/8/2024
 Halt in coding while we generate an SDP, implement meeting minutes, and document signing.
+
+3/7/2027
+Finish combat loop, add the necessary buttons to dungeon, and magicAttack/magicHeal to gameCharacter
