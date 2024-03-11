@@ -42,10 +42,12 @@ class StartScreen extends JPanel{
         JButton instructions = new JButton("Instructions");
         buttons.add(instructions);
 
-        Color customColor = new Color(46, 86, 161);
+        Color customColorBlue = new Color(46, 86, 161);
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
         JLabel title = new JLabel("B.A.D Idle Game");
-        title.setFont(new Font("Arial", Font.BOLD, 128));
-        title.setForeground(customColor);
+        title.setFont(new Font("Serif", Font.BOLD, 128));
+        title.setForeground(customColorBlue);
         title.setAlignmentX(CENTER_ALIGNMENT);
 
         // Adding the buttons to the start panel and controlling layout
@@ -67,9 +69,9 @@ class StartScreen extends JPanel{
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
             buttons.get(i).setPreferredSize(new Dimension(60, 80));
             buttons.get(i).setMaximumSize(new Dimension(600, 500));
-            buttons.get(i).setBackground(customColor);
-            buttons.get(i).setForeground(Color.WHITE);
-            buttons.get(i).setFont(new Font("Arial", Font.BOLD, 32));
+            buttons.get(i).setBackground(customColorBrown);
+            buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setFont(new Font("serif", Font.BOLD, 32));
 
             if (i == 0) {
                 buttons.get(0).setAlignmentX(CENTER_ALIGNMENT);
