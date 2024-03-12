@@ -2,7 +2,7 @@
 
 ## Administrivia
 
-* Meeting details: We will meet tuesday and thursday after class (12:20pm) as needed. Depending on availability these times and dates can be changed.
+* Meeting details: We shall meet three times in the month of Feburary, and meet one to two times during the month of March and April. Each meeting-minutes document can summarize an aggregation of smaller discussions had over discord or in-person, which could happen over the course of several days. 
 
 ## Development Methodology
 
@@ -33,7 +33,9 @@
 
 ## Milestones
 
-* Design and Requirements specifications: March 4th
+* Preliminary version of Design and Requirements specifications: March 4th
+
+* Finalized version of Design and Requirements specifications: March 21st 
 
 * Various stretch goals regarding additional components for the game.
 
