@@ -1,5 +1,5 @@
 # Requirements Specificiations Document
-- To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/edit/main/docs/rsd.md#L41)
+- To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/edit/main/docs/rsd.md#L43)
 
 
 1. The game shall be operated via a graphical interface and buttons that shall be on screen.
