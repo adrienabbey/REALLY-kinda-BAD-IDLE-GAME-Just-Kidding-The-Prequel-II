@@ -5,10 +5,12 @@
     1. The whole interface shall be controlled from a central Driver to remove window swaps when changing screens and unify the screens.
     2. The game shall have a start screen for creating a new game, loading a saved game, reading instructions, or exiting.
     3. There will be a character screen so the user can see their character's condition.
-1E. Observe if game has a graphical user interface and buttons are included. 
-  1e. Check whether the interface is controlled by the Driver by obersing the code. Check whether screen swaps are removed and screens are unified.
-  2e. Observe is a start screen is present, and if the new game, load game, instructions, and exit buttons are present and functional.
-  3e. Run game and check if a character screen is present that includes a summary of the character's condition. 
+
+1E. Observe if the game has graphical user interface and that buttons are included.
+    
+    1. Check whether the interface is controlled by the Driver by obersing the code. Check whether screen swaps are removed and screens are unified.
+    2. Observe is a start screen is present, and if the new game, load game, instructions, and exit buttons are present and functional.
+    3. Run game and check if a character screen is present that includes a summary of the character's condition. 
 
 2. The user shall be able to choose between loading a save or creating a new character.
     1. The user shall be able to save and load their character.
