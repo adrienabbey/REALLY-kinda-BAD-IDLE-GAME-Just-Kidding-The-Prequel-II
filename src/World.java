@@ -90,5 +90,14 @@ class World extends JPanel{
                 e1.printStackTrace();
             }
         });
+
+        // Leave button takes you to the start screen
+        leave.addActionListener(e -> {
+            try {
+                Driver.changePanel("start");              
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 }

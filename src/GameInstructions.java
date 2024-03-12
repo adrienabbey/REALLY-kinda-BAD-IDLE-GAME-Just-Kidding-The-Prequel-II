@@ -9,7 +9,7 @@ class GameInstructions extends JPanel{
         add(back);
         add(info);
         back.setAlignmentX(LEFT_ALIGNMENT);
-        info.setText("Hello Traveler! Welcome to B.A.D Idle Game. To start your journey you will need to create a new characrer using the New Game button. From there you will  ");
+        info.setText("Hello Traveler! Welcome to B.A.D Idle Game. To start your journey you will need to create a new characrer using the New Game button. From there you will choose your stats and adventuring into the dungeon. Stop by the town shop for potions to heal yourself.");
 
 
 

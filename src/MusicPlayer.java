@@ -25,6 +25,7 @@ public class MusicPlayer {
                     AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
                     Clip clip = AudioSystem.getClip(); // Get a clip resource
                     clip.open(audioInput); // Open the audio clip
+                    clip.loop(Clip.LOOP_CONTINUOUSLY); // This line makes the song repeat itself
                     clip.start(); // Start playing the audio clip
 
                     // Save the current clip

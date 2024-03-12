@@ -104,7 +104,6 @@ class Driver extends JFrame {
         world.add(map);
         dungeon.add(charScreen);
         dungeon.add(combat);
-        MusicPlayer.playMusic("assets/images/Music/Court and Page - Silent Partner.wav");
         
         // driverPanel.add(new CharacterScreen(), "charScreen");
     }

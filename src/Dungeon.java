@@ -8,7 +8,7 @@ import java.io.IOException;
 
 class Dungeon extends JPanel {
     private Image backgroundImage;
-    private Monster enemy;
+private Monster enemy;
     private PlayerCharacter player;
     private static Dice dice = new Dice(20);
     private Combat combat;
@@ -62,7 +62,7 @@ class Dungeon extends JPanel {
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/images/Music/Court and Page - Silent Partner.wav");
+                MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -71,7 +71,6 @@ class Dungeon extends JPanel {
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/images/Music/Court and Page - Silent Partner.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
