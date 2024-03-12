@@ -46,7 +46,7 @@ class CharacterCreation extends JPanel{
 
         JPanel charPanel = new JPanel(); // Character panel where you see and set stats for your character
         charPanel.setLayout(new BoxLayout(charPanel, BoxLayout.X_AXIS));
-        BufferedImage image = ImageIO.read(new File("assets/images/character8.png"));
+        BufferedImage image = ImageIO.read(new File("assets/images/character7.png"));
         JLabel pic = new JLabel(new ImageIcon(image));
 
         JPanel stats = new JPanel(); // Stats panel where you select your stats
