@@ -88,3 +88,22 @@
 - Event log.  Be able to see what happened while minimized.
 - Events still happen in real-time when running.
 - It's an idle game.  It plays itself (sorta).
+
+## Ideas to be expanded
+* The player's idle progress could be calculated by tracking their starting time, active Jobs, and end time. When they start again we track the time and calculate what would have been gained.
+* Exploration of the human condition.
+  * The player is *the disclaimer window*.  This isn't obvious at first.
+  * Start with no equipment.  Discover later that you're like characters from the Wizard of Oz, looking to find intellect, courage, and such.  And the best way to do that is to gather the best organs from slain enemies and equip them.
+
+ ## STRETCH Goals
+* 2nd Mode(Interactive)
+* Party of character
+* Server, Web Interface
+* Friends, Parties
+* Live dungeon feature
+* Thesaurus feature
+* Presentation mode
+* Downgrades
+  * Debt Traps
+* Scripted Events
+* Art Mode

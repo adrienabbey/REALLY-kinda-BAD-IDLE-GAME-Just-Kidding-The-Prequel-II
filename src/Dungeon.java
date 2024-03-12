@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+
 import javax.swing.*;
 import java.awt.*;
 import javax.imageio.ImageIO;
@@ -6,6 +8,10 @@ import java.io.IOException;
 
 class Dungeon extends JPanel {
     private Image backgroundImage;
+    private Monster enemy;
+    private PlayerCharacter player;
+    private static Dice dice = new Dice(20);
+    private Combat combat;
     /**
      * This function hosts the dungeon screen with buttons to go to town or use a potion
      * @param player The player character object
@@ -23,21 +29,37 @@ class Dungeon extends JPanel {
         
 
         // This is creating all the objects that will be displayed on the screen
-        JButton run = new JButton("Run");
-        JButton leave = new JButton("Leave");
+        // Need something to explicitly start combat
+        // Make entry to dungeon initiate?
+        // Should leaving the dungeon stop combat
+        // Or should the player be able to continue combat while at another screen
+        // Button to start combat, button to end combat, and seperate button to leave dungeon
+        // Player flag to indicate activity the player is engaged in
+        // This would allow "idle" play of one content at a time
+        JButton start = new JButton("Start Combat");
+        JButton end = new JButton("End Combat");
+        JButton leave = new JButton("Leave Dungeon");
 
         // This is adding all objects to the screen, and controlling layout
         add(Box.createVerticalGlue());
-        add(run);
-        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(start);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(end);
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
         add(Box.createVerticalGlue());
 
         // control the layout of the buttons
-        run.setAlignmentX(CENTER_ALIGNMENT);
+        //run.setAlignmentX(CENTER_ALIGNMENT);
 
         // This button will be used to run away from combat
-        run.addActionListener(e -> {
+        start.addActionListener(e -> {
+            combat = new Combat(player, enemy);
+        });
+        end.addActionListener(e -> {
+            combat = null;
+        });
+        leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
                 MusicPlayer.playMusic("assets/images/Music/Court and Page - Silent Partner.wav");
@@ -60,5 +82,18 @@ class Dungeon extends JPanel {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             g.drawImage(backgroundImage, 0, 0, this);
+    }
+
+    public void update(){
+        this.repaint();
+    }
+
+    public static Monster getMonster(){
+        if(dice.roll() > 10){
+            return new Monster(Monster.MonsterName.PETROCK);
+        }
+        else{
+            return new Monster(Monster.MonsterName.HOBOGOBLIN);
+        }
     }
 }
