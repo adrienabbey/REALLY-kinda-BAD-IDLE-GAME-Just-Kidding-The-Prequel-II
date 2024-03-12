@@ -4,11 +4,14 @@
  - Added Game instructions class, added functionality to that
  - Added lines 51 and 68 to Driver.java
 
+## 3/1/2024
+ - Designed new background for start screen
+ - Added background to start screen
+ - Re-formatted buttons on start screen
 
-## To-Do
- - [] Set fixed window sizing
- - [] Set button sizing
- - [] Design Background for startScreen
- - [] Design Buttons
- - [] Set button and startScreen images
- - [] Research Hover and how to use that for buttons/info cards 
+
+## Next development cycle
+ - Reformat UI for all pages (just needed buttons and basic layout)
+ - Design and implement background/buttons for Shop/town
+ - Design and implement background/buttons for world map
+ - Design and implement background/buttons for Character creation

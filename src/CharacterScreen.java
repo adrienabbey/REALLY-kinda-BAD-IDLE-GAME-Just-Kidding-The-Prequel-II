@@ -1,9 +1,7 @@
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-
 import java.awt.Dimension;
-
 import javax.swing.Box;
 
 class CharacterScreen extends JPanel{
@@ -35,5 +33,9 @@ class CharacterScreen extends JPanel{
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(gold);
         add(Box.createVerticalGlue());
+    }
+
+    public void update(){
+        this.repaint();
     }
 }
