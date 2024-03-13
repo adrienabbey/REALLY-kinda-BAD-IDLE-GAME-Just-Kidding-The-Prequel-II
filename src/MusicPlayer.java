@@ -74,9 +74,8 @@ public class MusicPlayer {
 
     // Method to toggle volume for the java slider.
     public static void setVolume(float volume) {
-        if (currentClip != null && currentClip.isRunning()) {
+        if (currentClip != null && currentClip.isRunning() && isMuted == false) {
             FloatControl volumeControl = (FloatControl) currentClip.getControl(FloatControl.Type.MASTER_GAIN);
-            currentVolume = volume;
             volumeControl.setValue(volume);
         }
     }
