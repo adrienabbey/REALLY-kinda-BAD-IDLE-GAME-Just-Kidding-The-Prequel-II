@@ -78,6 +78,10 @@ class World extends JPanel{
                 buttons.get(i).setMaximumSize(new Dimension(200, 80));
             }
             volume.setBackground(Color.LIGHT_GRAY); 
+            volume.setFont(new Font("times new", Font.BOLD, 15));
+            adjust.setBackground(Color.LIGHT_GRAY); 
+            adjust.setFont(new Font("times new roman", Font.BOLD, 15));
+
         }
 
         quit.setAlignmentX(BOTTOM_ALIGNMENT);

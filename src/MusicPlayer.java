@@ -7,10 +7,14 @@ public class MusicPlayer {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     private static boolean isMuted = false;
-    public static float currentVolume = 0.0f;
+    private static float currentVolume = 0.0f;
+
+    public static void setcurrentVolume(float volume) {
+        currentVolume = volume;
+    }
 
     public MusicPlayer() {
-        setVolume(currentVolume); 
+        volumeHelper(currentVolume); 
     }
 
     public static void playMusic(String filePath) {
@@ -42,7 +46,11 @@ public class MusicPlayer {
                     // Get the volume control
                     volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
                     // Set the initial volume (unmuted)
-                    volumeHelper(currentVolume);              
+                    volumeHelper(currentVolume);     
+                    
+                    if (isMuted == true) {
+                        volumeHelper(-70.0f);
+                    }         
 
                 } else {
                     System.out.println("Can't find file");
@@ -77,6 +85,7 @@ public class MusicPlayer {
         if (currentClip != null && currentClip.isRunning() && isMuted == false) {
             FloatControl volumeControl = (FloatControl) currentClip.getControl(FloatControl.Type.MASTER_GAIN);
             volumeControl.setValue(volume);
+            setcurrentVolume(volume);
         }
     }
 

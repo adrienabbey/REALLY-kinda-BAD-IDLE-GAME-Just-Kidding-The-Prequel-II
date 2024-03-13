@@ -95,7 +95,7 @@ class StartScreen extends JPanel{
                 buttons.get(4).setForeground(Color.WHITE);
                 buttons.get(4).setPreferredSize(new Dimension(30, 40));
                 buttons.get(4).setMaximumSize(new Dimension(235, 250));
-                buttons.get(4).setFont(new Font("comic sans", Font.BOLD, 18));
+                buttons.get(4).setFont(new Font("times new roman", Font.BOLD, 17));
             }
         }
 
