@@ -5,6 +5,13 @@ public class MusicPlayer {
     // Keep track of the current clip
     // This is used to stop the current music when a new one starts
     private static Clip currentClip = null;
+    private static FloatControl volumeControl = null;
+    private static boolean isMuted = false;
+    public static float currentVolume = 0.0f;
+
+    public MusicPlayer() {
+        setVolume(currentVolume); 
+    }
 
     public static void playMusic(String filePath) {
         // Create a new thread to play the music
@@ -32,6 +39,11 @@ public class MusicPlayer {
                     // This allows us to stop it when a new one starts
                     currentClip = clip;
 
+                    // Get the volume control
+                    volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                    // Set the initial volume (unmuted)
+                    volumeHelper(currentVolume);              
+
                 } else {
                     System.out.println("Can't find file");
                 }
@@ -42,7 +54,38 @@ public class MusicPlayer {
         // Start the new thread
         }).start();
     }
+
+    // Method to mute/unmute the volume
+    public static void toggleMute() {
+        if (volumeControl != null) {
+            if (isMuted) {
+                // Unmute (set volume to audible volume)
+                volumeHelper(currentVolume);
+                isMuted = false;
+            } else {
+                // Store the current volume before muting
+                currentVolume = volumeControl.getValue();
+                // Mute (set volume to minimum volume)
+                volumeHelper(-70.0f);
+                isMuted = true;
+            }
+        }
+    }
+
+    // Method to toggle volume for the java slider.
+    public static void setVolume(float volume) {
+        if (currentClip != null && currentClip.isRunning()) {
+            FloatControl volumeControl = (FloatControl) currentClip.getControl(FloatControl.Type.MASTER_GAIN);
+            currentVolume = volume;
+            volumeControl.setValue(volume);
+        }
+    }
+
+    // Used to set volume to correct value during calls.
+    private static void volumeHelper(float value) {
+        if (volumeControl != null) {
+            volumeControl.setValue(value);
+        }
+    }
 }
-
-
 
