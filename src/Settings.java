@@ -2,7 +2,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
-
 
 class Settings extends JPanel {
     private static boolean isMute = true;
@@ -107,7 +105,7 @@ class Settings extends JPanel {
             }
         });
 
-        // TODO: add credits panel with text
+        // TODO: add credits panel with text implementation
         credits.addActionListener(e -> {
             try {
                 Driver.changePanel("credits");
@@ -117,7 +115,7 @@ class Settings extends JPanel {
             }
 
         });
-        // Leave button takes you back to the world map
+        // "Back to main menu button" takes you back to the start screen
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("start");
@@ -126,7 +124,7 @@ class Settings extends JPanel {
             }
         });
 
-        // Add slider implementation. Adjust volume based on slider value.
+        // Slider Implementation. Adjusts volume based on slider value. Adds change listener and method statsChanged sets volume of MusicPlayer.  
         slider.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
             JSlider source = (JSlider)e.getSource();

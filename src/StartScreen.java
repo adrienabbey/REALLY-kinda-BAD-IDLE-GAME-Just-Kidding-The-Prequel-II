@@ -37,10 +37,8 @@ class StartScreen extends JPanel{
         buttons.add(newGame);
         JButton loadGame = new JButton("Load Game");
         buttons.add(loadGame);
-
         JButton instructions = new JButton("Instructions");
         buttons.add(instructions);
-
         JButton volume = new JButton("Settings");
         buttons.add(volume);
 
@@ -123,23 +121,3 @@ class StartScreen extends JPanel{
 
     }
 }
-
-
-
-        // // Volume button mutes or unmutes master volume.
-        // volume.addActionListener(e -> {
-        //     try {
-        //         MusicPlayer.toggleMute();; 
-        //         if (isMute) {
-        //             volume.setText("Unmute Volume");
-        //             isMute = false; 
-        //         } 
-        //           else  {
-        //             volume.setText("Mute Volume");
-        //             isMute = true;
-        //         }
-        //     }           
-        //     catch (Exception e1) {
-        //         e1.printStackTrace();
-        //     }
-        // });

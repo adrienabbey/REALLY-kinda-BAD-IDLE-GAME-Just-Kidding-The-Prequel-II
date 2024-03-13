@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
-import java .awt.BorderLayout;
 
 class Town extends JPanel {
     @Override
@@ -32,13 +31,6 @@ class Town extends JPanel {
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
-        
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
-
-        // Add the button panel and the slider to the main panel
-        this.add(buttonPanel, BorderLayout.CENTER);
-        this.add(slider, BorderLayout.SOUTH);
-        slider.setBackground(Color.red); // Set the background color
 
         //Whenever calling a getter for the player, it breaks it.
         JLabel name = new JLabel("Name: ");
@@ -50,7 +42,6 @@ class Town extends JPanel {
         JButton button3 = new JButton("button");
         buttons.add(button3);
         
-
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         // add(name);
