@@ -35,3 +35,6 @@ Author / Artist:  Alexander Nakarada
 Website: https://www.serpentsoundstudios.com
 Licensing info: https://www.serpentsoundstudios.com/l...
 License: Attribution 4.0 International (CC BY 4.0).
+
+* Crusaders’ Song: Chevalier, Mult Estes Guaritz, 1146 · Jordi Savall · Montserrat Figueras · Trad.
+Source: https://www.youtube.com/watch?v=GAVAgFPmzy0&ab_channel=JordiSavall-Topic

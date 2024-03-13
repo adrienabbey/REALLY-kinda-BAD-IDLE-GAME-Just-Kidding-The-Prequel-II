@@ -9,28 +9,18 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
-import java .awt.BorderLayout;
 
 class World extends JPanel{
-    private static boolean isMute = true;
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon
      * @param player The player character object
      * @throws IOException
      */
     public World(){
-        JPanel buttonPanel = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
-
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
-
-        // Add the button panel and the slider to the main panel
-        this.add(buttonPanel, BorderLayout.CENTER);
-        this.add(slider, BorderLayout.SOUTH);
-        slider.setBackground(Color.red); // Set the background color
 
         JButton quit = new JButton("Quit");
         buttons.add(quit);
@@ -40,9 +30,6 @@ class World extends JPanel{
         buttons.add(dungeon);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
-        JButton volume = new JButton("Mute Volume");
-        buttons.add(leave);
-        JButton adjust = new JButton("Adjust Volume");
 
         // This section adds the components and controls layout
         add(Box.createVerticalGlue());
@@ -54,12 +41,6 @@ class World extends JPanel{
         add(dungeon);
         add(Box.createRigidArea(new Dimension(235, 20)));
         add(quit);
-        add(Box.createRigidArea(new Dimension(150, 20)));
-        add(volume);
-        add(Box.createRigidArea(new Dimension(0, 20)));
-        add(adjust);
-        add(Box.createRigidArea(new Dimension(0, 20)));
-        add(slider);
         add(Box.createVerticalGlue());
 
         //For loop that formats all the buttons
@@ -77,19 +58,13 @@ class World extends JPanel{
                 buttons.get(i).setPreferredSize(new Dimension(200, 80));
                 buttons.get(i).setMaximumSize(new Dimension(200, 80));
             }
-            volume.setBackground(Color.LIGHT_GRAY); 
-            volume.setFont(new Font("times new", Font.BOLD, 15));
-            adjust.setBackground(Color.LIGHT_GRAY); 
-            adjust.setFont(new Font("times new roman", Font.BOLD, 15));
-
         }
 
         quit.setAlignmentX(BOTTOM_ALIGNMENT);
         town.setAlignmentX(BOTTOM_ALIGNMENT);
         dungeon.setAlignmentX(BOTTOM_ALIGNMENT);
         leave.setAlignmentX(BOTTOM_ALIGNMENT);
-        volume.setAlignmentX(BOTTOM_ALIGNMENT);;
-
+    
         // Quit button exits the game
         quit.addActionListener(e -> {
             System.exit(0);
@@ -123,35 +98,6 @@ class World extends JPanel{
                 Driver.changePanel("start");              
             } catch (Exception e1) {
                 e1.printStackTrace();
-            }
-        });
-        
-        // Volume button mutes or unmutes master volume.
-        volume.addActionListener(e -> {
-            try {
-                MusicPlayer.toggleMute();; 
-                if (isMute) {
-                    volume.setText("Unmute Volume");
-                    isMute = false; 
-                } 
-                  else  {
-                    volume.setText("Mute Volume");
-                    isMute = true;
-                }
-                }           
-            catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        });
-
-        // Add a ChangeListener to the slider
-        slider.addChangeListener(new ChangeListener() {
-        public void stateChanged(ChangeEvent e) {
-            JSlider source = (JSlider)e.getSource();
-                if (!source.getValueIsAdjusting()) {
-                    float volume = (float)source.getValue();
-                    MusicPlayer.setVolume(volume);
-                }
             }
         });
     }
