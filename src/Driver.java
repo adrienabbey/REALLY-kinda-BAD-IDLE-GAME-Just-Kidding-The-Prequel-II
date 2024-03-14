@@ -55,8 +55,6 @@ class Driver extends JFrame {
         GraphicsDevice device = env.getDefaultScreenDevice();
         MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
         MusicPlayer.setVolume(5.0f);
-        
-        
 
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time
