@@ -38,3 +38,9 @@ License: Attribution 4.0 International (CC BY 4.0).
 
 * Crusaders’ Song: Chevalier, Mult Estes Guaritz, 1146 · Jordi Savall · Montserrat Figueras · Trad.
 Source: https://www.youtube.com/watch?v=GAVAgFPmzy0&ab_channel=JordiSavall-Topic
+
+* Song: Song of the North
+Artist: BrunuhVille
+Album: Northwind
+Source: https://www.youtube.com/watch?v=gRuggMzH3Gw&t=1s&ab_channel=BrunuhVille
+License: https://docs.google.com/document/d/1AIpznS4s5r6Okj70zhlqVpwC8E4jQoo2o-I8uOyu4gk/edit?pli=1#heading=h.sv74n9r37xsj

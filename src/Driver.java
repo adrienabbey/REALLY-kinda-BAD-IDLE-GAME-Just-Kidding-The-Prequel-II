@@ -24,7 +24,6 @@ class Driver extends JFrame {
     private static JPanel world = new JPanel();
     private static JPanel dungeon = new JPanel();
     private static Dungeon combat = new Dungeon();
-    private static JPanel settings = new JPanel();
     private static World map = new World() { // This code puts the world map image as the background to the panel
    
         @Override
@@ -63,6 +62,7 @@ class Driver extends JFrame {
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
         Settings settings = new Settings();
+        Shop shop = new Shop();
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();
@@ -76,6 +76,7 @@ class Driver extends JFrame {
 
         driverPanel.setLayout(cardLayout);
         driverPanel.add(settings, "settings");
+        driverPanel.add(shop, "shop");
         driverPanel.add(start, "start");
         driverPanel.add(load, "load");
         driverPanel.add(cc, "cc");

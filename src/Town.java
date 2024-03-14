@@ -35,20 +35,20 @@ class Town extends JPanel {
         //Whenever calling a getter for the player, it breaks it.
         JLabel name = new JLabel("Name: ");
 
-        JButton buy = new JButton("Buy");
-        buttons.add(buy);
+        JButton shop = new JButton("Market");
+        buttons.add(shop);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
-        JButton button3 = new JButton("button");
-        buttons.add(button3);
+        JButton inventory = new JButton("Inventory");
+        buttons.add(inventory);
         
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         // add(name);
         add(Box.createRigidArea(new Dimension(100, 350)));
-        add(buy);
+        add(shop);
         add(Box.createRigidArea(new Dimension(0, 20)));
-        add(button3);
+        add(inventory);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
         add(Box.createVerticalGlue());
@@ -66,12 +66,12 @@ class Town extends JPanel {
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
-        // Buy button adds a potion to the player's inventory
-        buy.addActionListener(e -> {
+        // Button that takes player to shop panel
+        shop.addActionListener(e -> {
             try{
-                // player.addPotion(1);
+                Driver.changePanel("shop");
+                MusicPlayer.playMusic("assets/images/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
             } catch (Exception e1){
-                // TODO - Make this notify the user in window
                 e1.printStackTrace();
             }
         });
@@ -86,9 +86,13 @@ class Town extends JPanel {
             }
         });
 
-        // Button for other things dont know what yet
-        leave.addActionListener(e -> {
-
+        // Button that opens inventory panel. Can equip and use items here.
+        inventory.addActionListener(e -> {
+            try {
+                Driver.changePanel("inventory");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         });
     }
 }

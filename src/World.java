@@ -1,12 +1,7 @@
 import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.imageio.ImageIO;
-import java.io.File;
 import java.util.ArrayList;
-import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -28,18 +23,18 @@ class World extends JPanel{
         buttons.add(town);
         JButton dungeon = new JButton("Dungeon");
         buttons.add(dungeon);
-        JButton leave = new JButton("Leave");
+        JButton leave = new JButton("Main Menu");
         buttons.add(leave);
 
         // This section adds the components and controls layout
         add(Box.createVerticalGlue());
-        add(Box.createRigidArea(new Dimension(10, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(leave);
-        add(Box.createRigidArea(new Dimension(235, 20)));
+        add(Box.createRigidArea(new Dimension(250, 20)));
         add(town);
-        add(Box.createRigidArea(new Dimension(235, 20)));
+        add(Box.createRigidArea(new Dimension(350, 20)));
         add(dungeon);
-        add(Box.createRigidArea(new Dimension(235, 20)));
+        add(Box.createRigidArea(new Dimension(200, 20)));
         add(quit);
         add(Box.createVerticalGlue());
 
@@ -64,7 +59,7 @@ class World extends JPanel{
         town.setAlignmentX(BOTTOM_ALIGNMENT);
         dungeon.setAlignmentX(BOTTOM_ALIGNMENT);
         leave.setAlignmentX(BOTTOM_ALIGNMENT);
-    
+        
         // Quit button exits the game
         quit.addActionListener(e -> {
             System.exit(0);
@@ -85,7 +80,7 @@ class World extends JPanel{
         dungeon.addActionListener(e -> {
             try {
                 Driver.changePanel("dungeon");
-                MusicPlayer.playMusic("assets/images/Music/Day Of Recon - Max Surla_Media Right Productions.wav");
+                MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
