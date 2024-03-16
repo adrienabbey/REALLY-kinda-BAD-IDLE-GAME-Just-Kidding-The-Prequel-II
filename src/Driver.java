@@ -63,6 +63,7 @@ class Driver extends JFrame {
         GameInstructions instructions = new GameInstructions();
         Settings settings = new Settings();
         Shop shop = new Shop();
+        Credits credits = new Credits();
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();
@@ -81,6 +82,7 @@ class Driver extends JFrame {
         driverPanel.add(load, "load");
         driverPanel.add(cc, "cc");
         driverPanel.add(instructions, "instructions");
+        driverPanel.add(credits, "credits");
         // driverPanel.add(charPanel, "charPanel");
         // driverPanel.add(dice, "dice");
         // driverPanel.add(inventory, "inventory");
