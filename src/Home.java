@@ -29,20 +29,18 @@ class Home extends JPanel {
         back.setFont(new Font("Serif", Font.BOLD, 24));
         back.setForeground(new Color(255, 255, 255)); // White text
         back.setBackground(new Color(139, 69, 19)); // Dark wood color
-        back.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'purchase' button with custom styling
         JButton purchase = new JButton("Purchase Homestead");
         purchase.setFont(new Font("Serif", Font.BOLD, 24));
         purchase.setForeground(new Color(255, 255, 255)); // White text
         purchase.setBackground(new Color(139, 69, 19)); // Dark wood color
-        purchase.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the mesage label with custom styling
         JLabel message = new JLabel("", SwingConstants.CENTER);
         message.setFont(new Font("Serif", Font.ITALIC, 20));
         message.setForeground(new Color(205, 133, 63)); // Light wood color
-        message.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
+        message.setBackground(new Color(0, 0, 0)); // Set the background color to black
         message.setOpaque(true); // Make the background visible
 
         // Create the information label with custom styling
@@ -55,8 +53,7 @@ class Home extends JPanel {
         // Add components to the panel
         add(back, BorderLayout.NORTH);
         add(info, BorderLayout.CENTER);
-        add (purchase, BorderLayout.SOUTH);
-        add (message, BorderLayout.EAST);
+        add(purchase, BorderLayout.SOUTH);
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
@@ -67,6 +64,7 @@ class Home extends JPanel {
         // Action listener for the 'Purchase' button
         purchase.addActionListener(e -> {
             if (player.getGold() < 1000) {
+                add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>You do not have enough Gold to purchase the house.</div></html>");
             }
             //TODO: Add house purchasing logic here. Check inventory for items,
