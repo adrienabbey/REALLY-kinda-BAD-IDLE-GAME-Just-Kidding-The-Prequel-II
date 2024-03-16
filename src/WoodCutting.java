@@ -16,7 +16,7 @@ public class WoodCutting extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the panel
 
         // Create the 'Cut Wood' button
-        cutButton = new JButton("Cut Wood");
+        cutButton = new JButton("Cut Tree");
         cutButton.setFont(new Font("Serif", Font.BOLD, 24));
         cutButton.setFocusPainted(false); // Remove focus ring around the button
 

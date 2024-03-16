@@ -67,6 +67,8 @@ class Driver extends JFrame {
         Home home = new Home();
         WoodCutting woodCutting = new WoodCutting();
         Mining mining = new Mining();
+        Tavern tavern = new Tavern();
+        Library library = new Library();
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();
@@ -89,6 +91,8 @@ class Driver extends JFrame {
         driverPanel.add(home, "home");
         driverPanel.add(woodCutting, "wood");
         driverPanel.add(mining, "mine");
+        driverPanel.add(tavern, "tavern");
+        driverPanel.add(library, "library");
         // driverPanel.add(charPanel, "charPanel");
         // driverPanel.add(dice, "dice");
         // driverPanel.add(inventory, "inventory");
