@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.Color;
 
-class World extends JPanel{
+public class World extends JPanel{
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon
      * @param player The player character object
@@ -29,6 +29,7 @@ class World extends JPanel{
         buttons.add(wood);
         JButton home = new JButton("Home");
         buttons.add(home);
+        buttons.add(dungeon);
         JButton leave = new JButton("Main Menu");
         buttons.add(leave);
 
@@ -36,14 +37,16 @@ class World extends JPanel{
         add(Box.createVerticalGlue());
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
-        add(Box.createRigidArea(new Dimension(150, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(town);
-        add(Box.createRigidArea(new Dimension(150, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(mine);
-        add(Box.createRigidArea(new Dimension(150, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(wood);
-        add(Box.createRigidArea(new Dimension(150, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(home);
+        add(Box.createRigidArea(new Dimension(200, 20)));
+        add(town);
         add(Box.createRigidArea(new Dimension(250, 20)));
         add(dungeon);
         add(Box.createRigidArea(new Dimension(100, 20)));
@@ -93,6 +96,39 @@ class World extends JPanel{
             try {
                 Driver.changePanel("dungeon");
                 MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // Home button takes you to the Home screen
+        home.addActionListener(e -> {
+            try {
+                Driver.changePanel("home");
+                // MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // WoodCutting button takes you to the Woodcutting screen
+        wood.addActionListener(e -> {
+            try {
+                Driver.changePanel("wood");
+                // MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // Mining button takes you to the mining screen
+        mine.addActionListener(e -> {
+            try {
+                Driver.changePanel("mine");
+                // MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
