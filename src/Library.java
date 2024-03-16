@@ -11,7 +11,7 @@ class Library extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/town2.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/library3.png")), 0, 0, getWidth(), getHeight(), this);
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
@@ -44,6 +44,7 @@ class Library extends JPanel {
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
             Driver.changePanel("town");
+            MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
         });
     }
 }

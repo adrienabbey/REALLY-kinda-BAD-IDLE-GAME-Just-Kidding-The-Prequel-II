@@ -84,7 +84,7 @@ class Town extends JPanel {
             }
         });
 
-        // Button that takes player to shop panel
+        // Button that takes player to tavern panel
         tavern.addActionListener(e -> {
             try{
                 Driver.changePanel("tavern");
@@ -94,11 +94,11 @@ class Town extends JPanel {
             }
         });
 
-        // Button that takes player to shop panel
+        // Button that takes player to library panel
         library.addActionListener(e -> {
             try{
                 Driver.changePanel("library");
-                // MusicPlayer.playMusic("assets/images/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
+                MusicPlayer.playMusic("assets/images/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }
