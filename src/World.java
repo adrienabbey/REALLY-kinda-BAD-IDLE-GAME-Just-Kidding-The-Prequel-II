@@ -23,18 +23,30 @@ class World extends JPanel{
         buttons.add(town);
         JButton dungeon = new JButton("Dungeon");
         buttons.add(dungeon);
+        JButton mine = new JButton("Mining");
+        buttons.add(mine);
+        JButton wood = new JButton("Woodcutting");
+        buttons.add(wood);
+        JButton home = new JButton("Home");
+        buttons.add(home);
         JButton leave = new JButton("Main Menu");
         buttons.add(leave);
 
         // This section adds the components and controls layout
         add(Box.createVerticalGlue());
-        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
-        add(Box.createRigidArea(new Dimension(250, 20)));
+        add(Box.createRigidArea(new Dimension(150, 20)));
         add(town);
-        add(Box.createRigidArea(new Dimension(350, 20)));
+        add(Box.createRigidArea(new Dimension(150, 20)));
+        add(mine);
+        add(Box.createRigidArea(new Dimension(150, 20)));
+        add(wood);
+        add(Box.createRigidArea(new Dimension(150, 20)));
+        add(home);
+        add(Box.createRigidArea(new Dimension(250, 20)));
         add(dungeon);
-        add(Box.createRigidArea(new Dimension(200, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(quit);
         add(Box.createVerticalGlue());
 
