@@ -23,9 +23,9 @@ public class World extends JPanel{
         buttons.add(town);
         JButton dungeon = new JButton("Dungeon");
         buttons.add(dungeon);
-        JButton mine = new JButton("Mining");
+        JButton mine = new JButton("Mineshaft");
         buttons.add(mine);
-        JButton wood = new JButton("Woodcutting");
+        JButton wood = new JButton("Forest");
         buttons.add(wood);
         JButton home = new JButton("Home");
         buttons.add(home);

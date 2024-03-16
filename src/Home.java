@@ -65,7 +65,7 @@ class Home extends JPanel {
         purchase.addActionListener(e -> {
             if (player.getGold() < 1000) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>You do not have enough Gold to purchase the house.</div></html>");
+                message.setText("<html><div style='text-align: center;'>You do not have enough Gold to purchase homestead.</div></html>");
             }
             //TODO: Add house purchasing logic here. Check inventory for items,
             // take items away, increase inventory capacity to 20, change home panel

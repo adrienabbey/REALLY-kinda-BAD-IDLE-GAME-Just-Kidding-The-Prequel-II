@@ -1,49 +1,106 @@
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Mining extends JPanel {
 
-        @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/home.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
+    private JProgressBar progressBar;
+    private JButton cutButton;
+    private JButton autoCutButton; // New button for automatic woodcutting
+    private Timer timer;
 
     public Mining() {
         // Set the layout with vertical alignment and padding
-        this.setLayout(new BorderLayout());
-        this.setBorder(new EmptyBorder(400, 490, 400, 490)); // Add padding around the panel
+        setLayout(new BorderLayout());
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the panel
 
-        // Create the 'Back' button with custom styling
-        JButton back = new JButton("<- Back");
-        back.setFont(new Font("Serif", Font.BOLD, 24));
-        back.setForeground(new Color(255, 255, 255)); // White text
-        back.setBackground(new Color(139, 69, 19)); // Dark wood color
-        back.setFocusPainted(false); // Remove focus ring around the button
+        // Create the 'Cut Wood' button
+        cutButton = new JButton("Mine Ore");
+        cutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        cutButton.setFocusPainted(false); // Remove focus ring around the button
 
-        // Create the information label with custom styling
-        JLabel info = new JLabel("<html><div style='text-align: center;'>Hello Traveler! Welcome to B.A.D Idle Game.<br>To start your journey you will need to create a new character using the New Game button.<br>From there you will choose your stats and start adventuring into the dungeon.<br>Stop by the town shop for potions to heal yourself.</div></html>", SwingConstants.CENTER);
-        info.setFont(new Font("Serif", Font.ITALIC, 20));
-        info.setForeground(new Color(205, 133, 63)); // Light wood color
-        info.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
-        info.setOpaque(true); // Make the background visible
+        // Create the 'Auto Cut' button
+        autoCutButton = new JButton("Auto Mine");
+        autoCutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        autoCutButton.setFocusPainted(false); // Remove focus ring around the button
+
+        // Create the 'Leave' button
+        JButton leave = new JButton("Leave");
+        leave.setFont(new Font("Serif", Font.BOLD, 24));
+        leave.setFocusPainted(false); // Remove focus ring around the button
+
+        // Create the progress bar
+        progressBar = new JProgressBar();
+        progressBar.setStringPainted(true);
 
         // Add components to the panel
-        add(back, BorderLayout.NORTH);
-        add(info, BorderLayout.CENTER);
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
+        buttonPanel.add(cutButton);
+        buttonPanel.add(autoCutButton);
+        buttonPanel.add(leave);
+        add(buttonPanel, BorderLayout.NORTH);
+        add(progressBar, BorderLayout.CENTER);
 
-        // Action listener for the 'Back' button
-        back.addActionListener(e -> {
-            Driver.changePanel("world");
+        // Action listener for the 'Cut Wood' button
+        cutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cutWood();
+            }
         });
+
+        // Action listener for the 'Auto Cut' button
+        autoCutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                autoCutWood();
+            }
+        });
+
+        // Action listener for the 'Leave' button
+        leave.addActionListener(e -> {
+            try {
+                Driver.changePanel("world");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // Timer for automatic woodcutting process
+        timer = new Timer(1000, new ActionListener() {
+            int progress = 0;
+            int ore = 0;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (progress >= 10) {
+                    timer.stop();
+                    progressBar.setValue(100);
+                    if (ore % 5 == 0) {
+                    JOptionPane.showMessageDialog(null, "Metal granted!"); }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Stone granted!");
+                        }
+                    progress = 0;
+                    ore++;
+                } else {
+                    progress++;
+                    progressBar.setValue(progress * 10);
+                }
+            }
+        });
+    }
+
+    // Method to start the woodcutting process
+    private void cutWood() {
+        progressBar.setValue(0); // Reset progress bar
+        timer.start(); // Start the timer for woodcutting
+    }
+
+    // Method to start the automatic woodcutting process
+    private void autoCutWood() {
+        progressBar.setValue(0); // Reset progress bar
+        timer.start(); // Start the timer for automatic woodcutting
     }
 }
