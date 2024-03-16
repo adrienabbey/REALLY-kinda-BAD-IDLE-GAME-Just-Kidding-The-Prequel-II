@@ -89,8 +89,8 @@ class CharacterCreation extends JPanel{
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
-            buttons.get(i).setPreferredSize(new Dimension(200, 80));
-            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setPreferredSize(new Dimension(200, 40));
+            buttons.get(i).setMaximumSize(new Dimension(200, 40));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
@@ -119,18 +119,18 @@ class CharacterCreation extends JPanel{
         charPanel.add(Box.createHorizontalGlue());
         charPanel.add(stats);
         charPanel.add(Box.createHorizontalGlue());
+        charPanel.add(submit);
 
         add(Box.createVerticalGlue());
         add(nameLabel);
         add(name);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(new Dimension(0, 5)));
         add(points);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(new Dimension(0, 5)));
         add(message);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(new Dimension(0, 5)));
         add(charPanel);
-        add(Box.createRigidArea(new Dimension(0, 20)));
-        add(submit);
+        add(Box.createRigidArea(new Dimension(0, 35)));
         add(Box.createVerticalGlue());
 
         nameLabel.setAlignmentX(CENTER_ALIGNMENT);
