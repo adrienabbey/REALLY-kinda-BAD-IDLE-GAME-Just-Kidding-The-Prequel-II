@@ -7,7 +7,7 @@ import javax.swing.*;
 class Credits extends JPanel {
     private JLabel rollingText;
     private Timer timer;
-    private int yPos = 1050;
+    public static int yPos = 1050;
 
         @Override
     protected void paintComponent(Graphics g) {
@@ -56,7 +56,7 @@ class Credits extends JPanel {
 
         // Action listener for the 'Back' button. Sets text to correct position after very opening. 
         back.addActionListener(e -> {
-            yPos=1050;
+            yPos = 1050;
             MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
             Driver.changePanel("settings");
         });

@@ -41,7 +41,7 @@ class Settings extends JPanel {
         JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
-        JButton mute = new JButton("Mute Master Volume");
+        JButton mute = new JButton("Mute Music Volume");
         buttons.add(mute);
         JButton adjust = new JButton("Adjust Music Volume");
         buttons.add(adjust);   
@@ -120,8 +120,18 @@ class Settings extends JPanel {
 
         credits.addActionListener(e -> {
             try {
-                Driver.changePanel("credits");
+                Credits.yPos = 1050;
+                
+                long startTime = System.currentTimeMillis();
+                long waitTime = 75; // Wait for 75 milliseconds (0.075 seconds), so that credits text is properly set to correct location without previous text's location being seen.
+                
+                while (System.currentTimeMillis() - startTime < waitTime) {
+                    // Busy-wait loop
+                    // This loop repeatedly checks the current time until the desired wait time has passed
+                }
+        
                 MusicPlayer.playMusic("assets/images/Music/Chevalier, Mult Estes Guariz - French Crusade Song-[AudioTrimmer.com].wav");
+                Driver.changePanel("credits");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
