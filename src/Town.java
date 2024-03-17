@@ -35,7 +35,7 @@ class Town extends JPanel {
         //Whenever calling a getter for the player, it breaks it.
         JLabel name = new JLabel("Name: ");
 
-        JButton shop = new JButton("Market");
+        JButton shop = new JButton("Bazaar");
         buttons.add(shop);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
