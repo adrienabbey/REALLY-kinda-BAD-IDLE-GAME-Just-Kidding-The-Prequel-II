@@ -22,7 +22,7 @@ class Tavern extends JPanel {
     public Tavern() {
         // Set the layout with vertical alignment and padding
         this.setLayout(new BorderLayout());
-        this.setBorder(new EmptyBorder(400, 590, 400, 590)); // Add padding around the panel
+        this.setBorder(new EmptyBorder(400, 570, 400, 570)); // Add padding around the panel
 
         // Create the 'Back' button with custom styling
         JButton back = new JButton("<- Back");
@@ -38,7 +38,7 @@ class Tavern extends JPanel {
 
         // Create the mesage label with custom styling
         JLabel message = new JLabel("", SwingConstants.CENTER);
-        message.setFont(new Font("Serif", Font.ITALIC, 20));
+        message.setFont(new Font("Serif", Font.ITALIC, 21));
         message.setForeground(new Color(205, 133, 63)); // Light wood color
         message.setBackground(new Color(0, 0, 0)); // Set the background color to black
         message.setOpaque(true); // Make the background visible
@@ -67,19 +67,19 @@ class Tavern extends JPanel {
             
             if (prompt == 0 ) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>You can buy potions at the bazaar.</div></html>");
+                message.setText("<html><div style='text-align: center;'>Markus: You can buy potions at the bazaar.</div></html>");
             }
             if (prompt == 1 ) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>I heard you need a speacial set of armor to survive the monsters in the abandoned colosseum.</div></html>");
+                message.setText("<html><div style='text-align: center;'>Guardsman: I heard you need a speacial set of armor to survive the monsters in the abandoned colosseum.</div></html>");
             }
             if (prompt == 2 ) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>I can usually find one metal for every four stone when mining in the shaft out west.</div></html>");
+                message.setText("<html><div style='text-align: center;'>Miner: I can usually find one metal for every four stone when mining in the shaft out west.</div></html>");
             }
             if (prompt == 3 ) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>There's a secret merchant that sells a powerful potion. Some say he only comes out to the bazaar once every three blue moons.");
+                message.setText("<html><div style='text-align: center;'>Aaron: There's a secret merchant that sells a powerful potion. Some say he only comes out to the bazaar once every three blue moons.");
             }
             prompt++;
             if (prompt == 4 ) {
