@@ -153,7 +153,7 @@ class Settings extends JPanel {
                 JSlider sourceSFX = (JSlider)e.getSource();
                     if (!sourceSFX.getValueIsAdjusting()) {
                         float volumeSFX = (float)sourceSFX.getValue();
-                        SFX.setcurrentVolumeSFX(volumeSFX);
+                        SFX.(volumeSFX);
                     }
                 }
             });
