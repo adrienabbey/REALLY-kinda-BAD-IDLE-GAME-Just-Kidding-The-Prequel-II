@@ -44,3 +44,13 @@ Artist: BrunuhVille
 Album: Northwind
 Source: https://www.youtube.com/watch?v=gRuggMzH3Gw&t=1s&ab_channel=BrunuhVille
 License: https://docs.google.com/document/d/1AIpznS4s5r6Okj70zhlqVpwC8E4jQoo2o-I8uOyu4gk/edit?pli=1#heading=h.sv74n9r37xsj
+
+* Tavern Loop One by Alexander Nakarada (CreatorChords) | https://creatorchords.com
+Music promoted by https://www.free-stock-music.com
+Creative Commons / Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+Source: https://www.free-stock-music.com/alexander-nakarada-tavern-loop-one.html
+
+* Lamento di Tristano [Medieval Song]
+Composer: Medieval Path
+Source: https://www.youtube.com/watch?v=VsNPBWuwt7w

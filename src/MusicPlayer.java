@@ -90,7 +90,7 @@ public class MusicPlayer {
     }
 
     // Used to set volume to correct value during calls.
-    private static void volumeHelper(float value) {
+    public static void volumeHelper(float value) {
         if (volumeControl != null) {
             volumeControl.setValue(value);
         }

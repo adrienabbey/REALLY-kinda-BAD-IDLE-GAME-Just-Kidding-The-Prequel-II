@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.Color;
 
-class World extends JPanel{
+public class World extends JPanel{
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon
      * @param player The player character object
@@ -21,49 +21,59 @@ class World extends JPanel{
         buttons.add(quit);
         JButton town = new JButton("Town");
         buttons.add(town);
-        JButton dungeon = new JButton("Dungeon");
-        buttons.add(dungeon);
-        JButton mine = new JButton("Mining");
+        JButton mine = new JButton("Mineshaft");
         buttons.add(mine);
-        JButton wood = new JButton("Woodcutting");
+        JButton wood = new JButton("Forest");
         buttons.add(wood);
         JButton home = new JButton("Home");
         buttons.add(home);
+        JButton dungeon = new JButton("Dungeon");
+        buttons.add(dungeon);
         JButton leave = new JButton("Main Menu");
         buttons.add(leave);
 
         // This section adds the components and controls layout
         add(Box.createVerticalGlue());
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(10, 20)));
         add(leave);
-        add(Box.createRigidArea(new Dimension(150, 20)));
-        add(town);
-        add(Box.createRigidArea(new Dimension(150, 20)));
-        add(mine);
-        add(Box.createRigidArea(new Dimension(150, 20)));
-        add(wood);
-        add(Box.createRigidArea(new Dimension(150, 20)));
-        add(home);
-        add(Box.createRigidArea(new Dimension(250, 20)));
-        add(dungeon);
         add(Box.createRigidArea(new Dimension(100, 20)));
+        add(town);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(mine);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(home);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(town);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(wood);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(dungeon);
+        add(Box.createRigidArea(new Dimension(200, 20)));
         add(quit);
         add(Box.createVerticalGlue());
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
-            buttons.get(i).setPreferredSize(new Dimension(200, 80));
-            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setPreferredSize(new Dimension(130, 80));
+            buttons.get(i).setMaximumSize(new Dimension(150, 80));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
 
+            // formatting quit button
             if (i == 0) {
                 buttons.get(0).setAlignmentX(CENTER_ALIGNMENT);
                 buttons.get(0).setBackground(Color.RED);
                 buttons.get(0).setForeground(Color.WHITE);
-                buttons.get(i).setPreferredSize(new Dimension(200, 80));
-                buttons.get(i).setMaximumSize(new Dimension(200, 80));
+                buttons.get(i).setPreferredSize(new Dimension(150, 80));
+                buttons.get(i).setMaximumSize(new Dimension(150, 80));
+            }
+
+            // formatting main menu button
+            if (i == 6) {
+                buttons.get(6).setAlignmentX(CENTER_ALIGNMENT);
+                buttons.get(6).setPreferredSize(new Dimension(175, 80));
+                buttons.get(6).setMaximumSize(new Dimension(175, 80));
             }
         }
 
@@ -93,6 +103,38 @@ class World extends JPanel{
             try {
                 Driver.changePanel("dungeon");
                 MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // Home button takes you to the Home screen
+        home.addActionListener(e -> {
+            try {
+                Driver.changePanel("home");
+                // MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // WoodCutting button takes you to the Woodcutting screen
+        wood.addActionListener(e -> {
+            try {
+                Driver.changePanel("wood");
+                MusicPlayer.playMusic("assets/images/Music/Lamento di Tristano [Medieval Song].wav");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // Mining button takes you to the mining screen
+        mine.addActionListener(e -> {
+            try {
+                Driver.changePanel("mine");
+                MusicPlayer.playMusic("assets/images/Music/Lamento di Tristano [Medieval Song].wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
