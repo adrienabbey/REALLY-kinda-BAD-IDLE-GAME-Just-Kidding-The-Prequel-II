@@ -59,7 +59,8 @@ public class WoodCutting extends JPanel {
         cutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cutWood();
+                cutWood(); // Start woodcutting process
+                SFX.playSound("assets/images/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
             }
         });
 
@@ -75,6 +76,7 @@ public class WoodCutting extends JPanel {
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
+                SFX.stopSound();
                 MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -82,7 +84,7 @@ public class WoodCutting extends JPanel {
         });
 
         // Timer for automatic woodcutting process
-        timer = new Timer(650, new ActionListener() {
+        timer = new Timer(1100, new ActionListener() {
             int progress = 0;
 
             @Override

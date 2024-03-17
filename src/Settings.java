@@ -38,10 +38,12 @@ class Settings extends JPanel {
         JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
         slider.setBackground(customColorBrown); // Set the background color
 
-        JButton mute = new JButton("Mute Volume");
+        JButton mute = new JButton("Mute Master Volume");
         buttons.add(mute);
-        JButton adjust = new JButton("Adjust Volume");
+        JButton adjust = new JButton("Adjust Music Volume");
         buttons.add(adjust);   
+        JButton sfx = new JButton("Adjust SFX Volume");
+        buttons.add(sfx);   
         JButton leave = new JButton("Back to Main Menu");
         buttons.add(leave);   
         JButton credits = new JButton("Credits");
@@ -56,6 +58,10 @@ class Settings extends JPanel {
         add(adjust);
         add(Box.createRigidArea(new Dimension(100, 0)));
         add(slider);
+        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(sfx);
+        // add(Box.createRigidArea(new Dimension(100, 0)));
+        // add(sliderSFX);
         add(Box.createRigidArea(new Dimension(100, 30)));
         add(credits);
         add(Box.createRigidArea(new Dimension(100, 60)));
@@ -124,7 +130,7 @@ class Settings extends JPanel {
             }
         });
 
-        // Slider Implementation. Adjusts volume based on slider value. Adds change listener and method statsChanged sets volume of MusicPlayer.  
+        // Slider Implementation. Adjusts music volume based on slider value. Adds change listener and method statsChanged sets volume of MusicPlayer.  
         slider.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
             JSlider source = (JSlider)e.getSource();
