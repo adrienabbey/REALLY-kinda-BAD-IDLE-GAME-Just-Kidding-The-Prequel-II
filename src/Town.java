@@ -88,7 +88,7 @@ class Town extends JPanel {
         tavern.addActionListener(e -> {
             try{
                 Driver.changePanel("tavern");
-                // MusicPlayer.playMusic("assets/images/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
+                MusicPlayer.playMusic("assets/images/Music/alexander-nakarada-tavern-loop-one.wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }

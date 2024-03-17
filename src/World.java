@@ -124,8 +124,7 @@ public class World extends JPanel{
         wood.addActionListener(e -> {
             try {
                 Driver.changePanel("wood");
-                // MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
-                
+                MusicPlayer.playMusic("assets/images/Music/Lamento di Tristano [Medieval Song].wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -135,7 +134,7 @@ public class World extends JPanel{
         mine.addActionListener(e -> {
             try {
                 Driver.changePanel("mine");
-                // MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                MusicPlayer.playMusic("assets/images/Music/Lamento di Tristano [Medieval Song].wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
