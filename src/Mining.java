@@ -58,7 +58,8 @@ public class Mining extends JPanel {
         cutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cutWood();
+                mineOre();
+                SFX.playSound("assets/images/SFX/pickaxe-sfx.wav"); 
             }
         });
 
@@ -66,7 +67,7 @@ public class Mining extends JPanel {
         autoCutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                autoCutWood();
+                autoMineOre();
             }
         });
 
@@ -74,6 +75,7 @@ public class Mining extends JPanel {
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
+                SFX.stopSound();
                 MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -81,7 +83,7 @@ public class Mining extends JPanel {
         });
 
         // Timer for automatic woodcutting process
-        timer = new Timer(800, new ActionListener() {
+        timer = new Timer(1400, new ActionListener() {
             int progress = 0;
             int ore = 1;
 
@@ -106,13 +108,13 @@ public class Mining extends JPanel {
     }
 
     // Method to start the woodcutting process
-    private void cutWood() {
+    private void mineOre() {
         progressBar.setValue(0); // Reset progress bar
         timer.start(); // Start the timer for woodcutting
     }
 
     // Method to start the automatic woodcutting process
-    private void autoCutWood() {
+    private void autoMineOre() {
         progressBar.setValue(0); // Reset progress bar
         timer.start(); // Start the timer for automatic woodcutting
     }

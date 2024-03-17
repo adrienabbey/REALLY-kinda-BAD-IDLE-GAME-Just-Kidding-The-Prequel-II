@@ -38,10 +38,15 @@ class Settings extends JPanel {
         JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
         slider.setBackground(customColorBrown); // Set the background color
 
-        JButton mute = new JButton("Mute Volume");
+        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
+        sliderSFX.setBackground(customColorBrown); // Set the background color
+
+        JButton mute = new JButton("Mute Master Volume");
         buttons.add(mute);
-        JButton adjust = new JButton("Adjust Volume");
+        JButton adjust = new JButton("Adjust Music Volume");
         buttons.add(adjust);   
+        JButton sfx = new JButton("Adjust SFX Volume");
+        buttons.add(sfx);   
         JButton leave = new JButton("Back to Main Menu");
         buttons.add(leave);   
         JButton credits = new JButton("Credits");
@@ -56,9 +61,13 @@ class Settings extends JPanel {
         add(adjust);
         add(Box.createRigidArea(new Dimension(100, 0)));
         add(slider);
+        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(sfx);
+        add(Box.createRigidArea(new Dimension(100, 0)));
+        add(sliderSFX);
         add(Box.createRigidArea(new Dimension(100, 30)));
         add(credits);
-        add(Box.createRigidArea(new Dimension(100, 60)));
+        add(Box.createRigidArea(new Dimension(100, 50)));
         add(leave);
         add(Box.createVerticalGlue());
 
@@ -66,31 +75,35 @@ class Settings extends JPanel {
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
-            buttons.get(i).setPreferredSize(new Dimension(200, 80));
-            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setPreferredSize(new Dimension(270, 70));
+            buttons.get(i).setMaximumSize(new Dimension(270, 70));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
             
             // Formats leave button
-            if (i == 3) {
-                buttons.get(2).setAlignmentX(CENTER_ALIGNMENT);
-                buttons.get(2).setBackground(Color.GRAY);
-                buttons.get(2).setForeground(Color.WHITE);
-                buttons.get(2).setPreferredSize(new Dimension(70, 80));
-                buttons.get(2).setMaximumSize(new Dimension(240, 500));
-                buttons.get(2).setFont(new Font("Times New Roman", Font.BOLD, 24));
+            if (i == 5) {
+                buttons.get(5).setAlignmentX(CENTER_ALIGNMENT);
+                buttons.get(5).setBackground(Color.GRAY);
+                buttons.get(5).setForeground(Color.WHITE);
+                buttons.get(5).setPreferredSize(new Dimension(270, 70));
+                buttons.get(5).setMaximumSize(new Dimension(270, 500));
+                buttons.get(5).setFont(new Font("Times New Roman", Font.BOLD, 24));
         }
     }
         this.setAlignmentX(CENTER_ALIGNMENT);
 
-        //Format volume slider
-        slider.setMaximumSize(new Dimension(200, 20));
+        //Format music volume slider
+        slider.setMaximumSize(new Dimension(270, 20));
+
+        //Format sfx volume slider
+        sliderSFX.setMaximumSize(new Dimension(270, 20));
 
         // Volume button mutes or unmutes master volume.
         mute.addActionListener(e -> {
             try {
-                MusicPlayer.toggleMute();; 
+                MusicPlayer.toggleMute(); 
+                SFX.toggleMuteSFX();
                 if (isMute) {
                     mute.setText("Unmute Volume");
                     isMute = false; 
@@ -124,7 +137,7 @@ class Settings extends JPanel {
             }
         });
 
-        // Slider Implementation. Adjusts volume based on slider value. Adds change listener and method statsChanged sets volume of MusicPlayer.  
+        // Slider Implementation. Adjusts music volume based on slider value. Adds change listener and method statsChanged sets volume of MusicPlayer.  
         slider.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
             JSlider source = (JSlider)e.getSource();
@@ -134,5 +147,16 @@ class Settings extends JPanel {
                 }
             }
         });
+
+        // Slider Implementation. Adjusts music volume based on slider value. Adds change listener and method statsChanged sets volume of MusicPlayer.  
+        sliderSFX.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                JSlider source = (JSlider)e.getSource();
+                    if (!source.getValueIsAdjusting()) {
+                        float volume = (float)source.getValue();
+                        SFX.setVolumeSFX(volume);
+                    }
+                }
+            });
     }
     }

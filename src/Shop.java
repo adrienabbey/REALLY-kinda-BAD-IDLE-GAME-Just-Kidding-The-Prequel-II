@@ -39,8 +39,10 @@ class Shop extends JPanel {
         buttons.add(buy);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
-        JButton button3 = new JButton("Sell");
-        buttons.add(button3);
+        JButton inventory = new JButton("Inventory");
+        buttons.add(inventory);
+        JButton sell = new JButton("Sell");
+        buttons.add(sell);
         
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
@@ -48,7 +50,9 @@ class Shop extends JPanel {
         add(Box.createRigidArea(new Dimension(100, 350)));
         add(buy);
         add(Box.createRigidArea(new Dimension(0, 20)));
-        add(button3);
+        add(sell);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(inventory);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
         add(Box.createVerticalGlue());
@@ -75,6 +79,22 @@ class Shop extends JPanel {
                 e1.printStackTrace();
             }
         });
+        
+        // Sell button to sell equipment or potions for gold
+        sell.addActionListener(e -> {
+            // TODO: Add sell implementation
+        });
+
+        // Sell button to sell equipment or potions for gold
+        inventory.addActionListener(e -> {
+            try {
+                Driver.changePanel("inventory");
+                MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            // TODO: Add inventory implementation
+        });
 
         // Leave button takes you back to the town panel
         leave.addActionListener(e -> {
@@ -84,11 +104,6 @@ class Shop extends JPanel {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-        });
-
-        // Sell button to sell equipment or potions for gold
-        leave.addActionListener(e -> {
-            // TODO: Add sell implementation
         });
     }
 }
