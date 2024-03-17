@@ -39,17 +39,25 @@ class Town extends JPanel {
         buttons.add(shop);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
+        JButton tavern = new JButton("Tavern");
+        buttons.add(tavern);
+        JButton library = new JButton("Library");
+        buttons.add(library);
         JButton inventory = new JButton("Inventory");
         buttons.add(inventory);
         
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         // add(name);
-        add(Box.createRigidArea(new Dimension(100, 350)));
+        add(Box.createRigidArea(new Dimension(100, 150)));
         add(shop);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(tavern);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(library);
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(inventory);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(100, 20)));
         add(leave);
         add(Box.createVerticalGlue());
 
@@ -71,6 +79,26 @@ class Town extends JPanel {
             try{
                 Driver.changePanel("shop");
                 MusicPlayer.playMusic("assets/images/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
+        });
+
+        // Button that takes player to tavern panel
+        tavern.addActionListener(e -> {
+            try{
+                Driver.changePanel("tavern");
+                MusicPlayer.playMusic("assets/images/Music/alexander-nakarada-tavern-loop-one.wav");
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
+        });
+
+        // Button that takes player to library panel
+        library.addActionListener(e -> {
+            try{
+                Driver.changePanel("library");
+                MusicPlayer.playMusic("assets/images/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }
