@@ -118,7 +118,6 @@ class Settings extends JPanel {
             }
         });
 
-        // TODO: add credits panel with text implementation
         credits.addActionListener(e -> {
             try {
                 Driver.changePanel("credits");
@@ -148,13 +147,13 @@ class Settings extends JPanel {
             }
         });
 
-        // Slider Implementation. Adjusts music volume based on slider value. Adds change listener and method statsChanged sets volume of MusicPlayer.  
+        // Slider Implementation. Adjusts SFX volume based on slider value. Adds change listener and method statsChanged sets volume of SFX.java.  
         sliderSFX.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                JSlider source = (JSlider)e.getSource();
-                    if (!source.getValueIsAdjusting()) {
-                        float volume = (float)source.getValue();
-                        SFX.setVolumeSFX(volume);
+                JSlider sourceSFX = (JSlider)e.getSource();
+                    if (!sourceSFX.getValueIsAdjusting()) {
+                        float volumeSFX = (float)sourceSFX.getValue();
+                        SFX.(volumeSFX);
                     }
                 }
             });
