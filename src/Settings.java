@@ -103,7 +103,7 @@ class Settings extends JPanel {
         mute.addActionListener(e -> {
             try {
                 MusicPlayer.toggleMute(); 
-                SFX.toggleMuteSFX();
+                // SFX.toggleMuteSFX();
                 if (isMute) {
                     mute.setText("Unmute Volume");
                     isMute = false; 
