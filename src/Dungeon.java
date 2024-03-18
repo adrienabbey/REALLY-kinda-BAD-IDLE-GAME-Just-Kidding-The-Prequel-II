@@ -6,7 +6,6 @@ class Dungeon extends JPanel {
     private Monster enemy;
     private PlayerCharacter player;
     private static Dice dice = new Dice(20);
-    private Combat combat;
     /**
      * This function hosts the dungeon screen with buttons to go to town or use a potion
      * @param player The player character object
@@ -45,10 +44,10 @@ class Dungeon extends JPanel {
 
         // This button will be used to run away from combat
         start.addActionListener(e -> {
-            combat = new Combat(player, enemy);
+            Combat.startCombat();;
         });
         end.addActionListener(e -> {
-            combat = null;
+            Combat.endCombat();
         });
         leave.addActionListener(e -> {
             try {

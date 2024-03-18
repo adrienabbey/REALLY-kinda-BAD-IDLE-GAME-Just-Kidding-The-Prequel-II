@@ -47,16 +47,18 @@ class GameCharacter {
       int damage = muscle * (dice.getLast() / 20);
       dice.roll();
       // int resist = target.getSkin(); // This is for if we add complexity later
+      System.out.println(name + " just attacked.");
       if(dice.getLast() == 20) {
-         System.out.println("Critical Hit!");
          target.health -= damage * 2;
+         Combat.addLog(name + " critical hit " + target.getName() + " and they took " + damage * 2 + " damage!");
       }
       else if(dice.getLast() == 1) {
-         System.out.println("Critical Miss!");
+         Combat.addLog(name + " critical missed and took 1 damage!");
          health -= 1;
       }
       else {
          target.health -= damage;
+         Combat.addLog(name + " hit " + target.getName() + " for " + damage + " damage!");
       }
       // Method used when a character attacks another character.
       // TODO: Implementation.
@@ -67,15 +69,16 @@ class GameCharacter {
       int damage = brain * (dice.getLast() / 20);
       dice.roll();
       if(dice.getLast() == 20) {
-         System.out.println("Critical Hit!");
+         Combat.addLog(name + " critical hit " + target.getName() + " and the took " + damage * 2 + " damage!");
          target.health -= damage * 2;
       }
       else if(dice.getLast() == 1) {
-         System.out.println("Critical Miss!");
+         Combat.addLog(name + " critical missed and they took 1 damage!");
          health -= 1;
       }
       else {
          target.health -= damage;
+         Combat.addLog(name + " hit " + target.getName() + " for " + damage + " damage!");
       }
       magic -= 1;
    }
@@ -85,15 +88,16 @@ class GameCharacter {
       int heal = brain * (dice.getLast() / 20);
       dice.roll();
       if(dice.getLast() == 20) {
-         System.out.println("Critical Heal!");
+         Combat.addLog(name + " critical heal's themselves for " + heal * 2 + " health!");
          health += heal * 2;
       }
       else if(dice.getLast() == 1) {
-         System.out.println("Critical Miss!");
+         Combat.addLog(name + " critical missed! a heal and took 1 damage!");
          health -= 1;
       }
       else {
          health += heal;
+         Combat.addLog(name + " healed themselves for " + heal + " health!");
       }
       magic -= 1;
    }

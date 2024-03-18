@@ -24,6 +24,7 @@ class Driver extends JFrame {
     private static JPanel world = new JPanel();
     private static JPanel dungeon = new JPanel();
     private static Dungeon combat = new Dungeon();
+    private static Combat logs;
     private static World map = new World() { // This code puts the world map image as the background to the panel
         @Override
         protected void paintComponent(Graphics g) {
@@ -95,12 +96,15 @@ class Driver extends JFrame {
      * This function is necessary because charScreen causes an error
      * that makes the program crash before it even launches.
      * This function adds the character screen to the world and dungeon panels.
+     * @throws InterruptedException 
      */
-    public static void addCharScreen() {
+    public static void addCharScreen() throws InterruptedException {
         CharacterScreen charScreen = new CharacterScreen();
         world.add(charScreen);
         world.add(map);
         dungeon.add(charScreen);
+        logs = new Combat(player, Dungeon.getMonster());
+        dungeon.add(logs);
         dungeon.add(combat);
         // driverPanel.add(new CharacterScreen(), "charScreen");
     }
