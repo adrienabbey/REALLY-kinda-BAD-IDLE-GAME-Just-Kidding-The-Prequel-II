@@ -16,10 +16,8 @@ public class WoodCutting extends JPanel {
     private Timer timer;
     private Image bgImage;
     private JLabel woodGrantedLabel; // Label to display wood granted message
-    private boolean auto = true; 
-    private int incrementer = 3;
+    private boolean auto = false;
 
-    
     public WoodCutting(Inventory inventory) { // Accepts an Inventory object
         this.inventory = inventory; // Assign the provided Inventory object to the local variable
 
@@ -29,7 +27,7 @@ public class WoodCutting extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         // Set the layout with vertical alignment and padding
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(950, 20, 0, 20)); // Add padding around the panel
@@ -54,10 +52,10 @@ public class WoodCutting extends JPanel {
         progressBar.setStringPainted(true);
         progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
 
-       // Create label for wood granted message
-       woodGrantedLabel = new JLabel("");
-       woodGrantedLabel.setFont(new Font("Serif", Font.BOLD, 18));
-       woodGrantedLabel.setForeground(Color.GREEN); // Green color for wood granted message
+        // Create label for wood granted message
+        woodGrantedLabel = new JLabel("");
+        woodGrantedLabel.setFont(new Font("Serif", Font.BOLD, 18));
+        woodGrantedLabel.setForeground(Color.GREEN); // Green color for wood granted message
 
         // Add components to the panel
         JPanel buttonPanel = new JPanel(new GridLayout(1, 1));
@@ -78,11 +76,11 @@ public class WoodCutting extends JPanel {
             }
         });
 
-        // Action listener for the 'Cut Wood' button
+        // Action listener for the 'Auto Cut' button
         autoCutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                autoCutWood(); // Start woodcutting process
+                autoCutWood(); // Start/Stop auto woodcutting process
                 SFX.playSound("assets/images/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
             }
         });
@@ -90,6 +88,7 @@ public class WoodCutting extends JPanel {
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {
             try {
+                auto = false; // stop auto mining if left panel
                 Driver.changePanel("world");
                 SFX.stopSound();
                 MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
@@ -99,22 +98,27 @@ public class WoodCutting extends JPanel {
         });
 
         // Timer for automatic woodcutting process
-        timer = new Timer(950, new ActionListener() {
+        timer = new Timer(1000, new ActionListener() {
             int progress = 0;
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (progress >= 10) {
-                    timer.stop();
                     progressBar.setValue(100);
                     woodGrantedLabel.setText("Wood granted!"); // Update wood granted label
-                    progress = 0;
 
                     int currentWood = inventory.getResource("Wood");
                     // Increment wood resource variable
                     inventory.setResource("Wood", currentWood + 1);
-                    //update resource in inventory
+                    // Update resource in inventory
                     inventory.updateResourceLabels();
+
+                    progress = 0;
+                    if (!auto) {
+                        timer.stop();
+                    } else {
+                        SFX.playSound("assets/images/SFX/woodcutting-sfx.wav"); // play sfx again if auto-mining
+                    }
                 } else {
                     progress++;
                     progressBar.setValue(progress * 10);
@@ -130,11 +134,17 @@ public class WoodCutting extends JPanel {
         timer.start(); // Start the timer for woodcutting
     }
 
-    // Method to start the automatic woodcutting process
+    // Method to start/stop the automatic woodcutting process
     private void autoCutWood() {
-        progressBar.setValue(0); // Reset progress bar
-        woodGrantedLabel.setText(""); // Clear wood granted label
-        timer.start(); // Start the timer for automatic woodcutting
+        if (!auto) {
+            auto = true; // Start auto woodcutting
+            autoCutButton.setText("Stop Auto Cutting...");
+            woodGrantedLabel.setText(""); 
+            timer.start(); // Start the timer for auto woodcutting
+        } else {
+            auto = false; // Stop auto woodcutting
+            autoCutButton.setText("Auto Cut");
+        }
     }
 
     @Override

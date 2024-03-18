@@ -16,6 +16,7 @@ public class Mining extends JPanel {
     private Timer timer;
     private Image bgImage;
     private JLabel oreGrantedLabel; // Label to display wood granted message
+    private boolean auto;
 
     public Mining(Inventory inventory) { // Accepts an Inventory object
         this.inventory = inventory; // Assign the Inventory object to the local variable
@@ -85,6 +86,7 @@ public class Mining extends JPanel {
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {
             try {
+                auto = false; // stop auto mining if left panel
                 Driver.changePanel("world");
                 SFX.stopSound();
                 MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
@@ -101,7 +103,6 @@ public class Mining extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (progress >= 10) {
-                    timer.stop();
                     progressBar.setValue(100);
 
                     if (ore % 5 == 0) {
@@ -123,6 +124,11 @@ public class Mining extends JPanel {
 
                     progress = 0;
                     ore++;
+                    if (!auto) {
+                        timer.stop();  
+                    } else {
+                        SFX.playSound("assets/images/SFX/pickaxe-sfx.wav"); 
+                    }
                 } else {
                     progress++;
                     progressBar.setValue(progress * 10);
@@ -138,12 +144,17 @@ public class Mining extends JPanel {
         timer.start(); // Start the timer for woodcutting
     }
 
-    // Method to start the automatic woodcutting process
+    // Method to start/stop the automatic woodcutting process
     private void autoMineOre() {
-        progressBar.setValue(0); // Reset progress bar
-        oreGrantedLabel.setText(""); // Clear wood granted label
-        timer.start(); // Start the timer for automatic woodcutting
-        
+        if (!auto) {
+            auto = true; // Start auto woodcutting
+            autoCutButton.setText("Stop Auto Mining...");
+            oreGrantedLabel.setText(""); 
+            timer.start(); // Start the timer for auto woodcutting
+        } else {
+            auto = false; // Stop auto woodcutting
+            autoCutButton.setText("Auto Mine");
+        }
     }
 
     @Override
