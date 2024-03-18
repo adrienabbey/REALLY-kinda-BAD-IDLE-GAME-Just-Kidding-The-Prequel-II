@@ -8,13 +8,16 @@ import java.io.IOException;
 
 public class Mining extends JPanel {
 
+    private Inventory inventory; // Reference to the Inventory object
+
     private JProgressBar progressBar;
     private JButton cutButton;
     private JButton autoCutButton; // New button for automatic woodcutting
     private Timer timer;
     private Image bgImage;
 
-    public Mining() {
+    public Mining(Inventory inventory) { // Accepts an Inventory object
+        this.inventory = inventory; // Assign the Inventory object to the local variable
 
         // Load the background image
         try {
@@ -83,7 +86,7 @@ public class Mining extends JPanel {
         });
 
         // Timer for automatic woodcutting process
-        timer = new Timer(1400, new ActionListener() {
+        timer = new Timer(1200, new ActionListener() {
             int progress = 0;
             int ore = 1;
 
@@ -92,11 +95,24 @@ public class Mining extends JPanel {
                 if (progress >= 10) {
                     timer.stop();
                     progressBar.setValue(100);
+
                     if (ore % 5 == 0) {
                         JOptionPane.showMessageDialog(null, "Metal granted!"); 
+                        int currentMetal = inventory.getResource("Metal");
+                        // Increment metal resource variable
+                        inventory.setResource("Metal", currentMetal + 1);
+                        //update resource in inventory
+                        inventory.updateResourceLabels();
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Stone granted!");
+                        int currentStone = inventory.getResource("Stone");
+                        // Increment stone resource variable
+                        inventory.setResource("Stone", currentStone + 1);
+                        //update resource in inventory
+                        inventory.updateResourceLabels();
                         }
+
                     progress = 0;
                     ore++;
                 } else {

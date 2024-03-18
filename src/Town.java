@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 class Town extends JPanel {
+
     @Override
     protected void paintComponent(Graphics g) {
 

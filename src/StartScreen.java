@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 // This class is just the intro starting screen with the buttons to start a new game, load a game, read directions, or quit
 class StartScreen extends JPanel{
+    
     @Override
     protected void paintComponent(Graphics g) {
 

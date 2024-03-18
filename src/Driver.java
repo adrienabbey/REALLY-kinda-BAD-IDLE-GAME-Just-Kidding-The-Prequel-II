@@ -65,11 +65,11 @@ class Driver extends JFrame {
         Shop shop = new Shop();
         Credits credits = new Credits();
         Home home = new Home();
-        WoodCutting woodCutting = new WoodCutting();
-        Mining mining = new Mining();
+        Inventory inventory = new Inventory();
+        WoodCutting woodCutting = new WoodCutting(inventory);
+        Mining mining = new Mining(inventory);
         Tavern tavern = new Tavern();
         Library library = new Library();
-        Inventory inventory = new Inventory();
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();

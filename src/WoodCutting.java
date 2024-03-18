@@ -8,13 +8,18 @@ import java.io.IOException;
 
 public class WoodCutting extends JPanel {
 
+    private Inventory inventory; // Reference to the Inventory object
+
     private JProgressBar progressBar;
     private JButton cutButton;
     private JButton autoCutButton; // New button for automatic woodcutting
     private Timer timer;
     private Image bgImage;
 
-    public WoodCutting() {
+    
+    public WoodCutting(Inventory inventory) { // Accepts an Inventory object
+        this.inventory = inventory; // Assign the provided Inventory object to the local variable
+
         // Load the background image
         try {
             bgImage = ImageIO.read(new File("assets/images/forest2.png"));
@@ -84,7 +89,7 @@ public class WoodCutting extends JPanel {
         });
 
         // Timer for automatic woodcutting process
-        timer = new Timer(1100, new ActionListener() {
+        timer = new Timer(950, new ActionListener() {
             int progress = 0;
 
             @Override
@@ -94,6 +99,12 @@ public class WoodCutting extends JPanel {
                     progressBar.setValue(100);
                     JOptionPane.showMessageDialog(null, "Wood granted!");
                     progress = 0;
+
+                    int currentWood = inventory.getResource("Wood");
+                    // Increment wood resource variable
+                    inventory.setResource("Wood", currentWood + 1);
+                    //update resource in inventory
+                    inventory.updateResourceLabels();
                 } else {
                     progress++;
                     progressBar.setValue(progress * 10);
