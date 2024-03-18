@@ -44,7 +44,7 @@ class Home extends JPanel {
         message.setOpaque(true); // Make the background visible
 
         // Create the information label with custom styling
-        JLabel info = new JLabel("<html><div style='text-align: center;'>To unlock the House you must have the following in your inventory:<br>- 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br> Having a home will increase your inventory and unlock farming.</div></html>", SwingConstants.CENTER);
+        JLabel info = new JLabel("<html><div style='text-align: center;'>:<br>- Property for sale: 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br> All the above resources will be taken out from your inventory once purchased. Having a home will increase your inventory and unlock farming.</div></html>", SwingConstants.CENTER);
         info.setFont(new Font("Serif", Font.ITALIC, 20));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
         info.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
@@ -65,7 +65,7 @@ class Home extends JPanel {
         purchase.addActionListener(e -> {
             if (player.getGold() < 1000) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>You do not have enough Gold to purchase homestead.</div></html>");
+                message.setText("<html><div style='text-align: center;'>You do not have enough Gold to purchase the homestead.</div></html>");
             }
             //TODO: Add house purchasing logic here. Check inventory for items,
             // take items away, increase inventory capacity to 20, change home panel

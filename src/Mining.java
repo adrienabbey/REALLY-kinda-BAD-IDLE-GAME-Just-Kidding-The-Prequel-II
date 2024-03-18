@@ -86,7 +86,7 @@ public class Mining extends JPanel {
         });
 
         // Timer for automatic woodcutting process
-        timer = new Timer(1200, new ActionListener() {
+        timer = new Timer(1100, new ActionListener() {
             int progress = 0;
             int ore = 1;
 

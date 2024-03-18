@@ -89,7 +89,6 @@ class Shop extends JPanel {
         inventory.addActionListener(e -> {
             try {
                 Driver.changePanel("inventory");
-                MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

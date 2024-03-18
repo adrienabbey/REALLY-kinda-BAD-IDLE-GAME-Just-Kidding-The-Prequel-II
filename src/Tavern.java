@@ -76,7 +76,7 @@ class Tavern extends JPanel {
             }
             if (prompt == 2 ) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>Miner: I usually find one metal for every four stone when mining in the shaft out west.</div></html>");
+                message.setText("<html><div style='text-align: center;'>Miner: I usually find one metal for every four stone when mining down in the mineshaft out west.</div></html>");
             }
             if (prompt == 3 ) {
                 add(message, BorderLayout.CENTER);
