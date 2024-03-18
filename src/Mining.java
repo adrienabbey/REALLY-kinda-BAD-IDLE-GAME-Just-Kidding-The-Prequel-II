@@ -15,6 +15,7 @@ public class Mining extends JPanel {
     private JButton autoCutButton; // New button for automatic woodcutting
     private Timer timer;
     private Image bgImage;
+    private JLabel oreGrantedLabel; // Label to display wood granted message
 
     public Mining(Inventory inventory) { // Accepts an Inventory object
         this.inventory = inventory; // Assign the Inventory object to the local variable
@@ -49,6 +50,11 @@ public class Mining extends JPanel {
         progressBar = new JProgressBar();
         progressBar.setStringPainted(true);
 
+        // Create label for ore granted message
+        oreGrantedLabel = new JLabel("");
+        oreGrantedLabel.setFont(new Font("Serif", Font.BOLD, 18));
+        oreGrantedLabel.setForeground(Color.GREEN); // Green color for ore granted message
+
         // Add components to the panel
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
         buttonPanel.add(cutButton);
@@ -56,6 +62,7 @@ public class Mining extends JPanel {
         buttonPanel.add(leave);
         add(buttonPanel, BorderLayout.NORTH);
         add(progressBar, BorderLayout.CENTER);
+        add(oreGrantedLabel, BorderLayout.SOUTH); // Add ore granted label to the panel
 
         // Action listener for the 'Cut Wood' button
         cutButton.addActionListener(new ActionListener() {
@@ -71,6 +78,7 @@ public class Mining extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 autoMineOre();
+                SFX.playSound("assets/images/SFX/pickaxe-sfx.wav"); 
             }
         });
 
@@ -97,7 +105,7 @@ public class Mining extends JPanel {
                     progressBar.setValue(100);
 
                     if (ore % 5 == 0) {
-                        JOptionPane.showMessageDialog(null, "Metal granted!"); 
+                        oreGrantedLabel.setText("Metal granted!"); // Update metal granted label
                         int currentMetal = inventory.getResource("Metal");
                         // Increment metal resource variable
                         inventory.setResource("Metal", currentMetal + 1);
@@ -105,7 +113,7 @@ public class Mining extends JPanel {
                         inventory.updateResourceLabels();
 
                     } else {
-                        JOptionPane.showMessageDialog(null, "Stone granted!");
+                        oreGrantedLabel.setText("Stone granted!"); // Update stone granted label
                         int currentStone = inventory.getResource("Stone");
                         // Increment stone resource variable
                         inventory.setResource("Stone", currentStone + 1);
@@ -126,13 +134,16 @@ public class Mining extends JPanel {
     // Method to start the woodcutting process
     private void mineOre() {
         progressBar.setValue(0); // Reset progress bar
+        oreGrantedLabel.setText(""); // Clear wood granted label
         timer.start(); // Start the timer for woodcutting
     }
 
     // Method to start the automatic woodcutting process
     private void autoMineOre() {
         progressBar.setValue(0); // Reset progress bar
+        oreGrantedLabel.setText(""); // Clear wood granted label
         timer.start(); // Start the timer for automatic woodcutting
+        
     }
 
     @Override
