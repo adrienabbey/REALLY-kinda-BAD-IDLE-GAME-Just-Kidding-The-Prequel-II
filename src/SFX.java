@@ -6,7 +6,7 @@ public class SFX {
     // This is used to stop the current music when a new one starts
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
-    private static boolean isMuted = false;
+    public static boolean isMutedSFX = false;
     private static float currentVolumeSFX = 0.0f;
 
     public static void setcurrentVolumeSFX(float volume) {
@@ -47,7 +47,7 @@ public class SFX {
                     // Set the initial volume (unmuted)
                     volumeHelperSFX(currentVolumeSFX);     
                     
-                    if (isMuted == true) {
+                    if (isMutedSFX) {
                         volumeHelperSFX(-70.0f);
                     }         
 
@@ -64,28 +64,28 @@ public class SFX {
 
     // Method to toggle volume for the java slider.
     public static void setVolumeSFX(float volume) {
-        if (currentClip != null && currentClip.isRunning() && isMuted == false) {
+        if (currentClip != null && currentClip.isRunning() && isMutedSFX == false) {
             FloatControl volumeControl = (FloatControl) currentClip.getControl(FloatControl.Type.MASTER_GAIN);
             volumeControl.setValue(volume);
             setcurrentVolumeSFX(volume);
         }
     }
 
-    public static void toggleMuteSFX() {
-        if (volumeControl != null) {
-            if (isMuted) {
-                // Unmute (set volume to audible volume)
-                volumeHelperSFX(currentVolumeSFX);
-                isMuted = false;
-            } else {
-                // Store the current volume before muting
-                currentVolumeSFX = volumeControl.getValue();
-                // Mute (set volume to minimum volume)
-                volumeHelperSFX(-70.0f);
-                isMuted = true;
-            }
-        }
-    }
+    // public static void toggleMuteSFX() {
+    //     if (volumeControl != null) {
+    //         if (isMutedSFX) {
+    //             // Unmute (set volume to audible volume)
+    //             setcurrentVolumeSFX(currentVolumeSFX);
+    //             isMutedSFX = false;
+    //         } else {
+    //             // Store the current volume before muting
+    //             currentVolumeSFX = volumeControl.getValue();
+    //             // Mute (set volume to minimum volume)
+    //            setcurrentVolumeSFX(-70.0f);
+    //             isMutedSFX = true;
+    //         }
+    //     }
+    // }
 
     // Used to set volume to correct value during calls.
     public static void volumeHelperSFX(float value) {
