@@ -87,6 +87,7 @@ class Town extends JPanel {
         // Button that takes player to tavern panel
         tavern.addActionListener(e -> {
             try{
+                SFX.playSound("assets/images/SFX/door-open.wav");
                 Driver.changePanel("tavern");
                 MusicPlayer.playMusic("assets/images/Music/alexander-nakarada-tavern-loop-one.wav");
             } catch (Exception e1){
