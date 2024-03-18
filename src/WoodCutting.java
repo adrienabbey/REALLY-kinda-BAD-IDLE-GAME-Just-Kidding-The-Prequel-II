@@ -16,6 +16,9 @@ public class WoodCutting extends JPanel {
     private Timer timer;
     private Image bgImage;
     private JLabel woodGrantedLabel; // Label to display wood granted message
+    private boolean auto = true; 
+    private int incrementer = 3;
+
     
     public WoodCutting(Inventory inventory) { // Accepts an Inventory object
         this.inventory = inventory; // Assign the provided Inventory object to the local variable
@@ -75,13 +78,12 @@ public class WoodCutting extends JPanel {
             }
         });
 
-        // Action listener for the 'Auto Cut' button
+        // Action listener for the 'Cut Wood' button
         autoCutButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {                
-                autoCutButton.setText("Stop Auto Cutting...");
-                autoCutWood();
-                SFX.playSound("assets/images/SFX/woodcutting-sfx.wav");
+            public void actionPerformed(ActionEvent e) {
+                autoCutWood(); // Start woodcutting process
+                SFX.playSound("assets/images/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
             }
         });
 
