@@ -62,7 +62,7 @@ private Monster enemy;
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

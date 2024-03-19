@@ -91,7 +91,7 @@ public class World extends JPanel{
         town.addActionListener(e -> {
             try {
                 Driver.changePanel("town");
-                MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
+                MusicPlayer.playMusic("assets/Music/Village Consort.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -102,7 +102,7 @@ public class World extends JPanel{
         dungeon.addActionListener(e -> {
             try {
                 Driver.changePanel("dungeon");
-                MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -113,7 +113,7 @@ public class World extends JPanel{
         home.addActionListener(e -> {
             try {
                 Driver.changePanel("home");
-                // MusicPlayer.playMusic("assets/images/Music/Fantasy Medieval Music - Song of the North.wav");
+                // MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -124,7 +124,7 @@ public class World extends JPanel{
         wood.addActionListener(e -> {
             try {
                 Driver.changePanel("wood");
-                MusicPlayer.playMusic("assets/images/Music/Lamento di Tristano [Medieval Song].wav");
+                MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -134,7 +134,7 @@ public class World extends JPanel{
         mine.addActionListener(e -> {
             try {
                 Driver.changePanel("mine");
-                MusicPlayer.playMusic("assets/images/Music/Lamento di Tristano [Medieval Song].wav");
+                MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();

@@ -130,7 +130,7 @@ class Settings extends JPanel {
                     // This loop repeatedly checks the current time until the desired wait time has passed
                 }
         
-                MusicPlayer.playMusic("assets/images/Music/Chevalier, Mult Estes Guariz - French Crusade Song-[AudioTrimmer.com].wav");
+                MusicPlayer.playMusic("assets/Music/Chevalier, Mult Estes Guariz - French Crusade Song-[AudioTrimmer.com].wav");
                 Driver.changePanel("credits");
             } catch (Exception e1) {
                 e1.printStackTrace();

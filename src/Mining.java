@@ -70,7 +70,7 @@ public class Mining extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mineOre();
-                SFX.playSound("assets/images/SFX/pickaxe-sfx.wav"); 
+                SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
             }
         });
 
@@ -79,7 +79,7 @@ public class Mining extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 autoMineOre();
-                SFX.playSound("assets/images/SFX/pickaxe-sfx.wav"); 
+                SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
             }
         });
 
@@ -89,7 +89,7 @@ public class Mining extends JPanel {
                 auto = false; // stop auto mining if left panel
                 Driver.changePanel("world");
                 SFX.stopSound();
-                MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -127,7 +127,7 @@ public class Mining extends JPanel {
                     if (!auto) {
                         timer.stop();  
                     } else {
-                        SFX.playSound("assets/images/SFX/pickaxe-sfx.wav"); 
+                        SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
                     }
                 } else {
                     progress++;

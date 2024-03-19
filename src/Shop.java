@@ -99,7 +99,7 @@ class Shop extends JPanel {
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("town");
-                MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
+                MusicPlayer.playMusic("assets/Music/Village Consort.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

@@ -72,7 +72,7 @@ public class WoodCutting extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cutWood(); // Start woodcutting process
-                SFX.playSound("assets/images/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
+                SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
             }
         });
 
@@ -81,7 +81,7 @@ public class WoodCutting extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 autoCutWood(); // Start/Stop auto woodcutting process
-                SFX.playSound("assets/images/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
+                SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
             }
         });
 
@@ -91,7 +91,7 @@ public class WoodCutting extends JPanel {
                 auto = false; // stop auto mining if left panel
                 Driver.changePanel("world");
                 SFX.stopSound();
-                MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -117,7 +117,7 @@ public class WoodCutting extends JPanel {
                     if (!auto) {
                         timer.stop();
                     } else {
-                        SFX.playSound("assets/images/SFX/woodcutting-sfx.wav"); // play sfx again if auto-mining
+                        SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play sfx again if auto-mining
                     }
                 } else {
                     progress++;

@@ -44,7 +44,7 @@ class Library extends JPanel {
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
             Driver.changePanel("town");
-            MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
+            MusicPlayer.playMusic("assets/Music/Village Consort.wav");
         });
     }
 }

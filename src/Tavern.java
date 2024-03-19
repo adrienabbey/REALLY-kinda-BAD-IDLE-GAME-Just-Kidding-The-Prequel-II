@@ -58,9 +58,9 @@ class Tavern extends JPanel {
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
             message.setText("");
-            SFX.playSound("assets/images/SFX/door-close.wav");
+            SFX.playSound("assets/SFX/door-close.wav");
             Driver.changePanel("town");
-            MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
+            MusicPlayer.playMusic("assets/Music/Village Consort.wav");
         });
 
         // Action listener for the 'Purchase' button

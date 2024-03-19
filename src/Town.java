@@ -79,7 +79,7 @@ class Town extends JPanel {
         shop.addActionListener(e -> {
             try{
                 Driver.changePanel("shop");
-                MusicPlayer.playMusic("assets/images/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
+                MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }
@@ -88,9 +88,9 @@ class Town extends JPanel {
         // Button that takes player to tavern panel
         tavern.addActionListener(e -> {
             try{
-                SFX.playSound("assets/images/SFX/door-open.wav");
+                SFX.playSound("assets/SFX/door-open.wav");
                 Driver.changePanel("tavern");
-                MusicPlayer.playMusic("assets/images/Music/alexander-nakarada-tavern-loop-one.wav");
+                MusicPlayer.playMusic("assets/Music/alexander-nakarada-tavern-loop-one.wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }
@@ -100,7 +100,7 @@ class Town extends JPanel {
         library.addActionListener(e -> {
             try{
                 Driver.changePanel("library");
-                MusicPlayer.playMusic("assets/images/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
+                MusicPlayer.playMusic("assets/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }
@@ -110,7 +110,7 @@ class Town extends JPanel {
         leave.addActionListener(e -> {
             try {
                 Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/images/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
