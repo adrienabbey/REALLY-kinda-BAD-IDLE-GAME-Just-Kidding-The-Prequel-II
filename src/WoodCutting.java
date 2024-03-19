@@ -54,7 +54,7 @@ public class WoodCutting extends JPanel {
 
         // Create label for wood granted message
         woodGrantedLabel = new JLabel("");
-        woodGrantedLabel.setFont(new Font("Serif", Font.BOLD, 18));
+        woodGrantedLabel.setFont(new Font("Serif", Font.BOLD, 22));
         woodGrantedLabel.setForeground(Color.GREEN); // Green color for wood granted message
 
         // Add components to the panel
@@ -63,9 +63,9 @@ public class WoodCutting extends JPanel {
         buttonPanel.add(cutButton);
         buttonPanel.add(autoCutButton);
         buttonPanel.add(leave);
-        add(buttonPanel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.SOUTH);
         add(progressBar, BorderLayout.CENTER);
-        add(woodGrantedLabel, BorderLayout.SOUTH); // Add wood granted label to the panel
+        add(woodGrantedLabel, BorderLayout.NORTH); // Add wood granted label to the panel
 
         // Action listener for the 'Cut Wood' button
         cutButton.addActionListener(new ActionListener() {

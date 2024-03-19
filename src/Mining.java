@@ -53,7 +53,7 @@ public class Mining extends JPanel {
 
         // Create label for ore granted message
         oreGrantedLabel = new JLabel("");
-        oreGrantedLabel.setFont(new Font("Serif", Font.BOLD, 18));
+        oreGrantedLabel.setFont(new Font("Serif", Font.BOLD, 22));
         oreGrantedLabel.setForeground(Color.GREEN); // Green color for ore granted message
 
         // Add components to the panel
@@ -61,9 +61,9 @@ public class Mining extends JPanel {
         buttonPanel.add(cutButton);
         buttonPanel.add(autoCutButton);
         buttonPanel.add(leave);
-        add(buttonPanel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.SOUTH);
         add(progressBar, BorderLayout.CENTER);
-        add(oreGrantedLabel, BorderLayout.SOUTH); // Add ore granted label to the panel
+        add(oreGrantedLabel, BorderLayout.NORTH); // Add ore granted label to the panel
 
         // Action listener for the 'Cut Wood' button
         cutButton.addActionListener(new ActionListener() {
