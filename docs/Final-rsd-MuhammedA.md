@@ -8,14 +8,17 @@
     3. There will be a character screen so the user can see their character's condition.
 
 ```
-1E. Observe if the game has graphical user interface and that buttons are included.
-    
-    1e. Check whether the interface is controlled by the Driver by obersing the code. Check whether screen swaps are 
-    removed and screens are unified.
+1E. Observe if the game has graphical user interface and that buttons are 
+    included.
+
+    1e. Check whether the interface is controlled by the Driver by obersing the 
+        code. Check whether screen swaps are removed and screens are unified.
        
-    2e. Observe is a start screen is present, and if the new game, load game, instructions, and exit buttons are present and functional.
+    2e. Observe is a start screen is present, and if the new game, load game, 
+        instructions, and exit buttons are present and functional.
        
-    3e. Run game and check if a character screen is present that includes a summary of the character's condition. 
+    3e. Run game and check if a character screen is present that includes a 
+        summary of the character's condition. 
 ```
 ---
 
@@ -28,30 +31,39 @@
             2. Upgrading the potion belt will increase this maximum.
    
 ```
-2E. Test if the load, save, and character creation implementation is present and functional.
+2E. Test if the load, save, and character creation implementation is present and 
+    functional.
 
-  ie. Observe whether yhe save button in the start screen saves player data to a file correctly,
-      and that the load button will use this save file to load player data to the active game. Check
-      whether the loaded player data matches with the saved player data.
+    ie. Observe whether yhe save button in the start screen saves player data to 
+        a file correctly, and that the load button will use this save file to 
+        load player data to the active game. Check whether the loaded player 
+        data matches with the saved player data.
 
-  iie. Check if a name, muscle stat, brain stat, and heart stat are present for each player character info.
+    iie. Check if a name, muscle stat, brain stat, and heart stat are present 
+        for each player character info.
 
-        Ae. Check player's inventory to see if equipment and gold is current present or can be present in
-            inventory after acquiring.
+        Ae. Check player's inventory to see if equipment and gold is current 
+            present or can be present in inventory after acquiring.
 
-        Be. Check the player's inventory for a potion belt that contains potions and can be upgraded.
+        Be. Check the player's inventory for a potion belt that contains potions 
+            and can be upgraded.
+
             1e. Observe if the potion belt can have a maximum number of potions.
-            2e. Observe if this maximum is increased whenever the belt is upgraded.
+            
+            2e. Observe if this maximum is increased whenever the belt is 
+                upgraded.
 ```
 ---
 
 3. The user shall start at a world map screen upon picking a character, loaded or fresh.
     1. The map screen will have a selection for a town shop and a dungeon. Dungeons will have an option for increasing their difficulty.
 ```
-3E. Check if user gets to the world map screen after choosing player stats, loading a save file. or creating a new one.
+3E. Check if user gets to the world map screen after choosing player stats, 
+    loading a save file. or creating a new one.
 
-    ie.  Check wether the map screen has buttons pretaining to a town and dungeon. Test whether the dungeon can be
-         selected with increasing difficulty.
+    ie.  Check wether the map screen has buttons pretaining to a town and 
+        dungeon. Test whether the dungeon can be selected with increasing 
+        difficulty.
 ```
 ---
 
@@ -60,10 +72,15 @@
     2. The player can buy potions to refill their belt.
     3. The player can also use a potion to restore their health in the inventory screen.
 ```
-4E. Check if potions can be bought from the town shop screen. Check if the town screen can be accessed from the map screen.
+4E. Check if potions can be bought from the town shop screen. Check if the town 
+    screen can be accessed from the map screen.
 
-    ie. Upgrade the potion belt size and check if more potions can be successfully added.  
-    iie. Check whether a buy button is present and when pressed refills the user belt potion by a standarized amount.
+    ie. Upgrade the potion belt size and check if more potions can be 
+        successfully added.  
+
+    iie. Check whether a buy button is present and when pressed refills the user 
+        belt potion by a standarized amount.
+
     iiie. Check whether a player can use a potion in their inventory screen.
 ```
 ---
@@ -85,38 +102,56 @@
         1. After the user clicks the withdraw button, the current combat will resolve normally.
         2. Withdrawing from a dungeon without dying will return the player to the map screen.
 ```
-5E. Check whether the map screen contains a dungeon button and that the dungeon can be accessed by pressing it.
+5E. Check whether the map screen contains a dungeon button and that the dungeon 
+    can be accessed by pressing it.
 
-    ie. Check whether dungeons can only be accessed if the player's health is above zero.
-        Ae. Check whether the dungeon screen has multiple areas to choose from and that different
-difficulties are present.
-        Be. Check wether monsters are generated once entering a dungeon and that each dungeon have
-at least one differing monster generated.
+    ie. Check whether dungeons can only be accessed if the player's health is 
+        above zero.
 
-    iie. Check whether there is a button that toggles between offensive and healing magic. Observe if
- toggles tis button has the intended effect.
-        Ae. Check whether toggling this button casts the magic heal or attack based on a dice roll.
- Observe if output of magic casted is based in some way on the brain stat.
+        Ae. Check whether the dungeon screen has multiple areas to choose from 
+            and that different difficulties are present.
+
+        Be. Check wether monsters are generated once entering a dungeon and that 
+            each dungeon have at least one differing monster generated.
+
+    iie. Check whether there is a button that toggles between offensive and 
+        healing magic. Observe if toggles tis button has the intended effect.
+        
+        Ae. Check whether toggling this button casts the magic heal or attack 
+            based on a dice roll. Observe if output of magic casted is based in 
+            some way on the brain stat.
 
     iiie. Observe if dice rolls affect combat damage recived and done.
+
         Ae. Check whether combat is turn based.
 
-    IVe. Check whether a button is present in the attack screen that uses a potion from the potion belt.
-Check whethe using a potion in this way heals the player and consumes one potion from the belt.
+    IVe. Check whether a button is present in the attack screen that uses a 
+        potion from the potion belt. Check whethe using a potion in this way 
+        heals the player and consumes one potion from the belt.
 
-    Ve.The system correctly detects when the player's HP reaches 0. Combat is appropriately paused upon
-reaching 0 HP. There is a clear indication of how the player can resume combat (e.g., after a certain amount of time or
- using a healing potion). The healing process restores the player's HP to a functional level, allowing them to continue combat.
+    Ve. The system correctly detects when the player's HP reaches 0. Combat is 
+        appropriately paused upon reaching 0 HP. There is a clear indication of 
+        how the player can resume combat (e.g., after a certain amount of time 
+        or using a healing potion). The healing process restores the player's HP 
+        to a functional level, allowing them to continue combat.
 
-    VIe. The system accurately detects when a monster's HP reaches 0. Gold and equipment upgrade rewards are appropriately
-given upon defeating the monster The chance for equipment upgrades occurs randomly and adheres to the specified probability.
-There is clear feedback to the player regarding the rewards they receive after defeating the monster.
+    VIe. The system accurately detects when a monster's HP reaches 0. Gold and 
+        equipment upgrade rewards are appropriately given upon defeating the 
+        monster The chance for equipment upgrades occurs randomly and adheres to 
+        the specified probability. There is clear feedback to the player 
+        regarding the rewards they receive after defeating the monster.
+
         Ae. Check whether a new monster is spawned in after defeating one.
 
-    VIIe. A clearly visible option/button exists for the player to choose to withdraw from the dungeon.
-Clicking the withdraw button initiates the withdrawal process.
-        Ae. Combat resolves normally upon withdrawal, ensuring no inconsistencies or glitches.
-        Be. Upon withdrawal, the player is correctly returned to the map screen, disabling further dungeon exploration.
+    VIIe. A clearly visible option/button exists for the player to choose to 
+        withdraw from the dungeon. Clicking the withdraw button initiates the 
+        withdrawal process.
+
+        Ae. Combat resolves normally upon withdrawal, ensuring no 
+            inconsistencies or glitches.
+
+        Be. Upon withdrawal, the player is correctly returned to the map screen, 
+            disabling further dungeon exploration.
 ```
 ---
 
@@ -128,11 +163,15 @@ Clicking the withdraw button initiates the withdrawal process.
 6E. Ensure that the player's gear includes a weapon, armor, and head-piece.
 
     ie. Gear is acquired through defeating enemies in the dungeon.
-        Ae. The upgrade chance calculation considers the current level of the dungeon. It also takes into account the
-levels of the player's current gear. The disparity between current gear levels and potential upgrade levels is calculated accurately.
 
-        Be. Check whhether each combat session upgrades a single piece of equipment at most. Check wower-level gear
-has a higher chance to upgrade compared to higher-level gear.
+        Ae. The upgrade chance calculation considers the current level of the 
+            dungeon. It also takes into account the levels of the player's 
+            current gear. The disparity between current gear levels and 
+            potential upgrade levels is calculated accurately.
+
+        Be. Check whhether each combat session upgrades a single piece of 
+            equipment at most. Check wower-level gear has a higher chance to 
+            upgrade compared to higher-level gear.
 ```
 ---
 
@@ -147,9 +186,7 @@ has a higher chance to upgrade compared to higher-level gear.
 8. Equipment: Items in te game that can be eqipped to the character and modify stats. Can be acquired through combat in the dungeon. 
 
 ## Signatures
-- Adrien Abbey
-- Luke Davidson
-- Brandon Walker
-- Muhammed Abushamma
-
-
+- 
+- 
+- 
+- 
