@@ -15,7 +15,7 @@ class Town extends JPanel {
 
         super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/town2.png")), 0, 0, getWidth(), getHeight(), this);
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
@@ -90,11 +90,8 @@ class Town extends JPanel {
             try{
                 SFX.playSound("assets/SFX/door-open.wav");
                 Driver.changePanel("tavern");
-                
-                    Thread.sleep(2000); // Pause for 2 seconds
-                
                 MusicPlayer.playMusic("assets/Music/alexander-nakarada-tavern-loop-one.wav");
-                Driver.changePanel("world");
+
             } catch (Exception e1){
                 e1.printStackTrace();
             }

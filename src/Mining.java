@@ -87,6 +87,9 @@ public class Mining extends JPanel {
         leave.addActionListener(e -> {
             try {
                 auto = false; // stop auto mining if left panel
+                timer.stop(); // stop mining process
+                autoCutButton.setText("Auto Cut"); // reset automining label
+                
                 Driver.changePanel("world");
                 SFX.stopSound();
                 MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
@@ -107,6 +110,8 @@ public class Mining extends JPanel {
 
                     if (ore % 5 == 0) {
                         oreGrantedLabel.setText("Metal granted!"); // Update metal granted label
+                        SFX.playSound("assets/SFX/metal-ringing1.wav"); 
+
                         int currentMetal = inventory.getResource("Metal");
                         // Increment metal resource variable
                         inventory.setResource("Metal", currentMetal + 1);
@@ -115,6 +120,8 @@ public class Mining extends JPanel {
 
                     } else {
                         oreGrantedLabel.setText("Stone granted!"); // Update stone granted label
+                        SFX.playSound("assets/SFX/stone-gathering-sfx.wav"); 
+
                         int currentStone = inventory.getResource("Stone");
                         // Increment stone resource variable
                         inventory.setResource("Stone", currentStone + 1);

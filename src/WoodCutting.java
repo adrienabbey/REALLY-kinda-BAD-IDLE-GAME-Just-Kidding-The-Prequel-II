@@ -89,6 +89,9 @@ public class WoodCutting extends JPanel {
         leave.addActionListener(e -> {
             try {
                 auto = false; // stop auto mining if left panel
+                timer.stop(); // stop woodcutting process
+                autoCutButton.setText("Auto Cut"); // reset autocutting label
+                
                 Driver.changePanel("world");
                 SFX.stopSound();
                 MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
@@ -97,7 +100,7 @@ public class WoodCutting extends JPanel {
             }
         });
 
-        // Timer for automatic woodcutting process
+        // Timer for woodcutting process
         timer = new Timer(1000, new ActionListener() {
             int progress = 0;
 
