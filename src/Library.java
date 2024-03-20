@@ -43,6 +43,7 @@ class Library extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("town");
             MusicPlayer.playMusic("assets/Music/Village Consort.wav");
         });

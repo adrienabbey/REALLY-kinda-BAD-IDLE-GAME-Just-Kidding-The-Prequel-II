@@ -1,5 +1,3 @@
-import java.awt.Dimension;
-
 import javax.swing.*;
 import java.awt.*;
 import javax.imageio.ImageIO;
@@ -61,6 +59,7 @@ private Monster enemy;
         });
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
                 MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
             } catch (Exception e1) {
@@ -70,6 +69,7 @@ private Monster enemy;
 
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
             } catch (Exception e1) {
                 e1.printStackTrace();

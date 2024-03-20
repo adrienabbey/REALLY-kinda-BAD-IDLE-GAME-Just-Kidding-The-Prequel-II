@@ -87,6 +87,7 @@ class Shop extends JPanel {
          */
         // Buy button adds a potion to the player's inventory
         buy.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             if (buyScreenOpen == false) { // Check if buy screen is not already open
                 buyScreenOpen = true; // Set buy screen as open
             
@@ -147,6 +148,7 @@ class Shop extends JPanel {
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
+                            SFX.playSound("assets/SFX/coin3.wav");
                             
                         } else {
                             err_message.setText("Cannot buy item, no more gold.");
@@ -184,6 +186,7 @@ class Shop extends JPanel {
          */
         // Sell button to sell equipment or potions for gold
         sell.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             if (sellScreenOpen == false) { // Check if sell screen is not already open
                 sellScreenOpen = true; // Set sell screen as open
 
@@ -246,7 +249,7 @@ class Shop extends JPanel {
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
                             sellItemButton.setText("Sell " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the sell button label
-                            SFX.playSound("assets/SFX/RPG Sound Pack/inventory/coin.wav");
+                            SFX.playSound("assets/SFX/coin3.wav");
                         } else {
                             err_message.setText("Cannot sell item, no items left.");
                         }
@@ -279,6 +282,7 @@ class Shop extends JPanel {
         // Goes to inventory
         inventory1.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
                  // TODO: Add inventory implementation
             } catch (Exception e1) {
@@ -289,6 +293,7 @@ class Shop extends JPanel {
         // Leave button takes you back to the town panel
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/Village Consort.wav");
             } catch (Exception e1) {

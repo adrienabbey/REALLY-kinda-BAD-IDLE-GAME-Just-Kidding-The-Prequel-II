@@ -90,6 +90,7 @@ public class World extends JPanel{
         // Town button takes you to the town
         town.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/Village Consort.wav");
                 
@@ -101,6 +102,7 @@ public class World extends JPanel{
         // Dungeon button takes you to the dungeon
         dungeon.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("dungeon");
                 MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
                 
@@ -112,6 +114,7 @@ public class World extends JPanel{
         // Home button takes you to the Home screen
         home.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("home");
                 // MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
                 
@@ -123,6 +126,7 @@ public class World extends JPanel{
         // WoodCutting button takes you to the Woodcutting screen
         wood.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("wood");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
             } catch (Exception e1) {
@@ -133,6 +137,7 @@ public class World extends JPanel{
         // Mining button takes you to the mining screen
         mine.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("mine");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
                 
@@ -144,6 +149,7 @@ public class World extends JPanel{
         // Leave button takes you to the start screen
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("start");              
             } catch (Exception e1) {
                 e1.printStackTrace();

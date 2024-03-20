@@ -62,6 +62,7 @@ public class Inventory extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("shop"); 
             // MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
         });

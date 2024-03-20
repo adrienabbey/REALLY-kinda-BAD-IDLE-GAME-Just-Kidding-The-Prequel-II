@@ -38,6 +38,7 @@ class LoadScreen extends JPanel{
 
         back.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("start");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -45,6 +46,7 @@ class LoadScreen extends JPanel{
         });
         select.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 //TODO - Add load functionality
                 Driver.changePanel("world");
             } catch (Exception e1) {

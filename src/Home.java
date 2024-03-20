@@ -57,12 +57,14 @@ class Home extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             message.setText("");
             Driver.changePanel("world");
         });
 
         // Action listener for the 'Purchase' button
         purchase.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             if (player.getGold() < 1000) {
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>You do not have enough Gold to purchase the homestead.</div></html>");

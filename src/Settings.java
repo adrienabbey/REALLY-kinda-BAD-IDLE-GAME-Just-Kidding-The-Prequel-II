@@ -102,6 +102,7 @@ class Settings extends JPanel {
         // Volume button mutes or unmutes master volume.
         mute.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 MusicPlayer.toggleMute(); 
                 // SFX.toggleMuteSFX();
                 if (isMute) {
@@ -120,6 +121,7 @@ class Settings extends JPanel {
 
         credits.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Credits.yPos = 1050;
                 long startTime = System.currentTimeMillis();
                 long waitTime = 75; // Wait for 75 milliseconds (0.075 seconds), so that credits text is properly set to correct location without previous text's location being seen.
@@ -139,6 +141,7 @@ class Settings extends JPanel {
         // "Back to main menu button" takes you back to the start screen
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("start");
             } catch (Exception e1) {
                 e1.printStackTrace();

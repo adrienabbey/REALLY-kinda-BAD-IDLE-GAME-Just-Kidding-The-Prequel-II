@@ -83,6 +83,7 @@ public class Mining extends JPanel {
         cutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SFX.playSound("assets/SFX/interface1.wav");
                 mineOre();
                 SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
             }
@@ -92,6 +93,7 @@ public class Mining extends JPanel {
         autoCutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SFX.playSound("assets/SFX/interface1.wav");
                 autoMineOre();
                 SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
             }
@@ -100,6 +102,7 @@ public class Mining extends JPanel {
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 auto = false; // stop auto mining if left panel
                 timer.stop(); // stop mining process
                 autoCutButton.setText("Auto Cut"); // reset automining label

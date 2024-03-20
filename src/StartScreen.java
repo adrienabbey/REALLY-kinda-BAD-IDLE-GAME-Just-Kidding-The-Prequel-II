@@ -40,8 +40,8 @@ class StartScreen extends JPanel{
         buttons.add(loadGame);
         JButton instructions = new JButton("Instructions");
         buttons.add(instructions);
-        JButton volume = new JButton("Settings");
-        buttons.add(volume);
+        JButton settings = new JButton("Settings");
+        buttons.add(settings);
 
         Color customColorBlue = new Color(46, 86, 161);
         Color customColorBeige = new Color(253, 236, 166);
@@ -61,7 +61,7 @@ class StartScreen extends JPanel{
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(instructions);
         add(Box.createRigidArea(new Dimension(0, 10)));
-        add(volume);
+        add(settings);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(quit);
         add(Box.createVerticalGlue());
@@ -91,6 +91,7 @@ class StartScreen extends JPanel{
         // Create new Character
         newGame.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("cc");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -99,22 +100,26 @@ class StartScreen extends JPanel{
 
         // Load a saved game
         loadGame.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("load");
         });
 
         //View Game instructions
         instructions.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("instructions");
         });
 
         // Quit the game
         quit.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             System.exit(0);
         });
 
         // Go to settings panel
-        volume.addActionListener(e -> {
+        settings.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("settings");             
             } catch (Exception e1) {
                 e1.printStackTrace();

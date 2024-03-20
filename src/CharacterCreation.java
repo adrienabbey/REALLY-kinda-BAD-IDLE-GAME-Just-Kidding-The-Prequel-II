@@ -143,6 +143,7 @@ class CharacterCreation extends JPanel{
 
         // Reduce Strength
         weaker.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface6.wav");
             if(muscle > 0){
                 muscle--;
                 statPoints++;
@@ -158,6 +159,7 @@ class CharacterCreation extends JPanel{
 
         // Increase Strength
         stronger.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface6.wav");
             if(statPoints > 0){
                 muscle++;
                 statPoints--;
@@ -173,6 +175,7 @@ class CharacterCreation extends JPanel{
 
         // Reduce Intelligence
         dumber.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface6.wav");
             if(brain > 0){
                 brain--;
                 statPoints++;
@@ -188,6 +191,7 @@ class CharacterCreation extends JPanel{
 
         // Increase Intelligence
         smarter.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface6.wav");
             if(statPoints > 0){
                 brain++;
                 statPoints--;
@@ -203,6 +207,7 @@ class CharacterCreation extends JPanel{
 
         // Reduce Constitution
         softer.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface6.wav");
             if(heart > 0){
                 heart--;
                 statPoints++;
@@ -218,6 +223,7 @@ class CharacterCreation extends JPanel{
 
         // Increase Constitution
         tougher.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface6.wav");
             if(statPoints > 0){
                 heart++;
                 statPoints--;
@@ -233,6 +239,7 @@ class CharacterCreation extends JPanel{
 
         // Submit character
         submit.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10*statPoints, 1, 0);
             try {
                 Driver.setPlayer(player);
