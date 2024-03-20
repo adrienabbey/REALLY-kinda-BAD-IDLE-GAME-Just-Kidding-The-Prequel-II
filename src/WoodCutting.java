@@ -106,6 +106,7 @@ public class WoodCutting extends JPanel {
                 if (progress >= 10) {
                     progressBar.setValue(100);
                     woodGrantedLabel.setText("Wood granted!"); // Update wood granted label
+                    SFX.playSound("assets/SFX/wood-gathering-sfx.wav");
 
                     int currentWood = inventory.getResource("Wood");
                     // Increment wood resource variable

@@ -90,7 +90,11 @@ class Town extends JPanel {
             try{
                 SFX.playSound("assets/SFX/door-open.wav");
                 Driver.changePanel("tavern");
+                
+                    Thread.sleep(2000); // Pause for 2 seconds
+                
                 MusicPlayer.playMusic("assets/Music/alexander-nakarada-tavern-loop-one.wav");
+                Driver.changePanel("world");
             } catch (Exception e1){
                 e1.printStackTrace();
             }
