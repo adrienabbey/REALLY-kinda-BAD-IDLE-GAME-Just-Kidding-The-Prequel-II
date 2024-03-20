@@ -14,6 +14,8 @@ import java.awt.BorderLayout;
 class Shop extends JPanel {
 
     private Inventory inventory; // Reference to the Inventory object
+    private boolean sellScreenOpen = false; // Flag to track if the sell screen is open
+    private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
     
     @Override
     protected void paintComponent(Graphics g) {
@@ -85,6 +87,9 @@ class Shop extends JPanel {
          */
         // Buy button adds a potion to the player's inventory
         buy.addActionListener(e -> {
+            if (buyScreenOpen == false) { // Check if buy screen is not already open
+                buyScreenOpen = true; // Set buy screen as open
+            
             // Remove existing buttons
             // this.removeAll();
             // this.revalidate();
@@ -95,7 +100,7 @@ class Shop extends JPanel {
 
             // Create a label to display the player's gold count
             JLabel goldLabel = new JLabel("Gold: " + inventory.getResource("Gold"));
-            goldLabel.setFont(new Font("Serif", Font.BOLD, 24));
+            goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
 
             // Create a close button
@@ -103,16 +108,18 @@ class Shop extends JPanel {
             closeButton.addActionListener(closeEvent -> {
                 // Remove the sell panel and the close button
                 remove(mainPanel);
+                buyScreenOpen = false; // Set sell screen as closed
                 revalidate();
                 repaint();
             });
 
             // Create buy label message
             JLabel buy_label = new JLabel("Buy");
-            buy_label.setFont(new Font("Serif", Font.BOLD, 24));
+            buy_label.setFont(new Font("Serif", Font.BOLD, 28));
 
             // Create error message
             JLabel err_message = new JLabel("");
+            err_message.setFont(new Font("Serif", Font.BOLD, 24));
 
             // Add the close button to the top right corner
             JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -123,12 +130,15 @@ class Shop extends JPanel {
             JPanel buyPanel = new JPanel();
             buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
         
-            // Add items from shop to buy panel
+            // Add all items from inventory to shop. 
             for (String resourceName : inventory.getResources().keySet()) {
                     JButton buyItemButton = new JButton("Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
+                    // Format buttons
+                    buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                    
                     buyItemButton.addActionListener(sellEvent -> {
-                        // Implement buying logic here
-                        // 
+                        
+                        // If Gold is greater than 0 then buy resource,, else output error message. 
                         if ((inventory.getResource("Gold") > 0)) {
                             err_message.setText("");
                             inventory.setResource(resourceName, inventory.getResource(resourceName)  + 1); // add the resource from inventory
@@ -136,7 +146,8 @@ class Shop extends JPanel {
                             inventory.setResource("Gold", currentGold - 1); // decrease gold 
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
-                            buyItemButton.setText("Sell " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the sell button label
+                            buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
+                            
                         } else {
                             err_message.setText("Cannot buy item, no more gold.");
                         }
@@ -158,7 +169,11 @@ class Shop extends JPanel {
             add(mainPanel, BorderLayout.CENTER);
             revalidate();
             repaint();
-        });
+        } else {
+            // Output error message that only one sell screen can be opened at a time
+            JOptionPane.showMessageDialog(this, "Only one buy screen can be opened at a time.", "Buy Screen Error", JOptionPane.ERROR_MESSAGE);
+        }
+    });
         
 
         /*
@@ -169,6 +184,9 @@ class Shop extends JPanel {
          */
         // Sell button to sell equipment or potions for gold
         sell.addActionListener(e -> {
+            if (sellScreenOpen == false) { // Check if sell screen is not already open
+                sellScreenOpen = true; // Set sell screen as open
+
             // Remove existing buttons
             // this.removeAll();
             // this.revalidate();
@@ -179,7 +197,7 @@ class Shop extends JPanel {
 
             // Create a label to display the player's gold count
             JLabel goldLabel = new JLabel("Gold: " + inventory.getResource("Gold"));
-            goldLabel.setFont(new Font("Serif", Font.BOLD, 24));
+            goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
 
             // Create a close button
@@ -187,33 +205,39 @@ class Shop extends JPanel {
             closeButton.addActionListener(closeEvent -> {
                 // Remove the sell panel and the close button
                 remove(mainPanel);
+                sellScreenOpen = false; // Set sell screen as closed
                 revalidate();
                 repaint();
             });
 
             // Create sell label
             JLabel sell_label = new JLabel("Sell");
-            sell_label.setFont(new Font("Serif", Font.BOLD, 24));
+            sell_label.setFont(new Font("Serif", Font.BOLD, 28));
 
             // Create error message
             JLabel err_message = new JLabel("");
+            err_message.setFont(new Font("Serif", Font.BOLD, 25));
 
             // Add the close button to the top right corner
             JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             closeButtonPanel.add(closeButton);
         
-            // Create a menu for selling items
+            // Create a scrolling menu for selling items
             JScrollPane scrollPane = new JScrollPane();
             JPanel sellPanel = new JPanel();
             sellPanel.setLayout(new BoxLayout(sellPanel, BoxLayout.Y_AXIS));
         
             // Add items from the inventory to the sell panel
             for (String resourceName : inventory.getResources().keySet()) {
+                // if the resource amount exceeds 1 from your inventory, add it to the sell menu as a possible item to sell.
                 if (inventory.getResource(resourceName) > 0) {
                     JButton sellItemButton = new JButton("Sell " + resourceName + " (" + inventory.getResource(resourceName) + ")");
+                    // format buttons
+                    sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                    
                     sellItemButton.addActionListener(sellEvent -> {
-                        // Implement selling logic here
-                        // deduct the item from the inventory and add gold to the player's resources
+
+                        // If resource is greater than 0, it is able to sell, else output error message. 
                         if ((inventory.getResource(resourceName) > 0)) {
                             err_message.setText("");
                             inventory.setResource(resourceName, inventory.getResource(resourceName)  - 1); // minus the resource from inventory
@@ -244,7 +268,11 @@ class Shop extends JPanel {
             add(mainPanel, BorderLayout.CENTER);
             revalidate();
             repaint();
-        });
+        } else {
+            // Output error message that only one sell screen can be opened at a time
+            JOptionPane.showMessageDialog(this, "Only one sell screen can be opened at a time.", "Sell Screen Error", JOptionPane.ERROR_MESSAGE);
+        }
+    });
             
 
         // Goes to inventory

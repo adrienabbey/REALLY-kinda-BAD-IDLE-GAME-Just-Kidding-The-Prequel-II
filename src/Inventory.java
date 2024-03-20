@@ -28,7 +28,7 @@ public class Inventory extends JPanel {
         resources.put("Wood", 10);
         resources.put("Metal", 10);
         resources.put("Stone", 10);
-        resources.put("Potion", 0);
+        resources.put("Potions", 0);
 
         // Inventory panel
         JPanel inventoryPanel = new JPanel(new GridLayout(2, 4));
