@@ -38,7 +38,7 @@ class Settings extends JPanel {
         JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
         slider.setBackground(customColorBrown); // Set the background color
 
-        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
+        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -7); // range from -70 to 6
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
         JButton mute = new JButton("Mute Music Volume");
