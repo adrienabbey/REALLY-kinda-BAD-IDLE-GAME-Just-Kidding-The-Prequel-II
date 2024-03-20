@@ -15,7 +15,7 @@ class Town extends JPanel {
 
         super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/town2.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();

@@ -32,25 +32,94 @@ public class WoodCutting extends JPanel {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(950, 20, 0, 20)); // Add padding around the panel
 
+
         // Create the 'Cut Wood' button
-        cutButton = new JButton("Cut Tree");
-        cutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        cutButton = new JButton("Mine Ore");
+        cutButton.setFont(new Font("Serif", Font.ITALIC, 24));
+        cutButton.setForeground(new Color(205, 133, 63)); // Light wood color
+        cutButton.setBackground(new Color(0,100,0,192)); // Set the background color to a transparent green
+        cutButton.setOpaque(true); // Make the background visible
         cutButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Auto Cut' button
-        autoCutButton = new JButton("Auto Cut");
-        autoCutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        autoCutButton = new JButton("Auto Mine");
+        autoCutButton.setFont(new Font("Serif", Font.ITALIC, 24));
+        autoCutButton.setForeground(new Color(205, 133, 63)); // Light wood color
+        autoCutButton.setBackground(new Color(0,100,0,192)); // Set the background color to a transparent green
+        autoCutButton.setOpaque(true); // Make the background visible
         autoCutButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Leave' button
         JButton leave = new JButton("Leave");
-        leave.setFont(new Font("Serif", Font.BOLD, 24));
+        leave.setFont(new Font("Serif", Font.ITALIC, 24));
+        leave.setForeground(new Color(205, 133, 63)); // Light wood color
+        leave.setBackground(new Color(0,100,0,192)); // Set the background color to a transparent green
+        leave.setOpaque(true); // Make the background visible
         leave.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the progress bar
         progressBar = new JProgressBar();
         progressBar.setStringPainted(true);
+        progressBar.setFont(new Font("Serif", Font.ITALIC, 24));
+        progressBar.setForeground(new Color(205, 133, 63)); // Light wood color
+        progressBar.setBackground(new Color(0,100,0,192)); // Set the background color to a transparent green
+        progressBar.setOpaque(true); // Make the background visible
         progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
+
+        
+//---Green and Brown---//
+ //******************************************       
+        // // Create the 'Cut Wood' button
+        // cutButton = new JButton("Cut Tree");
+        // cutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        // cutButton.setForeground(new Color(255, 255, 255)); // White text
+        // cutButton.setBackground(new Color(112, 72, 30)); // Dark wood color
+        // cutButton.setFocusPainted(false); // Remove focus ring around the button
+
+        // // Create the 'Auto Cut' button
+        // autoCutButton = new JButton("Auto Cut");
+        // autoCutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        // autoCutButton.setForeground(new Color(255, 255, 255)); // White text
+        // autoCutButton.setBackground(new Color(112, 72, 30)); // Dark wood color
+        // autoCutButton.setFocusPainted(false); // Remove focus ring around the button
+
+        // // Create the 'Leave' button
+        // JButton leave = new JButton("Leave");
+        // leave.setFont(new Font("Serif", Font.BOLD, 24));
+        // leave.setForeground(new Color(255, 255, 255)); // White text
+        // leave.setBackground(new Color(112, 72, 30)); // Dark wood color
+        // leave.setFocusPainted(false); // Remove focus ring around the button
+
+
+// // JButton with gradient color, might use later.
+// JButton leave = new JButton("Leave") {
+//     @Override
+//     protected void paintComponent(Graphics g) {
+//         Graphics2D g2d = (Graphics2D) g;
+//         int width = getWidth();
+//         int height = getHeight();
+//         Color color1 = new Color(19, 29, 19);
+//         Color color2 = new Color(255, 142, 85);
+//         GradientPaint gp = new GradientPaint(0, 0, color1, 0, height, color2);
+//         g2d.setPaint(gp);
+//         g2d.fillRect(0, 0, width, height);
+//         super.paintComponent(g);
+//     }
+// };
+// leave.setFont(new Font("Serif", Font.BOLD, 24));
+// leave.setForeground(new Color(255, 255, 255)); // White text
+// leave.setContentAreaFilled(false);
+
+
+        // // Create the progress bar
+        // progressBar = new JProgressBar();
+        // progressBar.setStringPainted(true);
+        // progressBar.setFont(new Font("Serif", Font.BOLD, 24));
+        // progressBar.setForeground(new Color(0,100,0)); // green
+        // progressBar.setBackground(Color.LIGHT_GRAY); 
+        // progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
+//*******************************************************
+
 
         // Create label for wood granted message
         woodGrantedLabel = new JLabel("");
@@ -91,7 +160,7 @@ public class WoodCutting extends JPanel {
                 auto = false; // stop auto mining if left panel
                 timer.stop(); // stop woodcutting process
                 autoCutButton.setText("Auto Cut"); // reset autocutting label
-                
+
                 Driver.changePanel("world");
                 SFX.stopSound();
                 MusicPlayer.playMusic("assets/Music/Brilliant1.wav");

@@ -34,22 +34,36 @@ public class Mining extends JPanel {
 
         // Create the 'Cut Wood' button
         cutButton = new JButton("Mine Ore");
-        cutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        cutButton.setFont(new Font("Serif", Font.ITALIC, 24));
+        cutButton.setForeground(new Color(205, 133, 63)); // Light wood color
+        cutButton.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
+        cutButton.setOpaque(true); // Make the background visible
         cutButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Auto Cut' button
         autoCutButton = new JButton("Auto Mine");
-        autoCutButton.setFont(new Font("Serif", Font.BOLD, 24));
+        autoCutButton.setFont(new Font("Serif", Font.ITALIC, 24));
+        autoCutButton.setForeground(new Color(205, 133, 63)); // Light wood color
+        autoCutButton.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
+        autoCutButton.setOpaque(true); // Make the background visible
         autoCutButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Leave' button
         JButton leave = new JButton("Leave");
-        leave.setFont(new Font("Serif", Font.BOLD, 24));
+        leave.setFont(new Font("Serif", Font.ITALIC, 24));
+        leave.setForeground(new Color(205, 133, 63)); // Light wood color
+        leave.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
+        leave.setOpaque(true); // Make the background visible
         leave.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the progress bar
         progressBar = new JProgressBar();
         progressBar.setStringPainted(true);
+        progressBar.setFont(new Font("Serif", Font.ITALIC, 24));
+        progressBar.setForeground(new Color(205, 133, 63)); // Light wood color
+        progressBar.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
+        progressBar.setOpaque(true); // Make the background visible
+        progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
 
         // Create label for ore granted message
         oreGrantedLabel = new JLabel("");
