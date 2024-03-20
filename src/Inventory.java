@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.awt.Color;
-import java.awt.Font;
 
 public class Inventory extends JPanel {
 
@@ -26,10 +24,11 @@ public class Inventory extends JPanel {
 
         // Initialize resources map
         resources = new HashMap<>();
-        resources.put("Gold", 0);
-        resources.put("Wood", 0);
-        resources.put("Metal", 0);
-        resources.put("Stone", 0);
+        resources.put("Gold", 100);
+        resources.put("Wood", 10);
+        resources.put("Metal", 10);
+        resources.put("Stone", 10);
+        resources.put("Potion", 0);
 
         // Inventory panel
         JPanel inventoryPanel = new JPanel(new GridLayout(2, 4));
@@ -63,7 +62,7 @@ public class Inventory extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
-                Driver.changePanel("town"); 
+                Driver.changePanel("shop"); 
             // MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
         });
     }
@@ -98,6 +97,10 @@ public class Inventory extends JPanel {
                 }
             }
         }
+    }
+
+    public Map<String, Integer> getResources() {
+    return resources;
     }
 }
 

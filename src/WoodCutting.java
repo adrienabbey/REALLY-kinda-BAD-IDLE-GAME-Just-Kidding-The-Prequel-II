@@ -34,7 +34,7 @@ public class WoodCutting extends JPanel {
 
 
         // Create the 'Cut Wood' button
-        cutButton = new JButton("Mine Ore");
+        cutButton = new JButton("Cut Tree");
         cutButton.setFont(new Font("Serif", Font.ITALIC, 26));
         cutButton.setForeground(new Color(205, 133, 63)); // Light wood color
         cutButton.setBackground(new Color(0,100,0)); // Set the background color to a transparent green
@@ -42,7 +42,7 @@ public class WoodCutting extends JPanel {
         cutButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Auto Cut' button
-        autoCutButton = new JButton("Auto Mine");
+        autoCutButton = new JButton("Auto Cut");
         autoCutButton.setFont(new Font("Serif", Font.ITALIC, 26));
         autoCutButton.setForeground(new Color(205, 133, 63)); // Light wood color
         autoCutButton.setBackground(new Color(0,100,0)); // Set the background color to a transparent green

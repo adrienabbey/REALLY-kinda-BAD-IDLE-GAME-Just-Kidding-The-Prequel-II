@@ -106,24 +106,5 @@ class Town extends JPanel {
                 e1.printStackTrace();
             }
         });
-
-        // Leave button takes you back to the world map
-        leave.addActionListener(e -> {
-            try {
-                Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        });
-
-        // Button that opens inventory panel. Can equip and use items here.
-        inventory.addActionListener(e -> {
-            try {
-                Driver.changePanel("inventory");
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        });
     }
 }

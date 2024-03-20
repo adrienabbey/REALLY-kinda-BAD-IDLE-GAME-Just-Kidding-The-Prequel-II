@@ -31,7 +31,7 @@ class GameInstructions extends JPanel {
         back.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the information label with custom styling
-        JLabel info = new JLabel("<html><div style='text-align: center;'>Hello Traveler! Welcome to B.A.D Idle Game.<br>To start your journey you will need to create a new character using the New Game button.<br>From there you will choose your stats and start adventuring into the dungeon.<br>Stop by the town shop for potions to heal yourself.</div></html>", SwingConstants.CENTER);
+        JLabel info = new JLabel("<html><div style='text-align: center;'>Hello Traveler! Welcome to B.A.D Idle Game.<br>To start your journey you will need to create a new character using the New Game button.<br>From there you will choose your stats and start adventuring into the dungeon.<br>Stop by the town bazaar for potions to heal yourself.</div></html>", SwingConstants.CENTER);
         info.setFont(new Font("Serif", Font.ITALIC, 20));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
         info.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black

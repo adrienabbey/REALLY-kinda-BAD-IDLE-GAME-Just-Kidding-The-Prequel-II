@@ -62,10 +62,10 @@ class Driver extends JFrame {
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
         Settings settings = new Settings();
-        Shop shop = new Shop();
         Credits credits = new Credits();
         Home home = new Home();
         Inventory inventory = new Inventory();
+        Shop shop = new Shop(inventory);
         WoodCutting woodCutting = new WoodCutting(inventory);
         Mining mining = new Mining(inventory);
         Tavern tavern = new Tavern();
