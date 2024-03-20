@@ -44,8 +44,6 @@ class Town extends JPanel {
         buttons.add(tavern);
         JButton library = new JButton("Library");
         buttons.add(library);
-        JButton inventory = new JButton("Inventory");
-        buttons.add(inventory);
         
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
@@ -56,8 +54,6 @@ class Town extends JPanel {
         add(tavern);
         add(Box.createRigidArea(new Dimension(100, 20)));
         add(library);
-        add(Box.createRigidArea(new Dimension(100, 20)));
-        add(inventory);
         add(Box.createRigidArea(new Dimension(100, 20)));
         add(leave);
         add(Box.createVerticalGlue());
@@ -102,6 +98,16 @@ class Town extends JPanel {
             try{
                 Driver.changePanel("library");
                 MusicPlayer.playMusic("assets/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
+        });
+
+        // Button that takes player to library panel
+        leave.addActionListener(e -> {
+            try{
+                Driver.changePanel("world");
+                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }

@@ -246,8 +246,9 @@ class Shop extends JPanel {
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
                             sellItemButton.setText("Sell " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the sell button label
+                            SFX.playSound("assets/SFX/RPG Sound Pack/inventory/coin.wav");
                         } else {
-                            err_message.setText("Cannot sell item.");
+                            err_message.setText("Cannot sell item, no items left.");
                         }
                     });
                     sellPanel.add(sellItemButton);
