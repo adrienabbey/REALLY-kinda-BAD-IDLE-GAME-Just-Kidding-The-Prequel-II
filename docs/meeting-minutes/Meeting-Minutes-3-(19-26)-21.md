@@ -18,8 +18,11 @@
     * Action Item 1: 
     * Action Item 2: 
 * Group Member `Muhammed Abushamma`
-    * Action Item 1: 
-    * Action Item 2: 
+    * Action Item 1: Finish final design specification document
+    * Action Item 2: Create a book of monsters feature to the library panel.
+    * Action Item 3: Figure out how to auto-scale game screen.
+    * Action Item 4: Make buy/sell panels more aethetic.
+    * Action Item 5: Look into overlaying googley eyes onto monster and character assests. 
 * Group Member `Luke Davidson`
     * Action Item 1: Design characters and additives to the background
     * Action Item 2: Start working on the presentation using PowerPoint and sharing in a Google Drive.
@@ -29,6 +32,6 @@
   
 ## Contributors
 * Luke Davidson
-* 
+* Muhammed Abushamma
 * 
 * 
