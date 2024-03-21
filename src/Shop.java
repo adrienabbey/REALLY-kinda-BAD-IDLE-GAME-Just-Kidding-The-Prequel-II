@@ -155,7 +155,7 @@ class Shop extends JPanel {
                     
                     buyItemButton.addActionListener(sellEvent -> {
                         
-                        // If Gold is greater than 0 then buy resource,, else output error message. 
+                        // If Gold is greater than 0 then buy resource, else output error message. 
                         if ((inventory.getResource("Gold") > 0)) {
                             err_message.setText("");
                             inventory.setResource(resourceName, inventory.getResource(resourceName)  + 1); // add the resource from inventory

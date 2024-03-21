@@ -12,7 +12,7 @@ public class Mining extends JPanel {
 
     private JProgressBar progressBar;
     private JButton cutButton;
-    private JButton autoCutButton; // New button for automatic woodcutting
+    private JButton automineButton; // New button for automatic woodcutting
     private Timer timer;
     private Image bgImage;
     private JLabel oreGrantedLabel; // Label to display wood granted message
@@ -41,12 +41,12 @@ public class Mining extends JPanel {
         cutButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Auto Cut' button
-        autoCutButton = new JButton("Auto Mine");
-        autoCutButton.setFont(new Font("Serif", Font.ITALIC, 26));
-        autoCutButton.setForeground(new Color(205, 133, 63)); // Light wood color
-        autoCutButton.setBackground(new Color(0, 0, 0)); // Set the background color to black
-        autoCutButton.setOpaque(true); // Make the background visible
-        autoCutButton.setFocusPainted(false); // Remove focus ring around the button
+        automineButton = new JButton("Auto Mine");
+        automineButton.setFont(new Font("Serif", Font.ITALIC, 26));
+        automineButton.setForeground(new Color(205, 133, 63)); // Light wood color
+        automineButton.setBackground(new Color(0, 0, 0)); // Set the background color to black
+        automineButton.setOpaque(true); // Make the background visible
+        automineButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Leave' button
         JButton leave = new JButton("Leave");
@@ -73,7 +73,7 @@ public class Mining extends JPanel {
         // Add components to the panel
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
         buttonPanel.add(cutButton);
-        buttonPanel.add(autoCutButton);
+        buttonPanel.add(automineButton);
         buttonPanel.add(leave);
         add(buttonPanel, BorderLayout.SOUTH);
         add(progressBar, BorderLayout.CENTER);
@@ -89,8 +89,8 @@ public class Mining extends JPanel {
             }
         });
 
-        // Action listener for the 'Auto Cut' button
-        autoCutButton.addActionListener(new ActionListener() {
+        // Action listener for the 'Auto Mine' button
+        automineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SFX.playSound("assets/SFX/interface1.wav");
@@ -104,7 +104,7 @@ public class Mining extends JPanel {
             try {
                 auto = false; // stop auto mining if left panel
                 timer.stop(); // stop mining process
-                autoCutButton.setText("Auto Cut"); // reset automining label
+                automineButton.setText("Auto Mine"); // reset automining label
                 
                 Driver.changePanel("world");
                 SFX.stopSound();
@@ -170,13 +170,13 @@ public class Mining extends JPanel {
     // Method to start/stop the automatic woodcutting process
     private void autoMineOre() {
         if (!auto) {
-            auto = true; // Start auto woodcutting
-            autoCutButton.setText("Stop Auto Mining...");
+            auto = true; // Start auto mining
+            automineButton.setText("Stop Auto Mining...");
             oreGrantedLabel.setText(""); 
             timer.start(); // Start the timer for auto woodcutting
         } else {
             auto = false; // Stop auto woodcutting
-            autoCutButton.setText("Auto Mine");
+            automineButton.setText("Auto Mine");
         }
     }
 
