@@ -19,7 +19,7 @@ class Shop extends JPanel {
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
     private boolean secretMerchantScreenOpen = false; // Flag to track if the secret merchant screen is open. 
     private boolean secretMerchantAppear = false; // flag that determines is secret merchant will appear or not.
-    private int secretIncrement = 0; // variable that determines when the secret merchant will appear.
+    private int secretIncrement = 1; // variable that determines when the secret merchant will appear.
     
     @Override
     protected void paintComponent(Graphics g) {
@@ -120,6 +120,7 @@ class Shop extends JPanel {
             // Create a close button
             JButton closeButton = new JButton("Close");
             closeButton.addActionListener(closeEvent -> {
+                SFX.playSound("assets/SFX/interface1.wav"); 
                 // Remove the sell panel and the close button
                 remove(mainPanel);
                 buyScreenOpen = false; // Set sell screen as closed
@@ -146,7 +147,7 @@ class Shop extends JPanel {
         
             // Add all items from inventory to shop. 
             for (String resourceName : inventory.getResources().keySet()) {
-                if (!(resourceName == "Legendary Potion of Lepus")) { // remove lepus potion form buy list
+                if (!(resourceName == "Legendary Potion of Lepus") && !(resourceName == "Gold")) { // remove Lepus potion and Gold from buy list
                     
                     JButton buyItemButton = new JButton("Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
@@ -221,6 +222,7 @@ class Shop extends JPanel {
             // Create a close button
             JButton closeButton = new JButton("Close");
             closeButton.addActionListener(closeEvent -> {
+                SFX.playSound("assets/SFX/interface1.wav"); 
                 // Remove the sell panel and the close button
                 remove(mainPanel);
                 sellScreenOpen = false; // Set sell screen as closed
@@ -247,6 +249,8 @@ class Shop extends JPanel {
         
             // Add items from the inventory to the sell panel
             for (String resourceName : inventory.getResources().keySet()) {
+                if (!(resourceName == "Gold")) { // remove Gold from sell list
+                    
                 // if the resource amount exceeds 1 from your inventory, add it to the sell menu as a possible item to sell.
                 if (inventory.getResource(resourceName) > 0) {
                     JButton sellItemButton = new JButton("Sell " + resourceName + " (" + inventory.getResource(resourceName) + ")");
@@ -268,9 +272,10 @@ class Shop extends JPanel {
                         } else {
                             err_message.setText("Cannot sell item, no items left.");
                         }
+                    
                     });
                     sellPanel.add(sellItemButton);
-                }
+                }}
             }
         
             scrollPane.setViewportView(sellPanel);
@@ -303,7 +308,7 @@ class Shop extends JPanel {
          */
         // Buy button adds a potion to the player's inventory
         secretMerchant.addActionListener(e -> {
-            SFX.playSound("assets/SFX/interface1.wav");
+            SFX.playSound("assets/SFX/interface1.wav"); // play button sound effect
 
             // Check if secret merchant screen is not already open
             if (!secretMerchantScreenOpen) {
@@ -343,6 +348,8 @@ class Shop extends JPanel {
             // Create a close button
             JButton closeButton = new JButton("Close");
             closeButton.addActionListener(closeEvent -> {
+                SFX.playSound("assets/SFX/interface1.wav"); 
+
                 // Remove the sell panel and the close button
                 remove(mainPanel);
                 remove(secretMerchantPanel);
@@ -390,10 +397,13 @@ class Shop extends JPanel {
         
             // Add all items from inventory to shop. 
             for (String resourceName : inventory.getResources().keySet()) {
+                if (!(resourceName == "Gold")) {
+
                     JButton buyItemButton = new JButton("Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
                     buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                     
+                    // Code for when a buy button is pressed.
                     buyItemButton.addActionListener(sellEvent -> {
                         
                         // If Gold is greater than 0 then buy resource,, else output error message. 
@@ -405,14 +415,18 @@ class Shop extends JPanel {
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
+                            if (resourceName == "Legendary Potion of Lepus") {
+                                SFX.playSound("assets\\SFX\\cat-purring-and-meow-5928.wav");
+                            } else {
                             SFX.playSound("assets/SFX/coin3.wav");
-                            
+                            }
+
                         } else {
                             err_message.setText("Cannot buy item, no more gold.");
                         }
                     });
                     buyPanel.add(buyItemButton);
-                }
+                }}
         
                 scrollPane.setViewportView(buyPanel);
                 scrollPane.setPreferredSize(new Dimension(200, 50));
@@ -435,6 +449,7 @@ class Shop extends JPanel {
 
             revalidate();
             repaint();
+            SFX.playSound("assets/SFX/meow-01-86859.wav"); // play meow sound effect when entering secret shop
         } else {
             JOptionPane.showMessageDialog(this, "Only one secret screen can be opened at a time.", "Secret Merchant Screen Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -457,7 +472,7 @@ class Shop extends JPanel {
             try {
 
                 secretIncrement++; // increment scrent merchant counter. 
-                if (secretIncrement % 3 == 0) { // adds secret merchant screen every 3 bazaar visits. 
+                if (secretIncrement % 4 == 0) { // adds secret merchant screen every 3 bazaar visits. 
                     add(secretMerchant);
                 } else {
                     remove(secretMerchant); // removes secert merchant screen after leaving. 

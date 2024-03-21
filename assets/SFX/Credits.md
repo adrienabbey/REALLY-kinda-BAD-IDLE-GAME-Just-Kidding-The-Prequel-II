@@ -19,3 +19,6 @@ Voices used:
     4. Hudsun (American)
     5. George (british)
     
+* Animal sound effects:
+Website: https://wavlist.com/animals-cats-20-wavs/
+Website: https://pixabay.com/sound-effects/search/meow/?pagi=2
