@@ -7,7 +7,7 @@ public class MusicPlayer {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     private static boolean isMuted = false;
-    private static float currentVolume = 0.0f;
+    private static float currentVolume = -9.0f;
 
     public static void setcurrentVolume(float volume) {
         currentVolume = volume;

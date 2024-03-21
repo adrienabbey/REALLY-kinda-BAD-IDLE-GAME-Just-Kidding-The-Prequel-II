@@ -35,7 +35,7 @@ class Settings extends JPanel {
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, 0); // range from -70 to 6
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -9); // range from -70 to 6
         slider.setBackground(customColorBrown); // Set the background color
 
         JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -7); // range from -70 to 6

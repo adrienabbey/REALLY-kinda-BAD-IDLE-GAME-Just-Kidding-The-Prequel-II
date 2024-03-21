@@ -71,18 +71,22 @@ class Tavern extends JPanel {
             if (prompt == 0 ) {
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Markus: You can buy potions at the bazaar.</div></html>");
+                SFX.playSound("assets/SFX/Voice-overs/Potions - Frederick1.wav");
             }
             if (prompt == 1 ) {
                 add(message, BorderLayout.CENTER);
-                message.setText("<html><div style='text-align: center;'>Guardsman: I heard you need a speacial set of armor to survive the monsters in the abandoned colosseum.</div></html>");
+                message.setText("<html><div style='text-align: center;'>Guardsman: I heard you need a unique set of armor to survive the monsters in the abandoned colosseum.</div></html>");
+                SFX.playSound("assets\\SFX\\Voice-overs\\Unique set - Samuel.wav");
             }
             if (prompt == 2 ) {
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Miner: I usually find one metal for every four stone when mining down in the mineshaft out west.</div></html>");
+                SFX.playSound("assets/SFX/Voice-overs/Mining - Mark.wav");
             }
             if (prompt == 3 ) {
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Aaron: There's a secret merchant that sells a powerful potion. Some say he only comes out to the bazaar once every three blue moons.");
+                SFX.playSound("assets\\SFX\\Voice-overs\\Secret merchant - george.wav");
             }
             prompt++;
             if (prompt == 4 ) {
