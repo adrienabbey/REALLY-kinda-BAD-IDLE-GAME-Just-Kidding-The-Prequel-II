@@ -146,6 +146,8 @@ class Shop extends JPanel {
         
             // Add all items from inventory to shop. 
             for (String resourceName : inventory.getResources().keySet()) {
+                if (!(resourceName == "Legendary Potion of Lepus")) { // remove lepus potion form buy list
+                    
                     JButton buyItemButton = new JButton("Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
                     buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
@@ -168,7 +170,7 @@ class Shop extends JPanel {
                         }
                     });
                     buyPanel.add(buyItemButton);
-                }
+                }}
         
             scrollPane.setViewportView(buyPanel);
             scrollPane.setPreferredSize(new Dimension(400, 400));
@@ -327,6 +329,9 @@ class Shop extends JPanel {
             }};
             secretMerchantPanel.setLayout(new BorderLayout());
 
+            // Create a panel to hold the main conte(excluding background)
+            JPanel mainContentPanel = new JPanel(new BorderLayout());
+
             // Create a panel to hold the gold count label and the sell panel
             JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -362,8 +367,11 @@ class Shop extends JPanel {
             });
 
             // Create buy label message
-            JLabel buy_label = new JLabel("Buy");
+            JLabel buy_label = new JLabel("Secret Merchant Shop");
+            //buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
             buy_label.setFont(new Font("Serif", Font.BOLD, 28));
+            buy_label.setPreferredSize(new Dimension(100,20));
+            buy_label.setPreferredSize(new Dimension(100,50));
 
             // Create error message
             JLabel err_message = new JLabel("");
@@ -372,11 +380,13 @@ class Shop extends JPanel {
             // Add the close button to the top right corner
             JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             closeButtonPanel.add(closeButton);
+            closeButton.setPreferredSize(new Dimension(150,30));
+            closeButton.setFont(new Font("Serif", Font.BOLD, 22));
         
             // Create a menu for buying items
             JScrollPane scrollPane = new JScrollPane();
             JPanel buyPanel = new JPanel();
-            buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
+            buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.X_AXIS));
         
             // Add all items from inventory to shop. 
             for (String resourceName : inventory.getResources().keySet()) {
@@ -405,20 +415,23 @@ class Shop extends JPanel {
                 }
         
                 scrollPane.setViewportView(buyPanel);
-                scrollPane.setPreferredSize(new Dimension(400, 400));
-                
-                // Add background image to secret merchant panel 
-                add(secretMerchantPanel, BorderLayout.CENTER);
+                scrollPane.setPreferredSize(new Dimension(200, 50));
 
                 // Add components to the main panel
-                mainPanel.add(closeButtonPanel, BorderLayout.NORTH);
+                mainPanel.add(closeButtonPanel, BorderLayout.CENTER);
                 mainPanel.add(goldLabel, BorderLayout.EAST);
-                mainPanel.add(scrollPane, BorderLayout.EAST);
+                mainPanel.add(scrollPane, BorderLayout.NORTH);
                 mainPanel.add(err_message, BorderLayout.WEST);
                 mainPanel.add(buy_label, BorderLayout.SOUTH);
         
-            // Add the scroll pane to the center of the Shop panel
-            add(mainPanel, BorderLayout.SOUTH);
+            // Add the main panel to the main content panel
+            mainContentPanel.add(mainPanel, BorderLayout.CENTER);
+
+            // Add the main content panel to the secret merchant panel
+            secretMerchantPanel.add(mainContentPanel, BorderLayout.SOUTH);
+
+            // Add background image to secret merchant panel
+             add(secretMerchantPanel);
 
             revalidate();
             repaint();
@@ -444,11 +457,13 @@ class Shop extends JPanel {
             try {
 
                 secretIncrement++; // increment scrent merchant counter. 
-                if (secretIncrement % 5 == 0) { // if statment that adds the scrent merchant screen when player visits bazaar every 5 times.
+                if (secretIncrement % 3 == 0) { // adds secret merchant screen every 3 bazaar visits. 
                     add(secretMerchant);
                 } else {
                     remove(secretMerchant); // removes secert merchant screen after leaving. 
                 }
+                revalidate();
+                repaint();
 
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("town");
