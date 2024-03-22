@@ -415,12 +415,7 @@ class Shop extends JPanel {
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
-                            if (resourceName == "Legendary Potion of Lepus") {
-                                SFX.playSound("assets\\SFX\\cat-purring-and-meow-5928.wav");
-                            } else {
-                            SFX.playSound("assets/SFX/coin3.wav");
-                            }
-
+                            SFX.playSound("assets\\SFX\\cat-purring-and-meow-5928.wav");
                         } else {
                             err_message.setText("Cannot buy item, no more gold.");
                         }
