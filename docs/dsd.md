@@ -1,4 +1,6 @@
 # Design Specification Documenation
+- To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/edit/main/docs/rsd.md#L50)
+
 
 1. Implement a base start screen class that will guide the player in their journey. This start screen will consist of buttons that will prompt them for a "New Game", "Load Game", "Instructions", and "Quit".  Other important screens will be the world map and town. The world map will help the player navigate through the gameplay loop. It will have buttons to go into dungeons to start combat, and a button to go to the shop to allow the player to buy potions to give their character effects. *See picture at end of document for early mockups of what these screens would look like*
     1.  We will use a driver class that will help in providing a smoother user experience. This will be where the buttons on the start screen call to, allowing them to move to the character creation screen, load game screen, and the instructions screen.
@@ -44,6 +46,16 @@
 ## Images
  - This image is from an early meeting where we were planning out what screens we needed and what they needed to have on them.
  ![White borad drawings of gameplay screens](images/MockUp.png)
+
+## Terms:
+1. Character: The playable and modifiable object that the player will use throughout the game. A character object includes things like stats, a name, and equipment.
+2. Stat: A stat, or statistic, is the modifable values a character object contains.. These values affect the in-game behaviors of the character, such as with combat.
+3. Muscle, brain, and heart stat: These stats modifies the players damage, mana points (MP), and heath points (HP) respectively.
+4. Gold: The in-game monatery system that lets the player purchase potions. Gold can be acquired through combat in the dungeon.
+5. Dungeon: Area where combat will take place. Contains monsters.
+6. Monsters: Enemy objects that the player must fight.
+7. Potion: Item that heals the player. Can be purchased from the town area.
+8. Equipment: Items in te game that can be eqipped to the character and modify stats. Can be acquired through combat in the dungeon. 
 
 ## Signatures
 

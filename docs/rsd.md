@@ -59,12 +59,16 @@
         1. There are multiple dungeon areas to choose from, each with a different difficulty level.
         2. Each dungeon will have a list of monsters that can spawn in them.
     2. The player will be able to toggle between offensive and healing magic with a button.
+    2. The player will be able to toggle between offensive and healing magic with a button.
         1. Casting this way is based on a random dice roll, influenced by their brain statistic and their remaining mana points.
+    3. Combat hits and damage shall be affected by dice rolls.
     3. Combat hits and damage shall be affected by dice rolls.
         1. The player and the enemy monster take turns attacking each other.
     4. The player can click a button to use a potion from their belt to heal.
     5. If the players HP hits 0, they can't continue combat until either a certain amount of time or until healed with a potion.
+    5. If the players HP hits 0, they can't continue combat until either a certain amount of time or until healed with a potion.
         1. This returns the player to the map screen, disabling dungeons.
+    6. If the monster hits 0 HP, the player is rewarded with gold and a chance at equipment upgrades.
     6. If the monster hits 0 HP, the player is rewarded with gold and a chance at equipment upgrades.
         1. After defeating a monster, a new monster replaces it.
     7. The player can choose to withdraw from the dungeon at any time.
