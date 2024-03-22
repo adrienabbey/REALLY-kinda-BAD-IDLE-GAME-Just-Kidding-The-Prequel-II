@@ -15,8 +15,8 @@
 
 ## Action Items (what we plan to start working on, like a personal sprint) 
 * Group Member `Brandon Walker`
-    * Action Item 1: 
-    * Action Item 2: 
+    * Action Item 1: Connect Combat loop to interface
+    * Action Item 2: Correct interface layout for the dungeon
 * Group Member `Muhammed Abushamma`
     * Action Item 1: Finish final design specification document
     * Action Item 2: Create a book of monsters feature to the library panel.
