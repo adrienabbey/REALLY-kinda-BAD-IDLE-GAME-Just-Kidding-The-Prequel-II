@@ -16,7 +16,8 @@
 	- More monsters, at least 10.
 	- Implement Boss Subclass
 - **Brandon**:
-	- Combat needs fixed.
+	- Connect combat to UI.
+   	- Correct dungeon UI Layout.
 - **Mo**:
 	- stuff
 - **Luke**:
