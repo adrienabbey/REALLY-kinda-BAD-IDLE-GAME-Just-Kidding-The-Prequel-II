@@ -18,8 +18,9 @@ class Shop extends JPanel {
     private boolean sellScreenOpen = false; // Flag to track if the sell screen is open
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
     private boolean secretMerchantScreenOpen = false; // Flag to track if the secret merchant screen is open. 
-    private boolean secretMerchantAppear = false; // flag that determines is secret merchant will appear or not.
     private int secretIncrement = 1; // variable that determines when the secret merchant will appear.
+    private JPanel mainPanel1; // Declare buy at class level
+    private JPanel mainPanel2; // Declare sell panel at class level
     
     @Override
     protected void paintComponent(Graphics g) {
@@ -67,11 +68,11 @@ class Shop extends JPanel {
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(sell);
         add(Box.createRigidArea(new Dimension(0, 20)));
-        add(secretMerchant);
-        add(Box.createRigidArea(new Dimension(0, 20)));
         add(inventory1);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(secretMerchant);
         add(Box.createVerticalGlue());
 
         //For loop that formats all the buttons
@@ -99,6 +100,8 @@ class Shop extends JPanel {
          * 
          */
         // Buy button adds a potion to the player's inventory
+
+
         buy.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
             if (buyScreenOpen == false) { // Check if buy screen is not already open
@@ -109,11 +112,11 @@ class Shop extends JPanel {
             // this.revalidate();
             // this.repaint();
 
-            // Create a panel to hold the gold count label and the sell panel
-            JPanel mainPanel = new JPanel(new BorderLayout());
+            // Create a panel to hold labels and the buy panel
+            mainPanel1 = new JPanel(new BorderLayout());
 
             // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel("Gold: " + inventory.getResource("Gold"));
+            JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
             goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
 
@@ -121,15 +124,15 @@ class Shop extends JPanel {
             JButton closeButton = new JButton("Close");
             closeButton.addActionListener(closeEvent -> {
                 SFX.playSound("assets/SFX/interface1.wav"); 
-                // Remove the sell panel and the close button
-                remove(mainPanel);
+                // Remove the buy panel and the close button
+                remove(mainPanel1);
                 buyScreenOpen = false; // Set sell screen as closed
                 revalidate(); // recalculate the layout of the components within the container
                 repaint(); //  repaints the GUI components
             });
 
             // Create buy label message
-            JLabel buy_label = new JLabel("Buy");
+            JLabel buy_label = new JLabel(" Buy ");
             buy_label.setFont(new Font("Serif", Font.BOLD, 28));
 
             // Create error message
@@ -167,7 +170,7 @@ class Shop extends JPanel {
                             SFX.playSound("assets/SFX/coin3.wav");
                             
                         } else {
-                            err_message.setText("Cannot buy item, no more gold.");
+                            err_message.setText(" Cannot buy item, no more gold.");
                         }
                     });
                     buyPanel.add(buyItemButton);
@@ -177,19 +180,27 @@ class Shop extends JPanel {
             scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
-                mainPanel.add(closeButtonPanel, BorderLayout.NORTH);
-                mainPanel.add(goldLabel, BorderLayout.EAST);
-                mainPanel.add(scrollPane, BorderLayout.CENTER);
-                mainPanel.add(err_message, BorderLayout.WEST);
-                mainPanel.add(buy_label, BorderLayout.SOUTH);
+                mainPanel1.add(closeButtonPanel, BorderLayout.NORTH);
+                mainPanel1.add(goldLabel, BorderLayout.EAST);
+                mainPanel1.add(scrollPane, BorderLayout.CENTER);
+                mainPanel1.add(err_message, BorderLayout.SOUTH);
+                mainPanel1.add(buy_label, BorderLayout.WEST);
         
             // Add the scroll pane to the center of the Shop panel
-            add(mainPanel, BorderLayout.CENTER);
+            add(mainPanel1, BorderLayout.CENTER);
+
+            // tells the layout manager to recalculate the layout of the component. This is necessary when adding or removing components, or when changing the size or position of a component.
             revalidate();
+
+            // tells the component to redraw itself. This is necessary when the appearance of the component has changed, such as when the text in a label is changed, or when the image in an image icon is changed.
             repaint();
+
         } else {
-            // Output error message that only one sell screen can be opened at a time
-            JOptionPane.showMessageDialog(this, "Only one buy screen can be opened at a time.", "Buy Screen Error", JOptionPane.ERROR_MESSAGE);
+            // Remove the buy panel and the close button
+            remove(mainPanel1);
+            buyScreenOpen = false; // Set sell screen as closed
+            revalidate(); // recalculate the layout of the components within the container
+            repaint(); //  repaints the GUI components
         }
     });
         
@@ -201,6 +212,8 @@ class Shop extends JPanel {
          * 
          */
         // Sell button to sell equipment or potions for gold
+
+        
         sell.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
             if (sellScreenOpen == false) { // Check if sell screen is not already open
@@ -211,11 +224,11 @@ class Shop extends JPanel {
             // this.revalidate();
             // this.repaint();
 
-            // Create a panel to hold the gold count label and the sell panel
-            JPanel mainPanel = new JPanel(new BorderLayout());
+            // Create a panel to hold labels and the sell panel
+            mainPanel2 = new JPanel(new BorderLayout());
 
             // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel("Gold: " + inventory.getResource("Gold"));
+            JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
             goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
 
@@ -224,14 +237,14 @@ class Shop extends JPanel {
             closeButton.addActionListener(closeEvent -> {
                 SFX.playSound("assets/SFX/interface1.wav"); 
                 // Remove the sell panel and the close button
-                remove(mainPanel);
+                remove(mainPanel2);
                 sellScreenOpen = false; // Set sell screen as closed
                 revalidate(); // recalculate the layout of the components within the container
                 repaint(); //  repaints the GUI components
             });
 
             // Create sell label
-            JLabel sell_label = new JLabel("Sell");
+            JLabel sell_label = new JLabel(" Sell ");
             sell_label.setFont(new Font("Serif", Font.BOLD, 28));
 
             // Create error message
@@ -282,19 +295,22 @@ class Shop extends JPanel {
             scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
-                mainPanel.add(closeButtonPanel, BorderLayout.NORTH);
-                mainPanel.add(goldLabel, BorderLayout.EAST);
-                mainPanel.add(scrollPane, BorderLayout.CENTER);
-                mainPanel.add(err_message, BorderLayout.WEST);
-                mainPanel.add(sell_label, BorderLayout.SOUTH);
+                mainPanel2.add(closeButtonPanel, BorderLayout.NORTH);
+                mainPanel2.add(goldLabel, BorderLayout.EAST);
+                mainPanel2.add(scrollPane, BorderLayout.CENTER);
+                mainPanel2.add(err_message, BorderLayout.SOUTH);
+                mainPanel2.add(sell_label, BorderLayout.WEST);
         
-            // Add the scroll pane to the center of the Shop panel
-            add(mainPanel, BorderLayout.CENTER);
+          // Add the scroll pane to the center of the Shop panel
+            add(mainPanel2, BorderLayout.CENTER);
             revalidate();
             repaint();
         } else {
-            // Output error message that only one sell screen can be opened at a time
-            JOptionPane.showMessageDialog(this, "Only one sell screen can be opened at a time.", "Sell Screen Error", JOptionPane.ERROR_MESSAGE);
+            // Remove the sell panel
+            remove(mainPanel2);
+            sellScreenOpen = false; // Set sell screen as closed
+            revalidate(); // recalculate the layout of the components within the container
+            repaint(); // repaints the GUI components
         }
     });
             
@@ -341,7 +357,7 @@ class Shop extends JPanel {
             JPanel mainPanel = new JPanel(new BorderLayout());
 
             // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel("Gold: " + inventory.getResource("Gold"));
+            JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
             goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
 
@@ -361,11 +377,11 @@ class Shop extends JPanel {
                 add(Box.createRigidArea(new Dimension(0, 20)));
                 add(sell);
                 add(Box.createRigidArea(new Dimension(0, 20)));
-                add(secretMerchant);
-                add(Box.createRigidArea(new Dimension(0, 20)));
                 add(inventory1);
                 add(Box.createRigidArea(new Dimension(0, 20)));
                 add(leave);
+                add(Box.createRigidArea(new Dimension(0, 20)));
+                add(secretMerchant);
                 add(Box.createVerticalGlue());
 
                 secretMerchantScreenOpen = false; // Set sell screen as closed
@@ -374,7 +390,7 @@ class Shop extends JPanel {
             });
 
             // Create buy label message
-            JLabel buy_label = new JLabel("Secret Merchant Shop");
+            JLabel buy_label = new JLabel(" Secret Merchant Shop ");
             //buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
             buy_label.setFont(new Font("Serif", Font.BOLD, 28));
             buy_label.setPreferredSize(new Dimension(100,20));
@@ -399,7 +415,7 @@ class Shop extends JPanel {
             for (String resourceName : inventory.getResources().keySet()) {
                 if (!(resourceName == "Gold")) {
 
-                    JButton buyItemButton = new JButton("Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
+                    JButton buyItemButton = new JButton(" Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
                     buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                     
@@ -415,7 +431,7 @@ class Shop extends JPanel {
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
-                            SFX.playSound("assets\\SFX\\cat-purring-and-meow-5928.wav");
+                            SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                         } else {
                             err_message.setText("Cannot buy item, no more gold.");
                         }
@@ -446,7 +462,7 @@ class Shop extends JPanel {
             repaint();
             SFX.playSound("assets/SFX/meow-01-86859.wav"); // play meow sound effect when entering secret shop
         } else {
-            JOptionPane.showMessageDialog(this, "Only one secret screen can be opened at a time.", "Secret Merchant Screen Error", JOptionPane.ERROR_MESSAGE);
+            // JOptionPane.showMessageDialog(this, "Only one secret screen can be opened at a time.", "Secret Merchant Screen Error", JOptionPane.ERROR_MESSAGE);
         }
     });
 
@@ -472,7 +488,25 @@ class Shop extends JPanel {
                 } else {
                     remove(secretMerchant); // removes secert merchant screen after leaving. 
                 }
+
+                if (buyScreenOpen) {
+                remove(mainPanel1); // remove buy screen if open
+                buyScreenOpen = false; // adjust flag accordingly
                 revalidate();
+                repaint();
+                }
+
+                if (sellScreenOpen) {
+                remove(mainPanel2); // remove sell screen if open
+                sellScreenOpen = false; // adjust flag accordingly
+                revalidate();
+                repaint();
+                }
+
+                // tells the layout manager to recalculate the layout of the component. This is necessary when adding or removing components, or when changing the size or position of a component.
+                revalidate();
+
+                // tells the component to redraw itself. This is necessary when the appearance of the component has changed, such as when the text in a label is changed, or when the image in an image icon is changed.
                 repaint();
 
                 SFX.playSound("assets/SFX/interface1.wav");
