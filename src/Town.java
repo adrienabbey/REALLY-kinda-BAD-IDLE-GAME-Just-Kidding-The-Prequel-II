@@ -1,67 +1,118 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
 
 class Town extends JPanel {
+
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+    }
     /**
      * This function hosts the town screen with buttons to buy potions or leave
      * @param player The player character object
      * @throws IOException
      */
     public Town() throws IOException{
-        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        JPanel buttonPanel = new JPanel();
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
 
-        JPanel charPanel = new JPanel(); // Character panel where you see and set stats for your character
-        charPanel.setLayout(new BoxLayout(charPanel, BoxLayout.X_AXIS));
-        BufferedImage image = ImageIO.read(new File("assets/images/shopkeep.jpg"));
-        JLabel pic = new JLabel(new ImageIcon(image));
+        //Whenever calling a getter for the player, it breaks it.
+        JLabel name = new JLabel("Name: ");
 
-        JPanel buttons = new JPanel();
-        buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
-        JButton buy = new JButton("Buy");
+        JButton shop = new JButton("Bazaar");
+        buttons.add(shop);
         JButton leave = new JButton("Leave");
-
-        // This section adds the components and controls layout
-        buttons.add(Box.createVerticalGlue());
-        buttons.add(buy);
-        buttons.add(Box.createRigidArea(new Dimension(0, 20)));
         buttons.add(leave);
-        buttons.add(Box.createVerticalGlue());
-
-        buy.setAlignmentX(CENTER_ALIGNMENT);
-        leave.setAlignmentX(CENTER_ALIGNMENT);
-
-        charPanel.add(Box.createVerticalGlue());
-        charPanel.add(pic);
-        charPanel.add(Box.createVerticalGlue());
-
+        JButton tavern = new JButton("Tavern");
+        buttons.add(tavern);
+        JButton library = new JButton("Library");
+        buttons.add(library);
+        
+        // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
-        add(charPanel);
-        add(Box.createRigidArea(new Dimension(20, 0)));
-        add(buttons);
+        // add(name);
+        add(Box.createRigidArea(new Dimension(100, 150)));
+        add(shop);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(tavern);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(library);
+        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(leave);
         add(Box.createVerticalGlue());
 
-        charPanel.setAlignmentX(CENTER_ALIGNMENT);
-        buttons.setAlignmentX(CENTER_ALIGNMENT);
+        //For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
-        // Buy button adds a potion to the player's inventory
-        buy.addActionListener(e -> {
+            buttons.get(i).setPreferredSize(new Dimension(200, 80));
+            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setBackground(customColorBrown);
+            buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
+        }
+
+        this.setAlignmentX(CENTER_ALIGNMENT);
+
+        // Button that takes player to shop panel
+        shop.addActionListener(e -> {
             try{
-                // player.addPotion(1);
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("shop");
+                MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
             } catch (Exception e1){
-                // TODO - Make this notify the user in window
                 e1.printStackTrace();
             }
         });
 
-        // Leave button takes you back to the world map
+        // Button that takes player to tavern panel
+        tavern.addActionListener(e -> {
+            try{
+                SFX.playSound("assets/SFX/interface1.wav");
+                SFX.playSound("assets/SFX/door-open.wav");
+                Driver.changePanel("tavern");
+                MusicPlayer.playMusic("assets/Music/alexander-nakarada-tavern-loop-one.wav");
+
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
+        });
+
+        // Button that takes player to library panel
+        library.addActionListener(e -> {
+            try{
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("library");
+                MusicPlayer.playMusic("assets/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
+        });
+
+        // Button that takes player to library panel
         leave.addActionListener(e -> {
-            try {
+            try{
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
-            } catch (Exception e1) {
+                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+            } catch (Exception e1){
                 e1.printStackTrace();
             }
         });

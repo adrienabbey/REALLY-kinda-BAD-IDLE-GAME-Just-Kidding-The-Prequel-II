@@ -1,4 +1,6 @@
 # Design Specification Documenation
+- To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/edit/main/docs/rsd.md#L50)
+
 
 1. Implement a base start screen class that will guide the player in their journey. This start screen will consist of buttons that will prompt them for a "New Game", "Load Game", "Instructions", and "Quit".  Other important screens will be the world map and town. The world map will help the player navigate through the gameplay loop. It will have buttons to go into dungeons to start combat, and a button to go to the shop to allow the player to buy potions to give their character effects. *See picture at end of document for early mockups of what these screens would look like*
     1.  We will use a driver class that will help in providing a smoother user experience. This will be where the buttons on the start screen call to, allowing them to move to the character creation screen, load game screen, and the instructions screen.
@@ -40,14 +42,42 @@
     1. Defeating monsters in dungeons will offer a chance to upgrade a piece of equipment.  This will be done using an Equipment Upgrade class with functions that determine the chance to upgrade after every fight.
         1. This function will compare the enemy's stats against the player's stats to determine this chance, where a stronger enemy will increase the chances, while a weaker enemy may reduce this chance to zero.  The exact algorithm is TBD.
         2.  If an upgrade is rewarded, it will upgrade a single piece of equipment.  Which piece of equipment is upgraded will be randomly chosen by another algorithm, weighted more favorably towards weaker items.
+7. The player can mine ore and cut wood in their corresponding panels.
+    1. Wood, stone, and metal will be stored in their respective variables in the inventory class.
+    2. The player can choose to either "mine ore" or "auto mine" using buttons located on the mining panel.
+    3. The player can choose to either "cut wood" or "auto cut" using buttons located on the woodcutting panel.
+    4. The woodcutting and mining panels will have background music and image.
+8. The player can choose to buy a homestead using the home panel located on the world map screen.
+9. There will be a tavern, library, and bazaar screens that can be accessed using the buttons located on the town screen menu.
+    1. The tavern screen will house the implementation for chatting with townsfolk. There will be various prompts for different NPCs.
+        1. Prompts interate around a predetermined set of prompts whenever the player presses the "Talk to townsfolk" button. Prompts will loop.
+        2. Each prompt will have an accompanying voice-over sound byte narrating the prompt text.
+    2. The bazaar screen will allow the player to buy and sell items from their inventory. The bazaar will also allow the player to look into their
+    inventory by clicking on the inventory button.
+    3. The library screen will have the implementation for the "book of monsters" screen, which will contain the descriptions for monsters in the game.
+10. There will be a rolling credits screen that can be accessed from the settings panel that will credit the developers, professor, art used, music used, and sound effect used.
+11. Most if not all panels will have an accompanying background image and music implemeneted by calling a MusicPlayer class.
+12. All buttons and some actions will have an accompanying sound effect that will be implemeneted by calling the SFX class.
+
+
 
 ## Images
  - This image is from an early meeting where we were planning out what screens we needed and what they needed to have on them.
  ![White borad drawings of gameplay screens](images/MockUp.png)
 
+## Terms:
+1. Character: The playable and modifiable object that the player will use throughout the game. A character object includes things like stats, a name, and equipment.
+2. Stat: A stat, or statistic, is the modifable values a character object contains.. These values affect the in-game behaviors of the character, such as with combat.
+3. Muscle, brain, and heart stat: These stats modifies the players damage, mana points (MP), and heath points (HP) respectively.
+4. Gold: The in-game monatery system that lets the player purchase potions. Gold can be acquired through combat in the dungeon.
+5. Dungeon: Area where combat will take place. Contains monsters.
+6. Monsters: Enemy objects that the player must fight.
+7. Potion: Item that heals the player. Can be purchased from the town area.
+8. Equipment: Items in te game that can be eqipped to the character and modify stats. Can be acquired through combat in the dungeon. 
+
 ## Signatures
 
+- Muhammed Abushamma
+- Brandon Walker
 - Adrien Abbey
 - Luke Davidson
-- Brandon Walker
-- Muhammed Abushamma

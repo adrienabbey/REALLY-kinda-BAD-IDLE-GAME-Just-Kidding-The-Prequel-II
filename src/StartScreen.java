@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 // This class is just the intro starting screen with the buttons to start a new game, load a game, read directions, or quit
 class StartScreen extends JPanel{
+    
     @Override
     protected void paintComponent(Graphics g) {
 
@@ -24,9 +25,8 @@ class StartScreen extends JPanel{
             e.printStackTrace();
         }
 }
-    /**
-     * This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
-     */ 
+    // This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
+    
     public StartScreen() throws IOException{
 
         // This block of code is all the physical gui elements and their properties
@@ -38,14 +38,17 @@ class StartScreen extends JPanel{
         buttons.add(newGame);
         JButton loadGame = new JButton("Load Game");
         buttons.add(loadGame);
-
         JButton instructions = new JButton("Instructions");
         buttons.add(instructions);
+        JButton settings = new JButton("Settings");
+        buttons.add(settings);
 
-        Color customColor = new Color(46, 86, 161);
+        Color customColorBlue = new Color(46, 86, 161);
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
         JLabel title = new JLabel("B.A.D Idle Game");
-        title.setFont(new Font("Arial", Font.BOLD, 128));
-        title.setForeground(customColor);
+        title.setFont(new Font("Serif", Font.BOLD, 128));
+        title.setForeground(customColorBlue);
         title.setAlignmentX(CENTER_ALIGNMENT);
 
         // Adding the buttons to the start panel and controlling layout
@@ -58,6 +61,8 @@ class StartScreen extends JPanel{
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(instructions);
         add(Box.createRigidArea(new Dimension(0, 10)));
+        add(settings);
+        add(Box.createRigidArea(new Dimension(0, 10)));
         add(quit);
         add(Box.createVerticalGlue());
 
@@ -67,10 +72,11 @@ class StartScreen extends JPanel{
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
             buttons.get(i).setPreferredSize(new Dimension(60, 80));
             buttons.get(i).setMaximumSize(new Dimension(600, 500));
-            buttons.get(i).setBackground(customColor);
-            buttons.get(i).setForeground(Color.WHITE);
-            buttons.get(i).setFont(new Font("Arial", Font.BOLD, 32));
+            buttons.get(i).setBackground(customColorBrown);
+            buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setFont(new Font("serif", Font.BOLD, 32));
 
+            // Formats quit button
             if (i == 0) {
                 buttons.get(0).setAlignmentX(CENTER_ALIGNMENT);
                 buttons.get(0).setBackground(Color.RED);
@@ -79,11 +85,13 @@ class StartScreen extends JPanel{
                 buttons.get(i).setMaximumSize(new Dimension(400, 500));
             }
         }
+        newGame.setFocusPainted(false); // Remove focus ring around the button
 
         // Buttons to interact with the functions of the game
         // Create new Character
         newGame.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("cc");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -92,17 +100,31 @@ class StartScreen extends JPanel{
 
         // Load a saved game
         loadGame.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("load");
         });
 
         //View Game instructions
         instructions.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("instructions");
         });
 
         // Quit the game
         quit.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             System.exit(0);
         });
+
+        // Go to settings panel
+        settings.addActionListener(e -> {
+            try {
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("settings");             
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
     }
 }

@@ -2,9 +2,25 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+import java.awt.Graphics;
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 
 class LoadScreen extends JPanel{
+    
+            @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/World8.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+    }
+
     public LoadScreen(){
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -22,6 +38,7 @@ class LoadScreen extends JPanel{
 
         back.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("start");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -29,6 +46,7 @@ class LoadScreen extends JPanel{
         });
         select.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 //TODO - Add load functionality
                 Driver.changePanel("world");
             } catch (Exception e1) {
