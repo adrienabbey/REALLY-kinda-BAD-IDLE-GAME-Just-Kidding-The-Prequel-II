@@ -19,7 +19,11 @@
 	- Connect combat to UI.
    	- Correct dungeon UI Layout.
 - **Mo**:
-	- stuff
+  	- add auto-scaling game screen.
+	- Format and add color themes to shop screens.
+  	- Look into overlaying googley eyes onto monster and character assests.
+  	- Add a book of monsters feature in library that summarizes monsters details.
+  	- add sound design to dungeon areas when those are developed
 - **Luke**:
 	- UI stuff for combat.
 - *Reminder: sign meeting notes.*
