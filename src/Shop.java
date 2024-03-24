@@ -119,19 +119,19 @@ class Shop extends JPanel {
             mainPanel1 = new JPanel(new BorderLayout());
 
             // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
+            JLabel goldLabel = new JLabel("  Gold: " + inventory.getResource("Gold") + "  ");
             goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
             // format gold label
-            goldLabel.setForeground(new Color(102, 72, 54)); // set color of text
-            goldLabel.setBackground(new Color(253, 236, 166)); //set color of background
+            goldLabel.setForeground(new Color(253, 236, 166)); // set color of text
+            goldLabel.setBackground(new Color(139, 69, 19)); //set color of background
             goldLabel.setOpaque(true); // background is visible 
 
             // Create a close button
             JButton closeButton = new JButton("Close");
             // format label
-            closeButton.setForeground(new Color(253, 236, 166)); 
-            closeButton.setBackground(new Color(102, 72, 54)); 
+            closeButton.setForeground(new Color(139, 69, 19)); 
+            closeButton.setBackground(new Color(253, 236, 166)); 
             closeButton.setOpaque(true); 
             closeButton.addActionListener(closeEvent -> {
                 SFX.playSound("assets/SFX/interface1.wav"); 
@@ -147,14 +147,14 @@ class Shop extends JPanel {
             buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
             //format buy label
             buy_label.setForeground(new Color(253, 236, 166)); 
-            buy_label.setBackground(new Color(102, 72, 54)); 
+            buy_label.setBackground(new Color(139, 69, 19)); 
             buy_label.setOpaque(true); 
 
             // Create error message
             JLabel err_message = new JLabel("");
             err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
             err_message.setForeground(new Color(253, 236, 166)); 
-            err_message.setBackground(new Color(102, 72, 54)); 
+            err_message.setBackground(new Color(139, 69, 19)); 
             err_message.setOpaque(true); 
 
             // Add the close button to the top right corner
@@ -162,21 +162,20 @@ class Shop extends JPanel {
             closeButtonPanel.add(closeButton);
             // format panel
             closeButtonPanel.setForeground(new Color(253, 236, 166)); 
-            closeButtonPanel.setBackground(new Color(102, 72, 54)); 
+            closeButtonPanel.setBackground(new Color(139, 69, 19)); 
             closeButtonPanel.setOpaque(true); 
         
             // Create a menu for buying items
             JScrollPane scrollPane = new JScrollPane();
             // format panel
             scrollPane.setForeground(new Color(253, 236, 166)); 
-            scrollPane.setBackground(new Color(102, 72, 54)); 
+            scrollPane.setBackground(new Color(139, 69, 19)); 
             scrollPane.setOpaque(true); 
 
             // format Panel
             JPanel buyPanel = new JPanel();
             buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
-            buyPanel.setForeground(new Color(253, 236, 166)); 
-            buyPanel.setBackground(new Color(102, 72, 54)); 
+            buyPanel.setBackground(new Color(0,0,0, 192)); 
             buyPanel.setOpaque(true); 
         
             // Add all items from inventory to shop. 
@@ -200,7 +199,7 @@ class Shop extends JPanel {
                             int currentGold = inventory.getResource("Gold"); // update current resource amount
                             inventory.setResource("Gold", currentGold - 1); // decrease gold 
                             inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
+                            goldLabel.setText("  Gold: " + inventory.getResource("Gold") + "  "); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
                             SFX.playSound("assets/SFX/coin3.wav");
                             
@@ -265,19 +264,19 @@ class Shop extends JPanel {
             mainPanel2 = new JPanel(new BorderLayout());
 
             // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
+            JLabel goldLabel = new JLabel("  Gold:  " + inventory.getResource("Gold") + "  ");
             goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
             // format gold label
             goldLabel.setForeground(new Color(253, 236, 166)); 
-            goldLabel.setBackground(new Color(102, 72, 54)); 
+            goldLabel.setBackground(new Color(139, 69, 19)); 
             goldLabel.setOpaque(true); 
 
             // Create a close button
             JButton closeButton = new JButton("Close");
             // format close button
-            closeButton.setForeground(new Color(253, 236, 166)); 
-            closeButton.setBackground(new Color(102, 72, 54)); 
+            closeButton.setForeground(new Color(139, 69, 19)); 
+            closeButton.setBackground(new Color(253, 236, 166)); 
             closeButton.setOpaque(true); 
 
             closeButton.addActionListener(closeEvent -> {
@@ -294,14 +293,14 @@ class Shop extends JPanel {
             sell_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
             //format sell label
             sell_label.setForeground(new Color(253, 236, 166)); 
-            sell_label.setBackground(new Color(102, 72, 54)); 
+            sell_label.setBackground(new Color(139, 69, 19)); 
             sell_label.setOpaque(true); 
 
             // Create error message
             JLabel err_message = new JLabel("");
             err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
             err_message.setForeground(new Color(253, 236, 166)); 
-            err_message.setBackground(new Color(102, 72, 54)); 
+            err_message.setBackground(new Color(139, 69, 19)); 
             err_message.setOpaque(true); 
 
             // Add the close button to the top right corner
@@ -309,19 +308,18 @@ class Shop extends JPanel {
             closeButtonPanel.add(closeButton);
             // format panel
             closeButtonPanel.setForeground(new Color(253, 236, 166)); 
-            closeButtonPanel.setBackground(new Color(102, 72, 54)); 
+            closeButtonPanel.setBackground(new Color(139, 69, 19)); 
             closeButtonPanel.setOpaque(true); 
         
             // Create a menu for buying items
             JScrollPane scrollPane = new JScrollPane();
             scrollPane.setForeground(new Color(253, 236, 166)); 
-            scrollPane.setBackground(new Color(102, 72, 54)); 
+            scrollPane.setBackground(new Color(139, 69, 19)); 
             scrollPane.setOpaque(true); 
 
             JPanel sellPanel = new JPanel();
             sellPanel.setLayout(new BoxLayout(sellPanel, BoxLayout.Y_AXIS));
-            sellPanel.setForeground(new Color(253, 236, 166)); 
-            sellPanel.setBackground(new Color(102, 72, 54)); 
+            sellPanel.setBackground(new Color(0,0,0, 192)); 
             sellPanel.setOpaque(true); 
 
             // Add items from the inventory to the sell panel
@@ -345,7 +343,7 @@ class Shop extends JPanel {
                             int currentGold = inventory.getResource("Gold"); // update current resource amount
                             inventory.setResource("Gold", currentGold + 1); // increase gold 
                             inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
+                            goldLabel.setText("  Gold: " + inventory.getResource("Gold") + "  "); // Update the gold label
                             sellItemButton.setText("Sell " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the sell button label
                             SFX.playSound("assets/SFX/coin3.wav");
                         } else {
@@ -431,13 +429,13 @@ class Shop extends JPanel {
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
             // format gold label
             goldLabel.setForeground(new Color(253, 236, 166)); 
-            goldLabel.setBackground(new Color(102, 72, 54)); 
+            goldLabel.setBackground(new Color(0,0,0)); 
             goldLabel.setOpaque(true); 
 
             // Create a close button
             JButton closeButton = new JButton("Close");
-            closeButton.setForeground(new Color(253, 236, 166)); 
-            closeButton.setBackground(new Color(102, 72, 54)); 
+            closeButton.setForeground(new Color(139, 69, 19)); 
+            closeButton.setBackground(new Color(253, 236, 166)); 
             closeButton.setOpaque(true); 
 
             closeButton.addActionListener(closeEvent -> {
@@ -474,7 +472,7 @@ class Shop extends JPanel {
             buy_label.setPreferredSize(new Dimension(100,50));
             // format gold label
             buy_label.setForeground(new Color(253, 236, 166)); 
-            buy_label.setBackground(new Color(102, 72, 54)); 
+            buy_label.setBackground(new Color(0,0,0)); 
             buy_label.setOpaque(true); 
 
             // Create error message
@@ -482,7 +480,7 @@ class Shop extends JPanel {
             err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
             // format label
             err_message.setForeground(new Color(253, 236, 166)); 
-            err_message.setBackground(new Color(102, 72, 54)); 
+            err_message.setBackground(new Color(139, 69, 19)); 
             err_message.setOpaque(true); 
 
             // Add the close button to the top right corner
@@ -492,20 +490,19 @@ class Shop extends JPanel {
             closeButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
             // format panel
             closeButtonPanel.setForeground(new Color(253, 236, 166)); 
-            closeButtonPanel.setBackground(new Color(102, 72, 54)); 
+            closeButtonPanel.setBackground(new Color(0,0,0)); 
             closeButtonPanel.setOpaque(true); 
         
             // Create a menu for buying items
             JScrollPane scrollPane = new JScrollPane();
             scrollPane.setForeground(new Color(253, 236, 166)); 
-            scrollPane.setBackground(new Color(102, 72, 54)); 
+            scrollPane.setBackground(new Color(139, 69, 19)); 
             scrollPane.setOpaque(true); 
 
             JPanel buyPanel = new JPanel();
             buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.X_AXIS));
             // format panel
-            buyPanel.setForeground(new Color(253, 236, 166)); 
-            buyPanel.setBackground(new Color(102, 72, 54)); 
+            buyPanel.setBackground(new Color(0,0,0)); 
             buyPanel.setOpaque(true); 
         
             // Add all items from inventory to shop. 
@@ -514,9 +511,9 @@ class Shop extends JPanel {
 
                     JButton buyItemButton = new JButton(" Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
-                    buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                    buyItemButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
                     buyItemButton.setForeground(new Color(253, 236, 166)); 
-                    buyItemButton.setBackground(new Color(102, 72, 54)); 
+                    buyItemButton.setBackground(new Color(139, 69, 19)); 
                     buyItemButton.setOpaque(true); 
 
                     // Code for when a buy button is pressed.
@@ -528,7 +525,7 @@ class Shop extends JPanel {
                             int currentGold = inventory.getResource("Gold"); // update current resource amount
                             inventory.setResource("Gold", currentGold - 1); // decrease gold 
                             inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText("Gold: " + inventory.getResource("Gold")); // Update the gold label
+                            goldLabel.setText(" Gold: " + inventory.getResource("Gold") + " "); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
                             SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                         } else {
@@ -542,11 +539,11 @@ class Shop extends JPanel {
                 scrollPane.setPreferredSize(new Dimension(200, 50));
 
                 // Add components to the main panel
-                mainPanel.add(closeButtonPanel, BorderLayout.CENTER);
-                mainPanel.add(goldLabel, BorderLayout.EAST);
+                mainPanel.add(closeButtonPanel, BorderLayout.EAST);
+                mainPanel.add(goldLabel, BorderLayout.SOUTH);
                 mainPanel.add(scrollPane, BorderLayout.NORTH);
                 mainPanel.add(err_message, BorderLayout.WEST);
-                mainPanel.add(buy_label, BorderLayout.SOUTH);
+                mainPanel.add(buy_label, BorderLayout.CENTER);
         
             // Add the main panel to the main content panel
             mainContentPanel.add(mainPanel, BorderLayout.CENTER);
