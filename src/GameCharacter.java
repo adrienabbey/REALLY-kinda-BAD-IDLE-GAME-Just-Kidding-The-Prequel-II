@@ -3,7 +3,7 @@
  * Adrien Abbey, et al., Jan. 2024
  */
 
-class GameCharacter {
+ class GameCharacter {
    /* Fields */
    private String name;
    private int muscle;
@@ -131,8 +131,17 @@ class GameCharacter {
       return health;
    }
 
+   /**
+    * @param newHealth Sets this character's health to a new value, up to its 
+    * max health.  Note: this CAN be negative.
+    * @return Returns the new health value.
+    */
    public double setHealth(double newHealth) {
-      return health = newHealth;
+      if (newHealth > maxHealth) {
+         return health = maxHealth;
+      } else {
+         return health = newHealth;
+      }
    }
 
    public int getMaxHealth() {
