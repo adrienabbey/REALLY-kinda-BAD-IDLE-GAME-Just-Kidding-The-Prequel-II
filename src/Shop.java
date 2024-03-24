@@ -83,7 +83,7 @@ class Shop extends JPanel {
             buttons.get(i).setMaximumSize(new Dimension(200, 80));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
+            buttons.get(i).setFont(new Font("Times New Roman", Font.BOLD, 24));
         }
         
         secretMerchant.setMaximumSize(new Dimension(250, 80));
@@ -97,6 +97,9 @@ class Shop extends JPanel {
          * 
          * 
          * Buy Screen
+         * 
+         * 
+         * 
          * 
          */
         // Buy button adds a potion to the player's inventory
@@ -117,11 +120,19 @@ class Shop extends JPanel {
 
             // Create a label to display the player's gold count
             JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
-            goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
+            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
+            // format gold label
+            goldLabel.setForeground(new Color(102, 72, 54)); // set color of text
+            goldLabel.setBackground(new Color(253, 236, 166)); //set color of background
+            goldLabel.setOpaque(true); // background is visible 
 
             // Create a close button
             JButton closeButton = new JButton("Close");
+            // format label
+            closeButton.setForeground(new Color(253, 236, 166)); 
+            closeButton.setBackground(new Color(102, 72, 54)); 
+            closeButton.setOpaque(true); 
             closeButton.addActionListener(closeEvent -> {
                 SFX.playSound("assets/SFX/interface1.wav"); 
                 // Remove the buy panel and the close button
@@ -133,20 +144,40 @@ class Shop extends JPanel {
 
             // Create buy label message
             JLabel buy_label = new JLabel(" Buy ");
-            buy_label.setFont(new Font("Serif", Font.BOLD, 28));
+            buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            //format buy label
+            buy_label.setForeground(new Color(253, 236, 166)); 
+            buy_label.setBackground(new Color(102, 72, 54)); 
+            buy_label.setOpaque(true); 
 
             // Create error message
             JLabel err_message = new JLabel("");
-            err_message.setFont(new Font("Serif", Font.BOLD, 24));
+            err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
+            err_message.setForeground(new Color(253, 236, 166)); 
+            err_message.setBackground(new Color(102, 72, 54)); 
+            err_message.setOpaque(true); 
 
             // Add the close button to the top right corner
             JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             closeButtonPanel.add(closeButton);
+            // format panel
+            closeButtonPanel.setForeground(new Color(253, 236, 166)); 
+            closeButtonPanel.setBackground(new Color(102, 72, 54)); 
+            closeButtonPanel.setOpaque(true); 
         
             // Create a menu for buying items
             JScrollPane scrollPane = new JScrollPane();
+            // format panel
+            scrollPane.setForeground(new Color(253, 236, 166)); 
+            scrollPane.setBackground(new Color(102, 72, 54)); 
+            scrollPane.setOpaque(true); 
+
+            // format Panel
             JPanel buyPanel = new JPanel();
             buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
+            buyPanel.setForeground(new Color(253, 236, 166)); 
+            buyPanel.setBackground(new Color(102, 72, 54)); 
+            buyPanel.setOpaque(true); 
         
             // Add all items from inventory to shop. 
             for (String resourceName : inventory.getResources().keySet()) {
@@ -155,6 +186,10 @@ class Shop extends JPanel {
                     JButton buyItemButton = new JButton("Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
                     buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                    // format gold label
+                    buyItemButton.setForeground(new Color(253, 236, 166)); 
+                    buyItemButton.setBackground(new Color(102, 72, 54)); 
+                    buyItemButton.setOpaque(true); 
                     
                     buyItemButton.addActionListener(sellEvent -> {
                         
@@ -210,6 +245,8 @@ class Shop extends JPanel {
          * Sell Screen
          * 
          * 
+         * 
+         * 
          */
         // Sell button to sell equipment or potions for gold
 
@@ -229,37 +266,64 @@ class Shop extends JPanel {
 
             // Create a label to display the player's gold count
             JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
-            goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
+            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
+            // format gold label
+            goldLabel.setForeground(new Color(253, 236, 166)); 
+            goldLabel.setBackground(new Color(102, 72, 54)); 
+            goldLabel.setOpaque(true); 
 
             // Create a close button
             JButton closeButton = new JButton("Close");
+            // format close button
+            closeButton.setForeground(new Color(253, 236, 166)); 
+            closeButton.setBackground(new Color(102, 72, 54)); 
+            closeButton.setOpaque(true); 
+
             closeButton.addActionListener(closeEvent -> {
                 SFX.playSound("assets/SFX/interface1.wav"); 
-                // Remove the sell panel and the close button
+                // Remove the buy panel and the close button
                 remove(mainPanel2);
                 sellScreenOpen = false; // Set sell screen as closed
                 revalidate(); // recalculate the layout of the components within the container
                 repaint(); //  repaints the GUI components
             });
 
-            // Create sell label
+            // Create sell label message
             JLabel sell_label = new JLabel(" Sell ");
-            sell_label.setFont(new Font("Serif", Font.BOLD, 28));
+            sell_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            //format sell label
+            sell_label.setForeground(new Color(253, 236, 166)); 
+            sell_label.setBackground(new Color(102, 72, 54)); 
+            sell_label.setOpaque(true); 
 
             // Create error message
             JLabel err_message = new JLabel("");
-            err_message.setFont(new Font("Serif", Font.BOLD, 25));
+            err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
+            err_message.setForeground(new Color(253, 236, 166)); 
+            err_message.setBackground(new Color(102, 72, 54)); 
+            err_message.setOpaque(true); 
 
             // Add the close button to the top right corner
             JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             closeButtonPanel.add(closeButton);
+            // format panel
+            closeButtonPanel.setForeground(new Color(253, 236, 166)); 
+            closeButtonPanel.setBackground(new Color(102, 72, 54)); 
+            closeButtonPanel.setOpaque(true); 
         
-            // Create a scrolling menu for selling items
+            // Create a menu for buying items
             JScrollPane scrollPane = new JScrollPane();
+            scrollPane.setForeground(new Color(253, 236, 166)); 
+            scrollPane.setBackground(new Color(102, 72, 54)); 
+            scrollPane.setOpaque(true); 
+
             JPanel sellPanel = new JPanel();
             sellPanel.setLayout(new BoxLayout(sellPanel, BoxLayout.Y_AXIS));
-        
+            sellPanel.setForeground(new Color(253, 236, 166)); 
+            sellPanel.setBackground(new Color(102, 72, 54)); 
+            sellPanel.setOpaque(true); 
+
             // Add items from the inventory to the sell panel
             for (String resourceName : inventory.getResources().keySet()) {
                 if (!(resourceName == "Gold")) { // remove Gold from sell list
@@ -269,9 +333,11 @@ class Shop extends JPanel {
                     JButton sellItemButton = new JButton("Sell " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // format buttons
                     sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                    sellItemButton.setForeground(new Color(253, 236, 166)); 
+                    sellItemButton.setBackground(new Color(102, 72, 54)); 
+                    sellItemButton.setOpaque(true); 
                     
                     sellItemButton.addActionListener(sellEvent -> {
-
                         // If resource is greater than 0, it is able to sell, else output error message. 
                         if ((inventory.getResource(resourceName) > 0)) {
                             err_message.setText("");
@@ -318,8 +384,11 @@ class Shop extends JPanel {
         /*
          * 
          * 
+         * 
+         * 
          * Implementation for the secret merchant subpanel.
          * TODO: Add secret items. 
+         * 
          * 
          */
         // Buy button adds a potion to the player's inventory
@@ -358,11 +427,19 @@ class Shop extends JPanel {
 
             // Create a label to display the player's gold count
             JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
-            goldLabel.setFont(new Font("Serif", Font.BOLD, 28));
+            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
+            // format gold label
+            goldLabel.setForeground(new Color(253, 236, 166)); 
+            goldLabel.setBackground(new Color(102, 72, 54)); 
+            goldLabel.setOpaque(true); 
 
             // Create a close button
             JButton closeButton = new JButton("Close");
+            closeButton.setForeground(new Color(253, 236, 166)); 
+            closeButton.setBackground(new Color(102, 72, 54)); 
+            closeButton.setOpaque(true); 
+
             closeButton.addActionListener(closeEvent -> {
                 SFX.playSound("assets/SFX/interface1.wav"); 
 
@@ -392,24 +469,44 @@ class Shop extends JPanel {
             // Create buy label message
             JLabel buy_label = new JLabel(" Secret Merchant Shop ");
             //buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
-            buy_label.setFont(new Font("Serif", Font.BOLD, 28));
+            buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
             buy_label.setPreferredSize(new Dimension(100,20));
             buy_label.setPreferredSize(new Dimension(100,50));
+            // format gold label
+            buy_label.setForeground(new Color(253, 236, 166)); 
+            buy_label.setBackground(new Color(102, 72, 54)); 
+            buy_label.setOpaque(true); 
 
             // Create error message
             JLabel err_message = new JLabel("");
-            err_message.setFont(new Font("Serif", Font.BOLD, 24));
+            err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
+            // format label
+            err_message.setForeground(new Color(253, 236, 166)); 
+            err_message.setBackground(new Color(102, 72, 54)); 
+            err_message.setOpaque(true); 
 
             // Add the close button to the top right corner
             JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             closeButtonPanel.add(closeButton);
             closeButton.setPreferredSize(new Dimension(150,30));
-            closeButton.setFont(new Font("Serif", Font.BOLD, 22));
+            closeButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
+            // format panel
+            closeButtonPanel.setForeground(new Color(253, 236, 166)); 
+            closeButtonPanel.setBackground(new Color(102, 72, 54)); 
+            closeButtonPanel.setOpaque(true); 
         
             // Create a menu for buying items
             JScrollPane scrollPane = new JScrollPane();
+            scrollPane.setForeground(new Color(253, 236, 166)); 
+            scrollPane.setBackground(new Color(102, 72, 54)); 
+            scrollPane.setOpaque(true); 
+
             JPanel buyPanel = new JPanel();
             buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.X_AXIS));
+            // format panel
+            buyPanel.setForeground(new Color(253, 236, 166)); 
+            buyPanel.setBackground(new Color(102, 72, 54)); 
+            buyPanel.setOpaque(true); 
         
             // Add all items from inventory to shop. 
             for (String resourceName : inventory.getResources().keySet()) {
@@ -418,10 +515,12 @@ class Shop extends JPanel {
                     JButton buyItemButton = new JButton(" Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
                     buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-                    
+                    buyItemButton.setForeground(new Color(253, 236, 166)); 
+                    buyItemButton.setBackground(new Color(102, 72, 54)); 
+                    buyItemButton.setOpaque(true); 
+
                     // Code for when a buy button is pressed.
                     buyItemButton.addActionListener(sellEvent -> {
-                        
                         // If Gold is greater than 0 then buy resource,, else output error message. 
                         if ((inventory.getResource("Gold") > 0)) {
                             err_message.setText("");
