@@ -8,17 +8,6 @@ public class Inventory extends JPanel {
     private Map<String, Integer> resources; // Map to store resource amounts
     private JLabel resourceLabel; // Label to display total space
 
-    //     @Override
-    // protected void paintComponent(Graphics g) {
-    //     super.paintComponent(g);
-    //         try {
-    //             g.drawImage(ImageIO.read(new File("assets/images/")), 0, 0, getWidth(), getHeight(), this);
-    //         } catch (IOException e) {
-    //             //Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
-    // }
-
     public Inventory() {
         setLayout(new BorderLayout());
 
@@ -105,7 +94,3 @@ public class Inventory extends JPanel {
     return resources;
     }
 }
-
-//   Example usage: Increment wood resource
-//   int currentWood = inventory.getResource("Wood");
-//   inventory.setResource("Wood", currentWood + 1);

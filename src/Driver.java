@@ -60,15 +60,17 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
+        Inventory inventory = new Inventory();
         Settings settings = new Settings();
         Credits credits = new Credits();
-        Home home = new Home();
-        Inventory inventory = new Inventory();
+        Homestead home = new Homestead(inventory);
         Shop shop = new Shop(inventory);
         WoodCutting woodCutting = new WoodCutting(inventory);
         Mining mining = new Mining(inventory);
         Tavern tavern = new Tavern();
         Library library = new Library();
+        Farm farm = new Farm();
+        Craft craft = new Craft();
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();
@@ -94,6 +96,8 @@ class Driver extends JFrame {
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
         driverPanel.add(inventory, "inventory");
+        // driverPanel.add(farm, "farm");
+        // driverPanel.add(craft, "craft");
         // driverPanel.add(charPanel, "charPanel");
         // driverPanel.add(dice, "dice");
         // driverPanel.add(inventory, "inventory");
