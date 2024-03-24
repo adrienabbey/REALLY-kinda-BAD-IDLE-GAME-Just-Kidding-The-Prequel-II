@@ -66,15 +66,6 @@ private Monster enemy;
                 e1.printStackTrace();
             }
         });
-
-        leave.addActionListener(e -> {
-            try {
-                SFX.playSound("assets/SFX/interface1.wav");
-                Driver.changePanel("world");
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        });
     }
 
         @Override

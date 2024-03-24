@@ -22,7 +22,7 @@ class Library extends JPanel {
     public Library() {
         // Set the layout with vertical alignment and padding
         this.setLayout(new BorderLayout());
-        this.setBorder(new EmptyBorder(200, 620, 200, 620)); // Add padding around the panel
+        this.setBorder(new EmptyBorder(200, 420, 200, 420)); // Add padding around the panel
 
         // Create the 'Back' button with custom styling
         JButton back = new JButton("<- Back");
@@ -45,23 +45,23 @@ class Library extends JPanel {
         text.setBackground(new Color(0, 0, 0)); // Set the background color to black
         text.setOpaque(true); // Make the background visible
 
-        // // Create the label with the monster image
-        // JLabel monsterImage = new JLabel();
-        // try {
-        //     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/goblin.png")));
-        //     monsterImage.setIcon(icon);
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
+        // Create the label with the monster image
+        JLabel monsterImage = new JLabel();
 
         // Add components to the panel
         add(back, BorderLayout.NORTH);
         add(text, BorderLayout.CENTER);
         add(nextPage, BorderLayout.SOUTH);
-        // add(monsterImage, BorderLayout.WEST);
+        add(monsterImage, BorderLayout.WEST);
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            //Set text back to cover, set page counter accordingly, set monster image to null
+            page = 1;
+            text.setText("<html><div style='text-align: center;'>=== Book of Monsters: === <br></div></html>");
+            monsterImage.setIcon(null);
+
+            // play button sfx, change panel, and play town music. 
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("town");
             MusicPlayer.playMusic("assets/Music/Village Consort.wav");
@@ -73,12 +73,27 @@ class Library extends JPanel {
             // Prompts
             if (page == 0) {
                 text.setText("<html><div style='text-align: center;'>=== Book of Monsters: === <br></div></html>");
+                monsterImage.setIcon(null);
             }
             if (page == 1) {
                 text.setText("<html><div style='text-align: center;'>=== Entry 001: Rabid Pet Rock === <br><br> &nbsp; Someone glued googley eyes onto a pet rock, then abandoned it. &nbsp; Also, it has rabies and wants to kill you. <br><br> Gold Reward: 2 <br> Muscle: 2<br>Brain: 2<br> Heart: 2</div></html>");
+                try {
+                    ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/pet-rock-no-bg (1).png")));
+                    monsterImage.setIcon(icon);
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             }
             if (page == 2) {
                 text.setText("<html><div style='text-align: center;'>=== Entry 002: Hobo Goblin === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo &nbsp; goblin is obviously suffering after becoming emancipated from &nbsp; all its wealth, health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                try {
+                    ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/goblin-no-bg.png")));
+                    monsterImage.setIcon(icon);
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             }
             page++;
             if (page == 3) {
