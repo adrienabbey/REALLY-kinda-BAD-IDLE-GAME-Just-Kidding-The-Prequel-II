@@ -7,7 +7,7 @@ public class SFX {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     public static boolean isMutedSFX = false;
-    private static float currentVolumeSFX = -7.0f;
+    private static float currentVolumeSFX = -20.0f;
 
     public static void setcurrentVolumeSFX(float volume) {
         currentVolumeSFX = volume;
