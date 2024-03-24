@@ -13,7 +13,7 @@ class GameCharacter {
    private int maxHealth;
    private double magic;
    private int maxMagic;
-   //private int dice;
+   // private int dice;
    private Dice dice = new Dice(20);
 
    // TODO: What do these stats do?
@@ -21,10 +21,11 @@ class GameCharacter {
 
    /**
     * Constructor for GameCharacter class
-    * @param name sets the name of the character
+    * 
+    * @param name   sets the name of the character
     * @param muscle how hard the character hits
-    * @param brain how strong the characters magic is
-    * @param heart how much health the character has
+    * @param brain  how strong the characters magic is
+    * @param heart  how much health the character has
     */
    public GameCharacter(String name, int muscle, int brain, int heart) {
       this.name = name;
@@ -40,6 +41,7 @@ class GameCharacter {
 
    /**
     * This function is used to attack another character
+    * 
     * @param target the character that is being attacked
     */
    public void attack(GameCharacter target) {
@@ -47,70 +49,105 @@ class GameCharacter {
       int damage = muscle * (dice.getLast() / 20);
       dice.roll();
       // int resist = target.getSkin(); // This is for if we add complexity later
-      if(dice.getLast() == 20) {
+      if (dice.getLast() == 20) {
          System.out.println("Critical Hit!");
          target.health -= damage * 2;
-      }
-      else if(dice.getLast() == 1) {
+      } else if (dice.getLast() == 1) {
          System.out.println("Critical Miss!");
          health -= 1;
-      }
-      else {
+      } else {
          target.health -= damage;
       }
       // Method used when a character attacks another character.
       // TODO: Implementation.
    }
 
-   public void magicAttack(GameCharacter target){
+   public void magicAttack(GameCharacter target) {
       dice.roll();
       int damage = brain * (dice.getLast() / 20);
       dice.roll();
-      if(dice.getLast() == 20) {
+      if (dice.getLast() == 20) {
          System.out.println("Critical Hit!");
          target.health -= damage * 2;
-      }
-      else if(dice.getLast() == 1) {
+      } else if (dice.getLast() == 1) {
          System.out.println("Critical Miss!");
          health -= 1;
-      }
-      else {
+      } else {
          target.health -= damage;
       }
       magic -= 1;
    }
 
-   public void magicHeal(){
+   public void magicHeal() {
       dice.roll();
       int heal = brain * (dice.getLast() / 20);
       dice.roll();
-      if(dice.getLast() == 20) {
+      if (dice.getLast() == 20) {
          System.out.println("Critical Heal!");
          health += heal * 2;
-      }
-      else if(dice.getLast() == 1) {
+      } else if (dice.getLast() == 1) {
          System.out.println("Critical Miss!");
          health -= 1;
-      }
-      else {
+      } else {
          health += heal;
       }
       magic -= 1;
    }
 
    // Getters and Setters
-   public String getName() {  return name;   }
-   public String setName(String newName) {   return name = newName;  }
-   public int getMuscle() {   return muscle; }
-   public int setMuscle(int newMuscle) {  return muscle = newMuscle; }
-   public int getBrain() { return brain;  }
-   public int setBrain(int newBrain) { return brain = newBrain;   }
-   public int getHeart() { return heart;  }
-   public int setHeart(int newHeart) { return heart = newHeart;   }
-   public double getHealth() { return health; }
-   public double setHealth(double newHealth) { return health = newHealth; }
-   public int getMaxHealth() { return maxHealth; }
-   public double getMagic() { return magic; }
-   public double setMagic(double newMagic) { return magic = newMagic; }
-   public int getMaxMagic() { return maxMagic; }
+   public String getName() {
+      return name;
+   }
+
+   public String setName(String newName) {
+      return name = newName;
+   }
+
+   public int getMuscle() {
+      return muscle;
+   }
+
+   public int setMuscle(int newMuscle) {
+      return muscle = newMuscle;
+   }
+
+   public int getBrain() {
+      return brain;
+   }
+
+   public int setBrain(int newBrain) {
+      return brain = newBrain;
+   }
+
+   public int getHeart() {
+      return heart;
+   }
+
+   public int setHeart(int newHeart) {
+      return heart = newHeart;
+   }
+
+   public double getHealth() {
+      return health;
+   }
+
+   public double setHealth(double newHealth) {
+      return health = newHealth;
+   }
+
+   public int getMaxHealth() {
+      return maxHealth;
+   }
+
+   public double getMagic() {
+      return magic;
+   }
+
+   public double setMagic(double newMagic) {
+      return magic = newMagic;
+   }
+
+   public int getMaxMagic() {
+      return maxMagic;
+   }
 }
