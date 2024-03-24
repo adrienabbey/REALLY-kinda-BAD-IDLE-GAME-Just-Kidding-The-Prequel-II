@@ -7,7 +7,8 @@ public class SFX {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     public static boolean isMutedSFX = false;
-    private static float currentVolumeSFX = -20.0f;
+    private static float currentVolumeSFX = -16.0f;
+    private static Thread currentThread = null; // Reference to the thread associated with the current clip
 
     public static void setcurrentVolumeSFX(float volume) {
         currentVolumeSFX = volume;
@@ -22,12 +23,15 @@ public class SFX {
         // This allows the music to play in the background without blocking the rest of the program
         new Thread(() -> {
             try {
-                 // If there's a clip playing, stop it before starting the new one
-                // This ensures that only one music track plays at a time
+                // If there's a clip playing, stop it before starting the new one
+                // This ensures that only one music track plays at a time.
                 if (currentClip != null && currentClip.isRunning()) {
                     currentClip.stop();
+                    // If the current thread is in use interrupt it. 
+                    if (currentThread != null) {
+                        currentThread.interrupt(); // Interrupt the associated thread
+                    }
                 }
-
                 // Create a File object with the provided file path
                 File musicPath = new File(filePath);
 
@@ -41,6 +45,9 @@ public class SFX {
                     // Save the current clip
                     // This allows us to stop it when a new one starts
                     currentClip = clip;
+
+                   // Save the reference to the current thread
+                   currentThread = Thread.currentThread();
 
                     // Get the volume control
                     volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);

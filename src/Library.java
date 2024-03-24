@@ -38,17 +38,27 @@ class Library extends JPanel {
         nextPage.setBackground(new Color(139, 69, 19)); // Dark wood color
         nextPage.setFocusPainted(false); // Remove focus ring around the button
 
-        // Create the information label with custom styling
+        // Create the information label of monster with custom styling
         JLabel text = new JLabel("<html><div style='text-align: center;'>=== Book of Monsters: === <br></div></html>", SwingConstants.CENTER);
         text.setFont(new Font("Serif", Font.ITALIC, 24));
         text.setForeground(new Color(205, 133, 63)); // Light wood color
         text.setBackground(new Color(0, 0, 0)); // Set the background color to black
         text.setOpaque(true); // Make the background visible
 
+        // // Create the label with the monster image
+        // JLabel monsterImage = new JLabel();
+        // try {
+        //     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/goblin.png")));
+        //     monsterImage.setIcon(icon);
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
+
         // Add components to the panel
         add(back, BorderLayout.NORTH);
         add(text, BorderLayout.CENTER);
         add(nextPage, BorderLayout.SOUTH);
+        // add(monsterImage, BorderLayout.WEST);
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
