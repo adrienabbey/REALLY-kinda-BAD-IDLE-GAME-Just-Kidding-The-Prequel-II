@@ -137,6 +137,7 @@
     * @return Returns the new health value.
     */
    public double setHealth(double newHealth) {
+      // TODO: Do we want to allow health to go above max?
       if (newHealth > maxHealth) {
          return health = maxHealth;
       } else {
