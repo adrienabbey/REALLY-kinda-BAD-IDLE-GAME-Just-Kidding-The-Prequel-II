@@ -23,6 +23,7 @@ class Driver extends JFrame {
     private static PlayerCharacter player;
     private static JPanel world = new JPanel();
     private static JPanel dungeon = new JPanel();
+    private static JPanel dungeonInfo = new JPanel();
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     private static World map = new World() { // This code puts the world map image as the background to the panel
@@ -79,8 +80,9 @@ class Driver extends JFrame {
         // JPanel dungeon = new JPanel();
         // Dungeon combat = new Dungeon();
 
-        world.setLayout(new GridLayout(1, 1));
-        dungeon.setLayout(new GridLayout(1, 1));
+        world.setLayout(new GridLayout(1, 2));
+        dungeon.setLayout(new GridLayout(1, 2));
+        dungeonInfo.setLayout(new GridLayout(2, 1));
 
         driverPanel.setLayout(cardLayout);
         driverPanel.add(settings, "settings");
@@ -123,9 +125,10 @@ class Driver extends JFrame {
         CharacterScreen charScreen = new CharacterScreen();
         world.add(charScreen);
         world.add(map);
-        dungeon.add(charScreen);
+        dungeonInfo.add(charScreen);
         logs = new Combat(player, Dungeon.getMonster());
-        dungeon.add(logs);
+        dungeonInfo.add(logs);
+        dungeon.add(dungeonInfo);
         dungeon.add(combat);
         
         // driverPanel.add(new CharacterScreen(), "charScreen");
