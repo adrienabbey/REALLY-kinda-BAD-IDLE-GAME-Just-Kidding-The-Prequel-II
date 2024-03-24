@@ -47,6 +47,8 @@ class Library extends JPanel {
 
         // Create the label with the monster image
         JLabel monsterImage = new JLabel();
+        monsterImage.setBackground(new Color(192, 192, 192,220)); // Set the background color to black
+        monsterImage.setOpaque(true); // Make the background visible
 
         // Add components to the panel
         add(back, BorderLayout.NORTH);
