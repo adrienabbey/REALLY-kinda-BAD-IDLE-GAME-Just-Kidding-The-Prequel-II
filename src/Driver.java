@@ -26,11 +26,12 @@ class Driver extends JFrame {
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     private static World map = new World() { // This code puts the world map image as the background to the panel
+   
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/World.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/World7.jpg")), 0, 0, getWidth(), getHeight(), this);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -52,6 +53,8 @@ class Driver extends JFrame {
     public Driver() throws Exception {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
+        MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+        MusicPlayer.setVolume(5.0f);
 
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time
@@ -59,6 +62,15 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
+        Settings settings = new Settings();
+        Credits credits = new Credits();
+        Home home = new Home();
+        Inventory inventory = new Inventory();
+        Shop shop = new Shop(inventory);
+        WoodCutting woodCutting = new WoodCutting(inventory);
+        Mining mining = new Mining(inventory);
+        Tavern tavern = new Tavern();
+        Library library = new Library();
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();
@@ -67,14 +79,23 @@ class Driver extends JFrame {
         // JPanel dungeon = new JPanel();
         // Dungeon combat = new Dungeon();
 
-        world.setLayout(new GridLayout(2, 2));
-        dungeon.setLayout(new GridLayout(2, 2));
+        world.setLayout(new GridLayout(1, 1));
+        dungeon.setLayout(new GridLayout(1, 1));
 
         driverPanel.setLayout(cardLayout);
+        driverPanel.add(settings, "settings");
+        driverPanel.add(shop, "shop");
         driverPanel.add(start, "start");
         driverPanel.add(load, "load");
         driverPanel.add(cc, "cc");
         driverPanel.add(instructions, "instructions");
+        driverPanel.add(credits, "credits");
+        driverPanel.add(home, "home");
+        driverPanel.add(woodCutting, "wood");
+        driverPanel.add(mining, "mine");
+        driverPanel.add(tavern, "tavern");
+        driverPanel.add(library, "library");
+        driverPanel.add(inventory, "inventory");
         // driverPanel.add(charPanel, "charPanel");
         // driverPanel.add(dice, "dice");
         // driverPanel.add(inventory, "inventory");
@@ -106,6 +127,7 @@ class Driver extends JFrame {
         logs = new Combat(player, Dungeon.getMonster());
         dungeon.add(logs);
         dungeon.add(combat);
+        
         // driverPanel.add(new CharacterScreen(), "charScreen");
     }
 

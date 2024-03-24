@@ -1,9 +1,12 @@
-import java.awt.Dimension;
-
 import javax.swing.*;
+import java.awt.*;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 class Dungeon extends JPanel {
-    private Monster enemy;
+    private Image backgroundImage;
+private Monster enemy;
     private PlayerCharacter player;
     private static Dice dice = new Dice(20);
     /**
@@ -11,12 +14,16 @@ class Dungeon extends JPanel {
      * @param player The player character object
      */
     public Dungeon() {
+        try {
+            backgroundImage = ImageIO.read(new File("assets/images/Dungeon.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // TODO add the actual enemy generation and combat here
-        enemy = getMonster();
-        player = Driver.getPlayer();
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        
 
         // This is creating all the objects that will be displayed on the screen
         // Need something to explicitly start combat
@@ -51,11 +58,28 @@ class Dungeon extends JPanel {
         });
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("world");
+                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        leave.addActionListener(e -> {
+            try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         });
+    }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(backgroundImage, 0, 0, this);
     }
 
     public void update(){
