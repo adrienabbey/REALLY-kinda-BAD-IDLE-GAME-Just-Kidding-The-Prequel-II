@@ -27,7 +27,6 @@ class Driver extends JFrame {
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     private static World map = new World() { // This code puts the world map image as the background to the panel
-   
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
