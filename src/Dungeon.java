@@ -35,23 +35,33 @@ class Dungeon extends JPanel {
         // This would allow "idle" play of one content at a time
         JButton start = new JButton("Start Combat");
         JButton end = new JButton("End Combat");
+        JButton magic = new JButton("Attack Magic");
         JButton leave = new JButton("Leave Dungeon");
 
         // This is adding all objects to the screen, and controlling layout
-        add(Box.createVerticalGlue());
+        add(Box.createHorizontalGlue());
         add(start);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(magic);
+        add(Box.createRigidArea(new Dimension(20, 20)));
         add(end);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(20, 20)));
         add(leave);
-        add(Box.createVerticalGlue());
+        add(Box.createHorizontalGlue());
 
         // control the layout of the buttons
         //run.setAlignmentX(CENTER_ALIGNMENT);
-
-        // This button will be used to run away from combat
         start.addActionListener(e -> {
-            Combat.startCombat();;
+            Combat.startCombat();
+        });
+        magic.addActionListener(e -> {
+            Combat.toggleMagicType();
+            if(Combat.magicType == Combat.MagicType.ATTACK){
+                magic.setText("Attack Magic");
+            }
+            else{
+                magic.setText("Heal Magic");
+            }
         });
         end.addActionListener(e -> {
             Combat.endCombat();
@@ -76,8 +86,8 @@ class Dungeon extends JPanel {
         });
     }
 
-        @Override
-        protected void paintComponent(Graphics g) {
+    @Override
+    protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             g.drawImage(backgroundImage, 0, 0, this);
     }

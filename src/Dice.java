@@ -13,7 +13,8 @@ class Dice{
     }
 
     public int roll(){
-        return (int) (Math.random() * sides) + 1;
+        dice = (int) (Math.random() * sides) + 1;
+        return dice;
     }
 
     public int getLast(){

@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -26,6 +26,7 @@ class Driver extends JFrame {
     private static JPanel dungeonInfo = new JPanel();
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
+    public static CharacterScreen charScreen;
     private static World map = new World() { // This code puts the world map image as the background to the panel
         @Override
         protected void paintComponent(Graphics g) {
@@ -121,7 +122,8 @@ class Driver extends JFrame {
      * @throws InterruptedException 
      */
     public static void addCharScreen() throws InterruptedException {
-        CharacterScreen charScreen = new CharacterScreen();
+        charScreen = new CharacterScreen();
+        charScreen.setPreferredSize(new Dimension(charScreen.getWidth(), 36));
         world.add(charScreen);
         world.add(map);
         dungeonInfo.add(charScreen);
@@ -131,6 +133,10 @@ class Driver extends JFrame {
         dungeon.add(combat);
         
         // driverPanel.add(new CharacterScreen(), "charScreen");
+    }
+
+    public static CharacterScreen getCharScreen() {
+        return charScreen;
     }
 
     /**
