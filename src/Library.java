@@ -86,6 +86,7 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
+                SFX.playSound("assets/SFX/stone-gathering-sfx.wav");
             }
             if (page == 2) {
                 text.setText("<html><div style='text-align: center;'>=== Entry 002: Hobo Goblin === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo &nbsp; goblin is obviously suffering after becoming emancipated from &nbsp; all its wealth, health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
@@ -96,6 +97,7 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
+                SFX.playSound("assets/SFX/goblins/goblin-1.wav");
             }
             page++;
             if (page == 3) {

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.BorderLayout;
@@ -91,7 +92,8 @@ class Shop extends JPanel {
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
-        remove(secretMerchant);
+        // remove(secretMerchant);
+        
 
         /*
          * 
@@ -417,6 +419,23 @@ class Shop extends JPanel {
             }};
             secretMerchantPanel.setLayout(new BorderLayout());
 
+            // Create a JLabel to hold the cat image
+            JLabel catLabel = new JLabel();
+            try {
+                // Load the image
+                BufferedImage catImage = ImageIO.read(new File("assets/images/cat1.png"));
+                // Set the image on the label
+                catLabel.setIcon(new ImageIcon(catImage));
+                // Set the preferred size of the label to the size of the image
+                catLabel.setPreferredSize(new Dimension(catImage.getWidth(), catImage.getHeight()));
+                
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+            }
+
+            // Add the cat label to the panel
+            secretMerchantPanel.add(catLabel, BorderLayout.WEST);
+
             // Create a panel to hold the main conte(excluding background)
             JPanel mainContentPanel = new JPanel(new BorderLayout());
 
@@ -425,11 +444,11 @@ class Shop extends JPanel {
 
             // Create a label to display the player's gold count
             JLabel goldLabel = new JLabel("   Gold: " + inventory.getResource("Gold") + " ");
-            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
             // format gold label
-            goldLabel.setPreferredSize(new Dimension(845,65));
-            goldLabel.setPreferredSize(new Dimension(845,65));
+            goldLabel.setPreferredSize(new Dimension(140,65));
+            goldLabel.setPreferredSize(new Dimension(140,65));
             goldLabel.setForeground(new Color(253, 236, 166)); 
             goldLabel.setBackground(new Color(0,0,0)); 
             goldLabel.setOpaque(true); 
@@ -467,11 +486,11 @@ class Shop extends JPanel {
             });
 
             // Create buy label message
-            JLabel buy_label = new JLabel(" Secret Merchant Shop ");
+            JLabel buy_label = new JLabel("                                               Secret Merchant Shop ");
             //buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
             buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            buy_label.setPreferredSize(new Dimension(100,40));
-            buy_label.setPreferredSize(new Dimension(100,40));
+            buy_label.setPreferredSize(new Dimension(170,40));
+            buy_label.setPreferredSize(new Dimension(170,40));
             // format gold label
             buy_label.setForeground(new Color(253, 236, 166)); 
             buy_label.setBackground(new Color(0,0,0)); 
@@ -481,8 +500,8 @@ class Shop extends JPanel {
             JLabel err_message = new JLabel("");
             err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
             // format label
-            err_message.setPreferredSize(new Dimension(100,40));
-            err_message.setPreferredSize(new Dimension(100,40));
+            err_message.setPreferredSize(new Dimension(170,40));
+            err_message.setPreferredSize(new Dimension(170,40));
             err_message.setForeground(new Color(253, 236, 166)); 
             err_message.setBackground(new Color(0,0,0)); 
             err_message.setOpaque(true); 
@@ -490,7 +509,7 @@ class Shop extends JPanel {
             // Add the close button to the top right corner
             JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             closeButtonPanel.add(closeButton);
-            closeButton.setPreferredSize(new Dimension(150,30));
+            closeButton.setPreferredSize(new Dimension(90,30));
             closeButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
             // format panel
             closeButtonPanel.setForeground(new Color(253, 236, 166)); 
@@ -504,9 +523,9 @@ class Shop extends JPanel {
             scrollPane.setOpaque(true); 
 
             JPanel buyPanel = new JPanel();
-            buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.X_AXIS));
+            buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
             // format panel
-            buyPanel.setBackground(new Color(0,0,0)); 
+            buyPanel.setBackground(new Color(0,0,0, 192)); 
             buyPanel.setOpaque(true); 
         
             // Add all items from inventory to shop. 
@@ -533,27 +552,27 @@ class Shop extends JPanel {
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
                             SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                         } else {
-                            err_message.setText("   Cannot buy item, no more gold.  ");
+                            err_message.setText("                                                  Cannot buy item, no more gold.  ");
                         }
                     });
                     buyPanel.add(buyItemButton);
                 }}
         
                 scrollPane.setViewportView(buyPanel);
-                scrollPane.setPreferredSize(new Dimension(200, 50));
+                scrollPane.setPreferredSize(new Dimension(660, 200));
 
                 // Add components to the main panel
                 mainPanel.add(closeButtonPanel, BorderLayout.EAST);
                 mainPanel.add(goldLabel, BorderLayout.WEST);
-                mainPanel.add(scrollPane, BorderLayout.NORTH);
+                mainPanel.add(scrollPane, BorderLayout.CENTER);
                 mainPanel.add(err_message, BorderLayout.SOUTH);
-                mainPanel.add(buy_label, BorderLayout.CENTER);
+                mainPanel.add(buy_label, BorderLayout.NORTH);
         
             // Add the main panel to the main content panel
-            mainContentPanel.add(mainPanel, BorderLayout.CENTER);
+            mainContentPanel.add(mainPanel);
 
             // Add the main content panel to the secret merchant panel
-            secretMerchantPanel.add(mainContentPanel, BorderLayout.SOUTH);
+            secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
 
             // Add background image to secret merchant panel
              add(secretMerchantPanel);
