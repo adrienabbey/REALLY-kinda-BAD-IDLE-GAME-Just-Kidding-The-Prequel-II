@@ -92,7 +92,7 @@ class Shop extends JPanel {
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
-        // remove(secretMerchant);
+        remove(secretMerchant);
         
 
         /*

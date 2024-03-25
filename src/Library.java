@@ -78,7 +78,7 @@ class Library extends JPanel {
                 monsterImage.setIcon(null);
             }
             if (page == 1) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 001: Rabid Pet Rock === <br><br> &nbsp; Someone glued googley eyes onto a pet rock, then abandoned it. &nbsp; Also, it has rabies and wants to kill you. <br><br> Gold Reward: 2 <br> Muscle: 2<br>Brain: 2<br> Heart: 2</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 001: Rabid Pet Rock === <br><br> &nbsp; Someone glued googley eyes onto a pet rock, then abandoned it. Also, it &nbsp; has rabies and wants to kill you. <br><br> Gold Reward: 2 <br> Muscle: 2<br>Brain: 2<br> Heart: 2</div></html>");
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/pet-rock-no-bg (1).png")));
                     monsterImage.setIcon(icon);
@@ -89,7 +89,7 @@ class Library extends JPanel {
                 SFX.playSound("assets/SFX/stone-gathering-sfx.wav");
             }
             if (page == 2) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 002: Hobo Goblin === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo &nbsp; goblin is obviously suffering after becoming emancipated from &nbsp; all its wealth, health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 002: Hobo Goblin === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from all its wealth, &nbsp; health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/goblin-no-bg.png")));
                     monsterImage.setIcon(icon);
