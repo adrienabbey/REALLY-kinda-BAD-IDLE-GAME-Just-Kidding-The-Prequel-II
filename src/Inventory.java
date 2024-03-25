@@ -20,6 +20,11 @@ public class Inventory extends JPanel {
         resources.put("Metal", 100);
         resources.put("Stone", 250);
         resources.put("Potions", 0);
+        resources.put("Pelt", 0);
+        resources.put("Meat", 0);
+        resources.put("Magical Essense", 0);
+        resources.put("Spleenwort", 0);
+        resources.put("Tongue Fern", 0);
         resources.put("Legendary Potion of Lepus", 0);
 
         // Inventory panel

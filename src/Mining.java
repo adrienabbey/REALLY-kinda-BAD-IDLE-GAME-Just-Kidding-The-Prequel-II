@@ -11,12 +11,14 @@ public class Mining extends JPanel {
     private Inventory inventory; // Reference to the Inventory object
 
     private JProgressBar progressBar;
-    private JButton cutButton;
-    private JButton automineButton; // New button for automatic woodcutting
+    private JButton autoScavengeButton;
+    private JButton autoMineButton; // Button for automatic woodcutting
     private Timer timer;
     private Image bgImage;
-    private JLabel oreGrantedLabel; // Label to display wood granted message
-    private boolean auto;
+    private JLabel grantedLabel; // Label to display wood granted message
+    private boolean auto; // flag that turns auto processes on or off
+    private boolean currentlyScavenge = false; // flag to determine if process is scavengeing. Used to grant correct resource.
+    private boolean currentlyMining = false; // flag to determine if process is mining. Used to grant correct resource.
 
     public Mining(Inventory inventory) { // Accepts an Inventory object
         this.inventory = inventory; // Assign the Inventory object to the local variable
@@ -32,21 +34,21 @@ public class Mining extends JPanel {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(950, 20, 0, 20)); // Add padding around the panel
 
-        // Create the 'Cut Wood' button
-        cutButton = new JButton("Mine Ore");
-        cutButton.setFont(new Font("Serif", Font.ITALIC, 28));
-        cutButton.setForeground(new Color(205, 133, 63)); // Light wood color
-        cutButton.setBackground(new Color(0, 0, 0)); // Set the background color to black
-        cutButton.setOpaque(true); // Make the background visible
-        cutButton.setFocusPainted(false); // Remove focus ring around the button
+        // Create the 'Scaveneg Area' button
+        autoScavengeButton = new JButton("Scavenge Area");
+        autoScavengeButton.setFont(new Font("Serif", Font.ITALIC, 28));
+        autoScavengeButton.setForeground(new Color(205, 133, 63)); // Light wood color
+        autoScavengeButton.setBackground(new Color(0, 0, 0)); // Set the background color to black
+        autoScavengeButton.setOpaque(true); // Make the background visible
+        autoScavengeButton.setFocusPainted(false); // Remove focus ring around the button
 
-        // Create the 'Auto Cut' button
-        automineButton = new JButton("Auto Mine");
-        automineButton.setFont(new Font("Serif", Font.ITALIC, 26));
-        automineButton.setForeground(new Color(205, 133, 63)); // Light wood color
-        automineButton.setBackground(new Color(0, 0, 0)); // Set the background color to black
-        automineButton.setOpaque(true); // Make the background visible
-        automineButton.setFocusPainted(false); // Remove focus ring around the button
+        // Create the 'Mine Ore' button
+        autoMineButton = new JButton("Mine Ore");
+        autoMineButton.setFont(new Font("Serif", Font.ITALIC, 26));
+        autoMineButton.setForeground(new Color(205, 133, 63)); // Light wood color
+        autoMineButton.setBackground(new Color(0, 0, 0)); // Set the background color to black
+        autoMineButton.setOpaque(true); // Make the background visible
+        autoMineButton.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the 'Leave' button
         JButton leave = new JButton("Leave");
@@ -66,34 +68,38 @@ public class Mining extends JPanel {
         progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
 
         // Create label for ore granted message
-        oreGrantedLabel = new JLabel("");
-        oreGrantedLabel.setFont(new Font("Serif", Font.BOLD, 24));
-        oreGrantedLabel.setForeground(Color.GREEN); // Green color for ore granted message
+        grantedLabel = new JLabel("");
+        grantedLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        grantedLabel.setForeground(Color.GREEN); // Green color for ore granted message
 
         // Add components to the panel
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
-        buttonPanel.add(cutButton);
-        buttonPanel.add(automineButton);
+        buttonPanel.add(autoScavengeButton);
+        buttonPanel.add(autoMineButton);
         buttonPanel.add(leave);
         add(buttonPanel, BorderLayout.SOUTH);
         add(progressBar, BorderLayout.CENTER);
-        add(oreGrantedLabel, BorderLayout.NORTH); // Add ore granted label to the panel
+        add(grantedLabel, BorderLayout.NORTH); // Add ore granted label to the panel
 
-        // Action listener for the 'Cut Wood' button
-        cutButton.addActionListener(new ActionListener() {
+        // Action listener for the 'Scavenge Area' button
+        autoScavengeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SFX.playSound("assets/SFX/interface1.wav");
-                mineOre();
-                SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
+                currentlyScavenge = true;
+                currentlyMining = false;
+                autoScavenge();
+                SFX.playSound("assets/SFX/.wav"); // TODO: play scavenging sound 
             }
         });
 
         // Action listener for the 'Auto Mine' button
-        automineButton.addActionListener(new ActionListener() {
+        autoMineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SFX.playSound("assets/SFX/interface1.wav");
+                currentlyScavenge = false;
+                currentlyMining = true;
                 autoMineOre();
                 SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
             }
@@ -102,9 +108,12 @@ public class Mining extends JPanel {
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {
             try {
-                auto = false; // stop auto mining if left panel
+                auto = false; // stop auto ptocess when leaving panel
+                currentlyScavenge = false;
+                currentlyMining = false;
                 timer.stop(); // stop mining process
-                automineButton.setText("Auto Mine"); // reset automining label
+                autoMineButton.setText("Mine Ore"); // reset mining label
+                autoScavengeButton.setText("Scavenge Area"); // reset scavenge label
                 
                 Driver.changePanel("world");
                 SFX.stopSound();
@@ -114,43 +123,74 @@ public class Mining extends JPanel {
             }
         });
 
-        // Timer for automatic woodcutting process
+        // Timer for automatic process
+        // Progress bar takes 11 seconds to fill up
         timer = new Timer(1100, new ActionListener() {
             int progress = 0;
             int ore = 1;
+            int scavenge = 1; 
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (progress >= 10) {
                     progressBar.setValue(100);
 
-                    if (ore % 5 == 0) {
-                        oreGrantedLabel.setText("Metal granted!"); // Update metal granted label
-                        SFX.playSound("assets/SFX/metal-ringing1.wav"); 
+                    if (currentlyMining) {
+                        if (ore % 5 == 0) {
+                            grantedLabel.setText("Metal granted!"); // Update metal granted label
+                            SFX.playSound("assets/SFX/metal-ringing1.wav"); 
 
-                        int currentMetal = inventory.getResource("Metal");
-                        // Increment metal resource variable
-                        inventory.setResource("Metal", currentMetal + 1);
-                        //update resource in inventory
-                        inventory.updateResourceLabels();
+                            int currentMetal = inventory.getResource("Metal");
+                            // Increment metal resource variable
+                            inventory.setResource("Metal", currentMetal + 1);
 
-                    } else {
-                        oreGrantedLabel.setText("Stone granted!"); // Update stone granted label
-                        SFX.playSound("assets/SFX/stone-gathering-sfx.wav"); 
+                        } else {
+                            grantedLabel.setText("Stone granted!"); // Update stone granted label
+                            SFX.playSound("assets/SFX/stone-Scavengeing-sfx.wav"); 
 
-                        int currentStone = inventory.getResource("Stone");
-                        // Increment stone resource variable
-                        inventory.setResource("Stone", currentStone + 1);
-                        //update resource in inventory
-                        inventory.updateResourceLabels();
+                            int currentStone = inventory.getResource("Stone");
+                            // Increment stone resource variable
+                            inventory.setResource("Stone", currentStone + 1);
+                            //update resource in inventory
+                            }
                         }
+                    
+                    if (currentlyScavenge) {
+                        if (scavenge % 5 == 0) {
+                            grantedLabel.setText("Magical Essence granted!"); // Update granted label
+                            SFX.playSound("assets/SFX/.wav");  // TODO: add magical essence sfx
 
+                            int currentMagicalEssence = inventory.getResource("Magical Essence");
+                            // Increment MagicalEssence resource variable
+                            inventory.setResource("Magical Essence", currentMagicalEssence + 1);
+
+                        } else if (scavenge % 3 == 0) {
+                            grantedLabel.setText("Spleenwort granted!"); // Update granted label
+                            SFX.playSound("assets/SFX/.wav"); // TODO: play correct sfx 
+
+                            int currentSpleenwort = inventory.getResource("Spleenwort");
+                            // Increment Spleenwort resource variable
+                            inventory.setResource("Spleenwort", currentSpleenwort + 1);
+
+                        } else {
+                            grantedLabel.setText("Tongue Fern granted!"); // Update granted label
+                            SFX.playSound("assets/SFX/.wav");  // TODO: add magical essence sfx
+
+                            int currentTongueFern = inventory.getResource("Tongue Fern");
+                            // Increment TongueFern resource variable
+                            inventory.setResource("Tongue Fern", currentTongueFern + 1);
+                        }
+                        }
+                    //update resource in inventory
+                    inventory.updateResourceLabels();
                     progress = 0;
                     ore++;
+                    scavenge++;
                     if (!auto) {
                         timer.stop();  
                     } else {
-                        SFX.playSound("assets/SFX/pickaxe-sfx.wav"); 
+                        SFX.playSound("assets/SFX/pickaxe-sfx.wav");
+                        // TODO: ADD appropriate sfx sound scavenging or mining 
                     }
                 } else {
                     progress++;
@@ -160,23 +200,29 @@ public class Mining extends JPanel {
         });
     }
 
-    // Method to start the woodcutting process
-    private void mineOre() {
-        progressBar.setValue(0); // Reset progress bar
-        oreGrantedLabel.setText(""); // Clear wood granted label
-        timer.start(); // Start the timer for woodcutting
+    // Method to start/stop the automatic scavenging process
+    private void autoScavenge() {
+        if (!auto) {
+            auto = true; // Start auto scavenging
+            autoScavengeButton.setText("Stop Scavenging...");
+            grantedLabel.setText(""); 
+            timer.start(); // Start the timer for auto scavenging
+        } else {
+            auto = false; // Stop auto scavenging
+            autoScavengeButton.setText("Scavenge Area");
+        }
     }
 
     // Method to start/stop the automatic woodcutting process
     private void autoMineOre() {
         if (!auto) {
             auto = true; // Start auto mining
-            automineButton.setText("Stop Auto Mining...");
-            oreGrantedLabel.setText(""); 
+            autoMineButton.setText("Stop Mining Ore...");
+            grantedLabel.setText(""); 
             timer.start(); // Start the timer for auto woodcutting
         } else {
             auto = false; // Stop auto woodcutting
-            automineButton.setText("Auto Mine");
+            autoMineButton.setText("Mine Ore");
         }
     }
 
