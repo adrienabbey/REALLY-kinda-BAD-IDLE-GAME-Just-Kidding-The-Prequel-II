@@ -8,6 +8,7 @@ public class Inventory extends JPanel {
     private Map<String, Integer> resources; // Map to store resource amounts
     private JLabel resourceLabel; // Label to display total space
     public static boolean backToHomestead = false; //flag that keeps trck if player accessed inventory from the homestead screen. 
+    public static boolean backToTown = false; //flag that keeps trck if player accessed inventory from the town screen. 
 
     public Inventory() {
         setLayout(new BorderLayout());
@@ -53,14 +54,15 @@ public class Inventory extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
-            // if player accessed inventory from homestead, go back to homestead screen. 
-            if (backToHomestead == true) {
-                SFX.playSound("assets/SFX/interface1.wav");
-                Driver.changePanel("home"); 
-            } else {
             SFX.playSound("assets/SFX/interface1.wav");
+            // if player accessed inventory from homestead, town, or bazaar go back to respective screen
+            if (backToHomestead == true) {
+                Driver.changePanel("home"); 
+            } else if (backToTown == true) {
+                Driver.changePanel("town"); 
+                backToTown = false;
+            } else {
                 Driver.changePanel("shop"); 
-            // MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
             }
         });
     }

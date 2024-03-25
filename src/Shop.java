@@ -443,7 +443,7 @@ class Shop extends JPanel {
             JPanel mainPanel = new JPanel(new BorderLayout());
 
             // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel("   Gold: " + inventory.getResource("Gold") + " ");
+            JLabel goldLabel = new JLabel("    Gold: " + inventory.getResource("Gold") + " ");
             goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
             // format gold label
@@ -548,7 +548,7 @@ class Shop extends JPanel {
                             int currentGold = inventory.getResource("Gold"); // update current resource amount
                             inventory.setResource("Gold", currentGold - 1); // decrease gold 
                             inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText("   Gold: " + inventory.getResource("Gold") + " "); // Update the gold label
+                            goldLabel.setText("    Gold: " + inventory.getResource("Gold") + " "); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
                             SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                         } else {

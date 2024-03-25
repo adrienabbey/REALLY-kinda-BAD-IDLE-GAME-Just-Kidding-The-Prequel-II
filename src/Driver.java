@@ -38,8 +38,12 @@ class Driver extends JFrame {
     };
 
     public static void main(String[] args) throws Exception {
-        new Driver();
+        Driver driver = new Driver();
+        //Set the icon for the main application window
+        driver.setIcon();
     }
+
+    
 
     /**
      * This is the constructor for the driver class,
@@ -128,6 +132,14 @@ class Driver extends JFrame {
         dungeon.add(combat);
         
         // driverPanel.add(new CharacterScreen(), "charScreen");
+    }
+
+    // method to set the icon
+    public void setIcon() {
+        // Load icon image
+        ImageIcon icon = new ImageIcon("assets\\images\\world7.jpg");
+        // Set the icon for the main application window
+        this.setIconImage(icon.getImage());
     }
 
     /**

@@ -63,7 +63,7 @@ class Homestead extends JPanel {
 
         // Create the information label with custom styling
         JLabel info = new JLabel("<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>", SwingConstants.CENTER);
-        info.setFont(new Font("Serif", Font.ITALIC, 21));
+        info.setFont(new Font("Serif", Font.ITALIC, 20));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
         info.setBackground(new Color(0, 0, 0)); // Set the background color to black
         info.setOpaque(true); // Make the background visible
@@ -141,7 +141,7 @@ class Homestead extends JPanel {
             Inventory.backToHomestead = false;
             // set labels and flag back to default
             info.setText("<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>");
-            info.setFont(new Font("Serif", Font.ITALIC, 21));
+            info.setFont(new Font("Serif", Font.ITALIC, 20));
             purchaseConfirmation = false;
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");
