@@ -62,8 +62,8 @@ class Homestead extends JPanel {
         back.setFont(new Font("serif", Font.BOLD, 24));
 
         // Create the information label with custom styling
-        JLabel info = new JLabel("<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory and unlock farming.</div></html>", SwingConstants.CENTER);
-        info.setFont(new Font("Serif", Font.ITALIC, 20));
+        JLabel info = new JLabel("<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>", SwingConstants.CENTER);
+        info.setFont(new Font("Serif", Font.ITALIC, 21));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
         info.setBackground(new Color(0, 0, 0)); // Set the background color to black
         info.setOpaque(true); // Make the background visible
@@ -78,22 +78,27 @@ class Homestead extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
             
             // checks is player has enough resources to buy homestead
-            if (inventory.getResource("Gold") > 1 && inventory.getResource("Wood") > 1 && inventory.getResource("Stone") > 1 && inventory.getResource("Metal") > 1) {
+            if (inventory.getResource("Gold") >= 1000 && inventory.getResource("Wood") >= 250 && inventory.getResource("Stone") >= 250 && inventory.getResource("Metal") >= 100) {
 
                 // Confirm purchase from player.
                 if (purchaseConfirmation == false) {
-                    info.setText("<html><div style='text-align: center;'> Are you sure you want to purchase the homestead?.</div></html>");
+                    info.setText("<html><div style='text-align: center;'> Are you sure you want to purchase the homestead?</div></html>");
+                    info.setFont(new Font("Serif", Font.ITALIC, 26));
                     purchaseConfirmation = true;
                     return; // Exit the action listener to wait for confirmation
                 }
 
+                // play all resource sound effects when purchased
                 SFX.playSound("assets/SFX/coin3.wav"); // play coin sfx
+                SFX.playSound("assets/SFX/wood-gathering-sfx.wav");
+                SFX.playSound("assets/SFX/stone-gathering-sfx.wav");
+                SFX.playSound("assets/SFX/metal-ringing1.wav");
                 
                 // Remove resources used to purchase homestead from inventory
-                inventory.setResource("Gold", inventory.getResource("Gold") - 1);
-                inventory.setResource("Wood", inventory.getResource("Wood") - 1);
-                inventory.setResource("Stone", inventory.getResource("Stone") - 1);
-                inventory.setResource("Metal", inventory.getResource("Metal") - 1);
+                inventory.setResource("Gold", inventory.getResource("Gold") - 1000);
+                inventory.setResource("Wood", inventory.getResource("Wood") - 250);
+                inventory.setResource("Stone", inventory.getResource("Stone") -250);
+                inventory.setResource("Metal", inventory.getResource("Metal") - 100);
 
                 //Update resource labels
                 inventory.updateResourceLabels();
@@ -127,13 +132,16 @@ class Homestead extends JPanel {
             } else {
                 // if player does not have enough resources output error message.  
                 info.setText("<html><div style='text-align: center;'>You do not have enough resources to purchase the homestead.</div></html>");
+                info.setFont(new Font("Serif", Font.ITALIC, 26));
             }
         });
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            Inventory.backToHomestead = false;
             // set labels and flag back to default
             info.setText("<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>");
+            info.setFont(new Font("Serif", Font.ITALIC, 21));
             purchaseConfirmation = false;
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");
@@ -142,23 +150,36 @@ class Homestead extends JPanel {
 
         // Takes player to farm screen
         farm.addActionListener(e -> {
-            SFX.playSound("assets/SFX/interface1.wav");
-            Driver.changePanel("farm");
-
+            try {
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("farm");
+        
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
         });
 
         // Takes player to craft screen
         craft.addActionListener(e -> {
-            SFX.playSound("assets/SFX/interface1.wav");
-            Driver.changePanel("craft");
+            try {
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("craft");
 
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
         });
 
         // Takes player to inventory screen
         inventory1.addActionListener(e -> {
-            SFX.playSound("assets/SFX/interface1.wav");
-            Driver.changePanel("inventory");
+            try {
+                Inventory.backToHomestead = true; 
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("inventory");
 
+            } catch (Exception e1){
+                e1.printStackTrace();
+            }
         });
     }
 }

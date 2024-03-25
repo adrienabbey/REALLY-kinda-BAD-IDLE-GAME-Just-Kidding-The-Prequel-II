@@ -424,10 +424,12 @@ class Shop extends JPanel {
             JPanel mainPanel = new JPanel(new BorderLayout());
 
             // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel(" Gold: " + inventory.getResource("Gold") + " ");
+            JLabel goldLabel = new JLabel("   Gold: " + inventory.getResource("Gold") + " ");
             goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
             goldLabel.setAlignmentX(CENTER_ALIGNMENT);
             // format gold label
+            goldLabel.setPreferredSize(new Dimension(845,65));
+            goldLabel.setPreferredSize(new Dimension(845,65));
             goldLabel.setForeground(new Color(253, 236, 166)); 
             goldLabel.setBackground(new Color(0,0,0)); 
             goldLabel.setOpaque(true); 
@@ -468,8 +470,8 @@ class Shop extends JPanel {
             JLabel buy_label = new JLabel(" Secret Merchant Shop ");
             //buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
             buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            buy_label.setPreferredSize(new Dimension(100,20));
-            buy_label.setPreferredSize(new Dimension(100,50));
+            buy_label.setPreferredSize(new Dimension(100,40));
+            buy_label.setPreferredSize(new Dimension(100,40));
             // format gold label
             buy_label.setForeground(new Color(253, 236, 166)); 
             buy_label.setBackground(new Color(0,0,0)); 
@@ -479,8 +481,10 @@ class Shop extends JPanel {
             JLabel err_message = new JLabel("");
             err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
             // format label
+            err_message.setPreferredSize(new Dimension(100,40));
+            err_message.setPreferredSize(new Dimension(100,40));
             err_message.setForeground(new Color(253, 236, 166)); 
-            err_message.setBackground(new Color(139, 69, 19)); 
+            err_message.setBackground(new Color(0,0,0)); 
             err_message.setOpaque(true); 
 
             // Add the close button to the top right corner
@@ -511,9 +515,9 @@ class Shop extends JPanel {
 
                     JButton buyItemButton = new JButton(" Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
                     // Format buttons
-                    buyItemButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
+                    buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 27));
                     buyItemButton.setForeground(new Color(253, 236, 166)); 
-                    buyItemButton.setBackground(new Color(139, 69, 19)); 
+                    buyItemButton.setBackground(new Color(102, 72, 54)); 
                     buyItemButton.setOpaque(true); 
 
                     // Code for when a buy button is pressed.
@@ -525,11 +529,11 @@ class Shop extends JPanel {
                             int currentGold = inventory.getResource("Gold"); // update current resource amount
                             inventory.setResource("Gold", currentGold - 1); // decrease gold 
                             inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText(" Gold: " + inventory.getResource("Gold") + " "); // Update the gold label
+                            goldLabel.setText("   Gold: " + inventory.getResource("Gold") + " "); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
                             SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                         } else {
-                            err_message.setText("Cannot buy item, no more gold.");
+                            err_message.setText("   Cannot buy item, no more gold.  ");
                         }
                     });
                     buyPanel.add(buyItemButton);
@@ -540,9 +544,9 @@ class Shop extends JPanel {
 
                 // Add components to the main panel
                 mainPanel.add(closeButtonPanel, BorderLayout.EAST);
-                mainPanel.add(goldLabel, BorderLayout.SOUTH);
+                mainPanel.add(goldLabel, BorderLayout.WEST);
                 mainPanel.add(scrollPane, BorderLayout.NORTH);
-                mainPanel.add(err_message, BorderLayout.WEST);
+                mainPanel.add(err_message, BorderLayout.SOUTH);
                 mainPanel.add(buy_label, BorderLayout.CENTER);
         
             // Add the main panel to the main content panel

@@ -7,16 +7,17 @@ public class Inventory extends JPanel {
 
     private Map<String, Integer> resources; // Map to store resource amounts
     private JLabel resourceLabel; // Label to display total space
+    public static boolean backToHomestead = false; //flag that keeps trck if player accessed inventory from the homestead screen. 
 
     public Inventory() {
         setLayout(new BorderLayout());
 
         // Initialize resources map
         resources = new HashMap<>();
-        resources.put("Gold", 100);
-        resources.put("Wood", 10);
-        resources.put("Metal", 10);
-        resources.put("Stone", 10);
+        resources.put("Gold", 1000);
+        resources.put("Wood", 250);
+        resources.put("Metal", 100);
+        resources.put("Stone", 250);
         resources.put("Potions", 0);
         resources.put("Legendary Potion of Lepus", 0);
 
@@ -52,9 +53,15 @@ public class Inventory extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            // if player accessed inventory from homestead, go back to homestead screen. 
+            if (backToHomestead == true) {
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("home"); 
+            } else {
             SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("shop"); 
             // MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
+            }
         });
     }
 
