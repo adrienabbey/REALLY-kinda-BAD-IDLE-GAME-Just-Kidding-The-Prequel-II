@@ -106,6 +106,8 @@ class Driver extends JFrame {
 
         getContentPane().add(driverPanel);
         setLocationRelativeTo(null);
+        ImageIcon iconImage = new ImageIcon("assets/images/");
+        this.setIconImage(iconImage.getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
