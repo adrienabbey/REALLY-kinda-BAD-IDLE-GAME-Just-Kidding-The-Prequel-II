@@ -27,11 +27,13 @@
     * Action Item 1: Design characters and additives to the background
     * Action Item 2: Start working on the presentation using PowerPoint and sharing in a Google Drive.
 * Group Member `Adrien Abbey`
-    * Action Item 1: 
-    * Action Item 2:
+    * Action Item 1: Potions class
+    * Action Item 2: Equipment class
+    * Action Item 3: More monsters
+    * Action Item 4: Implement Boss subclass
   
 ## Contributors
 * Luke Davidson
 * Muhammed Abushamma
 * Brandon Walker
-* 
+* Adrien Abbey
