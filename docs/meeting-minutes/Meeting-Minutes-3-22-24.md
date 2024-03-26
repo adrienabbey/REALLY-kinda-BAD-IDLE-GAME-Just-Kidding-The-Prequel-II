@@ -39,10 +39,10 @@
   	- add sound design to dungeon areas when those are developed
 * Group Member `Luke`
 	- UI stuff for combat.
-	- Implement Googley Eyes for Everything.  Very important.
+	- Design monsters and characters for screens
 
 ## Contributors
 *
-*
+* Luke Davidson
 *
 *
