@@ -42,7 +42,7 @@
 	- Design monsters and characters for screens
 
 ## Contributors
-*
+* Adrien Abbey
 * Luke Davidson
 *
 *
