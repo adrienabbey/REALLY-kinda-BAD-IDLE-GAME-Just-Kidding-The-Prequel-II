@@ -1,5 +1,7 @@
 import javax.sound.sampled.*;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SFX {
     // Keep track of the current clip
@@ -9,6 +11,7 @@ public class SFX {
     public static boolean isMutedSFX = false;
     private static float currentVolumeSFX = -16.0f;
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
+    private static List<Clip> activeClips = new ArrayList<>(); // List to keep track of active sound clips, used for the stopAllSounds method. 
 
     public static void setcurrentVolumeSFX(float volume) {
         currentVolumeSFX = volume;
@@ -52,7 +55,10 @@ public class SFX {
                     // Get the volume control
                     volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
                     // Set the initial volume (unmuted)
-                    volumeHelperSFX(currentVolumeSFX);     
+                    volumeHelperSFX(currentVolumeSFX);  
+                    
+                    // Add the clip to the list of active clips
+                    activeClips.add(clip);
                     
                     if (isMutedSFX) {
                         volumeHelperSFX(-70.0f);
@@ -78,6 +84,7 @@ public class SFX {
         }
     }
 
+    // ***Might use later for a Mute SFX button***
     // public static void toggleMuteSFX() {
     //     if (volumeControl != null) {
     //         if (isMutedSFX) {
@@ -93,6 +100,16 @@ public class SFX {
     //         }
     //     }
     // }
+    
+    public static void stopAllSounds() {
+        // Stop and close all active clips
+        for (Clip clip : activeClips) {
+            clip.stop();
+            clip.flush();
+        }
+        // Clear the list of active clips
+        activeClips.clear();
+    }
 
     // Used to set volume to correct value during calls.
     public static void volumeHelperSFX(float value) {

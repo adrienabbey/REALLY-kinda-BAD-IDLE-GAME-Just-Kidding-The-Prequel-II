@@ -19,6 +19,7 @@ public class WoodCutting extends JPanel {
     private boolean auto = false;
     private boolean currentlyCutting = false; // flag to determine if process is cutting. Used to grant correct resource.
     private boolean currentlyHunting = false; // flag to determine if process is hunting. Used to grant correct resource.
+    private boolean resetProgress = true;
     private int huntIncrement = 0; // used to determine whether to grant meat or pelt when hunting
 
 
@@ -94,7 +95,9 @@ public class WoodCutting extends JPanel {
                 currentlyHunting = true;
                 currentlyCutting = false;
                 autoHunt(); // Start hunting process
-                SFX.playSound("assets/SFX/.wav"); // TODO: play hunting sfx
+                if (auto) {
+                    SFX.playSound("assets/SFX/.wav"); // TODO: play hunting sfx
+                }
             }
         });
 
@@ -106,22 +109,28 @@ public class WoodCutting extends JPanel {
                 currentlyHunting = false;
                 currentlyCutting = true;
                 autoCutWood(); // Start/Stop auto woodcutting process
-                SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect everytime button is pressed
+                if (auto) {
+                    SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect only when starting woodcutting
+                }
             }
         });
 
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {
             try {
+                timer.stop();
+                progressBar.setValue(0);
+                //((Timer)e.getSource()).stop();
                 auto = false; // stop auto mining if left panel
-                currentlyHunting = false; // set hunting flag to false
-                currentlyCutting = false; // set cutting flag to false
-                timer.stop(); // stop woodcutting process
+                resetProgress = true;
+                currentlyHunting = false; // set hunting flag to default
+                currentlyCutting = false; // set cutting flag to default
+                // timer.stop(); // stop woodcutting process
                 autoCutButton.setText("Cut Tree"); // reset autocutting label
                 autoHuntButton.setText("Hunt Wildlife"); // reset autohunting label
 
                 Driver.changePanel("world");
-                SFX.stopSound();
+                SFX.stopAllSounds(); 
                 MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -129,13 +138,21 @@ public class WoodCutting extends JPanel {
         });
 
         // Timer for woodcutting/hunting process
-        // Progress bar takes 10 seconds to fill up. 
-        timer = new Timer(1000, new ActionListener() {
+        // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Takes 10 seconds to fill up.
+        timer = new Timer(100, new ActionListener() {
             int progress = 0;
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (progress >= 10) {
+            if (resetProgress) { 
+                progress = 0; // reset progress to zero if left screen prior. 
+                resetProgress = false;
+            }
+
+            if (progress == 40) {
+                grantedLabel.setText(""); // erase grant label
+            }
+                if (progress >= 100) {  // when progress reaches 100 set the progress bar to 100 and proceed granting resource logic and looping back the timer. 
                     progressBar.setValue(100);
 
                     // if player was cutting tree grant wood
@@ -174,13 +191,14 @@ public class WoodCutting extends JPanel {
                     progress = 0;
                     if (!auto) {
                         timer.stop();
+                        // SFX.stopAllSounds();
                     } else {
                         SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play sfx again
                         // TODO: add appropriate sfx for when hunting
                     }
                 } else {
-                    progress++;
-                    progressBar.setValue(progress * 10);
+                    progress++;// increment progress by 1
+                    progressBar.setValue(progress); // set progress bar to progress value
                 }
             }
         });
@@ -189,12 +207,14 @@ public class WoodCutting extends JPanel {
     // Method to start/stop the automatic woodcutting process
     private void autoHunt() {
         if (!auto) {
-            auto = true; // Start auto woodcutting
+            auto = true; // Start auto hunting
             autoHuntButton.setText("Stop Hunting...");
             grantedLabel.setText(""); 
             timer.start(); // Start the timer for auto woodcutting
         } else {
-            auto = false; // Stop auto woodcutting
+            auto = false; // Stop auto hunting
+            timer.stop(); // stop timer
+            SFX.stopAllSounds();
             autoHuntButton.setText("Hunt Wildlife");
         }
     }
@@ -207,8 +227,9 @@ public class WoodCutting extends JPanel {
             grantedLabel.setText(""); 
             timer.start(); // Start the timer for auto woodcutting
         } else {
-            auto = false; // Stop auto woodcutting
-            timer.progress = 0;
+            auto = false; // Stop auto woodcutting when method is called again
+            timer.stop(); // stop timer
+            SFX.stopAllSounds();
             autoCutButton.setText("Cut Tree");
         }
     }
