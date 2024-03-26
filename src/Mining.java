@@ -8,8 +8,6 @@ import java.io.IOException;
 
 public class Mining extends JPanel {
 
-    private Inventory inventory; // Reference to the Inventory object
-
     private JProgressBar progressBar;
     private JButton autoScavengeButton; // button for scavenging
     private JButton autoMineButton; // Button for mining
@@ -22,8 +20,6 @@ public class Mining extends JPanel {
     private boolean resetProgress = true; // flag used to determine if player had left the mineshaft panel. If true reset the progress value to 0.
 
     public Mining(Inventory inventory) { // Accepts an Inventory object
-        this.inventory = inventory; // Assign the Inventory object to the local variable
-
         // Load the background image
         try {
             bgImage = ImageIO.read(new File("assets/images/mineshaft.png"));

@@ -8,8 +8,6 @@ import java.io.IOException;
 
 public class WoodCutting extends JPanel {
 
-    private Inventory inventory; // Reference to the Inventory object
-
     private JProgressBar progressBar;
     private JButton autoHuntButton;
     private JButton autoCutButton; // New button for automatic woodcutting
@@ -24,8 +22,7 @@ public class WoodCutting extends JPanel {
 
 
     public WoodCutting(Inventory inventory) { // Accepts an Inventory object
-        this.inventory = inventory; // Assign the provided Inventory object to the local variable
-
+    
         // Load the background image
         try {
             bgImage = ImageIO.read(new File("assets/images/forest2.png"));
