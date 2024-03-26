@@ -28,7 +28,7 @@ class Combat extends JPanel{
         add(scroll);
         add(Box.createVerticalGlue());
     }
-    
+
     public static void addLog(String log){
         logs.append(log);
         logs.setCaretPosition(logs.getDocument().getLength());
@@ -85,6 +85,7 @@ class Combat extends JPanel{
             } else {
                 addLog(enemy.getName() + " has been defeated!\n" + player.getName() + " has gained " + enemy.getGoldReward() + " gold!\n");
                 inventory.setGold(enemy.getGoldReward());// Update gold resource in inventory
+
                 enemy = Dungeon.getMonster();
             }
             Driver.charScreen.update();
