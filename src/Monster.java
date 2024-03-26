@@ -22,6 +22,7 @@ class Monster extends GameCharacter {
     private String description;
     private int goldRewarded;
     private boolean isBoss;
+    private boolean castsMagic;
 
     /* Constructor */
 
@@ -48,6 +49,7 @@ class Monster extends GameCharacter {
                 this.setHealth(3);
                 this.goldRewarded = 2;
                 this.isBoss = false;
+                this.castsMagic = false;
                 break;
             case HOBOGOBLIN:
                 this.setName("Hobo Goblin");
@@ -58,6 +60,7 @@ class Monster extends GameCharacter {
                 this.setHeart(2);
                 this.goldRewarded = 4;
                 this.isBoss = false;
+                this.castsMagic = false;
                 break;
             case CYCLOPIAN_GENTLEMAN:
                 this.setName("Cyclopian Gentleman");
@@ -68,6 +71,7 @@ class Monster extends GameCharacter {
                 this.setHeart(10);
                 this.goldRewarded = 20;
                 this.isBoss = true;
+                this.castsMagic = true;
         }
     }
 
@@ -96,5 +100,19 @@ class Monster extends GameCharacter {
      */
     public int getGoldReward() {
         return goldRewarded;
+    }
+
+    /**
+     * @return Returns 'true' if this monster is a boss, 'false' if not.
+     */
+    public boolean isBoss() {
+        return isBoss;
+    }
+
+    /**
+     * @return Returns 'true' if this monster casts magic, 'false' if not.
+     */
+    public boolean castsMagic() {
+        return castsMagic;
     }
 }
