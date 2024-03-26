@@ -62,17 +62,18 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
-        Inventory inventory = new Inventory();
+        Inventory inventory = Inventory.getInstance();
         Settings settings = new Settings();
         Credits credits = new Credits();
-        Homestead home = new Homestead(inventory);
-        Shop shop = new Shop(inventory);
-        WoodCutting woodCutting = new WoodCutting(inventory);
-        Mining mining = new Mining(inventory);
+        Homestead home = new Homestead();
+        Shop shop = new Shop();
+        WoodCutting woodCutting = new WoodCutting();
+        Mining mining = new Mining();
         Tavern tavern = new Tavern();
         Library library = new Library();
         Farm farm = new Farm();
         Craft craft = new Craft();
+        
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();

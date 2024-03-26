@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Mining extends JPanel {
+    Inventory inventory = Inventory.getInstance();
 
     private JProgressBar progressBar;
     private JButton autoScavengeButton; // button for scavenging
@@ -19,7 +20,7 @@ public class Mining extends JPanel {
     private boolean currentlyMining = false; // flag to determine if process is mining. Used to grant appropriate resource.
     private boolean resetProgress = true; // flag used to determine if player had left the mineshaft panel. If true reset the progress value to 0.
 
-    public Mining(Inventory inventory) { // Accepts an Inventory object
+    public Mining() { // Accepts an Inventory object
         // Load the background image
         try {
             bgImage = ImageIO.read(new File("assets/images/mineshaft.png"));

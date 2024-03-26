@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class WoodCutting extends JPanel {
+    Inventory inventory = Inventory.getInstance();
 
     private JProgressBar progressBar;
     private JButton autoHuntButton;
@@ -21,7 +22,7 @@ public class WoodCutting extends JPanel {
     private int huntIncrement = 0; // used to determine whether to grant meat or pelt when hunting
 
 
-    public WoodCutting(Inventory inventory) { // Accepts an Inventory object
+    public WoodCutting() { // Accepts an Inventory object
     
         // Load the background image
         try {

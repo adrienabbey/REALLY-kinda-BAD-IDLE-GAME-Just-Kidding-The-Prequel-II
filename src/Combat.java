@@ -5,6 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.Box;
 
 class Combat extends JPanel{
+    static Inventory inventory = Inventory.getInstance();
 
     public enum MagicType{
         ATTACK,
@@ -27,7 +28,7 @@ class Combat extends JPanel{
         add(scroll);
         add(Box.createVerticalGlue());
     }
-
+    
     public static void addLog(String log){
         logs.append(log);
         logs.setCaretPosition(logs.getDocument().getLength());
@@ -83,7 +84,7 @@ class Combat extends JPanel{
                 Thread.sleep(1500);
             } else {
                 addLog(enemy.getName() + " has been defeated!\n" + player.getName() + " has gained " + enemy.getGoldReward() + " gold!\n");
-                player.addGold(enemy.getGoldReward());
+                inventory.setGold(enemy.getGoldReward());// Update gold resource in inventory
                 enemy = Dungeon.getMonster();
             }
             Driver.charScreen.update();

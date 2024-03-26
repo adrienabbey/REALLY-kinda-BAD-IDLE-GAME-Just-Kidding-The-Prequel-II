@@ -15,7 +15,7 @@ import java.awt.BorderLayout;
 
 class Shop extends JPanel {
 
-    private Inventory inventory; // Reference to the Inventory object
+    Inventory inventory = Inventory.getInstance(); 
     private boolean sellScreenOpen = false; // Flag to track if the sell screen is open
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
     private boolean secretMerchantScreenOpen = false; // Flag to track if the secret merchant screen is open. 
@@ -39,8 +39,7 @@ class Shop extends JPanel {
      * @param player The player character object
      * @throws IOException
      */
-    public Shop(Inventory inventory) { // Accepts an Inventory object
-        this.inventory = inventory; // Assign the provided Inventory object to the local variable
+    public Shop() { // Accepts an Inventory object
         JPanel buttonPanel = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();

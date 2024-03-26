@@ -8,8 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 class Homestead extends JPanel {
-
-    private Inventory inventory; // Reference to the Inventory object
+    Inventory inventory = Inventory.getInstance();
     private boolean purchaseConfirmation = false;
 
         @Override
@@ -23,8 +22,7 @@ class Homestead extends JPanel {
             }
     }
 
-    public Homestead(Inventory inventory) {
-        this.inventory = inventory; // Assign the Inventory object to the local variable
+    public Homestead() {
         ArrayList<JButton> buttons = new ArrayList<JButton>();
 
         // Set the layout with vertical alignment and padding
