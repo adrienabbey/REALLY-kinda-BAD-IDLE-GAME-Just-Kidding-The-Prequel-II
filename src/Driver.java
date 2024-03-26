@@ -41,7 +41,7 @@ class Driver extends JFrame {
 
     public static void main(String[] args) throws Exception {
         new Driver();
-    }
+    }    
 
     /**
      * This is the constructor for the driver class,
@@ -55,7 +55,6 @@ class Driver extends JFrame {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
         MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
-        MusicPlayer.setVolume(5.0f);
 
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time
@@ -63,15 +62,18 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
+        Inventory inventory = Inventory.getInstance();
         Settings settings = new Settings();
         Credits credits = new Credits();
-        Home home = new Home();
-        Inventory inventory = new Inventory();
-        Shop shop = new Shop(inventory);
-        WoodCutting woodCutting = new WoodCutting(inventory);
-        Mining mining = new Mining(inventory);
+        Homestead home = new Homestead();
+        Shop shop = new Shop();
+        WoodCutting woodCutting = new WoodCutting();
+        Mining mining = new Mining();
         Tavern tavern = new Tavern();
         Library library = new Library();
+        Farm farm = new Farm();
+        Craft craft = new Craft();
+        
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();
         // JPanel inventory = new Inventory();
@@ -98,6 +100,8 @@ class Driver extends JFrame {
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
         driverPanel.add(inventory, "inventory");
+        // driverPanel.add(farm, "farm");
+        // driverPanel.add(craft, "craft");
         // driverPanel.add(charPanel, "charPanel");
         // driverPanel.add(dice, "dice");
         // driverPanel.add(inventory, "inventory");

@@ -39,7 +39,7 @@ class Tavern extends JPanel {
         // Create the mesage label with custom styling
         JLabel message = new JLabel("", SwingConstants.CENTER);
         message.setFont(new Font("Serif", Font.ITALIC, 21));
-        message.setForeground(new Color(205, 133, 63)); // Light wood color
+        message.setForeground(new Color(205, 133, 63)); // Dark wood color
         message.setBackground(new Color(0, 0, 0)); // Set the background color to black
         message.setOpaque(true); // Make the background visible
 

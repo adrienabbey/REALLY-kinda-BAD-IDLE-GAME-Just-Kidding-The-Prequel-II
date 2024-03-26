@@ -35,10 +35,10 @@ class Settings extends JPanel {
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -9); // range from -70 to 6
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -18); // range from -70 to 6
         slider.setBackground(customColorBrown); // Set the background color
 
-        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -7); // range from -70 to 6
+        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -16); // range from -70 to 6
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
         JButton mute = new JButton("Mute Music Volume");
@@ -122,7 +122,7 @@ class Settings extends JPanel {
         credits.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
-                Credits.yPos = 1050;
+                Credits.yPos = 998; // set rolling text box in correct position;
                 long startTime = System.currentTimeMillis();
                 long waitTime = 75; // Wait for 75 milliseconds (0.075 seconds), so that credits text is properly set to correct location without previous text's location being seen.
                 

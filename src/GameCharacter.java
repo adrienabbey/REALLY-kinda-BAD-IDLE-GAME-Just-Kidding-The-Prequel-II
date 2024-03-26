@@ -50,14 +50,12 @@
       damage = Math.round(damage * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
       // int resist = target.getSkin(); // This is for if we add complexity later
-     
       if(dice.getLast() == 20) {
          target.health -= damage * 2;
          Combat.addLog(name + " critical hit " + target.getName() + " and they took " + damage * 2 + " damage!\n");
       }
       else if (dice.getLast() == 1) {
          Combat.addLog(name + " critical missed and took 1 damage!\n");
-
          health -= 1;
       } else {
          target.health -= damage;
@@ -72,14 +70,12 @@
       double damage = brain * (((double) dice.getLast()) / 20);
       damage = Math.round(damage * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
-
       if(dice.getLast() == 20) {
          Combat.addLog(name + "'s magic critical hit " + target.getName() + " and the took " + damage * 2 + " damage!\n");
          target.health -= damage * 2;
       }
       else if(dice.getLast() == 1) {
          Combat.addLog(name + "'s magic critical missed and they took 1 damage!\n");
-
          health -= 1;
       } else {
          target.health -= damage;
@@ -93,14 +89,12 @@
       double heal = brain * (((double) dice.getLast()) / 20);
       heal = Math.round(heal * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
-
       if(dice.getLast() == 20) {
          Combat.addLog(name + " critical heal's themselves for " + heal * 2 + " health!\n");
          health += heal * 2;
       }
       else if(dice.getLast() == 1) {
          Combat.addLog(name + " critical missed! a heal and took 1 damage!\n");
-
          health -= 1;
       } else {
          health += heal;

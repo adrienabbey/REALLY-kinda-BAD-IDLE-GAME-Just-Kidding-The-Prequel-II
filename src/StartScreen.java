@@ -1,33 +1,114 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.ArrayList;
-// TODO Narrow the swing down to what we actually need
 
-
-// This class is just the intro starting screen with the buttons to start a new game, load a game, read directions, or quit
+// This class is the introductory starting screen with buttons to start a new game, load a game, read directions, go to settings, or quit
 class StartScreen extends JPanel{
-    
-    @Override
-    protected void paintComponent(Graphics g) {
+    private EyePhysics eyePhysics;
+    private Point eyePosition;
+    private int eyeRadius;
+    private Point irisPosition;
+    private int irisRadius;
+    private Timer timer;
 
-    super.paintComponent(g);
+    private EyePhysics eyePhysics2;
+    private Point eyePosition2;
+    private int eyeRadius2;
+    private Point irisPosition2;
+    private int irisRadius2;
+    
+    private boolean soundCooldown = false; // flag to track cooldown state fot sfx
+    private int hoboSFX = 0; // used to loop through hobogoblin sfx 
+
+    public StartScreen() {
         try {
-            g.drawImage(ImageIO.read(new File("assets/images/startScreenTest.jpg")), 0, 0, getWidth(), getHeight(), this);
-        } catch (IOException e) {
-            //Auto-generated catch block
+            // Initialize the first EyePhysics instance and eye properties
+            eyePhysics = new EyePhysics();
+            eyePosition = new Point(1620, 550); // position of the eye
+            eyeRadius = 23; // radius of the eye
+            irisPosition = new Point(1620, 550); // Initial position of iris same as eye
+            irisRadius = 16; // radius of the iris
+        } catch (Exception e) {
             e.printStackTrace();
         }
-}
+
+        try {
+            // Initialize the second EyePhysics instance and eye properties
+            eyePhysics2 = new EyePhysics();
+            eyePosition2 = new Point(1670, 550); // position of the eye
+            eyeRadius2 = 23; // radius of the eye
+            irisPosition2 = new Point(1670, 550); // position of iris same as eye
+            irisRadius2 = 16; // Example radius of the iris
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        // Set up a timer to reset the soundCooldown flag after the cooldown of 2 seconds
+        Timer cooldownTimer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                soundCooldown = false;
+            }
+        });
+        // Start the cooldown timer
+        cooldownTimer.start();
+
+
+        // Set up a timer to update iris positions and repaint the panel
+        timer = new Timer(10, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Update iris positions for both eyes based on mouse position
+                updateIrisPosition(getMousePosition(), eyePhysics);
+                updateIrisPosition(getMousePosition(), eyePhysics2);
+                
+                // Calculate the midpoint between the two eyeballs
+                int midX = (eyePosition.x + eyePosition2.x) / 2;
+                int midY = (eyePosition.y + eyePosition2.y) / 2;
+
+                // Get the cursor position
+                Point cursorPosition = getMousePosition();
+
+                // Define the margin of error
+                int marginOfError = 50;
+
+                // Check if the cursor is within the range of the midpoint with margin of error
+                if (cursorPosition != null &&
+                    cursorPosition.x >= midX - marginOfError && cursorPosition.x <= midX + marginOfError &&
+                    cursorPosition.y >= midY - marginOfError && cursorPosition.y <= midY + marginOfError) {
+                    // Play goblin sound if player's cursor gets too close.
+                    if (!soundCooldown) {
+                        if (hoboSFX == 0) {
+                            SFX.playSound("assets/SFX/goblins/goblin-1.wav");
+                        } else if (hoboSFX == 1) {
+                            SFX.playSound("assets/SFX/goblins/goblin-8.wav"); 
+                        } else if (hoboSFX == 2) {
+                            SFX.playSound("assets/SFX/goblins/goblin-11.wav");
+                        } else if (hoboSFX == 3) {
+                            SFX.playSound("assets/SFX/goblins/goblin-12.wav");
+                        }
+                        hoboSFX++;
+                        if (hoboSFX == 4) {
+                            hoboSFX = 0;
+                        }
+                        // Set the soundCooldown flag to true to activate cooldown
+                        soundCooldown = true;
+
+                        // Restart the cooldown timer
+                        cooldownTimer.restart();
+                    }
+                }
+                repaint(); // Redraw the panel
+            }
+        });
+        timer.start();
+
     // This function hosts the start menu with buttons to start a new game, load a game, read directions, or quit
-    
-    public StartScreen() throws IOException{
 
         // This block of code is all the physical gui elements and their properties
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -125,6 +206,43 @@ class StartScreen extends JPanel{
                 e1.printStackTrace();
             }
         });
+    }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        try {
+            g.drawImage(ImageIO.read(new File("assets/images/startScreenTest.jpg")), 0, 0, getWidth(), getHeight(), this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Draw the left eye
+        drawEye(g, eyePosition, eyeRadius, irisPosition, irisRadius);
+        
+        // Draw right eye
+        drawEye(g, eyePosition2, eyeRadius2, irisPosition2, irisRadius2);
+    }
+
+    // Method calculates the iris position based on the mouse position and the respective eye position
+    private void updateIrisPosition(Point mousePosition, EyePhysics eye) {
+        if (mousePosition != null) {
+            if (eye == eyePhysics) {
+            irisPosition = eye.calculateIrisPosition(mousePosition, eyePosition, eyeRadius, irisRadius);
+            } else {
+                irisPosition2 = eye.calculateIrisPosition(mousePosition, eyePosition2, eyeRadius2, irisRadius2);
+            }
+        }
+    }
+
+    private void drawEye(Graphics g, Point eyePosition, int eyeRadius, Point irisPosition, int irisRadius) {
+        // Draw the eye
+        g.setColor(Color.WHITE);
+        g.fillOval(eyePosition.x - eyeRadius, eyePosition.y - eyeRadius, 2 * eyeRadius, 2 * eyeRadius);
+
+        // Draw the iris
+        g.setColor(Color.BLACK);
+        g.fillOval(irisPosition.x - irisRadius, irisPosition.y - irisRadius, 2 * irisRadius, 2 * irisRadius);
     }
 }
+
+

@@ -27,6 +27,8 @@ class CharacterCreation extends JPanel{
 
         // This is all the physical gui elements and their properties
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //this.setBackground(Color.LIGHT_GRAY); // sets color of background
+        
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         // TODO - Make sure this is long enough to fit all the names we want to allow
         JLabel nameLabel = new JLabel("Name");

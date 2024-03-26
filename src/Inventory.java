@@ -1,34 +1,32 @@
+// Singleton class so that there's only one instance of it throughout the game.
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory extends JPanel {
+    private static Inventory instance;
 
     private Map<String, Integer> resources; // Map to store resource amounts
     private JLabel resourceLabel; // Label to display total space
+    public static boolean backToHomestead = false; //flag that keeps trck if player accessed inventory from the homestead screen. 
+    public static boolean backToTown = false; //flag that keeps trck if player accessed inventory from the town screen. 
 
-    //     @Override
-    // protected void paintComponent(Graphics g) {
-    //     super.paintComponent(g);
-    //         try {
-    //             g.drawImage(ImageIO.read(new File("assets/images/")), 0, 0, getWidth(), getHeight(), this);
-    //         } catch (IOException e) {
-    //             //Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
-    // }
-
-    public Inventory() {
+    private Inventory() {
         setLayout(new BorderLayout());
 
         // Initialize resources map
         resources = new HashMap<>();
-        resources.put("Gold", 100);
-        resources.put("Wood", 10);
-        resources.put("Metal", 10);
-        resources.put("Stone", 10);
+        resources.put("Gold", 1000);
+        resources.put("Wood", 250);
+        resources.put("Metal", 100);
+        resources.put("Stone", 250);
         resources.put("Potions", 0);
+        resources.put("Pelt", 0);
+        resources.put("Meat", 0);
+        resources.put("Magical Essense", 0);
+        resources.put("Spleenwort", 0);
+        resources.put("Tongue Fern", 0);
         resources.put("Legendary Potion of Lepus", 0);
 
         // Inventory panel
@@ -64,8 +62,15 @@ public class Inventory extends JPanel {
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
+            // if player accessed inventory from homestead, town, or bazaar go back to respective screen
+            if (backToHomestead == true) {
+                Driver.changePanel("home"); 
+            } else if (backToTown == true) {
+                Driver.changePanel("town"); 
+                backToTown = false;
+            } else {
                 Driver.changePanel("shop"); 
-            // MusicPlayer.playMusic("assets/images/Music/Village Consort.wav");
+            }
         });
     }
 
@@ -88,7 +93,14 @@ public class Inventory extends JPanel {
             return 0;
         }
     }
-
+    
+    // Method to set Gold amount
+    public void setGold(int amount) {
+        int currentGold = resources.get("Gold");
+        resources.put("Gold", currentGold + amount);
+        updateResourceLabels(); // Update the UI to reflect the changes
+    }
+    
     // Update resource labels
     public void updateResourceLabels() {
         // Update resource labels
@@ -104,8 +116,12 @@ public class Inventory extends JPanel {
     public Map<String, Integer> getResources() {
     return resources;
     }
-}
 
-//   Example usage: Increment wood resource
-//   int currentWood = inventory.getResource("Wood");
-//   inventory.setResource("Wood", currentWood + 1);
+    public static Inventory getInstance() {
+        if (instance == null) {
+            instance = new Inventory();
+        }
+        return instance;
+    }
+
+}

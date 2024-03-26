@@ -7,7 +7,8 @@ public class MusicPlayer {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     private static boolean isMuted = false;
-    private static float currentVolume = -9.0f;
+    private static float currentVolume = -18.0f;
+    private static Thread currentThread = null; // Reference to the thread associated with the current clip
 
     public static void setcurrentVolume(float volume) {
         currentVolume = volume;
@@ -22,10 +23,14 @@ public class MusicPlayer {
         // This allows the music to play in the background without blocking the rest of the program
         new Thread(() -> {
             try {
-                 // If there's a clip playing, stop it before starting the new one
-                // This ensures that only one music track plays at a time
+                // If there's a clip playing, stop it before starting the new one
+                // This ensures that only one music track plays at a time.
                 if (currentClip != null && currentClip.isRunning()) {
                     currentClip.stop();
+                    // If the current thread is in use interrupt it. 
+                    if (currentThread != null) {
+                        currentThread.interrupt(); // Interrupt the associated thread
+                    }
                 }
 
                 // Create a File object with the provided file path
@@ -42,6 +47,9 @@ public class MusicPlayer {
                     // Save the current clip
                     // This allows us to stop it when a new one starts
                     currentClip = clip;
+
+                    // Save the reference to the current thread
+                    currentThread = Thread.currentThread();
 
                     // Get the volume control
                     volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
