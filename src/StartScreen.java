@@ -23,6 +23,7 @@ class StartScreen extends JPanel{
     private int irisRadius2;
     
     private boolean soundCooldown = false; // flag to track cooldown state fot sfx
+    private int hoboSFX = 0; // used to loop through hobogoblin sfx 
 
     public StartScreen() {
         try {
@@ -47,7 +48,7 @@ class StartScreen extends JPanel{
             e.printStackTrace();
         }
         
-        // Set up a timer to reset the soundCooldown flag after the cooldown duration of 2 seconds
+        // Set up a timer to reset the soundCooldown flag after the cooldown of 2 seconds
         Timer cooldownTimer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,7 +60,7 @@ class StartScreen extends JPanel{
 
 
         // Set up a timer to update iris positions and repaint the panel
-        timer = new Timer(50, new ActionListener() {
+        timer = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Update iris positions for both eyes based on mouse position
@@ -82,13 +83,24 @@ class StartScreen extends JPanel{
                     cursorPosition.y >= midY - marginOfError && cursorPosition.y <= midY + marginOfError) {
                     // Play goblin sound if player's cursor gets too close.
                     if (!soundCooldown) {
-                    SFX.playSound("assets/SFX/goblins/goblin-1.wav");
-                    
-                    // Set the soundCooldown flag to true to activate cooldown
-                    soundCooldown = true;
+                        if (hoboSFX == 0) {
+                            SFX.playSound("assets/SFX/goblins/goblin-1.wav");
+                        } else if (hoboSFX == 1) {
+                            SFX.playSound("assets/SFX/goblins/goblin-8.wav"); 
+                        } else if (hoboSFX == 2) {
+                            SFX.playSound("assets/SFX/goblins/goblin-11.wav");
+                        } else if (hoboSFX == 3) {
+                            SFX.playSound("assets/SFX/goblins/goblin-12.wav");
+                        }
+                        hoboSFX++;
+                        if (hoboSFX == 4) {
+                            hoboSFX = 0;
+                        }
+                        // Set the soundCooldown flag to true to activate cooldown
+                        soundCooldown = true;
 
-                    // Restart the cooldown timer
-                    cooldownTimer.restart();
+                        // Restart the cooldown timer
+                        cooldownTimer.restart();
                     }
                 }
                 repaint(); // Redraw the panel

@@ -2,6 +2,7 @@ import java.awt.*;
 
 /**
  * This class provides methods to calculate the position of the iris within an eye.
+ * TODO: Add bounce/wiggle physics to googley eyes
  */
 public class EyePhysics {
 
