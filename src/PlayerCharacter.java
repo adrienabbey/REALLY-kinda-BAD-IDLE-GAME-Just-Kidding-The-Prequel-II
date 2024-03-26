@@ -10,8 +10,13 @@ import java.io.Serializable;
  * This class manages the player character's stats and some inventory for now
  */
 class PlayerCharacter extends GameCharacter implements Serializable {
+
+   /* Constants */
+   private static final int POTION_HEAL = 20; // TODO: Balance this number!
+
    /* Variables */
-   // TODO: Determine base "starting" stats:
+   // TODO: Determine base "starting" stats?
+   // TODO: This is set by the UI, so we can probably remove it?
    private static final int startingMuscle = 3;
    private static final int startingBrain = 3;
    private static final int startingHeart = 3;
@@ -22,7 +27,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    private int potionBeltSize;
    private int potionCount;
    private boolean isAwake = true;
-   private int timeToWake = 0;
+   private int timeToWake = 0; // TODO: Is this something we're implementing?
    // TODO: Implement the "Gear" class so players can have equipment:
    // private Gear inventory;
 
@@ -35,6 +40,8 @@ class PlayerCharacter extends GameCharacter implements Serializable {
 
    // Constructor for loading player stats from a save file?
    // TODO: Include player Gear loading.
+   // TODO: Is this used by the UI when creating a new character?
+   // TODO: If so, it might need balancing.
    public PlayerCharacter(String name, int muscle, int brain, int heart, int gold, int potionBeltSize,
          int potionCount) {
       super(name, muscle, brain, heart);
@@ -114,6 +121,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
          return true;
       } else if (potionCount > 0) {
          potionCount--;
+         this.setHealth(this.getHealth() + POTION_HEAL);
          return true;
       }
       // TODO: What does drinking a potion do?
