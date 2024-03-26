@@ -23,6 +23,7 @@ class Monster extends GameCharacter {
     private int goldRewarded;
     private boolean isBoss;
     private boolean castsMagic;
+    private String imageFilePath;
 
     /* Constructor */
 
@@ -50,6 +51,7 @@ class Monster extends GameCharacter {
                 this.goldRewarded = 2;
                 this.isBoss = false;
                 this.castsMagic = false;
+                this.imageFilePath = "assets/images/rabidPetRock.png";
                 break;
             case HOBOGOBLIN:
                 this.setName("Hobo Goblin");
@@ -61,6 +63,7 @@ class Monster extends GameCharacter {
                 this.goldRewarded = 4;
                 this.isBoss = false;
                 this.castsMagic = false;
+                this.imageFilePath = "assets/images/hoboGoblin.png";
                 break;
             case CYCLOPIAN_GENTLEMAN:
                 this.setName("Cyclopian Gentleman");
@@ -72,6 +75,7 @@ class Monster extends GameCharacter {
                 this.goldRewarded = 20;
                 this.isBoss = true;
                 this.castsMagic = true;
+                this.imageFilePath = "assets/images/cyclopianGentleman.png";
         }
     }
 
@@ -114,5 +118,12 @@ class Monster extends GameCharacter {
      */
     public boolean castsMagic() {
         return castsMagic;
+    }
+
+    /**
+     * @return Returns a file path string for the monster's image file.
+     */
+    public String getImageFilePath() {
+        return imageFilePath;
     }
 }
