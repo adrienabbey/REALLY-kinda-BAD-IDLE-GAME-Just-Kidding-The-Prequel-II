@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -23,9 +23,11 @@ class Driver extends JFrame {
     private static PlayerCharacter player;
     private static JPanel world = new JPanel();
     private static JPanel dungeon = new JPanel();
+    private static JPanel dungeonInfo = new JPanel();
     private static Dungeon combat = new Dungeon();
+    private static Combat logs;
+    public static CharacterScreen charScreen;
     private static World map = new World() { // This code puts the world map image as the background to the panel
-   
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -78,8 +80,9 @@ class Driver extends JFrame {
         // JPanel dungeon = new JPanel();
         // Dungeon combat = new Dungeon();
 
-        world.setLayout(new GridLayout(1, 1));
-        dungeon.setLayout(new GridLayout(1, 1));
+        world.setLayout(new GridLayout(1, 2));
+        dungeon.setLayout(new GridLayout(1, 2));
+        dungeonInfo.setLayout(new GridLayout(2, 1));
 
         driverPanel.setLayout(cardLayout);
         driverPanel.add(settings, "settings");
@@ -116,15 +119,24 @@ class Driver extends JFrame {
      * This function is necessary because charScreen causes an error
      * that makes the program crash before it even launches.
      * This function adds the character screen to the world and dungeon panels.
+     * @throws InterruptedException 
      */
-    public static void addCharScreen() {
-        CharacterScreen charScreen = new CharacterScreen();
+    public static void addCharScreen() throws InterruptedException {
+        charScreen = new CharacterScreen();
+        charScreen.setPreferredSize(new Dimension(charScreen.getWidth(), 36));
         world.add(charScreen);
         world.add(map);
-        dungeon.add(charScreen);
+        dungeonInfo.add(charScreen);
+        logs = new Combat(player, Dungeon.getMonster());
+        dungeonInfo.add(logs);
+        dungeon.add(dungeonInfo);
         dungeon.add(combat);
         
         // driverPanel.add(new CharacterScreen(), "charScreen");
+    }
+
+    public static CharacterScreen getCharScreen() {
+        return charScreen;
     }
 
     /**

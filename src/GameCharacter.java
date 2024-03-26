@@ -46,17 +46,22 @@
     */
    public void attack(GameCharacter target) {
       dice.roll();
-      int damage = muscle * (dice.getLast() / 20);
+      double damage = muscle * (((double) dice.getLast()) / 20);
+      damage = Math.round(damage * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
       // int resist = target.getSkin(); // This is for if we add complexity later
-      if (dice.getLast() == 20) {
-         System.out.println("Critical Hit!");
+     
+      if(dice.getLast() == 20) {
          target.health -= damage * 2;
-      } else if (dice.getLast() == 1) {
-         System.out.println("Critical Miss!");
+         Combat.addLog(name + " critical hit " + target.getName() + " and they took " + damage * 2 + " damage!\n");
+      }
+      else if (dice.getLast() == 1) {
+         Combat.addLog(name + " critical missed and took 1 damage!\n");
+
          health -= 1;
       } else {
          target.health -= damage;
+         Combat.addLog(name + " hit " + target.getName() + " for " + damage + " damage!\n");
       }
       // Method used when a character attacks another character.
       // TODO: Implementation.
@@ -64,32 +69,42 @@
 
    public void magicAttack(GameCharacter target) {
       dice.roll();
-      int damage = brain * (dice.getLast() / 20);
+      double damage = brain * (((double) dice.getLast()) / 20);
+      damage = Math.round(damage * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
-      if (dice.getLast() == 20) {
-         System.out.println("Critical Hit!");
+
+      if(dice.getLast() == 20) {
+         Combat.addLog(name + "'s magic critical hit " + target.getName() + " and the took " + damage * 2 + " damage!\n");
          target.health -= damage * 2;
-      } else if (dice.getLast() == 1) {
-         System.out.println("Critical Miss!");
+      }
+      else if(dice.getLast() == 1) {
+         Combat.addLog(name + "'s magic critical missed and they took 1 damage!\n");
+
          health -= 1;
       } else {
          target.health -= damage;
+         Combat.addLog(name + "'s magic hit " + target.getName() + " for " + damage + " damage!\n");
       }
       magic -= 1;
    }
 
    public void magicHeal() {
       dice.roll();
-      int heal = brain * (dice.getLast() / 20);
+      double heal = brain * (((double) dice.getLast()) / 20);
+      heal = Math.round(heal * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
-      if (dice.getLast() == 20) {
-         System.out.println("Critical Heal!");
+
+      if(dice.getLast() == 20) {
+         Combat.addLog(name + " critical heal's themselves for " + heal * 2 + " health!\n");
          health += heal * 2;
-      } else if (dice.getLast() == 1) {
-         System.out.println("Critical Miss!");
+      }
+      else if(dice.getLast() == 1) {
+         Combat.addLog(name + " critical missed! a heal and took 1 damage!\n");
+
          health -= 1;
       } else {
          health += heal;
+         Combat.addLog(name + " healed themselves for " + heal + " health!\n");
       }
       magic -= 1;
    }
