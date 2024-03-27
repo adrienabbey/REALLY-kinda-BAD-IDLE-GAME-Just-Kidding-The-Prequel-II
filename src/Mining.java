@@ -102,7 +102,7 @@ public class Mining extends JPanel {
                 currentlyMining = true;
                 autoMineOre();
                 if (auto) {
-                    SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play sound effect only when starting, not stopping, mining
+                    SFX.playSound("assets/SFX/pickaxe-sfx.wav"); // play sound effect only when starting, not stopping, mining
                 }
             }
         });
