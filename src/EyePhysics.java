@@ -46,11 +46,31 @@ public class EyePhysics {
         return new Point(x, y);
     }
 
+    // Calculat the position of the iris that is in the opposite direction of the cursor
+    public Point calculateOppositeIrisPosition(Point cursorPosition, Point eyePosition, int eyeRadius, int irisRadius) {
+        // Calculate the angle between the eye center and the opposite cursor position by subtracting the eyeposition by the cursorPosition, rather than the cursorPosition by the eyeposition. 
+        double angle = Math.atan2(eyePosition.y - cursorPosition.y, eyePosition.x - cursorPosition.x);
+        
+        // Calculate the coordinates of the iris based on the angle and radii
+        int x = (int) (eyePosition.x + (eyeRadius - irisRadius) * Math.cos(angle));
+        int y = (int) (eyePosition.y + (eyeRadius - irisRadius) * Math.sin(angle));
+        
+        return new Point(x, y);
+    }
+
     // Method calculates the iris position based on the mouse position 
     public void updateIrisPosition(Point mousePosition, EyePhysics eye) {
         if (mousePosition != null) {
             // update eye's iris position based on eye's properties.
             eye.setIrisPosition(eye.calculateIrisPosition(mousePosition, eye.getEyePosition(), eye.getEyeRadius(), eye.getIrisRadius()));
+            }
+        }
+
+    // Method calculates the iris position based on the opposite direction  of the mouse position 
+    public void updateOppositeIrisPosition(Point mousePosition, EyePhysics eye) {
+        if (mousePosition != null) {
+            // update eye's iris position based on eye's properties.
+            eye.setIrisPosition(eye.calculateOppositeIrisPosition(mousePosition, eye.getEyePosition(), eye.getEyeRadius(), eye.getIrisRadius()));
             }
         }
 

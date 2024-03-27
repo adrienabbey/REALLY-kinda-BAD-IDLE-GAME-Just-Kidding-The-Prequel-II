@@ -53,7 +53,7 @@ class StartScreen extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 // Update iris positions for both eyes based on mouse position
                 eye1.updateIrisPosition(getMousePosition(), eye1);
-                eye2.updateIrisPosition(getMousePosition(), eye2);
+                eye2.updateOppositeIrisPosition(getMousePosition(), eye2);
                 
                 // Calculate the midpoint between the two eyeballs
                 int midX = (eye1.getEyePosition().x + eye2.getEyePosition().x) / 2;
