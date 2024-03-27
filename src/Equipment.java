@@ -58,9 +58,19 @@ public class Equipment implements Serializable {
      */
     public static boolean doUpgrade(int MonsterLevel, boolean isBoss) {
         // TODO: Balance these numbers!
-        float weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.1);
-        float armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.1);
-        float hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.1);
+        float weaponUpgradeChance;
+        float armourUpgradeChance;
+        float hatUpgradeChance;
+
+        if (isBoss) {
+            weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.3);
+            armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.3);
+            hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.3);
+        } else {
+            weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.1);
+            armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.1);
+            hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.1);
+        }
 
         // TODO: Consider including weights for the player's initial stats in
         // these chances. For example, a character starting with really high
@@ -71,5 +81,7 @@ public class Equipment implements Serializable {
         boolean weaponUpgrades = (Math.random() < weaponUpgradeChance);
         boolean armourUpgrades = (Math.random() < armourUpgradeChance);
         boolean hatUpgrades = (Math.random() < hatUpgradeChance);
+
+        // TODO: Determine weighted randomization algorithm!
     }
 }
