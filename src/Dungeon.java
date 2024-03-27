@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 class Dungeon extends JPanel {
     private Image backgroundImage;
@@ -33,10 +34,26 @@ class Dungeon extends JPanel {
         // Button to start combat, button to end combat, and seperate button to leave dungeon
         // Player flag to indicate activity the player is engaged in
         // This would allow "idle" play of one content at a time
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
         JButton start = new JButton("Start Combat");
+        buttons.add(start);
         JButton end = new JButton("End Combat");
+        buttons.add(end);
         JButton magic = new JButton("Attack Magic");
+        buttons.add(magic);
         JButton leave = new JButton("Leave Dungeon");
+        buttons.add(leave);
+
+        //For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).setPreferredSize(new Dimension(180, 80));
+            buttons.get(i).setMaximumSize(new Dimension(180, 80));
+            buttons.get(i).setBackground(customColorBrown);
+            buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 20));
+        }
 
         // This is adding all objects to the screen, and controlling layout
         add(Box.createHorizontalGlue());
