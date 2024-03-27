@@ -13,7 +13,7 @@ class Credits extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/scene11.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/scene16.png")), 0, 0, getWidth(), getHeight(), this);
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
