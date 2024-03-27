@@ -6,12 +6,10 @@ import java.awt.*;
  * TODO: make class easier to use
  */
 public class EyePhysics {
-    // private EyePhysics eyePhysics;
     private Point eyePosition;
     private int eyeRadius;
     private Point irisPosition;
     private int irisRadius;
-
 
     /**
      * Calculates the position of the iris based on the cursor position and eye parameters.
@@ -31,6 +29,25 @@ public class EyePhysics {
         int y = (int) (eyePosition.y + (eyeRadius - irisRadius) * Math.sin(angle));
         
         return new Point(x, y);
+    }
+
+    // Method calculates the iris position based on the mouse position 
+    public void updateIrisPosition(Point mousePosition, EyePhysics eye) {
+        if (mousePosition != null) {
+            // update eye's iris position based on eye's properties.
+            eye.setIrisPosition(eye.calculateIrisPosition(mousePosition, eye.getEyePosition(), eye.getEyeRadius(), eye.getIrisRadius()));
+            }
+        }
+
+    // Method draws eye onto screen
+    public void drawEye(Graphics g, EyePhysics eye) {
+        // Draw the eye
+        g.setColor(Color.WHITE);
+        g.fillOval(eye.getEyePosition().x - eye.getEyeRadius(), eye.getEyePosition().y - eye.getEyeRadius(), 2 * eye.getEyeRadius(), 2 * eye.getEyeRadius());
+
+        // Draw the iris
+        g.setColor(Color.BLACK);
+        g.fillOval(irisPosition.x - irisRadius, irisPosition.y - irisRadius, 2 * irisRadius, 2 * irisRadius);
     }
 
     // // sets all of eye's properties
