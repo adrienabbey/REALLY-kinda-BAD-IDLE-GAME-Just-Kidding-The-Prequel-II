@@ -110,11 +110,14 @@ class Shop extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
             if (buyScreenOpen == false) { // Check if buy screen is not already open
                 buyScreenOpen = true; // Set buy screen as open
-            
-            // Remove existing buttons
-            // this.removeAll();
-            // this.revalidate();
-            // this.repaint();
+
+            // check is sell screen is open, if yes then close it
+            if (sellScreenOpen) {
+                remove(mainPanel2); // remove sell screen if open
+                sellScreenOpen = false; // adjust flag accordingly
+                revalidate();
+                repaint();
+                }
 
             // Create a panel to hold labels and the buy panel
             mainPanel1 = new JPanel(new BorderLayout());
@@ -256,10 +259,13 @@ class Shop extends JPanel {
             if (sellScreenOpen == false) { // Check if sell screen is not already open
                 sellScreenOpen = true; // Set sell screen as open
 
-            // Remove existing buttons
-            // this.removeAll();
-            // this.revalidate();
-            // this.repaint();
+            // check if buy screen is opne, if so close it
+            if (buyScreenOpen) {
+                remove(mainPanel1); // remove buy screen if open
+                buyScreenOpen = false; // adjust flag accordingly
+                revalidate();
+                repaint();
+                }
 
             // Create a panel to hold labels and the sell panel
             mainPanel2 = new JPanel(new BorderLayout());
