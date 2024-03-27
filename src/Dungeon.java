@@ -13,12 +13,25 @@ class Dungeon extends JPanel {
      * This function hosts the dungeon screen with buttons to go to town or use a potion
      * @param player The player character object
      */
+
+     @Override
+     protected void paintComponent(Graphics g) {
+ 
+         super.paintComponent(g);
+             try {
+                 g.drawImage(ImageIO.read(new File("assets/images/dungeon2.png")), 0, 0, getWidth(), getHeight(), this);
+             } catch (IOException e) {
+                 //Auto-generated catch block
+                 e.printStackTrace();
+             }
+     }
     public Dungeon() {
-        try {
-            backgroundImage = ImageIO.read(new File("assets/images/Dungeon.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try {
+        //     backgroundImage = ImageIO.read(new File("assets/images/Dungeon3.png"));
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
+
 
         // TODO add the actual enemy generation and combat here
 
@@ -77,11 +90,11 @@ class Dungeon extends JPanel {
         });
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(backgroundImage, 0, 0, this);
-    }
+    // @Override
+    // protected void paintComponent(Graphics g) {
+    //         super.paintComponent(g);
+    //         g.drawImage(backgroundImage, 0, 0, this);
+    // }
 
     public void update(){
         this.repaint();

@@ -84,7 +84,7 @@ class Combat extends JPanel{
                 Thread.sleep(1500);
             } else {
                 addLog(enemy.getName() + " has been defeated!\n" + player.getName() + " has gained " + enemy.getGoldReward() + " gold!\n");
-                inventory.setGold(enemy.getGoldReward());// Update gold resource in inventory
+                inventory.addGold(enemy.getGoldReward());// add gold to inventory
                 enemy = Dungeon.getMonster();
             }
             Driver.charScreen.update();

@@ -128,7 +128,7 @@ public class World extends JPanel{
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("wood");
-                MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
+                MusicPlayer.playMusic("assets/Music/ambient-farmland-sounds.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

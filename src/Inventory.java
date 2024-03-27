@@ -94,8 +94,8 @@ public class Inventory extends JPanel {
         }
     }
     
-    // Method to set Gold amount
-    public void setGold(int amount) {
+    // Method to add to Gold amount
+    public void addGold(int amount) {
         int currentGold = resources.get("Gold");
         resources.put("Gold", currentGold + amount);
         updateResourceLabels(); // Update the UI to reflect the changes
