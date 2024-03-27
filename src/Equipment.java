@@ -62,9 +62,14 @@ public class Equipment implements Serializable {
         float armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.1);
         float hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.1);
 
-        // TODO: Consider including weights for the player's initial stats in 
-        // these chances.  For example, a starting character with really high
+        // TODO: Consider including weights for the player's initial stats in
+        // these chances. For example, a character starting with really high
         // brains has a much higher chance of upgrading their hat, which can go
-        // higher than the monster level.  This lets players specialize.
+        // higher than the monster level. This lets players specialize.
+
+        // Roll each chance to see if one upgrades:
+        boolean weaponUpgrades = (Math.random() < weaponUpgradeChance);
+        boolean armourUpgrades = (Math.random() < armourUpgradeChance);
+        boolean hatUpgrades = (Math.random() < hatUpgradeChance);
     }
 }
