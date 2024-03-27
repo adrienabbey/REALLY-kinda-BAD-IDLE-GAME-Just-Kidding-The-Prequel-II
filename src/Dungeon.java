@@ -19,20 +19,13 @@ class Dungeon extends JPanel {
  
          super.paintComponent(g);
              try {
-                 g.drawImage(ImageIO.read(new File("assets/images/dungeon2.png")), 0, 0, getWidth(), getHeight(), this);
+                 g.drawImage(ImageIO.read(new File("assets/images/Dungeon5.png")), 0, 0, getWidth(), getHeight(), this);
              } catch (IOException e) {
                  //Auto-generated catch block
                  e.printStackTrace();
              }
      }
     public Dungeon() {
-        // try {
-        //     backgroundImage = ImageIO.read(new File("assets/images/Dungeon3.png"));
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
-
-
         // TODO add the actual enemy generation and combat here
 
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -89,12 +82,6 @@ class Dungeon extends JPanel {
             }
         });
     }
-
-    // @Override
-    // protected void paintComponent(Graphics g) {
-    //         super.paintComponent(g);
-    //         g.drawImage(backgroundImage, 0, 0, this);
-    // }
 
     public void update(){
         this.repaint();
