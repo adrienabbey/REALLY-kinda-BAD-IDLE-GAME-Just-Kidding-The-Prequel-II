@@ -3,6 +3,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
+import java.awt.*;
 
 class Combat extends JPanel{
     static Inventory inventory = Inventory.getInstance();
@@ -21,6 +22,12 @@ class Combat extends JPanel{
 
     public Combat(PlayerCharacter player, Monster enemy){
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        Color customColorBlue = new Color(46, 86, 161);
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
+        logs.setBackground(customColorBrown);
+        logs.setForeground(customColorBeige);
+        logs.setFont(new Font("Serif", Font.BOLD, 22));
         Combat.player = player;
         Combat.enemy = enemy;
         JScrollPane scroll = new JScrollPane(logs);
@@ -28,7 +35,7 @@ class Combat extends JPanel{
         add(scroll);
         add(Box.createVerticalGlue());
     }
-    
+
     public static void addLog(String log){
         logs.append(log);
         logs.setCaretPosition(logs.getDocument().getLength());
@@ -90,6 +97,8 @@ class Combat extends JPanel{
             Driver.charScreen.update();
         }
         if(player.getHealth() <= 0){
+            logs.setForeground(Color.RED);
+            logs.setBackground(Color.BLACK);
             addLog(player.getName() + " has been defeated!\n");
             player.died();
         }
