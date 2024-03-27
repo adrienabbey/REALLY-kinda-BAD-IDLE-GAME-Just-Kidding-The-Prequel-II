@@ -38,7 +38,7 @@ class StartScreen extends JPanel{
         }
         
         // Set up a timer to reset the soundCooldown flag after the cooldown of 2 seconds
-        Timer cooldownTimer = new Timer(2000, new ActionListener() {
+        Timer cooldownTimer = new Timer(1500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 soundCooldown = false;
@@ -204,10 +204,8 @@ class StartScreen extends JPanel{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         // Draw the first eye
         eye1.drawEye(g, eye1);
-        
         // Draw the second eye
         eye2.drawEye(g, eye2);
     }

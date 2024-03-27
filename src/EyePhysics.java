@@ -39,7 +39,7 @@ public class EyePhysics {
             }
         }
 
-    // Method draws eye onto screen
+    // Method draws eye 
     public void drawEye(Graphics g, EyePhysics eye) {
         // Draw the eye
         g.setColor(Color.WHITE);
@@ -49,14 +49,6 @@ public class EyePhysics {
         g.setColor(Color.BLACK);
         g.fillOval(irisPosition.x - irisRadius, irisPosition.y - irisRadius, 2 * irisRadius, 2 * irisRadius);
     }
-
-    // // sets all of eye's properties
-    // public void setEyeProperties(Point ePos, int erad, Point iPos, int iRad) {
-    //     Point eyePosition = ePos;
-    //     int eyeRadius = erad;
-    //     Point irisPosition = iPos;
-    //     int irisRadius = iRad;
-    // }
 
     // setters for individual eye properties
     public void setEyePosition(Point newEyePosition) {
