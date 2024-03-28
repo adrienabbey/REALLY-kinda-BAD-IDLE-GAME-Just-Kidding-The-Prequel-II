@@ -56,12 +56,14 @@ public class Equipment implements Serializable {
      *                     much better chances of upgrading a piece of equipment.
      * @return Returns true if a piece of equipment upgraded, false if not.
      */
-    public static boolean doUpgrade(int MonsterLevel, boolean isBoss) {
-        // TODO: Balance these numbers!
+    public static boolean doUpgrade(int MonsterLevel, boolean isBoss, PlayerCharacter player) {
         float weaponUpgradeChance;
         float armourUpgradeChance;
         float hatUpgradeChance;
+        boolean itemUpgraded = false;
+        ;
 
+        // TODO: Balance these numbers!
         if (isBoss) {
             weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.3);
             armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.3);
@@ -72,7 +74,7 @@ public class Equipment implements Serializable {
             hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.1);
         }
 
-        // TODO: Consider including weights for the player's initial stats in
+        // TODO: Consider including weights of the player's initial stats in
         // these chances. For example, a character starting with really high
         // brains has a much higher chance of upgrading their hat, which can go
         // higher than the monster level. This lets players specialize.
@@ -82,6 +84,34 @@ public class Equipment implements Serializable {
         boolean armourUpgrades = (Math.random() < armourUpgradeChance);
         boolean hatUpgrades = (Math.random() < hatUpgradeChance);
 
-        // TODO: Determine weighted randomization algorithm!
+        // TODO: Implement a weighted randomness algorithm to upgrade only a
+        // single piece of equipment when multiple valid upgrades exist.
+
+        // For simplicity's sake, I'm going to allow multiple upgrades at once:
+        if (weaponUpgrades) {
+            weaponLevel += 1;
+            weaponDescription = "A Big Stick +" + weaponLevel;
+            itemUpgraded = true;
+            player.setMuscle(player.getMuscle() + 1);
+        }
+        if (armourUpgrades) {
+            armourLevel += 1;
+            armourDescription = "The Skin of Your Enemies +" + armourLevel;
+            itemUpgraded = true;
+            player.setHeart(player.getHeart() + 1);
+        }
+        if (hatUpgrades) {
+            hatLevel += 1;
+            armourDescription = "A tower of " + hatLevel + " hats.";
+            itemUpgraded = true;
+            player.setBrain(player.getBrain() + 1);
+        }
+
+        // TODO: Consider implementing a more graceful player stat upgrade method.
+
+        // TODO: Implement a randomized naming algorithm to add variety to 
+        // equipment descriptions.
+
+        return itemUpgraded;
     }
 }
