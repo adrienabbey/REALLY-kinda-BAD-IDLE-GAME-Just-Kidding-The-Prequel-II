@@ -161,4 +161,8 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    public boolean isAwake() {
       return isAwake;
    }
+
+   public boolean doEquipmentUpgrade(int monsterLevel, boolean isBoss) {
+      return equipment.doUpgrade(monsterLevel, isBoss, this);
+   }
 }
