@@ -9,47 +9,36 @@ import java.util.ArrayList;
 
 // This class is the introductory starting screen with buttons to start a new game, load a game, read directions, go to settings, or quit
 class StartScreen extends JPanel{
-    private EyePhysics eyePhysics;
-    private Point eyePosition;
-    private int eyeRadius;
-    private Point irisPosition;
-    private int irisRadius;
     private Timer timer;
 
-    private EyePhysics eyePhysics2;
-    private Point eyePosition2;
-    private int eyeRadius2;
-    private Point irisPosition2;
-    private int irisRadius2;
-    
+    EyePhysics eye1 = new EyePhysics(); // Initialize the first EyePhysics instance
+    EyePhysics eye2 = new EyePhysics(); // Initialize the second EyePhysics instance
     private boolean soundCooldown = false; // flag to track cooldown state fot sfx
     private int hoboSFX = 0; // used to loop through hobogoblin sfx 
 
     public StartScreen() {
         try {
-            // Initialize the first EyePhysics instance and eye properties
-            eyePhysics = new EyePhysics();
-            eyePosition = new Point(1620, 550); // position of the eye
-            eyeRadius = 23; // radius of the eye
-            irisPosition = new Point(1620, 550); // Initial position of iris same as eye
-            irisRadius = 16; // radius of the iris
+            // Set first eye's properties
+            eye1.setEyePosition(new Point(1620, 550));
+            eye1.setEyeRadius(23);
+            eye1.setIrisPosition(new Point(1620, 550));
+            eye1.setIrisRadius(16);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
-            // Initialize the second EyePhysics instance and eye properties
-            eyePhysics2 = new EyePhysics();
-            eyePosition2 = new Point(1670, 550); // position of the eye
-            eyeRadius2 = 23; // radius of the eye
-            irisPosition2 = new Point(1670, 550); // position of iris same as eye
-            irisRadius2 = 16; // Example radius of the iris
+            // Set second eye's properties
+            eye2.setEyePosition(new Point(1670, 550));
+            eye2.setEyeRadius(23);
+            eye2.setIrisPosition(new Point(1670, 550));
+            eye2.setIrisRadius(16);
         } catch (Exception e) {
             e.printStackTrace();
         }
         
         // Set up a timer to reset the soundCooldown flag after the cooldown of 2 seconds
-        Timer cooldownTimer = new Timer(2000, new ActionListener() {
+        Timer cooldownTimer = new Timer(1500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 soundCooldown = false;
@@ -58,18 +47,17 @@ class StartScreen extends JPanel{
         // Start the cooldown timer
         cooldownTimer.start();
 
-
         // Set up a timer to update iris positions and repaint the panel
         timer = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Update iris positions for both eyes based on mouse position
-                updateIrisPosition(getMousePosition(), eyePhysics);
-                updateIrisPosition(getMousePosition(), eyePhysics2);
+                eye1.updateIrisPosition(getMousePosition(), eye1);
+                eye2.updateOppositeIrisPosition(getMousePosition(), eye2);
                 
                 // Calculate the midpoint between the two eyeballs
-                int midX = (eyePosition.x + eyePosition2.x) / 2;
-                int midY = (eyePosition.y + eyePosition2.y) / 2;
+                int midX = (eye1.getEyePosition().x + eye2.getEyePosition().x) / 2;
+                int midY = (eye1.getEyePosition().y + eye2.getEyePosition().y) / 2;
 
                 // Get the cursor position
                 Point cursorPosition = getMousePosition();
@@ -216,32 +204,10 @@ class StartScreen extends JPanel{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Draw the left eye
-        drawEye(g, eyePosition, eyeRadius, irisPosition, irisRadius);
-        
-        // Draw right eye
-        drawEye(g, eyePosition2, eyeRadius2, irisPosition2, irisRadius2);
-    }
-
-    // Method calculates the iris position based on the mouse position and the respective eye position
-    private void updateIrisPosition(Point mousePosition, EyePhysics eye) {
-        if (mousePosition != null) {
-            if (eye == eyePhysics) {
-            irisPosition = eye.calculateIrisPosition(mousePosition, eyePosition, eyeRadius, irisRadius);
-            } else {
-                irisPosition2 = eye.calculateIrisPosition(mousePosition, eyePosition2, eyeRadius2, irisRadius2);
-            }
-        }
-    }
-
-    private void drawEye(Graphics g, Point eyePosition, int eyeRadius, Point irisPosition, int irisRadius) {
-        // Draw the eye
-        g.setColor(Color.WHITE);
-        g.fillOval(eyePosition.x - eyeRadius, eyePosition.y - eyeRadius, 2 * eyeRadius, 2 * eyeRadius);
-
-        // Draw the iris
-        g.setColor(Color.BLACK);
-        g.fillOval(irisPosition.x - irisRadius, irisPosition.y - irisRadius, 2 * irisRadius, 2 * irisRadius);
+        // Draw the first eye
+        eye1.drawEye(g, eye1);
+        // Draw the second eye
+        eye2.drawEye(g, eye2);
     }
 }
 
