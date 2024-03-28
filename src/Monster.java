@@ -15,7 +15,8 @@ class Monster extends GameCharacter {
     public enum MonsterName {
         PETROCK,
         HOBOGOBLIN,
-        CYCLOPIAN_GENTLEMAN
+        CYCLOPIAN_GENTLEMAN,
+        GEODUCK
     }
 
     /* Fields */
@@ -24,6 +25,7 @@ class Monster extends GameCharacter {
     private boolean isBoss;
     private boolean castsMagic;
     private String imageFilePath;
+    private int monsterLevel;
 
     /* Constructor */
 
@@ -42,40 +44,57 @@ class Monster extends GameCharacter {
 
         switch (name) {
             case PETROCK:
-                this.setName("Rabid Pet Rock");
-                this.setDescription(
+                setName("Rabid Pet Rock");
+                setDescription(
                         "Someone glued googley eyes onto a pet rock, then abandoned it. Also, it has rabies and wants to kill you.");
-                this.setMuscle(2);
-                this.setBrain(1);
-                this.setHealth(3);
-                this.goldRewarded = 2;
-                this.isBoss = false;
-                this.castsMagic = false;
-                this.imageFilePath = "assets/images/rabidPetRock.png";
+                setMuscle(2);
+                setBrain(1);
+                setHealth(3);
+                goldRewarded = 2;
+                isBoss = false;
+                castsMagic = false;
+                imageFilePath = "assets/images/rabidPetRock.png";
+                monsterLevel = 2;
                 break;
             case HOBOGOBLIN:
-                this.setName("Hobo Goblin");
-                this.setDescription(
+                setName("Hobo Goblin");
+                setDescription(
                         "Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from from all its wealth, health, and home.  Also, it has googley eyes.");
-                this.setMuscle(6);
-                this.setBrain(2);
-                this.setHeart(2);
-                this.goldRewarded = 4;
-                this.isBoss = false;
-                this.castsMagic = false;
-                this.imageFilePath = "assets/images/hoboGoblin.png";
+                setMuscle(6);
+                setBrain(2);
+                setHeart(4);
+                goldRewarded = 4;
+                isBoss = false;
+                castsMagic = false;
+                imageFilePath = "assets/images/hoboGoblin.png";
+                monsterLevel = 4;
                 break;
             case CYCLOPIAN_GENTLEMAN:
-                this.setName("Cyclopian Gentleman");
-                this.setDescription(
+                setName("Cyclopian Gentleman");
+                setDescription(
                         "This impecably dressed giant just radiates cultured sophistication.  He's even wearing a tophat with a monocle over his single, giant eye.  Unfortunately, you're too small to notice and he's about to step all over you.  Which is not to say he didn't actually see you, he just doesn't care.");
-                this.setMuscle(10);
-                this.setBrain(10);
-                this.setHeart(10);
-                this.goldRewarded = 20;
-                this.isBoss = true;
-                this.castsMagic = true;
-                this.imageFilePath = "assets/images/cyclopianGentleman.png";
+                setMuscle(10);
+                setBrain(10);
+                setHeart(10);
+                goldRewarded = 20;
+                isBoss = true;
+                castsMagic = true;
+                imageFilePath = "assets/images/cyclopianGentleman.png";
+                monsterLevel = 8;
+                break;
+            case GEODUCK:
+                setName("Creepy Geoduck");
+                setDescription(
+                        "Some people eat these.  No, really, like legitimate food.  Just think about that.");
+                setMuscle(4);
+                setBrain(8);
+                setHeart(6);
+                goldRewarded = 6;
+                isBoss = false;
+                castsMagic = true;
+                imageFilePath = "assets/images/DrawAGeoduckLuke.png";
+                monsterLevel = 6;
+                break;
         }
     }
 
@@ -125,5 +144,12 @@ class Monster extends GameCharacter {
      */
     public String getImageFilePath() {
         return imageFilePath;
+    }
+
+    /**
+     * @return Returns some arbitrary number relating to the monster level.
+     */
+    public int getMonsterLevel() {
+        return monsterLevel;
     }
 }
