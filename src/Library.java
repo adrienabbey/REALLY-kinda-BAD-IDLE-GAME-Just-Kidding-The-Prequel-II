@@ -1,9 +1,19 @@
+/*
+ * Library Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+/* Implementation for the libray class which can be accessed from the Town screen. Contains the Book of Monsters feature which allows the playe to flip though pages and see the descriptions of monsters in the game. Each page has the monster image, description, and monster sfx when entering page.
+ * 
+ * TODO: add more books to the library, such as one that dispenses lore. Make Book of Monsters look like an actual book.  
+*/
 
 class Library extends JPanel {
     private int page = 1;

@@ -1,9 +1,24 @@
+/*
+ * SFX Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muahmmed Abushamma, et al., Mar. 2024
+ */
+
 import javax.sound.sampled.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SFX {
+/*
+ * Similar class to MusicPlayer. The Sound Effect class allows audio files in the .wav format to be played. Contains a methods that plays music, allow muting/unmuting of sound volume, one to set the volume of the sound, and one to stop all currently playing sound effects. The playMusic method creates a new thread whenever a new track starts playing, and terminates the thread whenever a new track starts playing. 
+ *
+ * This class is implemented so that sounds do not loop once finished, and multiple sounds can play at once. In order to fix the issue of a player repeadtedly activating sound effects, the stopAllSounds method is used to stop all currently playing sound effects in between activattions. Sometimes it is the case where multiple sound effects want to be play, for instance after the homestead purchase where mash clicking the purchase the button isn't possible, to which the stopAllSound method isn't used. 
+ * 
+ * TODO: extend SFX with MusicPlayer for simpler use.
+ */
+public class SFX extends MusicPlayer{
+
+    /* Fields */
+
     // Keep track of the current clip
     // This is used to stop the current music when a new one starts
     private static Clip currentClip = null;
@@ -17,9 +32,14 @@ public class SFX {
         currentVolumeSFX = volume;
     }
 
+     /* Constructor */
+     
+    // sets the volume to a predefined amount at start of game
     public SFX() {
         volumeHelperSFX(currentVolumeSFX); 
     }
+
+    /* Methods  */
 
     public static void playSound(String filePath) {
         // Create a new thread to play the music

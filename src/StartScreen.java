@@ -11,8 +11,8 @@ import java.util.ArrayList;
 class StartScreen extends JPanel{
     private Timer timer;
 
-    EyePhysics eye1 = new EyePhysics(); // Initialize the first EyePhysics instance
-    EyePhysics eye2 = new EyePhysics(); // Initialize the second EyePhysics instance
+    EyePhysics eye1 = new EyePhysics(); // Initialize the first EyePhysics object
+    EyePhysics eye2 = new EyePhysics(); // Initialize the second EyePhysics object
     private boolean soundCooldown = false; // flag to track cooldown state fot sfx
     private int hoboSFX = 0; // used to loop through hobogoblin sfx 
 

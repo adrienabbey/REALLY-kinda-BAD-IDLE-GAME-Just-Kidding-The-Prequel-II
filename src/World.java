@@ -116,7 +116,7 @@ public class World extends JPanel{
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("home");
-                // MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
+                MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -127,7 +127,7 @@ public class World extends JPanel{
         wood.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
-                Driver.changePanel("wood");
+                Driver.changePanel("forest");
                 MusicPlayer.playMusic("assets/Music/ambient-farmland-sounds.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -138,7 +138,7 @@ public class World extends JPanel{
         mine.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
-                Driver.changePanel("mine");
+                Driver.changePanel("mineshaft");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
                 
             } catch (Exception e1) {

@@ -36,8 +36,8 @@ class Town extends JPanel {
         //Whenever calling a getter for the player, it breaks it.
         JLabel name = new JLabel("Name: ");
 
-        JButton shop = new JButton("Bazaar");
-        buttons.add(shop);
+        JButton bazaar = new JButton("Bazaar");
+        buttons.add(bazaar);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
         JButton tavern = new JButton("Tavern");
@@ -51,7 +51,7 @@ class Town extends JPanel {
         add(Box.createVerticalGlue());
         // add(name);
         add(Box.createRigidArea(new Dimension(100, 150)));
-        add(shop);
+        add(bazaar);
         add(Box.createRigidArea(new Dimension(100, 20)));
         add(tavern);
         add(Box.createRigidArea(new Dimension(100, 20)));
@@ -75,11 +75,11 @@ class Town extends JPanel {
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
-        // Button that takes player to shop panel
-        shop.addActionListener(e -> {
+        // Button that takes player to bazaar panel
+        bazaar.addActionListener(e -> {
             try{
                 SFX.playSound("assets/SFX/interface1.wav");
-                Driver.changePanel("shop");
+                Driver.changePanel("bazaar");
                 MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
             } catch (Exception e1){
                 e1.printStackTrace();

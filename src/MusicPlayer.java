@@ -1,7 +1,22 @@
+/*
+ * Music Player Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import javax.sound.sampled.*;
 import java.io.File;
 
+/*
+ * Class allows audio files in the .wav format to be played. Contains a methods that plays music, allow muting/unmuting of sound volume, and one to set the volume of the sound. The playMusic method creates a new thread whenever a new track starts playing, and terminates the thread whenever a new track starts playing. 
+ *
+ * This class is implemented so that only one track can be played at a time, and whenever a new track is played the previous one is stopped. If a current track finishes it loops continously. 
+ * 
+ */
+
 public class MusicPlayer {
+
+    /* Fields */
+    
     // Keep track of the current clip
     // This is used to stop the current music when a new one starts
     private static Clip currentClip = null;

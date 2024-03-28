@@ -1,3 +1,8 @@
+/*
+ * Settings Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -10,25 +15,15 @@ import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
 
+/* 
+ * Implementation for the "Settings" panel which can be accessed fron the start screen. Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
+ */
+
 class Settings extends JPanel {
+    /* Fields */
     private static boolean isMute = true;
 
-    @Override
-    protected void paintComponent(Graphics g) {
-
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/scene15.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
-    /**
-     * This function hosts the town screen with buttons to buy potions or leave
-     * @param player The player character object
-     * @throws IOException
-     */
+    /* Constructor */
     public Settings() throws IOException{
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
@@ -98,6 +93,8 @@ class Settings extends JPanel {
 
         //Format sfx volume slider
         sliderSFX.setMaximumSize(new Dimension(270, 20));
+
+        /* Methods */
 
         // Volume button mutes or unmutes master volume.
         mute.addActionListener(e -> {
@@ -169,5 +166,18 @@ class Settings extends JPanel {
                     }
                 }
             });
+    }
+
+    // draw image to backgroud
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/World5.1.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
     }
     }

@@ -1,8 +1,17 @@
+/*
+ * Credits Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+/*
+ * Implementation for the "Credits" panel which can be accessed from the setting screen. Used a rolling text label to house all the credits for the game. Label includes the credits to the developers, professor, images used, music used, sound effect used, and voiceovers used. 
+ */
 
 class Credits extends JPanel {
     private JLabel rollingText;
@@ -13,12 +22,14 @@ class Credits extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/scene16.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/scene20.png")), 0, 0, getWidth(), getHeight(), this);
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
             }
     }
+
+    /* Constructor */
 
     public Credits() {
         // Set the layout with vertical alignment and padding

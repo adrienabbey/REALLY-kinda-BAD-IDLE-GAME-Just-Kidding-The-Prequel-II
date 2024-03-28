@@ -1,4 +1,9 @@
 /*
+ * Eye Physics Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
+/*
  * Copyright (C) The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,13 +17,28 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ * Link to original library: https://github.com/googlesamples/android-vision/blob/master/visionSamples/googly-eyes/app/src/main/java/com/google/android/gms/samples/vision/face/googlyeyes/EyePhysics.java
+ * EyePhysics.java was created with using teh above library class as a template.
  */
 import java.awt.*;
 
 /**
- * This class provides methods to calculate the position of the iris within an eye.
- * TODO: Add bounce/wiggle physics to googley eyes
- * TODO: make class easier to use
+ * This class provides methods to set eye properties, draw eyes on panels and  calculate and update the position of the iris within an eye based on cursor direction. Can update iris position both in the direction of and the direction opposite to the cursor position.  
+ * 
+ * 
+ * TODO: Add the following capabilities: 
+ * Simulate the physics of motion for an iris which moves within a googly eye.  The iris moves independently of the motion of the face/eye, and moves according to the following forces:<p>
+ *
+ * <ol>
+ * <li>Gravity - downward acceleration.</li>
+ *
+ * <li>Friction - deceleration; opposing motion</li>
+ *
+ * <li>Bounce - acceleration in the opposite direction of motion when the iris hits the side of the
+ * eye (e.g., due to a jerking motion which suddenly moves the face in frame).  Note that this is
+ * the only way to get the iris to move horizontally, since gravity only accelerates downward.</li>
+ * </ol>
  */
 public class EyePhysics {
     private Point eyePosition;
@@ -26,6 +46,9 @@ public class EyePhysics {
     private Point irisPosition;
     private int irisRadius;
 
+ //======================================================================
+ // Methods
+ //======================================================================
     /**
      * Calculates the position of the iris based on the cursor position and eye parameters.
      *
@@ -46,7 +69,7 @@ public class EyePhysics {
         return new Point(x, y);
     }
 
-    // Calculat the position of the iris that is in the opposite direction of the cursor
+    // Same as calculateIrisPosition method, except it calculates the inverse posiition of the Iris relative to the direction of the cursor.
     public Point calculateOppositeIrisPosition(Point cursorPosition, Point eyePosition, int eyeRadius, int irisRadius) {
         // Calculate the angle between the eye center and the opposite cursor position by subtracting the eyeposition by the cursorPosition, rather than the cursorPosition by the eyeposition. 
         double angle = Math.atan2(eyePosition.y - cursorPosition.y, eyePosition.x - cursorPosition.x);
@@ -58,7 +81,12 @@ public class EyePhysics {
         return new Point(x, y);
     }
 
-    // Method calculates the iris position based on the mouse position 
+    /**
+     * Updates the iris position based on the mouse position 
+     *
+     * @param mousePosition The position of the cursor.
+     * @param eye           The eye object that houses the eye's instance variables and methods.
+     */
     public void updateIrisPosition(Point mousePosition, EyePhysics eye) {
         if (mousePosition != null) {
             // update eye's iris position based on eye's properties.
@@ -66,7 +94,7 @@ public class EyePhysics {
             }
         }
 
-    // Method calculates the iris position based on the opposite direction  of the mouse position 
+    // Same as updateIrisPosition method, except it updates the iris position based on the inverse direction of the mouse position 
     public void updateOppositeIrisPosition(Point mousePosition, EyePhysics eye) {
         if (mousePosition != null) {
             // update eye's iris position based on eye's properties.

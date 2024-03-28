@@ -4,6 +4,9 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
+
 public class Inventory extends JPanel {
     private static Inventory instance;
 

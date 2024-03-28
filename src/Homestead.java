@@ -1,3 +1,8 @@
+/*
+ * Homestead Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -7,6 +12,16 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+/*
+ * Implements the "Homestead" panel accessed through World screen. Allows the player to purchase a homestead. Unlocking the homestead unlocks a greater inventory space, the farming functionaility, and crafting functionality. The inventory, farming, and crafting panels can be accessed directly from the homestead screen. 
+ * 
+ * Current cost in rsources to purchase: 1000 Gold, 250 Wood, 250 Stone, 100 Metal. Can tweak and optimize amounts later. 
+ * 
+ * TODO: Increase player inventory after purchasing homestead. Implement the crafting and farming classes. 
+ * 
+ * 
+ */
+
 class Homestead extends JPanel {
     Inventory inventory = Inventory.getInstance();
     private boolean purchaseConfirmation = false;
@@ -15,7 +30,7 @@ class Homestead extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/home.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/homestead2.png")), 0, 0, getWidth(), getHeight(), this);
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
@@ -143,7 +158,7 @@ class Homestead extends JPanel {
             purchaseConfirmation = false;
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");
-
+            MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
         });
 
         // Takes player to farm screen
@@ -174,7 +189,7 @@ class Homestead extends JPanel {
                 Inventory.backToHomestead = true; 
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
-
+                
             } catch (Exception e1){
                 e1.printStackTrace();
             }
