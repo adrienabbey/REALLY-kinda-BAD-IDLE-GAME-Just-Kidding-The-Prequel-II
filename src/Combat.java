@@ -87,6 +87,9 @@ class Combat extends JPanel {
                         + enemy.getGoldReward() + " gold!\n");
                 inventory.setGold(enemy.getGoldReward());// Update gold resource in inventory
 
+                // Check for equipment upgrades:
+                player.doEquipmentUpgrade(enemy.getMonsterLevel(), enemy.isBoss());
+
                 enemy = Dungeon.getMonster();
             }
             Driver.charScreen.update();
