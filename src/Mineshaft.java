@@ -16,7 +16,7 @@ import java.io.IOException;
  * 
  * Current reources that can be gathered at the mineshaft: Stone, Metal, Spleenwort, Tongue Fern, Magical Essence...
  * 
- * TODO: Make JProgress bar fill up smoother / add gradient color. 
+ * TODO: add gradient color to bar. 
  * Add levels to the mineshaft. Deeper levels can be a way to add more items to the game. Player can unlock deeper levels by increasing their mining/scavenging stat. Can use a different bgm and bg image for new levels. Maybe even add secret diaog options when unlocking new levels, such as new dialog messages in the tavern or in the mineshaft itself. 
  */
 public class Mineshaft extends JPanel {
@@ -142,7 +142,7 @@ public class Mineshaft extends JPanel {
 
         // Timer for automatic process
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Takes 10 seconds to fill up.
-        timer = new Timer(10, new ActionListener() {
+        timer = new Timer(120, new ActionListener() {
             int progress = 0;
             int ore = 1; // used to track which resource to grant
             int scavenge = 1; // used to track which resource to grant

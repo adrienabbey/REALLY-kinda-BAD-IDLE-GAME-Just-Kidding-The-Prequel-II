@@ -16,7 +16,7 @@ import java.io.IOException;
  * 
  * Current reources that can be gathered at the mineshaft: wood, meat, pelt...
  * 
- * TODO: Make JProgress bar fill up smoother / add gradient color. 
+ * TODO: add gradient color to bar. 
  * Add levels to the forest. Deeper levels can be a way to add more items to the game. Player can unlock deeper levels by increasing their woodcutting/hunting stat. Can use a different bgm and bg image for new levels. Maybe even add secret diaog options when unlocking new levels, such as new dialog messages in the tavern or in the forest itself. 
  */
 public class Forest extends JPanel {

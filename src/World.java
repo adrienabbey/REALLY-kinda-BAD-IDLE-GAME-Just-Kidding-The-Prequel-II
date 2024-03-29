@@ -92,8 +92,8 @@ public class World extends JPanel{
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("town");
-                MusicPlayer.playMusic("assets/Music/Village Consort.wav");
-                
+                MusicPlayer.playMusic("assets/Music/town-bgm.wav");
+                SFX.playSound("assets/SFX/town-ambient-sfx2.wav");                
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -116,7 +116,7 @@ public class World extends JPanel{
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("home");
-                MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
+                MusicPlayer.playMusic("assets/Music/homestead-bgm.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -140,6 +140,7 @@ public class World extends JPanel{
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("mineshaft");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
+                SFX.playSound("assets/SFX/mineshaft-ambience2.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();

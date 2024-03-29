@@ -72,7 +72,7 @@ public class Inventory extends JPanel {
                 Driver.changePanel("town"); 
                 backToTown = false;
             } else {
-                Driver.changePanel("shop"); 
+                Driver.changePanel("bazaar"); 
             }
         });
     }

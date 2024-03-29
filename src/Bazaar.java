@@ -413,6 +413,7 @@ class Bazaar extends JPanel {
         // Buy button adds a potion to the player's inventory
         secretMerchant.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav"); // play button sound effect
+            MusicPlayer.playMusic("assets/Music/secret-merchant-bgm.wav");
 
             // Check if secret merchant screen is not already open
             if (!secretMerchantScreenOpen) {
@@ -502,6 +503,7 @@ class Bazaar extends JPanel {
                 secretMerchantScreenOpen = false; // Set sell screen as closed
                 revalidate(); // recalculate the layout of the components within the container
                 repaint(); //  repaints the GUI components
+                MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
             });
 
             // Create buy label message
@@ -569,7 +571,11 @@ class Bazaar extends JPanel {
                             inventory.updateResourceLabels(); // Update the labels
                             goldLabel.setText("    Gold: " + inventory.getResource("Gold") + " "); // Update the gold label
                             buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
-                            SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
+                            if (resourceName == "Legendary Potion of Lepus") {
+                                SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav"); // play special sfx if player buys legendary item
+                            } else {
+                                SFX.playSound("assets/SFX/coin3.wav");
+                            }
                         } else {
                             err_message.setText("                                                  Cannot buy item, no more gold.  ");
                         }

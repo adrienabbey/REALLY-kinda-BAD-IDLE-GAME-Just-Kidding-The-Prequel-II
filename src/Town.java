@@ -104,7 +104,7 @@ class Town extends JPanel {
             try{
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("library");
-                MusicPlayer.playMusic("assets/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
+                MusicPlayer.playMusic("assets/Music/library2-bgm.wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }
