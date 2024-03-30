@@ -1,5 +1,5 @@
 /*
- * Shop Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Bazaar class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
  * Muhammed Abushamma, et al., Mar. 2024
  */
 

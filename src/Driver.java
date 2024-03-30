@@ -54,7 +54,7 @@ class Driver extends JFrame {
     public Driver() throws Exception {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
-        MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+        MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
 
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time

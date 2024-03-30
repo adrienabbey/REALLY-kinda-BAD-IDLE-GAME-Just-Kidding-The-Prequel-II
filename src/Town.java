@@ -127,7 +127,7 @@ class Town extends JPanel {
                 Inventory.backToTown = false;
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
             } catch (Exception e1){
                 e1.printStackTrace();
             }

@@ -10,7 +10,9 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /*
- * Implementation for the "Credits" panel which can be accessed from the setting screen. Used a rolling text label to house all the credits for the game. Label includes the credits to the developers, professor, images used, music used, sound effect used, and voiceovers used. 
+ * Implementation for the "Credits" panel which can be accessed from the setting screen. Uss a timer to continously update the JLabel in order to achieve a rolling effect. The label houses all the credits for the game, including the credits to the developers, professor, and to the images, music, sound effects, and voiceovers used. 
+ * 
+ * TODO: double check credits all assets used and that all assets are free to use or the rights to use them have been acquired by getting the appropriate license. 
  */
 
 class Credits extends JPanel {
@@ -76,7 +78,7 @@ class Credits extends JPanel {
         // Action listener for the 'Back' button. Sets text to correct position after very opening. 
         back.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
-            MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+            MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
             Driver.changePanel("settings");
         });
 

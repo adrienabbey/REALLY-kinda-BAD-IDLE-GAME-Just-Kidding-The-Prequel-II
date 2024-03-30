@@ -134,7 +134,7 @@ public class Mineshaft extends JPanel {
                 
                 Driver.changePanel("world");
                 SFX.stopAllSounds();
-                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -214,9 +214,12 @@ public class Mineshaft extends JPanel {
                     scavenge++;
                     if (!auto) {
                         timer.stop();  
-                    } else {
+                    } else if (currentlyMining) {
+                        SFX.stopAllSounds();
                         SFX.playSound("assets/SFX/pickaxe-sfx.wav");
-                        // TODO: ADD appropriate sfx sound scavenging or mining 
+                    } else {
+                        SFX.stopAllSounds();
+                        // TODO: ADD scavenging sfx 
                     }
                 } else {
                     progress++; ;// increment progress by 1

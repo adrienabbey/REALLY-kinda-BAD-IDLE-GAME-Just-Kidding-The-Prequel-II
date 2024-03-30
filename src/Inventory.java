@@ -1,11 +1,19 @@
-// Singleton class so that there's only one instance of it throughout the game.
+/*
+ * Inventory Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
+/*
+ * Inventory class implements the inventory panel and functionailty. Inventory panel can be accessed from various screens in the game, such as the bazaar, homestead, and town. The inventory stores resources and equipment. The player can equip equipment and and use potions from the inventory. A hashmap is used to store resource name and amount. It is a singleton class so that there's only one instance of it throughout the game. 
+ * 
+ * Current resources the inventory can contain: Gold, Wood, Metal, Stone, Potions, Pelt, Meat, Magical Essence, Spleenwort, Tongue Fern, Legendary Potion of Lepus. 
+ * 
+ * TODO: Store equipment in inventory. Allow players to use potions from inventory and equip or unequip equipment. 
+ */
 
 public class Inventory extends JPanel {
     private static Inventory instance;

@@ -107,7 +107,7 @@ public class Forest extends JPanel {
                 currentlyCutting = false;
                 autoHunt(); // Start hunting process
                 if (auto) {
-                    SFX.playSound("assets/SFX/.wav"); // TODO: play hunting sfx
+                    SFX.playSound("assets/SFX/hunting-sfx3.wav"); //play hunting sfx
                 }
             }
         });
@@ -142,7 +142,7 @@ public class Forest extends JPanel {
 
                 Driver.changePanel("world");
                 SFX.stopAllSounds(); 
-                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -180,14 +180,14 @@ public class Forest extends JPanel {
                     if (currentlyHunting) {
                         if (huntIncrement % 3 == 0) {
                         grantedLabel.setText("Pelt granted!"); // Update granted label
-                        SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
+                        SFX.playSound("assets/SFX/.wav"); // TODO: add meat-gathering sfx
     
                         int currentPelt = inventory.getResource("Pelt");
                         // Increment wood resource variable
                         inventory.setResource("Pelt", currentPelt + 1);
                         } else {
                             grantedLabel.setText("Meat granted!"); // Update granted label
-                            SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
+                            SFX.playSound("assets/SFX/.wav"); // TODO: add pelt gathering sfx
         
                             int currentMeat = inventory.getResource("Meat");
                             // Increment wood resource variable
@@ -203,9 +203,13 @@ public class Forest extends JPanel {
                     if (!auto) {
                         timer.stop();
                         // SFX.stopAllSounds();
-                    } else {
+                    } else if (currentlyCutting) {
+                        SFX.stopAllSounds();
                         SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play sfx again
-                        // TODO: add appropriate sfx for when hunting
+                        // 
+                    } else {
+                        SFX.stopAllSounds();
+                        SFX.playSound("assets/SFX/hunting-sfx3.wav"); //play hunting sfx
                     }
                 } else {
                     progress++;// increment progress by 1

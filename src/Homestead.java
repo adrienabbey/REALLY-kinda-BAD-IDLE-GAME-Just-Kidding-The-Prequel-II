@@ -161,7 +161,7 @@ class Homestead extends JPanel {
             purchaseConfirmation = false;
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");
-            MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+            MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
         });
 
         // Takes player to farm screen

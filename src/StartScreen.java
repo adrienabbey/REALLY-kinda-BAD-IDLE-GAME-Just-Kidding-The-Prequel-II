@@ -37,7 +37,7 @@ class StartScreen extends JPanel{
             e.printStackTrace();
         }
         
-        // Set up a timer to reset the soundCooldown flag after the cooldown of 2 seconds
+        // Set up a timer to reset the soundCooldown flag for goblin sfx after the cooldown of 1.5 seconds
         Timer cooldownTimer = new Timer(1500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
