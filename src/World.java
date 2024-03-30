@@ -140,7 +140,7 @@ public class World extends JPanel{
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("mineshaft");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
-                SFX.playSound("assets/SFX/mineshaft-ambience2.wav");
+                SFX.playSound("assets/SFX/mineshaft-ambience2.wav", true);
                 
             } catch (Exception e1) {
                 e1.printStackTrace();

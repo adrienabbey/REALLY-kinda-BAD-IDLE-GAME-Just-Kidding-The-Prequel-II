@@ -78,6 +78,7 @@ class Town extends JPanel {
         // Button that takes player to bazaar panel
         bazaar.addActionListener(e -> {
             try{
+                SFX.stopAllSounds();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("bazaar");
                 MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
@@ -89,6 +90,7 @@ class Town extends JPanel {
         // Button that takes player to tavern panel
         tavern.addActionListener(e -> {
             try{
+                SFX.stopAllSounds();
                 SFX.playSound("assets/SFX/interface1.wav");
                 SFX.playSound("assets/SFX/door-open.wav");
                 Driver.changePanel("tavern");
@@ -102,6 +104,7 @@ class Town extends JPanel {
         // Button that takes player to library panel
         library.addActionListener(e -> {
             try{
+                SFX.stopAllSounds();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("library");
                 MusicPlayer.playMusic("assets/Music/library2-bgm.wav");
@@ -121,7 +124,7 @@ class Town extends JPanel {
             }
         });
 
-        // Button that takes player to library panel
+        // Button that takes player to world panel
         leave.addActionListener(e -> {
             try{
                 Inventory.backToTown = false;

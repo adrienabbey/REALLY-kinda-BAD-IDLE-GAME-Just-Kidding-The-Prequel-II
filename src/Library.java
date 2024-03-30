@@ -77,6 +77,7 @@ class Library extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("town");
             MusicPlayer.playMusic("assets/Music/town-bgm.wav");
+            SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);
             // SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);  
         });
 

@@ -216,7 +216,7 @@ public class Mineshaft extends JPanel {
                     if (!auto) {
                         timer.stop();  
                     } else if (currentlyMining) {
-                        SFX.stopAllSounds();
+                        SFX.stopAllNonLoopingSounds();
                         SFX.playSound("assets/SFX/pickaxe-sfx.wav");
                     } else {
                         SFX.stopAllSounds();
@@ -240,7 +240,7 @@ public class Mineshaft extends JPanel {
         } else {
             auto = false; // Stop auto scavenging
             timer.stop(); //stop timer
-            SFX.stopAllSounds();
+            SFX.stopAllNonLoopingSounds();
             autoScavengeButton.setText("Scavenge Area");
         }
     }
@@ -255,7 +255,7 @@ public class Mineshaft extends JPanel {
         } else {
             auto = false; // Stop auto mining
             timer.stop(); //stop timer
-            SFX.stopAllSounds();
+            SFX.stopAllNonLoopingSounds();
             autoMineButton.setText("Mine Ore");
         }
     }

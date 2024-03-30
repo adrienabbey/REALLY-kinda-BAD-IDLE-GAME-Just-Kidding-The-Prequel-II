@@ -26,7 +26,7 @@ public class SFX extends MusicPlayer{
     public static boolean isMutedSFX = false;
     private static float currentVolumeSFX = -16.0f;
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
-    private static List<Clip> activeClips = new ArrayList<>(); // List to keep track of active sound clips, used for the stopAllSounds method. 
+    private static List<ClipWrapper> activeClips = new ArrayList<>(); // List to keep track of active sound clips, used for the stopAllSounds method. 
 
      /* Constructor */
      
@@ -54,9 +54,8 @@ public class SFX extends MusicPlayer{
             try {
                 // If there's a clip playing, stop it before starting the new one
                 // This ensures that only one music track plays at a time.
-                if (currentClip != null && currentClip.isRunning()) {
+                if (loop == false && currentClip != null && currentClip.isRunning()) {
                     currentClip.stop();
-                    currentClip.close();
                     // If the current thread is in use interrupt it. 
                     if (currentThread != null) {
                         currentThread.interrupt(); // Interrupt the associated thread
@@ -88,7 +87,7 @@ public class SFX extends MusicPlayer{
                     volumeHelperSFX(currentVolumeSFX);  
                     
                     // Add the clip to the list of active clips
-                    activeClips.add(clip);
+                    activeClips.add(new ClipWrapper(clip, loop));
                     
                     if (isMutedSFX) {
                         volumeHelperSFX(-70.0f);
@@ -131,16 +130,35 @@ public class SFX extends MusicPlayer{
     //     }
     // }
     
+    // public static void stopAllSounds() {
+    //     // Stop and close all active clips
+    //     for (Clip clip : activeClips) {
+    //         clip.stop();
+    //         clip.flush();
+    //     }
+    //     // Clear the list of active clips
+    //     activeClips.clear();
+    // }
+
     public static void stopAllSounds() {
-        // Stop and close all active clips
-        for (Clip clip : activeClips) {
-            clip.stop();
-            clip.close();
+        // Stop and flush all active clips
+        for (ClipWrapper clipWrapper : activeClips) {
+            clipWrapper.clip.stop();
+            clipWrapper.clip.flush();
         }
-        // Clear the list of active clips
-        activeClips.clear();
+        // // Clear the list of active clips
+        // activeClips.clear();
     }
 
+    public static void stopAllNonLoopingSounds() {
+        for (ClipWrapper clipWrapper : activeClips) {
+            if (!clipWrapper.loop && clipWrapper.clip.isRunning()) {
+                clipWrapper.clip.stop();
+                clipWrapper.clip.flush();
+            }
+        }
+    }
+    
     // Used to set volume to correct value during calls.
     public static void volumeHelperSFX(float value) {
         if (volumeControl != null) {
@@ -157,5 +175,16 @@ public class SFX extends MusicPlayer{
     }
     public static void setcurrentVolumeSFX(float volume) {
         currentVolumeSFX = volume;
+    }
+
+    // Inner class to wrap Clip and indicate if it should loop
+    public static class ClipWrapper {
+        public Clip clip;
+        public boolean loop;
+
+        public ClipWrapper(Clip clip, boolean loop) {
+            this.clip = clip;
+            this.loop = loop;
+        }
     }
 }
