@@ -28,10 +28,6 @@ public class SFX extends MusicPlayer{
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
     private static List<Clip> activeClips = new ArrayList<>(); // List to keep track of active sound clips, used for the stopAllSounds method. 
 
-    public static void setcurrentVolumeSFX(float volume) {
-        currentVolumeSFX = volume;
-    }
-
      /* Constructor */
      
     // sets the volume to a predefined amount at start of game
@@ -41,7 +37,10 @@ public class SFX extends MusicPlayer{
 
     /* Methods  */
 
-    public static void playSound(String filePath) {
+    public static void playSound(String f) {
+        SFX.playSound(f, false); // Call the overloaded method with loop set to false by default
+    }
+    public static void playSound(String filePath, boolean loop) {
         // Create a new thread to play the music
         // This allows the music to play in the background without blocking the rest of the program
         new Thread(() -> {
@@ -63,10 +62,13 @@ public class SFX extends MusicPlayer{
                     AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
                     Clip clip = AudioSystem.getClip(); // Get a clip resource
                     clip.open(audioInput); // Open the audio clip
+
+                    if (loop == true) {
+                        clip.loop(Clip.LOOP_CONTINUOUSLY); // Set the clip to loop continuously
+                    }
                     clip.start(); // Start playing the audio clip
 
-                    // Save the current clip
-                    // This allows us to stop it when a new one starts
+                    // Save the current clip to stop it when the next one is played
                     currentClip = clip;
 
                    // Save the reference to the current thread
@@ -94,6 +96,47 @@ public class SFX extends MusicPlayer{
         // Start the new thread
         }).start();
     }
+
+    // /*
+    // Method used for sound effects that should loop by default and not be stopped when another sfx is played. Only stopped at specific points when appropriate. For example, mineshaft-ambience-sfx shouldn't be stopped when clicking buttons and loops along with the music, and is only stopped when the player leaves the mineshaft panel. 
+    //  */
+    // public static void playSoundLoop(String filePath) {
+        
+    //     new Thread(() -> {
+    //         try {
+    //             // if there's already a clip playing stop it before playing new clip.
+    //             if (currentClip != null && currentClip.isRunning()) {
+    //                 currentClip.stop();
+    //                 //If the current thread is in use interrupt it. 
+    //                 if (currentThread != null) {
+    //                     currentThread.interrupt(); // Interrupt the associated thread
+    //                 }
+    //             }
+    //             // Create a File object with the provided file path
+    //             File musicPath = new File(filePath);
+
+    //             if (musicPath.exists()) {
+    //                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+    //                 Clip clip = AudioSystem.getClip(); // Get a clip resource
+    //                 clip.open(audioInput); // Open the audio clip
+    //                 clip.loop(Clip.LOOP_CONTINUOUSLY); // Set the clip to loop continuously
+    //                 clip.start(); // Start playing the audio clip
+    //                 currentThread = Thread.currentThread();
+    //                 volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+    //                 volumeHelperSFX(currentVolumeSFX);  
+    //                 activeClips.add(clip);
+    //                 if (isMutedSFX) {
+    //                     volumeHelperSFX(-70.0f);
+    //                 }         
+
+    //             } else {
+    //                 System.out.println("Can't find file");
+    //             }
+    //         } catch (Exception ex) {
+    //             ex.printStackTrace();
+    //         }
+    //     }).start();
+    // }
 
     // Method to toggle volume for the java slider.
     public static void setVolumeSFX(float volume) {
@@ -144,5 +187,8 @@ public class SFX extends MusicPlayer{
             currentClip.stop();
             currentClip.close();
         }
+    }
+    public static void setcurrentVolumeSFX(float volume) {
+        currentVolumeSFX = volume;
     }
 }

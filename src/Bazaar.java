@@ -610,7 +610,6 @@ class Bazaar extends JPanel {
         }
     });
 
-
         // Goes to inventory
         inventory1.addActionListener(e -> {
             try {
@@ -655,7 +654,8 @@ class Bazaar extends JPanel {
 
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("town");
-                MusicPlayer.playMusic("assets/Music/Village Consort.wav");
+                MusicPlayer.playMusic("assets/Music/town-bgm.wav");
+                // SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);  
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

@@ -143,6 +143,7 @@ public class Forest extends JPanel {
                 Driver.changePanel("world");
                 SFX.stopAllSounds(); 
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
+                SFX.playSound("assets/SFX/interface1.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
