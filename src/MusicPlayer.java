@@ -42,6 +42,7 @@ public class MusicPlayer {
                 // This ensures that only one music track plays at a time.
                 if (currentClip != null && currentClip.isRunning()) {
                     currentClip.stop();
+                    currentClip.close();
                     // If the current thread is in use interrupt it. 
                     if (currentThread != null) {
                         currentThread.interrupt(); // Interrupt the associated thread

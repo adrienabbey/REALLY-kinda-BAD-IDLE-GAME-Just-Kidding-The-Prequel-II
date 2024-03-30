@@ -128,6 +128,7 @@ class Town extends JPanel {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
+                SFX.stopAllSounds();
             } catch (Exception e1){
                 e1.printStackTrace();
             }

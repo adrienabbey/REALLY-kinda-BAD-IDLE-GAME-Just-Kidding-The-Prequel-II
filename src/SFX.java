@@ -38,8 +38,15 @@ public class SFX extends MusicPlayer{
     /* Methods  */
 
     public static void playSound(String f) {
-        SFX.playSound(f, false); // Call the overloaded method with loop set to false by default
+        playSound(f, false); // Call the overloaded method with loop set to false by default
     }
+
+    /* 
+    * If the loop parameter is true, the sound will continuously loop until    * explicitly stopped.
+    * 
+    * This method is designed for sound effects that should loop by default and * not be stopped when another sound effect is played.
+    * For example, the mineshaft-ambience-sfx.wav sound should continue playing in the background and only be stopped when explicitly terminated.
+    */
     public static void playSound(String filePath, boolean loop) {
         // Create a new thread to play the music
         // This allows the music to play in the background without blocking the rest of the program
@@ -49,6 +56,7 @@ public class SFX extends MusicPlayer{
                 // This ensures that only one music track plays at a time.
                 if (currentClip != null && currentClip.isRunning()) {
                     currentClip.stop();
+                    currentClip.close();
                     // If the current thread is in use interrupt it. 
                     if (currentThread != null) {
                         currentThread.interrupt(); // Interrupt the associated thread
@@ -97,47 +105,6 @@ public class SFX extends MusicPlayer{
         }).start();
     }
 
-    // /*
-    // Method used for sound effects that should loop by default and not be stopped when another sfx is played. Only stopped at specific points when appropriate. For example, mineshaft-ambience-sfx shouldn't be stopped when clicking buttons and loops along with the music, and is only stopped when the player leaves the mineshaft panel. 
-    //  */
-    // public static void playSoundLoop(String filePath) {
-        
-    //     new Thread(() -> {
-    //         try {
-    //             // if there's already a clip playing stop it before playing new clip.
-    //             if (currentClip != null && currentClip.isRunning()) {
-    //                 currentClip.stop();
-    //                 //If the current thread is in use interrupt it. 
-    //                 if (currentThread != null) {
-    //                     currentThread.interrupt(); // Interrupt the associated thread
-    //                 }
-    //             }
-    //             // Create a File object with the provided file path
-    //             File musicPath = new File(filePath);
-
-    //             if (musicPath.exists()) {
-    //                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-    //                 Clip clip = AudioSystem.getClip(); // Get a clip resource
-    //                 clip.open(audioInput); // Open the audio clip
-    //                 clip.loop(Clip.LOOP_CONTINUOUSLY); // Set the clip to loop continuously
-    //                 clip.start(); // Start playing the audio clip
-    //                 currentThread = Thread.currentThread();
-    //                 volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-    //                 volumeHelperSFX(currentVolumeSFX);  
-    //                 activeClips.add(clip);
-    //                 if (isMutedSFX) {
-    //                     volumeHelperSFX(-70.0f);
-    //                 }         
-
-    //             } else {
-    //                 System.out.println("Can't find file");
-    //             }
-    //         } catch (Exception ex) {
-    //             ex.printStackTrace();
-    //         }
-    //     }).start();
-    // }
-
     // Method to toggle volume for the java slider.
     public static void setVolumeSFX(float volume) {
         if (currentClip != null && currentClip.isRunning() && isMutedSFX == false) {
@@ -168,7 +135,7 @@ public class SFX extends MusicPlayer{
         // Stop and close all active clips
         for (Clip clip : activeClips) {
             clip.stop();
-            clip.flush();
+            clip.close();
         }
         // Clear the list of active clips
         activeClips.clear();
