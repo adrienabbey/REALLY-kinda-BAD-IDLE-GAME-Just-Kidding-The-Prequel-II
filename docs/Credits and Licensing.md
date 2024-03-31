@@ -191,10 +191,9 @@ Credits for sound effects -
 * Hunting sound effect 3:
     Used 4 sounds (all copyright free and edited in clipchamp and audacity): 
     1. 
-    Title: Crossbow - stretching bow fast 2x
-    Crator: Gameaster Audio
-    Website: uppbeat.io
-    Source: https://uppbeat.io/sfx/crossbow-stretching-bow-fast/1012/2120
+    Title: Bow and Arrow Sound Effect
+    Crator: GFX Sounds
+    Source: https://www.youtube.com/watch?v=kiKOo6HQFRw
     +
     2. 
     Title: Fast incoming arrow, whoosh then hit body with a squelch of blood 10

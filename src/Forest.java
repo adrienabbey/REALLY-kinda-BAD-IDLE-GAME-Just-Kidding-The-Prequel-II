@@ -107,7 +107,7 @@ public class Forest extends JPanel {
                 currentlyCutting = false;
                 autoHunt(); // Start hunting process
                 if (auto) {
-                    SFX.playSound("assets/SFX/hunting-sfx3.wav"); //play hunting sfx
+                    SFX.playSound("assets/SFX/hunting-sfx4.wav"); //play hunting sfx
                 }
             }
         });
@@ -210,7 +210,7 @@ public class Forest extends JPanel {
                         // 
                     } else {
                         SFX.stopAllNonLoopingSounds();
-                        SFX.playSound("assets/SFX/hunting-sfx3.wav"); //play hunting sfx
+                        SFX.playSound("assets/SFX/hunting-sfx4.wav"); //play hunting sfx
                     }
                 } else {
                     progress++;// increment progress by 1

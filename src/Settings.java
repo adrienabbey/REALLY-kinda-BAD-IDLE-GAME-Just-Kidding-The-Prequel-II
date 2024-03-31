@@ -10,6 +10,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Driver;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Font;
@@ -128,7 +129,7 @@ class Settings extends JPanel {
                     // This loop repeatedly checks the current time until the desired wait time has passed
                 }
         
-                MusicPlayer.playMusic("assets/Music/Chevalier, Mult Estes Guariz - French Crusade Song-[AudioTrimmer.com].wav");
+                MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
                 Driver.changePanel("credits");
             } catch (Exception e1) {
                 e1.printStackTrace();
