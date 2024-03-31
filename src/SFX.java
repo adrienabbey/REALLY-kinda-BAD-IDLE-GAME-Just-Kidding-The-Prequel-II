@@ -24,7 +24,7 @@ public class SFX extends MusicPlayer{
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     public static boolean isMutedSFX = false;
-    private static float currentVolumeSFX = -16.0f;
+    private static float currentVolumeSFX = -16.0f; // set volume
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
     private static List<ClipWrapper> activeClips = new ArrayList<>(); // List to keep track of active sound clips, used for the stopAllSounds method. 
 
@@ -41,25 +41,21 @@ public class SFX extends MusicPlayer{
         playSound(f, false); // Call the overloaded method with loop set to false by default
     }
 
-    /* 
-    * If the loop parameter is true, the sound will continuously loop until    * explicitly stopped.
-    * 
-    * This method is designed for sound effects that should loop by default and * not be stopped when another sound effect is played.
-    * For example, the mineshaft-ambience-sfx.wav sound should continue playing in the background and only be stopped when explicitly terminated.
-    */
+    /**
+     * This method is designed for to handle sound effects that should loop by default. If the loop parameter is true, the sound will continuously loop until explicitly stopped.
+     * 
+     * Sound effects do not automically stop when another is played. Longer sound effects must be explicitly stopped during certain points of implementation to stop many sound effects from playing on top of each other. 
+     * @param filPath  The filepath of the sound effect. 
+     * @param loop     Flag used to determine if sfx should loop.
+     */
     public static void playSound(String filePath, boolean loop) {
         // Create a new thread to play the music
         // This allows the music to play in the background without blocking the rest of the program
         new Thread(() -> {
-            try {
-                // If there's a clip playing, stop it before starting the new one
-                // This ensures that only one music track plays at a time.
-                if (loop == false && currentClip != null && currentClip.isRunning()) {
-                    currentClip.stop();
-                    // If the current thread is in use interrupt it. 
-                    if (currentThread != null) {
-                        currentThread.interrupt(); // Interrupt the associated thread
-                    }
+            try { 
+                // If the current thread is in use interrupt it. 
+                if (currentThread != null) {
+                    currentThread.interrupt(); // Interrupt the associated thread
                 }
                 // Create a File object with the provided file path
                 File musicPath = new File(filePath);
@@ -89,7 +85,7 @@ public class SFX extends MusicPlayer{
                     // Add the clip to the list of active clips
                     activeClips.add(new ClipWrapper(clip, loop));
                     
-                    if (isMutedSFX) {
+                    if (isMutedSFX && !loop) {
                         volumeHelperSFX(-70.0f);
                     }         
 
@@ -129,25 +125,15 @@ public class SFX extends MusicPlayer{
     //         }
     //     }
     // }
-    
-    // public static void stopAllSounds() {
-    //     // Stop and close all active clips
-    //     for (Clip clip : activeClips) {
-    //         clip.stop();
-    //         clip.flush();
-    //     }
-    //     // Clear the list of active clips
-    //     activeClips.clear();
-    // }
 
     public static void stopAllSounds() {
         // Stop and flush all active clips
         for (ClipWrapper clipWrapper : activeClips) {
             clipWrapper.clip.stop();
-            clipWrapper.clip.flush();
+            clipWrapper.clip.close();
         }
         // // Clear the list of active clips
-        // activeClips.clear();
+        activeClips.clear();
     }
 
     public static void stopAllNonLoopingSounds() {

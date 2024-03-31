@@ -646,13 +646,14 @@ class Bazaar extends JPanel {
                 repaint();
                 }
 
-                // tells the layout manager to recalculate the layout of the component. This is necessary when adding or removing components, or when changing the size or position of a component.
+                // tells the layout manager to recalculate the layout of the component.
                 revalidate();
 
-                // tells the component to redraw itself. This is necessary when the appearance of the component has changed, such as when the text in a label is changed, or when the image in an image icon is changed.
+                // tells the component to redraw itself. 
                 repaint();
 
                 SFX.playSound("assets/SFX/interface1.wav");
+                SFX.stopAllNonLoopingSounds();
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/town-bgm.wav");
                 SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);  

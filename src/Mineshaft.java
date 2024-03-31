@@ -219,7 +219,7 @@ public class Mineshaft extends JPanel {
                         SFX.stopAllNonLoopingSounds();
                         SFX.playSound("assets/SFX/pickaxe-sfx.wav");
                     } else {
-                        SFX.stopAllSounds();
+                        SFX.stopAllNonLoopingSounds();
                         // TODO: ADD scavenging sfx 
                     }
                 } else {

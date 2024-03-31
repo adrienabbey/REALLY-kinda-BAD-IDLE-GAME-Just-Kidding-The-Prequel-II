@@ -205,11 +205,11 @@ public class Forest extends JPanel {
                         timer.stop();
                         // SFX.stopAllSounds();
                     } else if (currentlyCutting) {
-                        SFX.stopAllSounds();
+                        SFX.stopAllNonLoopingSounds();
                         SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play sfx again
                         // 
                     } else {
-                        SFX.stopAllSounds();
+                        SFX.stopAllNonLoopingSounds();
                         SFX.playSound("assets/SFX/hunting-sfx3.wav"); //play hunting sfx
                     }
                 } else {
@@ -230,7 +230,7 @@ public class Forest extends JPanel {
         } else {
             auto = false; // Stop auto hunting
             timer.stop(); // stop timer
-            SFX.stopAllSounds();
+            SFX.stopAllNonLoopingSounds();
             autoHuntButton.setText("Hunt Wildlife");
         }
     }
@@ -245,7 +245,7 @@ public class Forest extends JPanel {
         } else {
             auto = false; // Stop auto woodcutting when method is called again
             timer.stop(); // stop timer
-            SFX.stopAllSounds();
+            SFX.stopAllNonLoopingSounds();
             autoCutButton.setText("Cut Tree");
         }
     }
