@@ -51,13 +51,15 @@ class Dungeon extends JPanel {
         buttons.add(end);
         JButton magic = new JButton("Attack Magic");
         buttons.add(magic);
+        JButton potion = new JButton("Use Potion");
+        buttons.add(potion);
         JButton leave = new JButton("Leave Dungeon");
         buttons.add(leave);
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
-            buttons.get(i).setPreferredSize(new Dimension(180, 80));
-            buttons.get(i).setMaximumSize(new Dimension(180, 80));
+            buttons.get(i).setPreferredSize(new Dimension(170, 80));
+            buttons.get(i).setMaximumSize(new Dimension(170, 80));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 20));
@@ -68,6 +70,8 @@ class Dungeon extends JPanel {
         add(start);
         add(Box.createRigidArea(new Dimension(20, 20)));
         add(magic);
+        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(potion);
         add(Box.createRigidArea(new Dimension(20, 20)));
         add(end);
         add(Box.createRigidArea(new Dimension(20, 20)));
