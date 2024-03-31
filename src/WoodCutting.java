@@ -5,13 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class WoodCutting extends JPanel {
     Inventory inventory = Inventory.getInstance();
 
     private JProgressBar progressBar;
     private JButton autoHuntButton;
-    private JButton autoCutButton; // New button for automatic woodcutting
+    private JButton autoCutButton; // button for automatic woodcutting
     private Timer timer;
     private Image bgImage;
     private JLabel grantedLabel; // Label to display wood granted message
@@ -35,30 +36,30 @@ public class WoodCutting extends JPanel {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(950, 20, 0, 20)); // Add padding around the panel
 
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
+        Color customColorGreen = new Color(0, 100, 0);
+        Color customColorGold = new Color(205, 133, 63);
 
-        // Format the "Hunt Wildlife" button
+
         autoHuntButton = new JButton("Hunt Wildlife");
-        autoHuntButton.setFont(new Font("Serif", Font.ITALIC, 26));
-        autoHuntButton.setForeground(new Color(205, 133, 63)); // Light wood color
-        autoHuntButton.setBackground(new Color(0,100,0)); // Set the background color to a transparent green
-        autoHuntButton.setOpaque(true); // Make the background visible
-        autoHuntButton.setFocusPainted(false); // Remove focus ring around the button
-
-        // Create the 'Cut Tree' button
+        buttons.add(autoHuntButton);
         autoCutButton = new JButton("Cut Tree");
-        autoCutButton.setFont(new Font("Serif", Font.ITALIC, 26));
-        autoCutButton.setForeground(new Color(205, 133, 63)); // Light wood color
-        autoCutButton.setBackground(new Color(0,100,0)); // Set the background color to a transparent green
-        autoCutButton.setOpaque(true); // Make the background visible
-        autoCutButton.setFocusPainted(false); // Remove focus ring around the button
-
-        // Create the 'Leave' button
+        buttons.add(autoCutButton);
         JButton leave = new JButton("Leave");
-        leave.setFont(new Font("Serif", Font.ITALIC, 26));
-        leave.setForeground(new Color(205, 133, 63)); // Light wood color
-        leave.setBackground(new Color(0,100,0)); // Set the background color to a transparent green
-        leave.setOpaque(true); // Make the background visible
-        leave.setFocusPainted(false); // Remove focus ring around the button
+        buttons.add(leave);
+
+        //For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++){
+            // buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
+
+            buttons.get(i).setPreferredSize(new Dimension(200, 45));
+            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setBackground(customColorGreen);
+            buttons.get(i).setForeground(customColorGold);
+            buttons.get(i).setFont(new Font("Serif", Font.ITALIC, 26));
+            buttons.get(i).setOpaque(true); // Make the background visible
+            buttons.get(i).setFocusPainted(false); // Remove focus ring around the button
+        }
 
         // Create the progress bar
         progressBar = new JProgressBar();
@@ -85,10 +86,9 @@ public class WoodCutting extends JPanel {
         add(progressBar, BorderLayout.CENTER);
         add(grantedLabel, BorderLayout.NORTH); // Add wood granted label to the panel
 
-        // Action listener for the 'Cut Wood' button
-        autoHuntButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        // Action listener for the 'hunt' button
+        autoHuntButton.addActionListener(e -> {
+            try{
                 SFX.playSound("assets/SFX/interface1.wav");
                 currentlyHunting = true;
                 currentlyCutting = false;
@@ -96,13 +96,14 @@ public class WoodCutting extends JPanel {
                 if (auto) {
                     SFX.playSound("assets/SFX/.wav"); // TODO: play hunting sfx
                 }
+            } catch (Exception e1){
+                e1.printStackTrace();
             }
         });
 
-        // Action listener for the 'Auto Cut' button
-        autoCutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        // Action listener for the 'Cut Wood' button
+        autoCutButton.addActionListener(e -> {
+            try{
                 SFX.playSound("assets/SFX/interface1.wav");
                 currentlyHunting = false;
                 currentlyCutting = true;
@@ -110,6 +111,8 @@ public class WoodCutting extends JPanel {
                 if (auto) {
                     SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect only when starting woodcutting
                 }
+            } catch (Exception e1){
+                e1.printStackTrace();
             }
         });
 
@@ -118,7 +121,6 @@ public class WoodCutting extends JPanel {
             try {
                 timer.stop();
                 progressBar.setValue(0);
-                //((Timer)e.getSource()).stop();
                 auto = false; // stop auto mining if left panel
                 resetProgress = true;
                 currentlyHunting = false; // set hunting flag to default
