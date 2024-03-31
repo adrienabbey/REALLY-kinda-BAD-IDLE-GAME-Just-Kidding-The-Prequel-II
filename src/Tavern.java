@@ -57,6 +57,7 @@ class Tavern extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            SFX.stopAllNonLoopingSounds();
             SFX.playSound("assets/SFX/interface1.wav");
             message.setText("");
             SFX.playSound("assets/SFX/door-close.wav");
@@ -68,6 +69,7 @@ class Tavern extends JPanel {
 
         // Action listener for the 'Purchase' button. Cycles through four different prompts. 
         talk.addActionListener(e -> {
+            SFX.stopAllNonLoopingSounds();
             SFX.playSound("assets/SFX/interface1.wav");
             
             if (prompt == 0 ) {

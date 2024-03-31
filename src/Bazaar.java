@@ -651,11 +651,11 @@ class Bazaar extends JPanel {
 
                 // tells the component to redraw itself. 
                 repaint();
-
                 SFX.playSound("assets/SFX/interface1.wav");
                 SFX.stopAllNonLoopingSounds();
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/town-bgm.wav");
+                Thread.sleep(500); // pause for 250 to allow sounds to load properly, if not sfx volume might get distorted. 
                 SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);  
             } catch (Exception e1) {
                 e1.printStackTrace();

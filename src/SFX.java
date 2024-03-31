@@ -22,7 +22,7 @@ public class SFX extends MusicPlayer{
     // Keep track of the current clip
     // This is used to stop the current music when a new one starts
     private static Clip currentClip = null;
-    private static FloatControl volumeControl = null;
+    private static Control volumeControl = null;
     public static boolean isMutedSFX = false;
     private static float currentVolumeSFX = -16.0f; // set volume
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
@@ -78,7 +78,7 @@ public class SFX extends MusicPlayer{
                    currentThread = Thread.currentThread();
 
                     // Get the volume control
-                    volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                    volumeControl = clip.getControl(FloatControl.Type.MASTER_GAIN);
                     // Set the initial volume (unmuted)
                     volumeHelperSFX(currentVolumeSFX);  
                     
@@ -148,7 +148,7 @@ public class SFX extends MusicPlayer{
     // Used to set volume to correct value during calls.
     public static void volumeHelperSFX(float value) {
         if (volumeControl != null) {
-            volumeControl.setValue(value);
+            ((FloatControl) volumeControl).setValue(value);
         }
     }
 

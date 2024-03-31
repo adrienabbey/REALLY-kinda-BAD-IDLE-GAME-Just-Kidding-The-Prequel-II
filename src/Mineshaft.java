@@ -119,6 +119,7 @@ public class Mineshaft extends JPanel {
                 }
             }
         });
+       
 
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {

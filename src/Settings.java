@@ -10,7 +10,6 @@ import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Driver;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Font;
@@ -95,6 +94,7 @@ class Settings extends JPanel {
         //Format sfx volume slider
         sliderSFX.setMaximumSize(new Dimension(270, 20));
 
+        
         /* Methods */
 
         // Volume button mutes or unmutes master volume.
@@ -129,7 +129,7 @@ class Settings extends JPanel {
                     // This loop repeatedly checks the current time until the desired wait time has passed
                 }
         
-                MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
+                MusicPlayer.playMusic("assets/Music/3-Song-of-the-North.wav");
                 Driver.changePanel("credits");
             } catch (Exception e1) {
                 e1.printStackTrace();

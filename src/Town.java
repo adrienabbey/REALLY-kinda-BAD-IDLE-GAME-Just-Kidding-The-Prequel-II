@@ -127,6 +127,7 @@ class Town extends JPanel {
         // Button that takes player to world panel
         leave.addActionListener(e -> {
             try{
+                SFX.stopAllSounds();
                 Inventory.backToTown = false;
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");

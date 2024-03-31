@@ -3,9 +3,12 @@ import java.io.IOException;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class World extends JPanel{
+    private Timer timer; 
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon
      * @param player The player character object
@@ -104,7 +107,7 @@ public class World extends JPanel{
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("dungeon");
-                MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
+                MusicPlayer.playMusic("assets/Music/1-Song-of-the-North.wav");
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -156,5 +159,15 @@ public class World extends JPanel{
                 e1.printStackTrace();
             }
         });
+    
+        // timer = new Timer(1000, new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         if (p)
+        //         SFX.stopAllSounds();
+        //     }
+        // });
+        // timer.start();
     }
 }
+
