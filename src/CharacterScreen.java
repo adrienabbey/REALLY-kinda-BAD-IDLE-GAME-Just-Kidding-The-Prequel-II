@@ -2,9 +2,10 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.Dimension;
 import javax.swing.Box;
+import java.util.ArrayList;
 
 class CharacterScreen extends JPanel{
     private PlayerCharacter player;
@@ -19,17 +20,34 @@ class CharacterScreen extends JPanel{
     public CharacterScreen(){
         player = Driver.getPlayer();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        ArrayList<JLabel> labels = new ArrayList<JLabel>();
+        Color customColorBeige = new Color(253, 236, 166);
+        Color customColorBrown = new Color(102, 72, 54);
+        this.setBackground(customColorBrown);
 
         // This is creating all the objects that will be displayed on the screen
         JLabel name = new JLabel("Name: " + player.getName());
+        labels.add(name);
         // JLabel level = new JLabel("Level: " + player.getLevel());
         health = new JLabel("Health: " + player.getHealth() + "/" + player.getMaxHealth());
+        labels.add(health);
         magic = new JLabel("Magic: " + player.getMagic() + "/" + player.getMaxMagic());
+        labels.add(magic);
         potions = new JLabel("Potions: " + player.getPotionCount() + "/" + player.getPotionBeltSize());
+        labels.add(potions);
         gold = new JLabel("Gold: " + player.getGold());
+        labels.add(gold);
+
+        //format the labels
+        for (int i = 0; i < labels.size(); i++){
+            labels.get(i).setForeground(customColorBeige);
+            labels.get(i).setFont(new Font("Serif", Font.BOLD, 32));
+        }
+
 
         // This is adding all objects to the screen, and controlling layout
         add(Box.createVerticalGlue());
+        add(Box.createRigidArea(new Dimension(5, 0)));
         add(name);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(health);
