@@ -9,11 +9,15 @@ import java.util.ArrayList;
 
 public class WoodCutting extends JPanel {
     Inventory inventory = Inventory.getInstance();
+    private PlayerCharacter player = new PlayerCharacter(getName(), HEIGHT, HEIGHT, HEIGHT, HEIGHT, WIDTH, HEIGHT);
 
     private JProgressBar progressBar;
     private JButton autoHuntButton;
     private JButton autoCutButton; // button for automatic woodcutting
-    private Timer timer;
+    private JButton statusButton;
+    private Timer timer; // timer for gathering processes
+    private Timer regenMagic; // timer for regenerating magic and updating magic label
+    private boolean regenMagicOn; // flag to determine when to turn regenMagic timer on
     private Image bgImage;
     private JLabel grantedLabel; // Label to display wood granted message
     private boolean auto = false;
@@ -21,10 +25,15 @@ public class WoodCutting extends JPanel {
     private boolean currentlyHunting = false; // flag to determine if process is hunting. Used to grant correct resource.
     private boolean resetProgress = true;
     private int huntIncrement = 0; // used to determine whether to grant meat or pelt when hunting
-
+    private String downArrow = "\u25BC"; // Down-Pointing Triangle
+    private String upArrow = "\u25B2"; // Up-Pointing Triangle
+    private boolean statusBarOpen = false; // flag used to determine when the status bar is open
+    private JPanel statusBar;
+    private JButton health;
+    private JButton magic;
+    private JButton gold;
 
     public WoodCutting() { // Accepts an Inventory object
-    
         // Load the background image
         try {
             bgImage = ImageIO.read(new File("assets/images/forest2.png"));
@@ -33,18 +42,18 @@ public class WoodCutting extends JPanel {
         }
 
         // Set the layout with vertical alignment and padding
-        setLayout(new BorderLayout());
-        setBorder(BorderFactory.createEmptyBorder(950, 20, 0, 20)); // Add padding around the panel
+        setLayout(null);
 
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorGreen = new Color(0, 100, 0);
         Color customColorGold = new Color(205, 133, 63);
 
-
         autoHuntButton = new JButton("Hunt Wildlife");
         buttons.add(autoHuntButton);
         autoCutButton = new JButton("Cut Tree");
         buttons.add(autoCutButton);
+        statusButton = new JButton(downArrow);
+        buttons.add(statusButton);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
 
@@ -70,21 +79,48 @@ public class WoodCutting extends JPanel {
         progressBar.setOpaque(true); // Make the background visible
         progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
 
-
         // Create label for wood granted message
         grantedLabel = new JLabel("");
-        grantedLabel.setFont(new Font("Serif", Font.BOLD, 21));
+        grantedLabel.setFont(new Font("Serif", Font.BOLD, 24));
         grantedLabel.setForeground(Color.GREEN); // Green color for wood granted message
 
         // Add components to the panel
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 1));
+        JPanel buttonPanel = new JPanel(new GridLayout());
+        buttonPanel.setBounds(20, 990, 1865, 50); // Set the position and size of the button
         buttonPanel.setOpaque(false); // Make the button panel transparent
         buttonPanel.add(autoHuntButton);
         buttonPanel.add(autoCutButton);
         buttonPanel.add(leave);
-        add(buttonPanel, BorderLayout.SOUTH);
-        add(progressBar, BorderLayout.CENTER);
-        add(grantedLabel, BorderLayout.NORTH); // Add wood granted label to the panel
+        //buttonPanel.add(progressBar);
+        buttonPanel.add(grantedLabel);
+        add(buttonPanel);
+        progressBar.setBounds(20,940, 1865, 50);
+        add(progressBar);
+        // add(progressBar, BorderLayout.CENTER);
+        grantedLabel.setBounds(20, 890, 300, 60);
+        add(grantedLabel); // Add wood granted label to the panel
+
+        // Create the Status button
+        statusButton.setBounds(960, 0, 60, 45); // Set the position and size of the button
+        statusButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        //statusButton.setForeground(Color.WHITE);
+        add(statusButton); // Add the button to the panel
+
+
+        // Action listener for the 'status' button
+        autoCutButton.addActionListener(e -> {
+            try{
+                SFX.playSound("assets/SFX/interface1.wav");
+                currentlyHunting = false;
+                currentlyCutting = true;
+                autoCutWood(); // Start/Stop auto woodcutting process
+                if (auto) {
+                    SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect only when starting woodcutting
+                } 
+            } catch (Exception e1){
+                e1.printStackTrace();    
+            }
+        });
 
         // Action listener for the 'hunt' button
         autoHuntButton.addActionListener(e -> {
@@ -94,31 +130,71 @@ public class WoodCutting extends JPanel {
                 currentlyCutting = false;
                 autoHunt(); // Start hunting process
                 if (auto) {
-                    SFX.playSound("assets/SFX/.wav"); // TODO: play hunting sfx
+                    SFX.playSound("assets/SFX/.wav"); 
+                    // TODO: play hunting sfx
                 }
             } catch (Exception e1){
                 e1.printStackTrace();
             }
         });
 
-        // Action listener for the 'Cut Wood' button
-        autoCutButton.addActionListener(e -> {
-            try{
-                SFX.playSound("assets/SFX/interface1.wav");
-                currentlyHunting = false;
-                currentlyCutting = true;
-                autoCutWood(); // Start/Stop auto woodcutting process
-                if (auto) {
-                    SFX.playSound("assets/SFX/woodcutting-sfx.wav"); // play woodcutting sound effect only when starting woodcutting
-                }
-            } catch (Exception e1){
-                e1.printStackTrace();
-            }
-        });
+        // Action listener for the Status button
+        statusButton.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
+            if (!statusBarOpen) { 
+                player = Driver.getPlayer(); //get player object
+                statusButton.setBounds(960, 50, 60, 45); // Set the position and size of the button
+                statusButton.setText(upArrow);
+                statusBar = new JPanel(new GridLayout()); //assign statusbar 
 
+                // assign buttons to shown character statuses
+                health = new JButton("Health: " + (int) player.getHealth());
+                magic = new JButton("Magic: " + player.getMagic());
+                gold = new JButton("Gold: " + inventory.getResource("Gold"));
+
+                //format buttons
+                health.setForeground(Color.white);
+                health.setBackground(Color.red);
+                magic.setForeground(Color.white);
+                magic.setBackground(Color.blue);
+                // gold.setForeground(Color.white);
+                gold.setBackground(Color.yellow);
+                statusBar.add(health);
+                statusBar.add(magic);
+                statusBar.add(gold);
+                
+                if (!regenMagicOn) {
+                    regenMagicOn = true;
+                    regenMagic.start();
+                }
+
+                regenMagic.start(); // start timer
+                statusBar.setBounds(20,0,1865,50); // set location and size of status bar
+                add(statusBar);
+                revalidate();
+                repaint();
+                statusBarOpen = true; // set statusBarOpen to true 
+            } else {
+                remove(statusBar); // remove the status bar from the screen
+                statusButton.setBounds(960, 0, 60, 45); // Reset status button position 
+                statusButton.setText(downArrow);
+                revalidate();
+                repaint();
+                statusBarOpen = false;
+            }
+        }
+    );
+        
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {
             try {
+                if (statusBarOpen) {
+                    remove(statusBar);
+                    statusBarOpen = false;
+                    statusButton.setBounds(960, 0, 60, 45); // Reset status button position 
+                }
+                regenMagic.stop();
+                regenMagicOn = false;
                 timer.stop();
                 progressBar.setValue(0);
                 auto = false; // stop auto mining if left panel
@@ -137,9 +213,30 @@ public class WoodCutting extends JPanel {
             }
         });
 
+
+        // //update status bar labels
+        // timer = new Timer(1000, new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //     health.setText("Health: " + player.getHealth());
+        //     }
+        // });
+        // timer.start();
+
+        //regen magic timer that regenrates 1 magic point every 10 seconds,
+        regenMagic = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (player.getMagic() < player.getMaxMagic()) { // if current magic is less than maximum magic
+                    player.setMagic(player.getMagic() + 1); // regenerate magic by 1
+                    magic.setText("Magic: " + player.getMagic());
+                }
+                }
+            });
+
         // Timer for woodcutting/hunting process
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Takes 10 seconds to fill up.
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer(10, new ActionListener() {
             int progress = 0;
 
             @Override
