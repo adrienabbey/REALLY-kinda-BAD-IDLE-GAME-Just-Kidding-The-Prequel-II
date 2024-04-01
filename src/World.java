@@ -129,6 +129,10 @@ public class World extends JPanel{
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("wood");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song].wav");
+                if (WoodCutting.regenMagicOn == false) {
+                    WoodCutting.regenMagicOn = true;
+                    WoodCutting.regenMagic.start();
+                }
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

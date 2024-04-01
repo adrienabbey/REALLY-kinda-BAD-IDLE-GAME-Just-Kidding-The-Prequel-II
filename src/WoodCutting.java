@@ -16,8 +16,8 @@ public class WoodCutting extends JPanel {
     private JButton autoCutButton; // button for automatic woodcutting
     private JButton statusButton;
     private Timer timer; // timer for gathering processes
-    private Timer regenMagic; // timer for regenerating magic and updating magic label
-    private boolean regenMagicOn; // flag to determine when to turn regenMagic timer on
+    public static Timer regenMagic; // timer for regenerating magic and updating magic label
+    public static boolean regenMagicOn; // flag to determine when to turn regenMagic timer on
     private Image bgImage;
     private JLabel grantedLabel; // Label to display wood granted message
     private boolean auto = false;
@@ -163,10 +163,10 @@ public class WoodCutting extends JPanel {
                 statusBar.add(magic);
                 statusBar.add(gold);
                 
-                if (!regenMagicOn) {
-                    regenMagicOn = true;
-                    regenMagic.start();
-                }
+                // if (!regenMagicOn) {
+                //     regenMagicOn = true;
+                //     regenMagic.start();
+                // }
 
                 regenMagic.start(); // start timer
                 statusBar.setBounds(20,0,1865,50); // set location and size of status bar
@@ -224,7 +224,7 @@ public class WoodCutting extends JPanel {
         // timer.start();
 
         //regen magic timer that regenrates 1 magic point every 10 seconds,
-        regenMagic = new Timer(1000, new ActionListener() {
+        regenMagic = new Timer(2500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (player.getMagic() < player.getMaxMagic()) { // if current magic is less than maximum magic
