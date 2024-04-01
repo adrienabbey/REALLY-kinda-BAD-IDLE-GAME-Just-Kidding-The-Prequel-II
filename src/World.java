@@ -4,13 +4,16 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class World extends JPanel{
     PlayerCharacter player; // declare player object reference variable
-    JLabel dungeon_error_message; // Declare JLabel
-    JPanel mainButtons;
-
+    
+    private JLabel dungeon_error_message; // Declare JLabel
+    private JPanel mainButtons;
+    private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon
      * @param player The player character object
@@ -21,12 +24,6 @@ public class World extends JPanel{
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
-
-        dungeon_error_message = new JLabel(); // initialize JLabel
-        dungeon_error_message.setForeground(Color.RED); // Set error message color to red
-        dungeon_error_message.setFont(new Font("Serif", Font.BOLD, 24)); // Set font
-        dungeon_error_message.setAlignmentX(CENTER_ALIGNMENT); // Center align the error message
-        add(dungeon_error_message); // Add JLabel to the panel
 
         JButton quit = new JButton("Quit");
         buttons.add(quit);
@@ -46,7 +43,7 @@ public class World extends JPanel{
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen size
         int centerOfScreen = (int) screenSize.getHeight() / 2 - 40; // get the position of the center of the user's screen using relative scaling
 
-        // Formatting all buttons with relative pathing
+        // Set position and size for all buttons. Used relative scaling for positioning. 
         leave.setBounds((int) (screenSize.getWidth() * 0.03), centerOfScreen,175,80);
         add(leave);
 
@@ -67,6 +64,15 @@ public class World extends JPanel{
         
         quit.setBounds((int) (screenSize.getWidth() * 0.87), centerOfScreen,150,80);
         add(quit);
+
+        // Format dungeon error message label
+        dungeon_error_message = new JLabel(); // initialize JLabel
+        dungeon_error_message.setForeground(Color.red); // Set error message color to red
+        dungeon_error_message.setBackground(Color.BLACK); // Set error message color to red
+        dungeon_error_message.setFont(new Font("Serif", Font.BOLD, 24)); // Set font
+        dungeon_error_message.setBounds((int) (screenSize.getWidth() / 4.5), (int) (screenSize.getHeight() * 0.70), 1150, 100); // set position and size of dungeon error message label
+        add(dungeon_error_message); // Add error message label to  panel
+
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
@@ -107,8 +113,25 @@ public class World extends JPanel{
                     Driver.changePanel("dungeon");
                     MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
                     dungeon_error_message.setText(""); // Clear error message
+                    dungeon_error_message.setOpaque(false);
                 } else {
-                    dungeon_error_message.setText("You cannot do this");
+                    dungeon_error_message.setOpaque(isOpaque());
+                    dungeon_error_message.setText(" Health must exceed 0 to enter dungeon. Health yourself with potions or regenerate while gathering resources.");
+
+                    if (!timerRunning) { // if timer is not running, set new timer
+                        // Clear error message after 2 seconds
+                        Timer timer = new Timer(2000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                dungeon_error_message.setText(""); // Clear error message
+                                dungeon_error_message.setOpaque(false);
+                                timerRunning = false;
+                            }
+                        });
+                        timer.setRepeats(false); // Execute only once
+                        timerRunning = true;
+                        timer.start();
+                    }
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
