@@ -16,10 +16,8 @@ public class WoodCutting extends JPanel {
     private JButton autoCutButton; // button for automatic woodcutting
     private JButton statusButton;
     private Timer timer; // timer for gathering processes
-    public static Timer regenMagic; // timer for regenerating magic and updating magic label
-    public static boolean regenMagicOn; // flag to determine when to turn regenMagic timer on
     private Image bgImage;
-    private JLabel grantedLabel; // Label to display wood granted message
+    private JLabel harvestedLabel; // Label to display wood harvested message
     private boolean auto = false;
     private boolean currentlyCutting = false; // flag to determine if process is cutting. Used to grant correct resource.
     private boolean currentlyHunting = false; // flag to determine if process is hunting. Used to grant correct resource.
@@ -79,10 +77,10 @@ public class WoodCutting extends JPanel {
         progressBar.setOpaque(true); // Make the background visible
         progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
 
-        // Create label for wood granted message
-        grantedLabel = new JLabel("");
-        grantedLabel.setFont(new Font("Serif", Font.BOLD, 24));
-        grantedLabel.setForeground(Color.GREEN); // Green color for wood granted message
+        // Create label for wood harvested message
+        harvestedLabel = new JLabel("");
+        harvestedLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        harvestedLabel.setForeground(Color.GREEN); // Green color for wood harvested message
 
         // Add components to the panel
         JPanel buttonPanel = new JPanel(new GridLayout());
@@ -91,19 +89,16 @@ public class WoodCutting extends JPanel {
         buttonPanel.add(autoHuntButton);
         buttonPanel.add(autoCutButton);
         buttonPanel.add(leave);
-        //buttonPanel.add(progressBar);
-        buttonPanel.add(grantedLabel);
+        buttonPanel.add(harvestedLabel);
         add(buttonPanel);
         progressBar.setBounds(20,940, 1865, 50);
         add(progressBar);
-        // add(progressBar, BorderLayout.CENTER);
-        grantedLabel.setBounds(20, 890, 300, 60);
-        add(grantedLabel); // Add wood granted label to the panel
+        harvestedLabel.setBounds(20, 890, 300, 60);
+        add(harvestedLabel); // Add wood harvested label to the panel
 
         // Create the Status button
         statusButton.setBounds(960, 0, 60, 45); // Set the position and size of the button
         statusButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        //statusButton.setForeground(Color.WHITE);
         add(statusButton); // Add the button to the panel
 
 
@@ -149,7 +144,7 @@ public class WoodCutting extends JPanel {
 
                 // assign buttons to shown character statuses
                 health = new JButton("Health: " + (int) player.getHealth());
-                magic = new JButton("Magic: " + player.getMagic());
+                magic = new JButton("Magic: " + (int) player.getMagic());
                 gold = new JButton("Gold: " + inventory.getResource("Gold"));
 
                 //format buttons
@@ -162,13 +157,7 @@ public class WoodCutting extends JPanel {
                 statusBar.add(health);
                 statusBar.add(magic);
                 statusBar.add(gold);
-                
-                // if (!regenMagicOn) {
-                //     regenMagicOn = true;
-                //     regenMagic.start();
-                // }
 
-                regenMagic.start(); // start timer
                 statusBar.setBounds(20,0,1865,50); // set location and size of status bar
                 add(statusBar);
                 revalidate();
@@ -193,8 +182,6 @@ public class WoodCutting extends JPanel {
                     statusBarOpen = false;
                     statusButton.setBounds(960, 0, 60, 45); // Reset status button position 
                 }
-                regenMagic.stop();
-                regenMagicOn = false;
                 timer.stop();
                 progressBar.setValue(0);
                 auto = false; // stop auto mining if left panel
@@ -213,30 +200,9 @@ public class WoodCutting extends JPanel {
             }
         });
 
-
-        // //update status bar labels
-        // timer = new Timer(1000, new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //     health.setText("Health: " + player.getHealth());
-        //     }
-        // });
-        // timer.start();
-
-        //regen magic timer that regenrates 1 magic point every 10 seconds,
-        regenMagic = new Timer(2500, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (player.getMagic() < player.getMaxMagic()) { // if current magic is less than maximum magic
-                    player.setMagic(player.getMagic() + 1); // regenerate magic by 1
-                    magic.setText("Magic: " + player.getMagic());
-                }
-                }
-            });
-
         // Timer for woodcutting/hunting process
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Takes 10 seconds to fill up.
-        timer = new Timer(10, new ActionListener() {
+        timer = new Timer(100, new ActionListener() {
             int progress = 0;
 
             @Override
@@ -247,14 +213,28 @@ public class WoodCutting extends JPanel {
             }
 
             if (progress == 40) {
-                grantedLabel.setText(""); // erase grant label
+                harvestedLabel.setText(""); // erase grant label
             }
                 if (progress >= 100) {  // when progress reaches 100 set the progress bar to 100 and proceed granting resource logic and looping back the timer. 
                     progressBar.setValue(100);
 
+                    //regenerate magic by 10% when player harvests a resource
+                    if (player.getMagic() < player.getMaxMagic()) { // if current magic is less than maximum magic
+                        double magicRegenRate = player.getMaxMagic() * 0.1;
+                        player.setMagic(player.getMagic() + magicRegenRate); // regenerate magic by 10% of max mana
+                        magic.setText("Magic: " + player.getMagic());
+                    }
+
+                    //regenerate health by 10% when player harvests a resource
+                    if (player.getHealth() < player.getMaxHealth()) { // if current Health is less than maximum Health
+                        double HealthRegenRate = player.getMaxHealth() * 0.1;
+                        player.setHealth(player.getHealth() + HealthRegenRate); // regenerate Health by 10% of max mana
+                        health.setText("Health: " + player.getHealth());
+                    }
+
                     // if player was cutting tree grant wood
                     if (currentlyCutting) {
-                    grantedLabel.setText("Wood granted!"); // Update wood granted label
+                    harvestedLabel.setText("Wood harvested!"); // Update wood harvested label
                     SFX.playSound("assets/SFX/wood-gathering-sfx.wav");
 
                     int currentWood = inventory.getResource("Wood");
@@ -265,14 +245,14 @@ public class WoodCutting extends JPanel {
                     // if player was hunting animal grant meat or pelt
                     if (currentlyHunting) {
                         if (huntIncrement % 3 == 0) {
-                        grantedLabel.setText("Pelt granted!"); // Update granted label
+                        harvestedLabel.setText("Pelt harvested!"); // Update harvested label
                         SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
     
                         int currentPelt = inventory.getResource("Pelt");
                         // Increment wood resource variable
                         inventory.setResource("Pelt", currentPelt + 1);
                         } else {
-                            grantedLabel.setText("Meat granted!"); // Update granted label
+                            harvestedLabel.setText("Meat harvested!"); // Update harvested label
                             SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
         
                             int currentMeat = inventory.getResource("Meat");
@@ -306,7 +286,7 @@ public class WoodCutting extends JPanel {
         if (!auto) {
             auto = true; // Start auto hunting
             autoHuntButton.setText("Stop Hunting...");
-            grantedLabel.setText(""); 
+            harvestedLabel.setText(""); 
             timer.start(); // Start the timer for auto woodcutting
         } else {
             auto = false; // Stop auto hunting
@@ -321,7 +301,7 @@ public class WoodCutting extends JPanel {
         if (!auto) {
             auto = true; // Start auto woodcutting
             autoCutButton.setText("Stop Cutting Tree...");
-            grantedLabel.setText(""); 
+            harvestedLabel.setText(""); 
             timer.start(); // Start the timer for auto woodcutting
         } else {
             auto = false; // Stop auto woodcutting when method is called again
