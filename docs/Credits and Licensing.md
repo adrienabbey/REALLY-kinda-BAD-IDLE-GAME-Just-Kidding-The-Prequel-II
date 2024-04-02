@@ -188,7 +188,7 @@ Credits for sound effects -
     Source: https://freesound.org/people/dibko/sounds/624379/4
 
 
-* Hunting sound effect 3:
+* Hunting sound effect 5:
     Used 4 sounds (all copyright free and edited in clipchamp and audacity): 
     1. 
     Title: Bow and Arrow Sound Effect
@@ -213,6 +213,18 @@ Credits for sound effects -
 ======================================================
 
 ======================================================
+Video animation and editing: 
+
+* Runway - used to edit videos and still image animation using ai (lots of functionality, great tool). 
+* Vmake ai: watermak removal (up to 5 sec free) and video enhancer
+* ezgif - reverse, speed/slow, and crop videos. 
+* InpaintDelogo - best tool for video watermark / logo remover - https://github.com/vt-vl-lab/FGVC
+* Video2x- video quality and resolution enhancer - https://github.com/k4yt3x/video2x
+* tensorpix.ai - video enhancer 
+=======================================================
+
+
+======================================================
 * Used googles's open source android vision api to help code the EyePhysics class.
 Source: https://github.com/googlesamples/android-vision/blob/master/visionSamples/googly-eyes/app/src/main/java/com/google/android/gms/samples/vision/face/googlyeyes/EyePhysics.java
 License: 
@@ -230,3 +242,36 @@ License:
   See the License for the specific language governing permissions and
   limitations under the License.
  ======================================================
+
+ =======================================================
+ * The vlcj project provides a Java framework to allow an instance of a native
+[vlc](http://www.videolan.org/vlc "vlc") media player to be embedded in a Java
+AWT Window or Swing JFrame.
+
+    Link to github repo: https://github.com/caprica/vlcj/blob/master/src/main/java/uk/co/caprica/vlcj/player/component/EmbeddedMediaPlayerComponent.java
+
+    Usage and Installation guide: https://capricasoftware.co.uk/tutorials/vlcj/4/prerequisites
+
+    Dowloaded JAR files from here: https://www.iotools.net/download/java-apis/index
+
+    and here: https://jar-download.com/artifacts/uk.co.caprica/vlcj/4.0.0/source-code
+
+   VLCJ is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+ 
+  VLCJ is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License
+  along with VLCJ.  If not, see <http://www.gnu.org/licenses/>.
+
+  License
+-------
+The vlcj framework is provided under the GPL, version 3 or later.
+ 
+  Copyright 2009-2024 Caprica Software Limited.
+ ==================================================================

@@ -13,6 +13,8 @@ import java.io.ObjectOutputStream;
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
+
 
 class Driver extends JFrame {
 
@@ -54,8 +56,7 @@ class Driver extends JFrame {
     public Driver() throws Exception {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
-        MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
-
+        MusicPlayer.playMusic("assets/Music/now-we-ride.wav"); 
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time
         StartScreen start = new StartScreen();

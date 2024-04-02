@@ -9,13 +9,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+
 /*
  * Implementation for the "Credits" panel which can be accessed from the setting screen. Uss a timer to continously update the JLabel in order to achieve a rolling effect. The label houses all the credits for the game, including the credits to the developers, professor, and to the images, music, sound effects, and voiceovers used. 
  * 
  * TODO: double check credits all assets used and that all assets are free to use or the rights to use them have been acquired by getting the appropriate license. 
  */
 
-class Credits extends JPanel {
+public class Credits extends JPanel {
+
     private JLabel rollingText;
     private Timer timer;
     public static int yPos = 998;
