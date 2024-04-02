@@ -16,7 +16,8 @@ class Monster extends GameCharacter {
         PETROCK,
         HOBOGOBLIN,
         CYCLOPIAN_GENTLEMAN,
-        GEODUCK
+        GEODUCK,
+        PIRATE_SKELETON
     }
 
     /* Fields */
@@ -53,21 +54,21 @@ class Monster extends GameCharacter {
                 goldRewarded = 2;
                 isBoss = false;
                 castsMagic = false;
-                imageFilePath = "assets/images/rabidPetRock.png";
+                imageFilePath = "assets/images/Rock2.png";
                 monsterLevel = 2;
                 break;
             case HOBOGOBLIN:
                 setName("Hobo Goblin");
                 setDescription(
                         "Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from from all its wealth, health, and home.  Also, it has googley eyes.");
-                setMuscle(6);
-                setBrain(2);
-                setHeart(4);
-                goldRewarded = 4;
+                setMuscle(3);
+                setBrain(1);
+                setHeart(2);
+                goldRewarded = 2;
                 isBoss = false;
                 castsMagic = false;
-                imageFilePath = "assets/images/hoboGoblin.png";
-                monsterLevel = 4;
+                imageFilePath = "assets/images/hobogoblin.png";
+                monsterLevel = 2;
                 break;
             case CYCLOPIAN_GENTLEMAN:
                 setName("Cyclopian Gentleman");
@@ -79,7 +80,7 @@ class Monster extends GameCharacter {
                 goldRewarded = 20;
                 isBoss = true;
                 castsMagic = true;
-                imageFilePath = "assets/images/cyclopianGentleman.png";
+                imageFilePath = "assets/images/Cyclops.png";
                 monsterLevel = 8;
                 break;
             case GEODUCK:
@@ -92,7 +93,20 @@ class Monster extends GameCharacter {
                 goldRewarded = 6;
                 isBoss = false;
                 castsMagic = true;
-                imageFilePath = "assets/images/DrawAGeoduckLuke.png";
+                imageFilePath = "assets/images/Duck.png";
+                monsterLevel = 6;
+                break;
+            case PIRATE_SKELETON:
+                setName("Cute Skelly Pirate");
+                setDescription(
+                        "This unbelievably cute skeleton is wearing a pirate outfit.  Despite its adorable demeanor, it still has a deep-seated hatred of the living.");
+                setMuscle(8);
+                setBrain(4);
+                setHeart(6);
+                goldRewarded = 6;
+                isBoss = false;
+                castsMagic = false;
+                imageFilePath = "assets/images/skeleton.png";
                 monsterLevel = 6;
                 break;
         }
