@@ -111,7 +111,7 @@ public class WoodCutting extends JPanel {
 
 
         // Create the Status button
-        statusButton.setBounds(960, 0, 60, 45); // Set the position and size of the button
+        statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Set the position and size of the button
         statusButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
         add(statusButton); // Add the button to the panel
 
@@ -152,7 +152,7 @@ public class WoodCutting extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
             if (!statusBarOpen) { 
                 player = Driver.getPlayer(); //get player object
-                statusButton.setBounds(960, 50, 60, 45); // Set the position and size of the button
+                statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0463), (int) (width * 0.03125), (int) (height * 0.04166)); // Set the position and size of the button
                 statusButton.setText(upArrow);
                 statusBar = new JPanel(new GridLayout()); //assign statusbar 
 
@@ -171,15 +171,14 @@ public class WoodCutting extends JPanel {
                 statusBar.add(health);
                 statusBar.add(magic);
                 statusBar.add(gold);
-
-                statusBar.setBounds(20,0,1865,50); // set location and size of status bar
+                statusBar.setBounds((int) (width * 0.0104), (int) (height * 0.0), (int) (width * 0.9714), (int) (height * 0.04629)); // set location and size of status bar
                 add(statusBar);
                 revalidate();
                 repaint();
                 statusBarOpen = true; // set statusBarOpen to true 
             } else {
                 remove(statusBar); // remove the status bar from the screen
-                statusButton.setBounds(960, 0, 60, 45); // Reset status button position 
+                statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Reset status button position 
                 statusButton.setText(downArrow);
                 revalidate();
                 repaint();
@@ -195,7 +194,7 @@ public class WoodCutting extends JPanel {
                     remove(statusBar);
                     statusButton.setText(downArrow);
                     statusBarOpen = false;
-                    statusButton.setBounds(960, 0, 60, 45); // Reset status button position 
+                    statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Reset status button position 
                 }
                 timer.stop();
                 progressBar.setValue(0);
