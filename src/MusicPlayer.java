@@ -22,7 +22,7 @@ public class MusicPlayer {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     private static boolean isMuted = false;
-    private static float currentVolume = -18.0f;
+    private static float currentVolume = -10.0f;
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
 
     public static void setcurrentVolume(float volume) {

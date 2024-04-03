@@ -30,10 +30,10 @@ class Settings extends JPanel {
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -18); // range from -70 to 6
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -10); // range from -70 to 6
         slider.setBackground(customColorBrown); // Set the background color
 
-        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -16); // range from -70 to 6
+        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -8); // range from -70 to 6
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
         JButton mute = new JButton("Mute Music Volume");
