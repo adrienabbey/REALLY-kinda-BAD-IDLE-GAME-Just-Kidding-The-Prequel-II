@@ -101,7 +101,7 @@ class Library extends JPanel {
                 SFX.playSound("assets/SFX/goblins/goblin-1.wav");
             }
             if (page == 3) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 003: Pirate Skeleton === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from all its wealth, &nbsp; health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 003: Pirate Skeleton === <br><br> &nbsp;</div></html>"); // TODO add skeleton description
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/skeleton.png")));
                     monsterImage.setIcon(icon);
@@ -109,10 +109,10 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                SFX.playSound("assets/SFX/goblins/goblin-1.wav");
+                SFX.playSound(""); // TODO add skeleton sfx
             }
             if (page == 4) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 004: Cyclops === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from all its wealth, &nbsp; health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 004: Cyclops === <br><br> &nbsp; </div></html>"); // TODO add cyclops description
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/Cyclops.png")));
                     monsterImage.setIcon(icon);
@@ -120,10 +120,10 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                SFX.playSound("assets/SFX/goblins/goblin-1.wav");
+                SFX.playSound(""); // TODO add cyclops sfx
             }
             if (page == 5) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 005: Geoduck === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from all its wealth, &nbsp; health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 005: Geoduck === <br><br> &nbsp; </div></html>"); // TODO add geoduck description
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/Duck.png")));
                     monsterImage.setIcon(icon);
@@ -131,7 +131,8 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                SFX.playSound("assets/SFX/goblins/goblin-1.wav");
+                SFX.playSound(""); // TODO add geoduck sfx
+                page = -1; // reset page to start when at the end of book
             }
             page++;
         });
