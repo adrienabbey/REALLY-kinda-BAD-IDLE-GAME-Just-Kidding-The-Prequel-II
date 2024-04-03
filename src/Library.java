@@ -101,7 +101,7 @@ class Library extends JPanel {
                 SFX.playSound("assets/SFX/goblins/goblin-1.wav");
             }
             if (page == 3) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 003: Pirate Skeleton === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from all its wealth, &nbsp; health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 003: Pirate Skeleton === <br><br> &nbsp; This unbelievably cute skeleton is wearing a pirate outfit.  Despite its adorable demeanor, it still has a deep-seated hatred of the living.. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/skeleton.png")));
                     monsterImage.setIcon(icon);
@@ -112,7 +112,7 @@ class Library extends JPanel {
                 SFX.playSound("assets/SFX/goblins/goblin-1.wav");
             }
             if (page == 4) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 004: Cyclops === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from all its wealth, &nbsp; health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 004: Cyclopian Gentleman === <br><br> &nbsp; This impecably dressed giant just radiates cultured sophistication.  He's even wearing a tophat with a monocle over his single, giant eye.  Unfortunately, you're too small to notice and he's about to step all over you.  Which is not to say he didn't actually see you, he just doesn't care.<br><br> Gold Reward: 4  <br> Muscle: 10<br>Brain: 10<br> Heart: 10</div></html>");
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/Cyclops.png")));
                     monsterImage.setIcon(icon);
@@ -123,7 +123,7 @@ class Library extends JPanel {
                 SFX.playSound("assets/SFX/goblins/goblin-1.wav");
             }
             if (page == 5) {
-                text.setText("<html><div style='text-align: center;'>=== Entry 005: Geoduck === <br><br> &nbsp; Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from all its wealth, &nbsp; health, and home. Also, it has googley eyes. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
+                text.setText("<html><div style='text-align: center;'>=== Entry 005: Creepy Geoduck === <br><br> &nbsp; Its a duck made out of rocks. Very scary. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
                 try {
                     ImageIcon icon = new ImageIcon(ImageIO.read(new File("assets/images/Duck.png")));
                     monsterImage.setIcon(icon);
