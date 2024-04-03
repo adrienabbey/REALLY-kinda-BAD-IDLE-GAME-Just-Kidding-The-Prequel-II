@@ -12,7 +12,6 @@ public class World extends JPanel{
     PlayerCharacter player; // declare player object reference variable
     
     private JLabel dungeon_error_message; // Declare JLabel
-    private JPanel mainButtons;
     private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon
@@ -40,7 +39,7 @@ public class World extends JPanel{
         JButton leave = new JButton("Main Menu");
         buttons.add(leave);
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen size
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen 
         int centerOfScreen = (int) screenSize.getHeight() / 2 - 40; // get the position of the center of the user's screen using relative scaling
 
         // Set position and size for all buttons. Used relative scaling for positioning. 
@@ -67,8 +66,8 @@ public class World extends JPanel{
 
         // Format dungeon error message label
         dungeon_error_message = new JLabel(); // initialize JLabel
-        dungeon_error_message.setForeground(Color.red); // Set error message color to red
-        dungeon_error_message.setBackground(Color.BLACK); // Set error message color to red
+        dungeon_error_message.setForeground(Color.red); // Set error message font color to red
+        dungeon_error_message.setBackground(Color.BLACK); // Set error message background color to black
         dungeon_error_message.setFont(new Font("Serif", Font.BOLD, 24)); // Set font
         dungeon_error_message.setBounds((int) (screenSize.getWidth() / 4.5), (int) (screenSize.getHeight() * 0.70), 1150, 100); // set position and size of dungeon error message label
         add(dungeon_error_message); // Add error message label to  panel
@@ -116,7 +115,7 @@ public class World extends JPanel{
                     dungeon_error_message.setOpaque(false);
                 } else {
                     dungeon_error_message.setOpaque(isOpaque());
-                    dungeon_error_message.setText(" Health must exceed 0 to enter dungeon. Health yourself with potions or regenerate while gathering resources.");
+                    dungeon_error_message.setText(" Health must exceed 0 to enter dungeon. Heal yourself with potions or regenerate while gathering resources.");
 
                     if (!timerRunning) { // if timer is not running, set new timer
                         // Clear error message after 2 seconds
