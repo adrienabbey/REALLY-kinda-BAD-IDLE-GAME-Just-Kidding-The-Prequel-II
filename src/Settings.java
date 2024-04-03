@@ -16,7 +16,9 @@ import java.awt.Font;
 import java.awt.Color;
 
 /* 
- * Implementation for the "Settings" panel which can be accessed fron the start screen. Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
+ * Implementation for the "Settings" panel which can be accessed fron the start screen. 
+ * Houses the buttons and sliders used to mute music volume, adjust music volume, adjust 
+ * sfx volume, and to access the credits panel. 
  */
 
 class Settings extends JPanel {
