@@ -94,6 +94,11 @@ Credits for background music:
     Title: FANTASY MEDIEVAL VILLAGE MUSIC | NO COPYRIGHT | 1 HOUR MUSIC
     Channel: Musical Discoveries
     Source: https://www.youtube.com/watch?v=GNTpCsaq7PA
+
+* Skeleton music: 
+    Artist: Seth_Makes_Sounds
+    License: Creative Commons 0
+    Source: https://freesound.org/people/Seth_Makes_Sounds/sounds/588692/
 ======================================================
 
 =====================================================
