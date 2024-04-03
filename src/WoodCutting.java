@@ -82,19 +82,33 @@ public class WoodCutting extends JPanel {
         harvestedLabel.setFont(new Font("Serif", Font.BOLD, 24));
         harvestedLabel.setForeground(Color.GREEN); // Green color for wood harvested message
 
-        // Add components to the panel
+
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen 
+        double width = screenSize.getWidth(); // get the width of user's screen
+        double height = screenSize.getHeight(); // get height of user's screen
+        
+        // Initialize button panel to house action buttons 
         JPanel buttonPanel = new JPanel(new GridLayout());
-        buttonPanel.setBounds(20, 990, 1865, 50); // Set the position and size of the button
-        buttonPanel.setOpaque(false); // Make the button panel transparent
+
+        // Set position and size of panel, label, and progress bar using relative scaling
+        buttonPanel.setBounds((int) (width * 0.0104), (int) (height * 0.916), (int) (width * 0.9713), (int) (height * 0.0463)); 
+
+        harvestedLabel.setBounds((int) (width * 0.0104), (int) (height * 0.824), (int) (width * 0.156), (int) (height * 0.0555));
+
+        progressBar.setBounds((int) (width * 0.0104), (int) (height * 0.8703), (int) (width * 0.9713), (int) (height * 0.0463));
+
+        // add buttons to button panel
         buttonPanel.add(autoHuntButton);
         buttonPanel.add(autoCutButton);
         buttonPanel.add(leave);
         buttonPanel.add(harvestedLabel);
-        add(buttonPanel);
-        progressBar.setBounds(20,940, 1865, 50);
-        add(progressBar);
-        harvestedLabel.setBounds(20, 890, 300, 60);
-        add(harvestedLabel); // Add wood harvested label to the panel
+
+        // add components to layout
+        add(buttonPanel); // add panel that contains hunt wildlife, cut wood, and leave buttons
+        add(progressBar); // add progress bar to layout
+        add(harvestedLabel); // Add harvested label to panel
+
 
         // Create the Status button
         statusButton.setBounds(960, 0, 60, 45); // Set the position and size of the button
@@ -179,6 +193,7 @@ public class WoodCutting extends JPanel {
             try {
                 if (statusBarOpen) {
                     remove(statusBar);
+                    statusButton.setText(downArrow);
                     statusBarOpen = false;
                     statusButton.setBounds(960, 0, 60, 45); // Reset status button position 
                 }
