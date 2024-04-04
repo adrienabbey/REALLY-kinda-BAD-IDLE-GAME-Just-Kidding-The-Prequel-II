@@ -90,8 +90,8 @@ class Combat extends JPanel {
                 }
                 Thread.sleep(1500);
             } else {
-                addLog(enemy.getName() + " has been defeated!\n" + player.getName() + " has gained "
-                        + enemy.getGoldReward() + " gold!\n");
+                addLog("\n" + enemy.getName() + " has been defeated " + player.getName() + " has gained "
+                        + enemy.getGoldReward() + " gold!\n\n");
                 inventory.setGold(enemy.getGoldReward());// Update gold resource in inventory
 
                 // Check for equipment upgrades:
@@ -104,7 +104,7 @@ class Combat extends JPanel {
         if(player.getHealth() <= 0){
             logs.setForeground(Color.RED);
             logs.setBackground(Color.BLACK);
-            addLog(player.getName() + " has been defeated!\n");
+            addLog("\n" + player.getName() + " has been defeated!\n");
             player.died();
         }
     }
