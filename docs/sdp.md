@@ -39,7 +39,7 @@
 
 * Various stretch goals regarding additional components for the game.
 
-* MVP Implementation - End of development - April 8th at 11:59 p.m.
+* MVP Implementation - Code freeze, end of development - April 8th at 11:59 p.m.
 
 * MVP 2 documentation - April 8th at 11:59 p.m.
 
