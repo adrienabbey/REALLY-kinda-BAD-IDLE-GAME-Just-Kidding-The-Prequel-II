@@ -16,7 +16,9 @@ import java.awt.Font;
 import java.awt.Color;
 
 /* 
- * Implementation for the "Settings" panel which can be accessed fron the start screen. Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
+ * Implementation for the "Settings" panel which can be accessed fron the start screen. 
+ * Houses the buttons and sliders used to mute music volume, adjust music volume, adjust 
+ * sfx volume, and to access the credits panel. 
  */
 
 class Settings extends JPanel {
@@ -30,10 +32,10 @@ class Settings extends JPanel {
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -18); // range from -70 to 6
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -10); // range from -70 to 6
         slider.setBackground(customColorBrown); // Set the background color
 
-        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -16); // range from -70 to 6
+        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -8); // range from -70 to 6
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
         JButton mute = new JButton("Mute Music Volume");

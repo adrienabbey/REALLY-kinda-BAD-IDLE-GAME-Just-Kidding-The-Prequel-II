@@ -18,11 +18,21 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 
 /*
- * Implements the "Bazaar" panel which is accessed throgh the Town screen. The bazaar houses the implementation for the Buy and Sell screens, where the player can purchase and sell items from their inventory. The inventory panel can also be accessed from the bazaar. Any item or equipment the player has can be sold, though if they would like to buy it back the item will be at a much steeper price than the palyer sold it for. A fourth screen can be accessed from the bazaar titled "Secret Merchant", which allows the player to buy speacial items. The button that takes the player to this screen only appear after every three bazaar visits. 
+ * Implements the "Bazaar" panel which is accessed throgh the Town screen. 
+ * The bazaar houses the implementation for the Buy and Sell screens, where 
+ * the player can purchase and sell items from their inventory. The inventory
+ *  panel can also be accessed from the bazaar. Any item or equipment the player
+ *  has can be sold, though if they would like to buy it back the item will be at
+ *  a much steeper price than the palyer sold it for. A fourth screen can be 
+ * accessed from the bazaar titled "Secret Merchant", which allows the player 
+ * to buy speacial items. The button that takes the player to this screen only 
+ * appear after every three bazaar visits. 
  * 
- * Current items that can be bought at the bazaar: Wood, Stone, Metal, Meat, Pelt, Potion, Tongue Fern, Spleenwort, Magical Essence...
+ * Current items that can be bought at the bazaar: Wood, Stone, Metal, Meat, Pelt, Potion,
+ * Tongue Fern, Spleenwort, Magical Essence...
  * 
- Current items that can be bought at the secret merchant: Wood, Stone, Metal, Meat, Pelt, Potion, Tongue Fern, Spleenwort, Magical Essence, Lengendary Potion of Lepus...
+ Current items that can be bought at the secret merchant: Wood, Stone, Metal, Meat, Pelt, 
+ Potion, Tongue Fern, Spleenwort, Magical Essence, Lengendary Potion of Lepus...
  *
  * TODO: add prices to items and add a way to buy/sell equipment. 
  */
