@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory extends JPanel {
-    private static Inventory instance;
+    // private static Inventory instance;
 
     private Map<String, Integer> resources; // Map to store resource amounts
     private JLabel resourceLabel; // Label to display total space
@@ -14,12 +14,12 @@ public class Inventory extends JPanel {
                                                    // homestead screen.
     public static boolean backToTown = false; // flag that keeps trck if player accessed inventory from the town screen.
 
-    private Inventory() {
+    public Inventory() {
         setLayout(new BorderLayout());
 
         // Initialize resources map
         resources = new HashMap<>();
-        resources.put("Gold", 1000);
+        // resources.put("Gold", 1000);
         resources.put("Wood", 250);
         resources.put("Metal", 100);
         resources.put("Stone", 250);
@@ -98,11 +98,11 @@ public class Inventory extends JPanel {
     }
 
     // Method to set Gold amount
-    public void setGold(int amount) {
-        int currentGold = resources.get("Gold");
-        resources.put("Gold", currentGold + amount);
-        updateResourceLabels(); // Update the UI to reflect the changes
-    }
+    // public void setGold(int amount) {
+    // int currentGold = resources.get("Gold");
+    // resources.put("Gold", currentGold + amount);
+    // updateResourceLabels(); // Update the UI to reflect the changes
+    // }
 
     // Update resource labels
     public void updateResourceLabels() {
@@ -120,11 +120,11 @@ public class Inventory extends JPanel {
         return resources;
     }
 
-    public static Inventory getInstance() {
-        if (instance == null) {
-            instance = new Inventory();
-        }
-        return instance;
-    }
+    // public static Inventory getInstance() {
+    // if (instance == null) {
+    // instance = new Inventory();
+    // }
+    // return instance;
+    // }
 
 }
