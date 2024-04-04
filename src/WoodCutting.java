@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class WoodCutting extends JPanel {
-    Inventory inventory = Inventory.getInstance();
+    // Inventory inventory = Inventory.getInstance();
     private PlayerCharacter player = new PlayerCharacter(getName(), HEIGHT, HEIGHT, HEIGHT, HEIGHT, WIDTH, HEIGHT);
 
     private JProgressBar progressBar;
@@ -164,7 +164,7 @@ public class WoodCutting extends JPanel {
                 // assign buttons to shown character statuses
                 health = new JButton("Health: " + (int) player.getHealth());
                 magic = new JButton("Magic: " + (int) player.getMagic());
-                gold = new JButton("Gold: " + inventory.getResource("Gold"));
+                gold = new JButton("Gold: " + Driver.player.getGold());
 
                 // format buttons
                 health.setForeground(Color.white);
@@ -261,9 +261,9 @@ public class WoodCutting extends JPanel {
                         harvestedLabel.setText("Wood harvested!"); // Update wood harvested label
                         SFX.playSound("assets/SFX/wood-gathering-sfx.wav");
 
-                        int currentWood = inventory.getResource("Wood");
+                        int currentWood = Driver.player.inventory.getResource("Wood");
                         // Increment wood resource variable
-                        inventory.setResource("Wood", currentWood + 1);
+                        Driver.player.inventory.setResource("Wood", currentWood + 1);
                     }
 
                     // if player was hunting animal grant meat or pelt
@@ -272,22 +272,22 @@ public class WoodCutting extends JPanel {
                             harvestedLabel.setText("Pelt harvested!"); // Update harvested label
                             SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
 
-                            int currentPelt = inventory.getResource("Pelt");
+                            int currentPelt = Driver.player.inventory.getResource("Pelt");
                             // Increment wood resource variable
-                            inventory.setResource("Pelt", currentPelt + 1);
+                            Driver.player.inventory.setResource("Pelt", currentPelt + 1);
                         } else {
                             harvestedLabel.setText("Meat harvested!"); // Update harvested label
                             SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
 
-                            int currentMeat = inventory.getResource("Meat");
+                            int currentMeat = Driver.player.inventory.getResource("Meat");
                             // Increment wood resource variable
-                            inventory.setResource("Meat", currentMeat + 1);
+                            Driver.player.inventory.setResource("Meat", currentMeat + 1);
                         }
                         huntIncrement++;
                     }
 
                     // Update resource in inventory
-                    inventory.updateResourceLabels();
+                    Driver.player.inventory.updateResourceLabels();
 
                     progress = 0;
                     if (!auto) {
