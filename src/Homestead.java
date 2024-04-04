@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 class Homestead extends JPanel {
-    Inventory inventory = Inventory.getInstance();
+    // Inventory inventory = Inventory.getInstance();
     private boolean purchaseConfirmation = false;
 
     @Override
@@ -78,8 +78,9 @@ class Homestead extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
 
             // checks is player has enough resources to buy homestead
-            if (inventory.getResource("Gold") >= 1000 && inventory.getResource("Wood") >= 250
-                    && inventory.getResource("Stone") >= 250 && inventory.getResource("Metal") >= 100) {
+            if (Driver.player.getGold() >= 1000 && Driver.player.inventory.getResource("Wood") >= 250
+                    && Driver.player.inventory.getResource("Stone") >= 250
+                    && Driver.player.inventory.getResource("Metal") >= 100) {
 
                 // Confirm purchase from player.
                 if (purchaseConfirmation == false) {
@@ -97,13 +98,13 @@ class Homestead extends JPanel {
                 SFX.playSound("assets/SFX/metal-ringing1.wav");
 
                 // Remove resources used to purchase homestead from inventory
-                inventory.setResource("Gold", inventory.getResource("Gold") - 1000);
-                inventory.setResource("Wood", inventory.getResource("Wood") - 250);
-                inventory.setResource("Stone", inventory.getResource("Stone") - 250);
-                inventory.setResource("Metal", inventory.getResource("Metal") - 100);
+                Driver.player.setGold(Driver.player.getGold() - 1000);
+                Driver.player.inventory.setResource("Wood", Driver.player.inventory.getResource("Wood") - 250);
+                Driver.player.inventory.setResource("Stone", Driver.player.inventory.getResource("Stone") - 250);
+                Driver.player.inventory.setResource("Metal", Driver.player.inventory.getResource("Metal") - 100);
 
                 // Update resource labels
-                inventory.updateResourceLabels();
+                Driver.player.inventory.updateResourceLabels();
 
                 // Remove the purchase button and info label
                 remove(purchase);
