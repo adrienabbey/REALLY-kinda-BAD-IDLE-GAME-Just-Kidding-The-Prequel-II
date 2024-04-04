@@ -114,4 +114,28 @@ public class Equipment implements Serializable {
 
         return itemUpgraded;
     }
+
+    public String getWeaponDescription() {
+        return weaponDescription;
+    }
+
+    public int getWeaponLevel() {
+        return weaponLevel;
+    }
+
+    public String getArmourDescription() {
+        return armourDescription;
+    }
+
+    public int getArmourLevel() {
+        return armourLevel;
+    }
+
+    public String getHatDescription() {
+        return hatDescription;
+    }
+
+    public int getHatLevel() {
+        return hatLevel;
+    }
 }
