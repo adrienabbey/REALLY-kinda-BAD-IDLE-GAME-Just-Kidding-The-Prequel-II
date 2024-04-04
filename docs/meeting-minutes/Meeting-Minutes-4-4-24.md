@@ -14,16 +14,23 @@
 ## Notes
 
 ## Action Items
-* Group Member `Adrien`
-  - 
-* Group Member `Brandon`
+* Group Member `Adrien`:
+	-  Add inventory implementation to player object so that potions work properly
 	- 
-* Group Member `Muhammed`
- - Add inventory implementation to player object so that potions work properly
- - Add release notes
- - Update requirements
-* Group Member `Luke`
+* Group Member `Brandon`:
+	- Add stats to character screen
+	- implement gear upgrading
+
+* Group Member `Muhammed`:
+ 	- Add inventory implementation to player object so that potions work properly
+ 	- Add release notes
+ 	- Update requirements and design 
+    	- snapshot vidoes
+
+* Group Member `Luke`:
+	- presentation slides
 	- 
+
 
 ## Changelog
 *  Long past our MVP 1 features so we're doing a new iteration for MVP 2 features. Code freeze and second document for MVP 2 (requirement 2.0) due dates were pushed to April 8th because of this. 
