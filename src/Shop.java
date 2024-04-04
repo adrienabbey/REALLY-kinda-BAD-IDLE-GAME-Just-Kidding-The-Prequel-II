@@ -14,7 +14,7 @@ import java.awt.BorderLayout;
 
 class Shop extends JPanel {
 
-    Inventory inventory = Inventory.getInstance();
+    // Inventory inventory = Inventory.getInstance();
     private boolean sellScreenOpen = false; // Flag to track if the sell screen is open
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
     private boolean secretMerchantScreenOpen = false; // Flag to track if the secret merchant screen is open.
@@ -119,7 +119,7 @@ class Shop extends JPanel {
                 mainPanel1 = new JPanel(new BorderLayout());
 
                 // Create a label to display the player's gold count
-                JLabel goldLabel = new JLabel("  Gold: " + inventory.getResource("Gold") + "  ");
+                JLabel goldLabel = new JLabel("  Gold: " + Driver.player.getGold() + "  ");
                 goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
                 goldLabel.setAlignmentX(CENTER_ALIGNMENT);
                 // format gold label
@@ -179,14 +179,14 @@ class Shop extends JPanel {
                 buyPanel.setOpaque(true);
 
                 // Add all items from inventory to shop.
-                for (String resourceName : inventory.getResources().keySet()) {
+                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
                     if (!(resourceName == "Legendary Potion of Lepus") && !(resourceName == "Gold")) { // remove Lepus
                                                                                                        // potion and
                                                                                                        // Gold from buy
                                                                                                        // list
 
                         JButton buyItemButton = new JButton(
-                                "Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
+                                "Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName) + ")");
                         // Format buttons
                         buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                         // format gold label
@@ -197,23 +197,21 @@ class Shop extends JPanel {
                         buyItemButton.addActionListener(sellEvent -> {
 
                             // If Gold is greater than 0 then buy resource, else output error message.
-                            if ((inventory.getResource("Gold") > 0)) {
+                            if ((Driver.player.getGold() > 0)) {
                                 err_message.setText("");
-                                inventory.setResource(resourceName, inventory.getResource(resourceName) + 1); // add the
-                                                                                                              // resource
-                                                                                                              // from
-                                                                                                              // inventory
-                                int currentGold = inventory.getResource("Gold"); // update current resource amount
-                                inventory.setResource("Gold", currentGold - 1); // decrease gold
-                                inventory.updateResourceLabels(); // Update the labels
-                                goldLabel.setText("  Gold: " + inventory.getResource("Gold") + "  "); // Update the gold
-                                                                                                      // label
+                                Driver.player.inventory.setResource(resourceName,
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
+                                                                                                // inventory
+                                Driver.player.setGold(Driver.player.getGold() - 1); // decrease gold
+                                Driver.player.inventory.updateResourceLabels(); // Update the labels
+                                goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold
+                                                                                                // label
                                 buyItemButton.setText(
-                                        "Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update
-                                                                                                                     // the
-                                                                                                                     // buy
-                                                                                                                     // button
-                                                                                                                     // label
+                                        "Buy " + resourceName + " ("
+                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update
+                                                                                                              // the buy
+                                                                                                              // button
+                                                                                                              // label
                                 SFX.playSound("assets/SFX/coin3.wav");
 
                             } else {
@@ -280,7 +278,7 @@ class Shop extends JPanel {
                 mainPanel2 = new JPanel(new BorderLayout());
 
                 // Create a label to display the player's gold count
-                JLabel goldLabel = new JLabel("  Gold:  " + inventory.getResource("Gold") + "  ");
+                JLabel goldLabel = new JLabel("  Gold:  " + Driver.player.getGold() + "  ");
                 goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
                 goldLabel.setAlignmentX(CENTER_ALIGNMENT);
                 // format gold label
@@ -339,14 +337,15 @@ class Shop extends JPanel {
                 sellPanel.setOpaque(true);
 
                 // Add items from the inventory to the sell panel
-                for (String resourceName : inventory.getResources().keySet()) {
+                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
                     if (!(resourceName == "Gold")) { // remove Gold from sell list
 
                         // if the resource amount exceeds 1 from your inventory, add it to the sell menu
                         // as a possible item to sell.
-                        if (inventory.getResource(resourceName) > 0) {
+                        if (Driver.player.inventory.getResource(resourceName) > 0) {
                             JButton sellItemButton = new JButton(
-                                    "Sell " + resourceName + " (" + inventory.getResource(resourceName) + ")");
+                                    "Sell " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
+                                            + ")");
                             // format buttons
                             sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                             sellItemButton.setForeground(new Color(253, 236, 166));
@@ -355,21 +354,20 @@ class Shop extends JPanel {
 
                             sellItemButton.addActionListener(sellEvent -> {
                                 // If resource is greater than 0, it is able to sell, else output error message.
-                                if ((inventory.getResource(resourceName) > 0)) {
+                                if ((Driver.player.inventory.getResource(resourceName) > 0)) {
                                     err_message.setText("");
-                                    inventory.setResource(resourceName, inventory.getResource(resourceName) - 1); // minus
-                                                                                                                  // the
-                                                                                                                  // resource
-                                                                                                                  // from
-                                                                                                                  // inventory
-                                    int currentGold = inventory.getResource("Gold"); // update current resource amount
-                                    inventory.setResource("Gold", currentGold + 1); // increase gold
-                                    inventory.updateResourceLabels(); // Update the labels
-                                    goldLabel.setText("  Gold: " + inventory.getResource("Gold") + "  "); // Update the
-                                                                                                          // gold label
+                                    Driver.player.inventory.setResource(resourceName,
+                                            Driver.player.inventory.getResource(resourceName) - 1); // minus the
+                                                                                                    // resource from
+                                                                                                    // inventory
+                                    Driver.player.setGold(Driver.player.getGold() + 1);
+                                    Driver.player.inventory.updateResourceLabels(); // Update the labels
+                                    goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the
+                                                                                                    // gold label
                                     sellItemButton.setText("Sell " + resourceName + " ("
-                                            + (inventory.getResource(resourceName)) + ")"); // Update the sell button
-                                                                                            // label
+                                            + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the
+                                                                                                          // sell button
+                                                                                                          // label
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 } else {
                                     err_message.setText("Cannot sell item, no items left.");
@@ -467,7 +465,7 @@ class Shop extends JPanel {
                 JPanel mainPanel = new JPanel(new BorderLayout());
 
                 // Create a label to display the player's gold count
-                JLabel goldLabel = new JLabel("    Gold: " + inventory.getResource("Gold") + " ");
+                JLabel goldLabel = new JLabel("    Gold: " + Driver.player.getGold() + " ");
                 goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
                 goldLabel.setAlignmentX(CENTER_ALIGNMENT);
                 // format gold label
@@ -553,11 +551,12 @@ class Shop extends JPanel {
                 buyPanel.setOpaque(true);
 
                 // Add all items from inventory to shop.
-                for (String resourceName : inventory.getResources().keySet()) {
+                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
                     if (!(resourceName == "Gold")) {
 
                         JButton buyItemButton = new JButton(
-                                " Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
+                                " Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
+                                        + ")");
                         // Format buttons
                         buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 27));
                         buyItemButton.setForeground(new Color(253, 236, 166));
@@ -567,23 +566,21 @@ class Shop extends JPanel {
                         // Code for when a buy button is pressed.
                         buyItemButton.addActionListener(sellEvent -> {
                             // If Gold is greater than 0 then buy resource,, else output error message.
-                            if ((inventory.getResource("Gold") > 0)) {
+                            if ((Driver.player.getGold() > 0)) {
                                 err_message.setText("");
-                                inventory.setResource(resourceName, inventory.getResource(resourceName) + 1); // add the
-                                                                                                              // resource
-                                                                                                              // from
-                                                                                                              // inventory
-                                int currentGold = inventory.getResource("Gold"); // update current resource amount
-                                inventory.setResource("Gold", currentGold - 1); // decrease gold
-                                inventory.updateResourceLabels(); // Update the labels
-                                goldLabel.setText("    Gold: " + inventory.getResource("Gold") + " "); // Update the
-                                                                                                       // gold label
+                                Driver.player.inventory.setResource(resourceName,
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
+                                                                                                // inventory
+                                Driver.player.setGold(Driver.player.getGold() - 1);
+                                Driver.player.inventory.updateResourceLabels(); // Update the labels
+                                goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the
+                                                                                                 // gold label
                                 buyItemButton.setText(
-                                        "Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update
-                                                                                                                     // the
-                                                                                                                     // buy
-                                                                                                                     // button
-                                                                                                                     // label
+                                        "Buy " + resourceName + " ("
+                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update
+                                                                                                              // the buy
+                                                                                                              // button
+                                                                                                              // label
                                 SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                             } else {
                                 err_message.setText(
