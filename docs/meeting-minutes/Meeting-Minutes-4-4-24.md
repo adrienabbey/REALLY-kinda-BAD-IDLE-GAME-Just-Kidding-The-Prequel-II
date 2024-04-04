@@ -27,12 +27,13 @@
 * Group Member `Brandon`:
 	- Add stats to character screen
 	- implement gear upgrading
+ 	- snapshot vidoes	 
 
 * Group Member `Muhammed`:
  	- Add inventory implementation to player object so that potions work properly
  	- Add release notes
  	- Update requirements and design documentation
-    	- snapshot vidoes
+    	- volume optimization
 
 * Group Member `Luke`:
 	- presentation slides
