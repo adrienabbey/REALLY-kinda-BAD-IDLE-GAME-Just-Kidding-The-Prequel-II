@@ -28,7 +28,8 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    private int potionCount;
    private boolean isAwake = true;
    private int timeToWake = 0; // TODO: Is this something we're implementing?
-   private Equipment equipment; // Contains all the player's equipment.
+   public Equipment equipment; // Contains all the player's equipment.
+   public Inventory inventory;
 
    /* Constructors */
 
@@ -49,6 +50,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
       this.potionBeltSize = potionBeltSize;
       this.potionCount = potionCount;
       this.equipment = new Equipment();
+      this.inventory = new Inventory();
    }
 
    /* Methods */
