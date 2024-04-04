@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Mining extends JPanel {
-    Inventory inventory = Inventory.getInstance();
+    // Inventory inventory = Inventory.getInstance();
 
     private JProgressBar progressBar;
     private JButton autoScavengeButton; // button for scavenging
@@ -159,17 +159,17 @@ public class Mining extends JPanel {
                             harvestLabel.setText("Metal harvest!"); // Update metal harvest label
                             SFX.playSound("assets/SFX/metal-ringing1.wav");
 
-                            int currentMetal = inventory.getResource("Metal");
+                            int currentMetal = Driver.player.inventory.getResource("Metal");
                             // Increment metal resource variable
-                            inventory.setResource("Metal", currentMetal + 1);
+                            Driver.player.inventory.setResource("Metal", currentMetal + 1);
 
                         } else {
                             harvestLabel.setText("Stone harvest!"); // Update stone harvest label
                             SFX.playSound("assets/SFX/stone-gathering-sfx.wav");
 
-                            int currentStone = inventory.getResource("Stone");
+                            int currentStone = Driver.player.inventory.getResource("Stone");
                             // Increment stone resource variable
-                            inventory.setResource("Stone", currentStone + 1);
+                            Driver.player.inventory.setResource("Stone", currentStone + 1);
                             // update resource in inventory
                         }
                     }
@@ -179,29 +179,29 @@ public class Mining extends JPanel {
                             harvestLabel.setText("Magical Essence harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/.wav"); // TODO: add magical essence sfx
 
-                            int currentMagicalEssence = inventory.getResource("Magical Essence");
+                            int currentMagicalEssence = Driver.player.inventory.getResource("Magical Essence");
                             // Increment MagicalEssence resource variable
-                            inventory.setResource("Magical Essence", currentMagicalEssence + 1);
+                            Driver.player.inventory.setResource("Magical Essence", currentMagicalEssence + 1);
 
                         } else if (scavenge % 3 == 0) {
                             harvestLabel.setText("Tongue Fern harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/.wav"); // TODO: add magical essence sfx
 
-                            int currentTongueFern = inventory.getResource("Tongue Fern");
+                            int currentTongueFern = Driver.player.inventory.getResource("Tongue Fern");
                             // Increment TongueFern resource variable
-                            inventory.setResource("Tongue Fern", currentTongueFern + 1);
+                            Driver.player.inventory.setResource("Tongue Fern", currentTongueFern + 1);
 
                         } else {
                             harvestLabel.setText("Spleenwort harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/.wav"); // TODO: play correct sfx
 
-                            int currentSpleenwort = inventory.getResource("Spleenwort");
+                            int currentSpleenwort = Driver.player.inventory.getResource("Spleenwort");
                             // Increment Spleenwort resource variable
-                            inventory.setResource("Spleenwort", currentSpleenwort + 1);
+                            Driver.player.inventory.setResource("Spleenwort", currentSpleenwort + 1);
                         }
                     }
                     // update resource in inventory
-                    inventory.updateResourceLabels();
+                    Driver.player.inventory.updateResourceLabels();
                     progress = 0;
                     ore++;
                     scavenge++;
