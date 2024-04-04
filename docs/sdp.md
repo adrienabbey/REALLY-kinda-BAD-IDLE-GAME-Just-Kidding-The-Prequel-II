@@ -39,7 +39,7 @@
 
 * Various stretch goals regarding additional components for the game.
 
-* MVP Implementation - End of development - April 5th.
+* MVP Implementation - End of development - April 8th.
 
 ## Change Log
 
