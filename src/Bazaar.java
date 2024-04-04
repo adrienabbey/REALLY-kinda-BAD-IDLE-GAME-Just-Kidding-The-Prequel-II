@@ -34,7 +34,7 @@ import java.awt.BorderLayout;
  Current items that can be bought at the secret merchant: Wood, Stone, Metal, Meat, Pelt, 
  Potion, Tongue Fern, Spleenwort, Magical Essence, Lengendary Potion of Lepus...
  *
- * TODO: add prices to items and add a way to buy/sell equipment. 
+ * TODO: add prices to items. 
  */
 
 class Bazaar extends JPanel {
@@ -44,7 +44,7 @@ class Bazaar extends JPanel {
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
     private boolean secretMerchantScreenOpen = false; // Flag to track if the secret merchant screen is open. 
     private int secretIncrement = 1; // variable that determines when the secret merchant will appear.
-    private JPanel mainPanel1; // Declare buy at class level
+    private JPanel mainPanel1; // Declare buy panel at class level
     private JPanel mainPanel2; // Declare sell panel at class level
     
     @Override
@@ -127,9 +127,7 @@ class Bazaar extends JPanel {
          * 
          * 
          */
-        // Buy button adds a potion to the player's inventory
-
-
+        // Buy button opens the UI for the buy screen
         buy.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
             if (buyScreenOpen == false) { // Check if buy screen is not already open
@@ -275,9 +273,7 @@ class Bazaar extends JPanel {
          * 
          * 
          */
-        // Sell button to sell equipment or potions for gold
-
-        
+        // sell button opens the UI for sell screen        
         sell.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
             if (sellScreenOpen == false) { // Check if sell screen is not already open
@@ -420,7 +416,7 @@ class Bazaar extends JPanel {
          * 
          * 
          */
-        // Buy button adds a potion to the player's inventory
+        // secret merchant button opens the secret merchant screen, removes all of bazaar components when doing so, re-adds and repaints original bazaar components after leaving secret merhcnat screen. 
         secretMerchant.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav"); // play button sound effect
             MusicPlayer.playMusic("assets/Music/secret-merchant-bgm.wav");
@@ -572,7 +568,7 @@ class Bazaar extends JPanel {
 
                     // Code for when a buy button is pressed.
                     buyItemButton.addActionListener(sellEvent -> {
-                        // If Gold is greater than 0 then buy resource,, else output error message. 
+                        // If Gold is greater than 0 then buy resource, else output error message. 
                         if ((inventory.getResource("Gold") > 0)) {
                             err_message.setText("");
                             inventory.setResource(resourceName, inventory.getResource(resourceName)  + 1); // add the resource from inventory
@@ -615,8 +611,6 @@ class Bazaar extends JPanel {
             revalidate();
             repaint();
             SFX.playSound("assets/SFX/meow-01-86859.wav"); // play meow sound effect when entering secret shop
-        } else {
-            // JOptionPane.showMessageDialog(this, "Only one secret screen can be opened at a time.", "Secret Merchant Screen Error", JOptionPane.ERROR_MESSAGE);
         }
     });
 
@@ -625,7 +619,7 @@ class Bazaar extends JPanel {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
-                 // TODO: Add inventory implementation
+                 // TODO: Add proper inventory UI implementation
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -636,7 +630,7 @@ class Bazaar extends JPanel {
             try {
 
                 secretIncrement++; // increment scrent merchant counter. 
-                if (secretIncrement % 4 == 0) { // adds secret merchant screen every 3 bazaar visits. 
+                if (secretIncrement % 4 == 0) { // adds secret merchant screen after every 4 fourth visit. 
                     add(secretMerchant);
                 } else {
                     remove(secretMerchant); // removes secert merchant screen after leaving. 
@@ -665,7 +659,6 @@ class Bazaar extends JPanel {
                 SFX.stopAllNonLoopingSounds();
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/town-bgm.wav");
-                Thread.sleep(500); // pause for 250 to allow sounds to load properly, if not sfx volume might get distorted. 
                 SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);  
             } catch (Exception e1) {
                 e1.printStackTrace();
