@@ -1,3 +1,4 @@
+
 // Singleton class so that there's only one instance of it throughout the game.
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +10,9 @@ public class Inventory extends JPanel {
 
     private Map<String, Integer> resources; // Map to store resource amounts
     private JLabel resourceLabel; // Label to display total space
-    public static boolean backToHomestead = false; //flag that keeps trck if player accessed inventory from the homestead screen. 
-    public static boolean backToTown = false; //flag that keeps trck if player accessed inventory from the town screen. 
+    public static boolean backToHomestead = false; // flag that keeps trck if player accessed inventory from the
+                                                   // homestead screen.
+    public static boolean backToTown = false; // flag that keeps trck if player accessed inventory from the town screen.
 
     private Inventory() {
         setLayout(new BorderLayout());
@@ -55,21 +57,22 @@ public class Inventory extends JPanel {
         back.setForeground(new Color(255, 255, 255)); // White text
         back.setBackground(new Color(139, 69, 19)); // Dark wood color
         back.setFocusPainted(false); // Remove focus ring around the button
-        
+
         // Add component to the panel
         add(back, BorderLayout.NORTH);
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
-            // if player accessed inventory from homestead, town, or bazaar go back to respective screen
+            // if player accessed inventory from homestead, town, or bazaar go back to
+            // respective screen
             if (backToHomestead == true) {
-                Driver.changePanel("home"); 
+                Driver.changePanel("home");
             } else if (backToTown == true) {
-                Driver.changePanel("town"); 
+                Driver.changePanel("town");
                 backToTown = false;
             } else {
-                Driver.changePanel("shop"); 
+                Driver.changePanel("shop");
             }
         });
     }
@@ -93,14 +96,14 @@ public class Inventory extends JPanel {
             return 0;
         }
     }
-    
+
     // Method to set Gold amount
     public void setGold(int amount) {
         int currentGold = resources.get("Gold");
         resources.put("Gold", currentGold + amount);
         updateResourceLabels(); // Update the UI to reflect the changes
     }
-    
+
     // Update resource labels
     public void updateResourceLabels() {
         // Update resource labels
@@ -114,7 +117,7 @@ public class Inventory extends JPanel {
     }
 
     public Map<String, Integer> getResources() {
-    return resources;
+        return resources;
     }
 
     public static Inventory getInstance() {
