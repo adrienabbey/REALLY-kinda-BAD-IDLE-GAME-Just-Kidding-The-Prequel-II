@@ -109,7 +109,7 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                SFX.playSound(""); // TODO add skeleton sfx
+                SFX.playSound("assets\\SFX\\RPG Sound Pack\\NPC\\shade\\shade6.wav"); // skeleton sfx
             }
             if (page == 4) {
                 text.setText("<html><div style='text-align: center;'>=== Entry 004: Cyclopian Gentleman === <br><br> &nbsp; This impecably dressed giant just radiates cultured sophistication.  He's even wearing a tophat with a monocle over his single, giant eye.  Unfortunately, you're too small to notice and he's about to step all over you.  Which is not to say he didn't actually see you, he just doesn't care.<br><br> Gold Reward: 4  <br> Muscle: 10<br>Brain: 10<br> Heart: 10</div></html>");
@@ -120,7 +120,7 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                SFX.playSound(""); // TODO add cyclops sfx
+                SFX.playSound("assets\\SFX\\RPG Sound Pack\\NPC\\giant\\giant5.wav"); // cyclops sfx
             }
             if (page == 5) {
                 text.setText("<html><div style='text-align: center;'>=== Entry 005: Creepy Geoduck === <br><br> &nbsp; Its a duck made out of rocks. Very scary. <br><br> Gold Reward: 4  <br> Muscle: 4<br>Brain: 4<br> Heart: 4</div></html>");
@@ -131,7 +131,7 @@ class Library extends JPanel {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                SFX.playSound(""); // TODO add geoduck sfx
+                SFX.playSound("assets\\SFX\\RPG Sound Pack\\NPC\\gutteral beast\\mnstr15.wav"); // geoduck sfx
                 page = -1; // reset page to start when at the end of book
             }
             page++;

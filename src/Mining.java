@@ -14,7 +14,7 @@ public class Mining extends JPanel {
     private JButton autoMineButton; // Button for mining
     private Timer timer;
     private Image bgImage;
-    private JLabel grantedLabel; // Label to display wood granted message
+    private JLabel harvestLabel; // Label to display wood harvest message
     private boolean auto; // flag that turns auto processes on or off
     private boolean currentlyScavenge = false; // flag to determine if process is scavengeing. Used to grant appropriate resource.
     private boolean currentlyMining = false; // flag to determine if process is mining. Used to grant appropriate resource.
@@ -65,10 +65,10 @@ public class Mining extends JPanel {
         progressBar.setOpaque(true); // Make the background visible
         progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
 
-        // Create label for ore granted message
-        grantedLabel = new JLabel("");
-        grantedLabel.setFont(new Font("Serif", Font.BOLD, 24));
-        grantedLabel.setForeground(Color.GREEN); // Green color for ore granted message
+        // Create label for ore harvest message
+        harvestLabel = new JLabel("");
+        harvestLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        harvestLabel.setForeground(Color.GREEN); // Green color for ore harvest message
 
         // Add components to the panel
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
@@ -77,7 +77,7 @@ public class Mining extends JPanel {
         buttonPanel.add(leave);
         add(buttonPanel, BorderLayout.SOUTH);
         add(progressBar, BorderLayout.CENTER);
-        add(grantedLabel, BorderLayout.NORTH); // Add ore granted label to the panel
+        add(harvestLabel, BorderLayout.NORTH); // Add ore harvest label to the panel
 
         // Action listener for the 'Scavenge Area' button
         autoScavengeButton.addActionListener(new ActionListener() {
@@ -142,7 +142,7 @@ public class Mining extends JPanel {
                 }
 
                 if (progress == 40) {
-                    grantedLabel.setText(""); // erase grant label when progress reaches 40
+                    harvestLabel.setText(""); // erase grant label when progress reaches 40
                 }
                 
                 if (progress >= 100) {
@@ -150,7 +150,7 @@ public class Mining extends JPanel {
 
                     if (currentlyMining) {
                         if (ore % 5 == 0) {
-                            grantedLabel.setText("Metal granted!"); // Update metal granted label
+                            harvestLabel.setText("Metal harvest!"); // Update metal harvest label
                             SFX.playSound("assets/SFX/metal-ringing1.wav"); 
 
                             int currentMetal = inventory.getResource("Metal");
@@ -158,7 +158,7 @@ public class Mining extends JPanel {
                             inventory.setResource("Metal", currentMetal + 1);
 
                         } else {
-                            grantedLabel.setText("Stone granted!"); // Update stone granted label
+                            harvestLabel.setText("Stone harvest!"); // Update stone harvest label
                             SFX.playSound("assets/SFX/stone-gathering-sfx.wav"); 
 
                             int currentStone = inventory.getResource("Stone");
@@ -170,7 +170,7 @@ public class Mining extends JPanel {
                     
                     if (currentlyScavenge) {
                         if (scavenge % 5 == 0) {
-                            grantedLabel.setText("Magical Essence granted!"); // Update granted label
+                            harvestLabel.setText("Magical Essence harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/.wav");  // TODO: add magical essence sfx
 
                             int currentMagicalEssence = inventory.getResource("Magical Essence");
@@ -178,7 +178,7 @@ public class Mining extends JPanel {
                             inventory.setResource("Magical Essence", currentMagicalEssence + 1);
 
                         } else if (scavenge % 3 == 0) {
-                            grantedLabel.setText("Tongue Fern granted!"); // Update granted label
+                            harvestLabel.setText("Tongue Fern harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/.wav");  // TODO: add magical essence sfx
 
                             int currentTongueFern = inventory.getResource("Tongue Fern");
@@ -186,7 +186,7 @@ public class Mining extends JPanel {
                             inventory.setResource("Tongue Fern", currentTongueFern + 1);
                     
                         } else {
-                            grantedLabel.setText("Spleenwort granted!"); // Update granted label
+                            harvestLabel.setText("Spleenwort harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/.wav"); // TODO: play correct sfx 
 
                             int currentSpleenwort = inventory.getResource("Spleenwort");
@@ -218,7 +218,7 @@ public class Mining extends JPanel {
         if (!auto) {
             auto = true; // Start auto scavenging
             autoScavengeButton.setText("Stop Scavenging...");
-            grantedLabel.setText(""); 
+            harvestLabel.setText(""); 
             timer.start(); // Start the timer for auto scavenging
         } else {
             auto = false; // Stop auto scavenging
@@ -233,7 +233,7 @@ public class Mining extends JPanel {
         if (!auto) {
             auto = true; // Start auto mining
             autoMineButton.setText("Stop Mining Ore...");
-            grantedLabel.setText(""); 
+            harvestLabel.setText(""); 
             timer.start(); // Start the timer for auto mining
         } else {
             auto = false; // Stop auto mining
