@@ -14,11 +14,11 @@
 ## Notes
 - Code Freeze
 - Focus on fixing / polish all items that will be recorded for the presentation
-- Create a Github release for MVP Implementation
+	- Create a Github release for MVP Implementation
 - Presentation
-- Video clips, slides, script, create user stories
+	- Video clips, slides, script, create user stories
 - Documentation Updates
-- Requirements, Design, Meeting Notes, etc.
+	- Requirements, Design, Meeting Notes, etc.
 
 ## Action Items
 * Group Member `Adrien`:
