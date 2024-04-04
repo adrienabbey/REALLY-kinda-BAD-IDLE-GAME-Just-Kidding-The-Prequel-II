@@ -12,11 +12,18 @@
 8.  **Update requiremnets and design with added features** - 
 
 ## Notes
+- Code Freeze
+- Focus on fixing / polish all items that will be recorded for the presentation
+- Create a Github release for MVP Implementation
+- Presentation
+- Video clips, slides, script, create user stories
+- Documentation Updates
+- Requirements, Design, Meeting Notes, etc.
 
 ## Action Items
 * Group Member `Adrien`:
 	-  Add inventory implementation to player object so that potions work properly
-	- 
+	- Add getters in equipment class
 * Group Member `Brandon`:
 	- Add stats to character screen
 	- implement gear upgrading
@@ -24,12 +31,13 @@
 * Group Member `Muhammed`:
  	- Add inventory implementation to player object so that potions work properly
  	- Add release notes
- 	- Update requirements and design 
+ 	- Update requirements and design documentation
     	- snapshot vidoes
 
 * Group Member `Luke`:
 	- presentation slides
-	- 
+	- script for presentation
+	
 
 
 ## Changelog
