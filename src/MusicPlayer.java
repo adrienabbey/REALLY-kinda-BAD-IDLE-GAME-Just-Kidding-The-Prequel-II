@@ -22,7 +22,7 @@ public class MusicPlayer {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     private static boolean isMuted = false;
-    private static float currentVolume = -10.0f;
+    private static float currentVolume = -2.0f;// variable that alters default sound volume
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
 
     public static void setcurrentVolume(float volume) {
@@ -110,6 +110,7 @@ public class MusicPlayer {
     // Method to toggle volume for the java slider.
     public static void setVolume(float volume) {
         if (currentClip != null && currentClip.isRunning() && isMuted == false) {
+            // A dB change of the MASTER_GAIN by a value of 6.0206 represents a doubling of the volume compared to its value at 0.0. This maximum value is so that the volume control remains withireasonable bounds, preventing excessively loud or distorted audio.
             FloatControl volumeControl = (FloatControl) currentClip.getControl(FloatControl.Type.MASTER_GAIN);
             volumeControl.setValue(volume);
             setcurrentVolume(volume);
