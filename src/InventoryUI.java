@@ -24,9 +24,11 @@ public class InventoryUI extends JPanel {
         // Resources panel
         JPanel resourcePanel = new JPanel(new GridLayout(4, 1));
         // Initialize resource labels
-        for (String resourceName : Driver.player.inventory.resources.keySet()) {
-            JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
-            resourcePanel.add(label);
+        if (Driver.player != null) {
+            for (String resourceName : Driver.player.inventory.resources.keySet()) {
+                JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
+                resourcePanel.add(label);
+            }
         }
         resourceLabel = new JLabel("Total Space: 0/8");
         resourcePanel.add(resourceLabel);

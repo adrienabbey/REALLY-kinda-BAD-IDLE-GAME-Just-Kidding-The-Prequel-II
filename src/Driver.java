@@ -100,7 +100,7 @@ class Driver extends JFrame {
         driverPanel.add(mining, "mine");
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
-        driverPanel.add(player.inventory, "inventory");
+        // driverPanel.add(player.inventory, "inventory");
         // driverPanel.add(farm, "farm");
         // driverPanel.add(craft, "craft");
         // driverPanel.add(charPanel, "charPanel");
