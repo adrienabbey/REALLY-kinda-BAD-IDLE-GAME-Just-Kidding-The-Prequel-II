@@ -39,7 +39,32 @@ class Monster extends GameCharacter {
      */
     public Monster(MonsterName name) {
         // Create a "temporary" monster that we forcibly change (painfully):
-        super("FIXME!", 999, 999, 999);
+        // super("FIXME!", 999, 999, 999);
+        super((switch (name){
+            case PETROCK -> "Rabid Pet Rock";
+            case HOBOGOBLIN -> "Hobo Goblin";
+            case CYCLOPIAN_GENTLEMAN -> "Cyclopian Gentleman";
+            case GEODUCK -> "Creepy Geoduck";
+            case PIRATE_SKELETON -> "Cute Skelly Pirate";
+        }), (switch (name){
+            case PETROCK -> 2;
+            case HOBOGOBLIN -> 3;
+            case CYCLOPIAN_GENTLEMAN -> 10;
+            case GEODUCK -> 4;
+            case PIRATE_SKELETON -> 8;
+        }), (switch (name){
+            case PETROCK -> 1;
+            case HOBOGOBLIN -> 1;
+            case CYCLOPIAN_GENTLEMAN -> 10;
+            case GEODUCK -> 8;
+            case PIRATE_SKELETON -> 4;
+        }), (switch (name){
+            case PETROCK -> 3;
+            case HOBOGOBLIN -> 2;
+            case CYCLOPIAN_GENTLEMAN -> 10;
+            case GEODUCK -> 6;
+            case PIRATE_SKELETON -> 6;
+        }));
 
         // TODO: Balance these values.
 
@@ -50,7 +75,7 @@ class Monster extends GameCharacter {
                         "Someone glued googley eyes onto a pet rock, then abandoned it. Also, it has rabies and wants to kill you.");
                 setMuscle(2);
                 setBrain(1);
-                setHealth(3);
+                setHeart(3);
                 goldRewarded = 2;
                 isBoss = false;
                 castsMagic = false;
