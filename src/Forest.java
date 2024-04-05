@@ -131,7 +131,6 @@ public class Forest extends JPanel {
             try {
                 timer.stop();
                 progressBar.setValue(0);
-                //((Timer)e.getSource()).stop();
                 auto = false; // stop auto mining if left panel
                 resetProgress = true;
                 currentlyHunting = false; // set hunting flag to default
