@@ -24,6 +24,7 @@ class Driver extends JFrame {
     private static JPanel world = new JPanel();
     private static JPanel dungeon = new JPanel();
     private static JPanel dungeonInfo = new JPanel();
+    public static JPanel inventoryUI = new JPanel();
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     public static CharacterScreen charScreen;

@@ -6,16 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory extends JPanel {
-    // private static Inventory instance;
 
-    private Map<String, Integer> resources; // Map to store resource amounts
-    private JLabel resourceLabel; // Label to display total space
-    public static boolean backToHomestead = false; // flag that keeps trck if player accessed inventory from the
-                                                   // homestead screen.
-    public static boolean backToTown = false; // flag that keeps trck if player accessed inventory from the town screen.
+    public Map<String, Integer> resources; // Map to store resource amounts
+    public boolean backToHomestead = false; // flag that keeps trck if player accessed inventory from the
+                                            // homestead screen.
+    public boolean backToTown = false; // flag that keeps trck if player accessed inventory from the town screen.
 
     public Inventory() {
-        setLayout(new BorderLayout());
 
         // Initialize resources map
         resources = new HashMap<>();
@@ -31,57 +28,11 @@ public class Inventory extends JPanel {
         resources.put("Tongue Fern", 0);
         resources.put("Legendary Potion of Lepus", 0);
 
-        // Inventory panel
-        JPanel inventoryPanel = new JPanel(new GridLayout(2, 4));
-        // Initialize item labels (you can modify this part as needed)
-        for (int i = 0; i < 8; i++) {
-            JLabel itemLabel = new JLabel("Empty");
-            inventoryPanel.add(itemLabel);
-        }
-        add(inventoryPanel, BorderLayout.CENTER);
-
-        // Resources panel
-        JPanel resourcePanel = new JPanel(new GridLayout(4, 1));
-        // Initialize resource labels
-        for (String resourceName : resources.keySet()) {
-            JLabel label = new JLabel(resourceName + ": " + resources.get(resourceName));
-            resourcePanel.add(label);
-        }
-        resourceLabel = new JLabel("Total Space: 0/8");
-        resourcePanel.add(resourceLabel);
-        add(resourcePanel, BorderLayout.SOUTH);
-
-        // Create the 'Back' button with custom styling
-        JButton back = new JButton("<- Back");
-        back.setFont(new Font("Serif", Font.BOLD, 24));
-        back.setForeground(new Color(255, 255, 255)); // White text
-        back.setBackground(new Color(139, 69, 19)); // Dark wood color
-        back.setFocusPainted(false); // Remove focus ring around the button
-
-        // Add component to the panel
-        add(back, BorderLayout.NORTH);
-
-        // Action listener for the 'Back' button
-        back.addActionListener(e -> {
-            SFX.playSound("assets/SFX/interface1.wav");
-            // if player accessed inventory from homestead, town, or bazaar go back to
-            // respective screen
-            if (backToHomestead == true) {
-                Driver.changePanel("home");
-            } else if (backToTown == true) {
-                Driver.changePanel("town");
-                backToTown = false;
-            } else {
-                Driver.changePanel("shop");
-            }
-        });
-    }
-
     // Method to set resource amount
     public void setResource(String resourceName, int amount) {
         if (resources.containsKey(resourceName)) {
             resources.put(resourceName, amount);
-            updateResourceLabels();
+            Driver.inventoryUI.updateResourceLabels();
         } else {
             System.err.println("Resource '" + resourceName + "' does not exist.");
         }
@@ -97,34 +48,7 @@ public class Inventory extends JPanel {
         }
     }
 
-    // Method to set Gold amount
-    // public void setGold(int amount) {
-    // int currentGold = resources.get("Gold");
-    // resources.put("Gold", currentGold + amount);
-    // updateResourceLabels(); // Update the UI to reflect the changes
-    // }
-
-    // Update resource labels
-    public void updateResourceLabels() {
-        // Update resource labels
-        for (String resourceName : resources.keySet()) {
-            for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
-                if (component instanceof JLabel && ((JLabel) component).getText().startsWith(resourceName)) {
-                    ((JLabel) component).setText(resourceName + ": " + resources.get(resourceName));
-                }
-            }
-        }
-    }
-
     public Map<String, Integer> getResources() {
         return resources;
     }
-
-    // public static Inventory getInstance() {
-    // if (instance == null) {
-    // instance = new Inventory();
-    // }
-    // return instance;
-    // }
-
 }
