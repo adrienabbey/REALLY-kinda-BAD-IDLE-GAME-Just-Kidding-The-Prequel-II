@@ -28,14 +28,6 @@ public class Inventory extends JPanel {
         resources.put("Tongue Fern", 0);
         resources.put("Legendary Potion of Lepus", 0);
 
-    // Method to set resource amount
-    public void setResource(String resourceName, int amount) {
-        if (resources.containsKey(resourceName)) {
-            resources.put(resourceName, amount);
-            Driver.inventoryUI.updateResourceLabels();
-        } else {
-            System.err.println("Resource '" + resourceName + "' does not exist.");
-        }
     }
 
     // Method to get resource amount
@@ -48,7 +40,18 @@ public class Inventory extends JPanel {
         }
     }
 
+    // Method to set resource amount
+    public void setResource(String resourceName, int amount) {
+        if (resources.containsKey(resourceName)) {
+            resources.put(resourceName, amount);
+            Driver.inventoryUI.updateResourceLabels();
+        } else {
+            System.err.println("Resource '" + resourceName + "' does not exist.");
+        }
+    }
+
     public Map<String, Integer> getResources() {
         return resources;
     }
+
 }
