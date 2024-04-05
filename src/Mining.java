@@ -201,7 +201,7 @@ public class Mining extends JPanel {
                         }
                     }
                     // update resource in inventory
-                    Driver.player.inventory.updateResourceLabels();
+                    Driver.inventoryUI.updateResourceLabels();
                     progress = 0;
                     ore++;
                     scavenge++;

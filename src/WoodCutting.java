@@ -287,7 +287,7 @@ public class WoodCutting extends JPanel {
                     }
 
                     // Update resource in inventory
-                    Driver.player.inventory.updateResourceLabels();
+                    Driver.inventoryUI.updateResourceLabels();
 
                     progress = 0;
                     if (!auto) {

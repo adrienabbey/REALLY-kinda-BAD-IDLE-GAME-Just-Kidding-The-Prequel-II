@@ -203,7 +203,7 @@ class Shop extends JPanel {
                                         Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
                                                                                                 // inventory
                                 Driver.player.setGold(Driver.player.getGold() - 1); // decrease gold
-                                Driver.player.inventory.updateResourceLabels(); // Update the labels
+                                Driver.inventoryUI.updateResourceLabels(); // Update the labels
                                 goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold
                                                                                                 // label
                                 buyItemButton.setText(
@@ -361,7 +361,7 @@ class Shop extends JPanel {
                                                                                                     // resource from
                                                                                                     // inventory
                                     Driver.player.setGold(Driver.player.getGold() + 1);
-                                    Driver.player.inventory.updateResourceLabels(); // Update the labels
+                                    Driver.inventoryUI.updateResourceLabels(); // Update the labels
                                     goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the
                                                                                                     // gold label
                                     sellItemButton.setText("Sell " + resourceName + " ("
@@ -572,7 +572,7 @@ class Shop extends JPanel {
                                         Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
                                                                                                 // inventory
                                 Driver.player.setGold(Driver.player.getGold() - 1);
-                                Driver.player.inventory.updateResourceLabels(); // Update the labels
+                                Driver.inventoryUI.updateResourceLabels(); // Update the labels
                                 goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the
                                                                                                  // gold label
                                 buyItemButton.setText(

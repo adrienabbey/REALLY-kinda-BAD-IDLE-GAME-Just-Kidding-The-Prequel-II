@@ -104,7 +104,7 @@ class Homestead extends JPanel {
                 Driver.player.inventory.setResource("Metal", Driver.player.inventory.getResource("Metal") - 100);
 
                 // Update resource labels
-                Driver.player.inventory.updateResourceLabels();
+                Driver.inventoryUI.updateResourceLabels();
 
                 // Remove the purchase button and info label
                 remove(purchase);
@@ -142,7 +142,7 @@ class Homestead extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
-            Inventory.backToHomestead = false;
+            Driver.player.inventory.backToHomestead = false;
             // set labels and flag back to default
             info.setText(
                     "<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>");
@@ -178,7 +178,7 @@ class Homestead extends JPanel {
         // Takes player to inventory screen
         inventory1.addActionListener(e -> {
             try {
-                Inventory.backToHomestead = true;
+                Driver.player.inventory.backToHomestead = true;
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
 
