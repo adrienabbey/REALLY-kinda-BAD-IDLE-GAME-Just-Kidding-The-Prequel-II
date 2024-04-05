@@ -160,7 +160,8 @@ Credits for sound effects -
 * Mineshaft Ambient noise: 
     Used two tracks overlayed on top of each other:
     1. 
-    Title: Red Dead Redemption 2 - Mineshaft Ambiance (creaking, white noise, bats)Channel: Ambiance Magic
+    Title: Red Dead Redemption 2 - Mineshaft Ambiance (creaking, white noise, bats)
+    Channel: Ambiance Magic
     Source: https://www.youtube.com/watch?v=II63aV4hJIw
     2. 
     Title: Fireplace loop Original Noise
