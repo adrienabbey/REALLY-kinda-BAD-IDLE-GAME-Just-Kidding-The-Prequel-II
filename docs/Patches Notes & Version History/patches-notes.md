@@ -16,61 +16,60 @@ Optimized forest and mineshaft:
 
 ---
 ### Patch / bugfix notes for 3/27/24 - 4/4/24
+0. Added a bunch of comments summarizing the class does and how they work for a 
+   majority of the classes in the source code. 
 
-Added a bunch of comments summarizing the class does and how they work for a
-majority of the classes in the source code.
+1. Changed background image for library and homestead.
+ 
+2. Changed background music for town, credits, homestead, library, and secret merchant. 
+   Edited background music using a combination of audacity and clipchamp, Used the 
+   equalizer in audacity to fine-tune background music and create greater immersion.
+   
+   - Town music            -> Fantasy medieval village
+   - Homestead music       -> Old Pine Village
+   - secret merchant music -> Industrious Ferret
+   - Library music         -> Wonder and Magic
+   - Credits music         -> Song of the North
+   
+3. Added ambient noise to town, mineshaft, and forest. 
 
-Changed background image for library and homestead.
+4. Added sound effect to hunting
+   Used clipchamp to overlay different recording to create hunting-sfx.
+   
+5. Appended references to credits and licensing with all newly added music and sfx. 
 
-Changed background music for town, credits, homestead, library, and secret merchant.
-Edited background music using a combination of audacity and clipchamp, Used the
-equalizer in audacity to fine-tune background music and create greater immersion.
-
-Town music -> Fantasy medieval village
-Homestead music -> Old Pine Village
-secret merchant music -> Industrious Ferret
-Library music -> Wonder and Magic
-Credits music -> Song of the North
-Added ambient noise to town, mineshaft, and forest.
-
-Added sound effect to hunting
-Used clipchamp to overlay different recording to create hunting-sfx.
-
-Appended references to credits and licensing with all newly added music and sfx.
-
-Fixed issue with ambient sound effects getting interrupted or not playing.
-Also made it so ambient sfx loop along with the backgrounnd music.
-
-Overloaded playSound() method in the SFX class so it can handle looped sound effects.
-Added an inner wrapper class to tag clips with loop flag.
-Modifed stopAllSounds() so that it properly releases resources
-for stopped clips.
-
-Renamed Shop -> Bazaar, Woodcutting -> Forest, Mining -> Mineshaft, Home -> Homestead.
-I think having the class names be the in-game names makes it more understandable when
-looking through the source code.
-
-Experimented with animated backgrounds by using the VLCJ framework to play a video from an embedded media player.
-Couldnt get working so put it on the backburner for now. Did get some semi-decent ai animations working though.
-Animation attempts are located in the videos directory in assets. Used a combination of Runway to animate still images
-and edit videos, Ezgif to reverse and speed up / slow down videos, and Vmake and Tensorpix to enhance video quality.
-
-Volume Optimization: Highered default volumes of SFX and Music. (altered the currentVolume
-variable in each class to do this). Lowered dB of interface (button clicks), voice overs, and other sfx
-in audacity. Should be balanced decently well now.
+6. Fixed issue with ambient sound effects getting interrupted or not playing. 
+   Also made it so ambient sfx loop along with the backgrounnd music. 
+   
+7. Overloaded playSound() method in the SFX class so it can handle looped sound effects. 
+   Added an inner wrapper class to tag clips with loop flag. 
+   Modifed stopAllSounds() so that it properly releases resources
+   for stopped clips. 
+   
+8. Renamed Shop -> Bazaar, Woodcutting -> Forest, Mining -> Mineshaft, Home -> Homestead.
+   I think having the class names be the in-game names makes it more understandable when
+   looking through the source code. 
+ 
+9. Experimented with animated backgrounds by using the VLCJ framework to play a video from an embedded media player.
+   Couldnt get working so put it on the backburner for now. Did get some semi-decent ai animations working though. 
+   Animation attempts are located in the `videos` directory in assets. Used a combination of `Runway` to animate still images 
+   and edit videos, `Ezgif` to reverse and speed up / slow down videos, and `Vmake` and `Tensorpix` to enhance video quality. 
+ 
+10. Volume Optimization: Highered default volumes of SFX and Music. (altered the `currentVolume` 
+    variable in each class to do this). Lowered dB of interface (button clicks), voice overs, and other sfx
+    in audacity. Should be balanced decently well now.  
 
 Known bugs:
-
-Ambient sfx will not be stopped proerly every so often after leaving an area and will continue playing. This happens rarely (like every 5-10 panel changes) so it should not affecrt snapshot videos.
+1. Ambient sfx will not be stopped proerly every so often after leaving an area and will continue playing. This happens rarely (like every 5-10 panel changes) so it should not affecrt snapshot videos. 
 
 ---
 ### Patch / bugfix notes for 4/1/24:
 
-Added button that drops down character status bar in forest panel
-Status bar curently shows health, magic, and gold
-Harvesting resources regens 10% of max health and magic.
-Added relative scaling to buttons in World screen
-Added dungeon error message that pops up when the player tries to enter
+* Added button that drops down character status bar in forest panel
+* Status bar curently shows health, magic, and gold
+* Harvesting resources regens 10% of max health and magic.
+* Added relative scaling to buttons in World screen
+* Added dungeon error message that pops up when the player tries to enter
 the dungeon with low health. Explains how to regen health. Disappears after 2 seconds.
 
 --- 
