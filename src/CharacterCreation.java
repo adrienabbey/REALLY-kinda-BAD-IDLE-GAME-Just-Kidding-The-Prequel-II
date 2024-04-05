@@ -11,7 +11,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 // This class manages the screen for creating a new character
-class CharacterCreation extends JPanel{
+class CharacterCreation extends JPanel {
 
     private int statPoints = 10;
     private int muscle = 0;
@@ -20,15 +20,17 @@ class CharacterCreation extends JPanel{
 
     /**
      * This function hosts the character creation screen
-     * It lets you assign stats, name your character, and then instantiates a PlayerCharacter object and launches to the map
+     * It lets you assign stats, name your character, and then instantiates a
+     * PlayerCharacter object and launches to the map
+     * 
      * @throws IOException
      */
-    public CharacterCreation() throws IOException{
+    public CharacterCreation() throws IOException {
 
         // This is all the physical gui elements and their properties
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        //this.setBackground(Color.LIGHT_GRAY); // sets color of background
-        
+        // this.setBackground(Color.LIGHT_GRAY); // sets color of background
+
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         // TODO - Make sure this is long enough to fit all the names we want to allow
         JLabel nameLabel = new JLabel("Name");
@@ -87,8 +89,8 @@ class CharacterCreation extends JPanel{
         stats.add(tougher);
         stats.add(heartLabel);
 
-        //format buttons
-        for (int i = 0; i < buttons.size(); i++){
+        // format buttons
+        for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
             buttons.get(i).setPreferredSize(new Dimension(200, 40));
@@ -98,19 +100,18 @@ class CharacterCreation extends JPanel{
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
         }
 
-        //submit button formating
+        // submit button formating
         submit.setPreferredSize(new Dimension(200, 80));
         submit.setMaximumSize(new Dimension(200, 80));
         submit.setBackground(customColorBlue);
         submit.setForeground(Color.WHITE);
         submit.setFont(new Font("Serif", Font.BOLD, 24));
 
-        //Label formating
-        for (int i = 0; i < labels.size(); i++){
+        // Label formating
+        for (int i = 0; i < labels.size(); i++) {
             labels.get(i).setForeground(customColorBrown);
             labels.get(i).setFont(new Font("Serif", Font.BOLD, 18));
         }
-
 
         muscleLabel.setAlignmentX(RIGHT_ALIGNMENT);
         brainLabel.setAlignmentX(RIGHT_ALIGNMENT);
@@ -146,7 +147,7 @@ class CharacterCreation extends JPanel{
         // Reduce Strength
         weaker.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface6.wav");
-            if(muscle > 0){
+            if (muscle > 0) {
                 muscle--;
                 statPoints++;
                 points.setText("You have :" + statPoints + " stat points left to spend.");
@@ -162,7 +163,7 @@ class CharacterCreation extends JPanel{
         // Increase Strength
         stronger.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface6.wav");
-            if(statPoints > 0){
+            if (statPoints > 0) {
                 muscle++;
                 statPoints--;
                 points.setText("You have :" + statPoints + " stat points left to spend.");
@@ -178,7 +179,7 @@ class CharacterCreation extends JPanel{
         // Reduce Intelligence
         dumber.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface6.wav");
-            if(brain > 0){
+            if (brain > 0) {
                 brain--;
                 statPoints++;
                 points.setText("You have :" + statPoints + " stat points left to spend.");
@@ -194,7 +195,7 @@ class CharacterCreation extends JPanel{
         // Increase Intelligence
         smarter.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface6.wav");
-            if(statPoints > 0){
+            if (statPoints > 0) {
                 brain++;
                 statPoints--;
                 points.setText("You have :" + statPoints + " stat points left to spend.");
@@ -210,7 +211,7 @@ class CharacterCreation extends JPanel{
         // Reduce Constitution
         softer.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface6.wav");
-            if(heart > 0){
+            if (heart > 0) {
                 heart--;
                 statPoints++;
                 points.setText("You have :" + statPoints + " stat points left to spend.");
@@ -226,7 +227,7 @@ class CharacterCreation extends JPanel{
         // Increase Constitution
         tougher.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface6.wav");
-            if(statPoints > 0){
+            if (statPoints > 0) {
                 heart++;
                 statPoints--;
                 points.setText("You have :" + statPoints + " stat points left to spend.");
@@ -242,7 +243,8 @@ class CharacterCreation extends JPanel{
         // Submit character
         submit.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
-            PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10*statPoints, 1, 0);
+            PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10 * statPoints + 1000,
+                    1, 1);
             try {
                 Driver.setPlayer(player);
                 Driver.addCharScreen();
