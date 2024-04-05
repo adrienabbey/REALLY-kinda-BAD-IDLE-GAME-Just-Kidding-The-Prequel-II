@@ -14,13 +14,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    /* Constants */
    private static final int POTION_HEAL = 20; // TODO: Balance this number!
 
-   /* Variables */
-   // TODO: Determine base "starting" stats?
-   // TODO: This is set by the UI, so we can probably remove it?
-   private static final int startingMuscle = 3;
-   private static final int startingBrain = 3;
-   private static final int startingHeart = 3;
-
    /* Fields */
    // private int statpoints;
    private int gold;
@@ -28,15 +21,15 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    private int potionCount;
    private boolean isAwake = true;
    private int timeToWake = 0; // TODO: Is this something we're implementing?
-   // TODO: Implement the "Gear" class so players can have equipment:
-   // private Gear inventory;
+   private Equipment equipment; // Contains all the player's equipment.
 
    /* Constructors */
 
    // Simple constructor for starting player characters:
-   public PlayerCharacter(String name) {
-      super(name, startingMuscle, startingBrain, startingHeart);
-   }
+   // NOTE: NOT being used, I think.
+   // public PlayerCharacter(String name) {
+   // super(name, startingMuscle, startingBrain, startingHeart);
+   // }
 
    // Constructor for loading player stats from a save file?
    // TODO: Include player Gear loading.
@@ -48,6 +41,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
       this.gold = gold;
       this.potionBeltSize = potionBeltSize;
       this.potionCount = potionCount;
+      this.equipment = new Equipment();
    }
 
    /* Methods */
@@ -151,13 +145,17 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    public int setGold(int newGoldBalance) {
       return gold = newGoldBalance;
    }
-   
-   public void died(){
+
+   public void died() {
       isAwake = false;
       timeToWake = 5;
    }
 
    public boolean isAwake() {
       return isAwake;
+   }
+
+   public boolean doEquipmentUpgrade(int monsterLevel, boolean isBoss) {
+      return equipment.doUpgrade(monsterLevel, isBoss, this);
    }
 }

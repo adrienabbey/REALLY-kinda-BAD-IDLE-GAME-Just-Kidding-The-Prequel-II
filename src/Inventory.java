@@ -105,7 +105,7 @@ public class Inventory extends JPanel {
         }
     }
     
-    // Method to add to Gold amount
+    // Method to add to Gold to inventory when defeating monsters
     public void addGold(int amount) {
         int currentGold = resources.get("Gold");
         resources.put("Gold", currentGold + amount);
