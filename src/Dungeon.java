@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class Dungeon extends JPanel {
-    private Image backgroundImage;
-    private Monster enemy;
-    private PlayerCharacter player;
     private static Dice dice = new Dice(20);
     /**
      * This function hosts the dungeon screen with buttons to go to town or use a potion
