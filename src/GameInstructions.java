@@ -27,7 +27,7 @@ class GameInstructions extends JPanel {
         JButton back = new JButton("<- Back");
         back.setFont(new Font("Serif", Font.BOLD, 24));
         back.setForeground(new Color(255, 255, 255)); // White text
-        back.setBackground(new Color(139, 69, 19)); // Dark wood color
+        back.setBackground(new Color(139, 69, 19)); // Light wood color
         back.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the information label with custom styling

@@ -1,3 +1,8 @@
+/*
+ * Homestead Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -7,15 +12,25 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+/*
+ * Implements the "Homestead" panel accessed through World screen. Allows the player to purchase a homestead. Unlocking the homestead unlocks a greater inventory space, the farming functionaility, and crafting functionality. The inventory, farming, and crafting panels can be accessed directly from the homestead screen. 
+ * 
+ * Current cost in rsources to purchase: 1000 Gold, 250 Wood, 250 Stone, 100 Metal. Can tweak and optimize amounts later. 
+ * 
+ * TODO: Increase player inventory after purchasing homestead. Implement the crafting and farming classes. 
+ * 
+ * 
+ */
+
 class Homestead extends JPanel {
     Inventory inventory = Inventory.getInstance();
     private boolean purchaseConfirmation = false;
 
-        @Override
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
             try {
-                g.drawImage(ImageIO.read(new File("assets/images/home.png")), 0, 0, getWidth(), getHeight(), this);
+                g.drawImage(ImageIO.read(new File("assets/images/homestead5.png")), 0, 0, getWidth(), getHeight(), this);
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
@@ -44,9 +59,9 @@ class Homestead extends JPanel {
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
             // buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-            buttons.get(i).setBackground(new Color(139, 69, 19)); // Dark wood color
+            buttons.get(i).setBackground(new Color(46, 86, 161)); // Dark wood color
             buttons.get(i).setForeground(new Color(255, 255, 255)); // White text
-            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 26));
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 29));
         }
 
         this.setAlignmentX(CENTER_ALIGNMENT);
@@ -57,7 +72,10 @@ class Homestead extends JPanel {
         craft.setMaximumSize(new Dimension(200, 180));
         inventory1.setPreferredSize(new Dimension(200, 180));
         inventory1.setMaximumSize(new Dimension(200, 80));
-        back.setFont(new Font("serif", Font.BOLD, 24));
+        back.setBackground(new Color(139, 69, 19)); // light wood color
+        purchase.setBackground(new Color(139, 69, 19)); // light wood color
+        back.setFont(new Font("serif", Font.BOLD, 26));
+        purchase.setFont(new Font("Serif", Font.BOLD, 26));
 
         // Create the information label with custom styling
         JLabel info = new JLabel("<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>", SwingConstants.CENTER);
@@ -143,7 +161,7 @@ class Homestead extends JPanel {
             purchaseConfirmation = false;
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");
-
+            MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
         });
 
         // Takes player to farm screen
@@ -174,7 +192,7 @@ class Homestead extends JPanel {
                 Inventory.backToHomestead = true; 
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
-
+                
             } catch (Exception e1){
                 e1.printStackTrace();
             }
