@@ -70,12 +70,8 @@ class Monster extends GameCharacter {
 
         switch (name) {
             case PETROCK:
-                setName("Rabid Pet Rock");
                 setDescription(
                         "Someone glued googley eyes onto a pet rock, then abandoned it. Also, it has rabies and wants to kill you.");
-                setMuscle(2);
-                setBrain(1);
-                setHeart(3);
                 goldRewarded = 2;
                 isBoss = false;
                 castsMagic = false;
@@ -83,12 +79,8 @@ class Monster extends GameCharacter {
                 monsterLevel = 2;
                 break;
             case HOBOGOBLIN:
-                setName("Hobo Goblin");
                 setDescription(
                         "Commonly misidentified as a hobgoblin (so rude!), this hobo goblin is obviously suffering after becoming emancipated from from all its wealth, health, and home.  Also, it has googley eyes.");
-                setMuscle(3);
-                setBrain(1);
-                setHeart(2);
                 goldRewarded = 2;
                 isBoss = false;
                 castsMagic = false;
@@ -96,12 +88,8 @@ class Monster extends GameCharacter {
                 monsterLevel = 2;
                 break;
             case CYCLOPIAN_GENTLEMAN:
-                setName("Cyclopian Gentleman");
                 setDescription(
                         "This impecably dressed giant just radiates cultured sophistication.  He's even wearing a tophat with a monocle over his single, giant eye.  Unfortunately, you're too small to notice and he's about to step all over you.  Which is not to say he didn't actually see you, he just doesn't care.");
-                setMuscle(10);
-                setBrain(10);
-                setHeart(10);
                 goldRewarded = 20;
                 isBoss = true;
                 castsMagic = true;
@@ -109,12 +97,8 @@ class Monster extends GameCharacter {
                 monsterLevel = 8;
                 break;
             case GEODUCK:
-                setName("Creepy Geoduck");
                 setDescription(
                         "Some people eat these.  No, really, like legitimate food.  Just think about that.");
-                setMuscle(4);
-                setBrain(8);
-                setHeart(6);
                 goldRewarded = 6;
                 isBoss = false;
                 castsMagic = true;
@@ -122,12 +106,8 @@ class Monster extends GameCharacter {
                 monsterLevel = 6;
                 break;
             case PIRATE_SKELETON:
-                setName("Cute Skelly Pirate");
                 setDescription(
                         "This unbelievably cute skeleton is wearing a pirate outfit.  Despite its adorable demeanor, it still has a deep-seated hatred of the living.");
-                setMuscle(8);
-                setBrain(4);
-                setHeart(6);
                 goldRewarded = 6;
                 isBoss = false;
                 castsMagic = false;
