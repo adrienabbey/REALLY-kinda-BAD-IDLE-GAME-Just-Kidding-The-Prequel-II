@@ -1,4 +1,4 @@
-Patches and Bugfixes 3/26/24:
+### Patches and Bugfixes 3/26/24:
 
 Fixed issue where gold would not be added to inventory after defeating a monster in the dungeon.
 Added colors to buy, sell, and merchant UIs. Redid secret merchant panel.
@@ -15,7 +15,7 @@ Optimized forest and mineshaft:
 - made progress bar pause when stopping any process. will resume at same value if player doesnt leave panel.
 
 ---
-Patch / bugfix notes for 3/27/24 - 4/4/24
+### Patch / bugfix notes for 3/27/24 - 4/4/24
 
 Added a bunch of comments summarizing the class does and how they work for a
 majority of the classes in the source code.
@@ -64,7 +64,7 @@ Known bugs:
 Ambient sfx will not be stopped proerly every so often after leaving an area and will continue playing. This happens rarely (like every 5-10 panel changes) so it should not affecrt snapshot videos.
 
 ---
-Patch / bugfix notes for 4/1/24:
+### Patch / bugfix notes for 4/1/24:
 
 Added button that drops down character status bar in forest panel
 Status bar curently shows health, magic, and gold
@@ -72,4 +72,5 @@ Harvesting resources regens 10% of max health and magic.
 Added relative scaling to buttons in World screen
 Added dungeon error message that pops up when the player tries to enter
 the dungeon with low health. Explains how to regen health. Disappears after 2 seconds.
+
 --- 
