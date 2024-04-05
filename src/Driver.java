@@ -73,14 +73,7 @@ class Driver extends JFrame {
         Library library = new Library();
         Farm farm = new Farm();
         Craft craft = new Craft();
-        
-        // JPanel charPanel = new CharacterScreen();
-        // JPanel dice = new Dice();
-        // JPanel inventory = new Inventory();
-        // JPanel world = new JPanel();
         Town town = new Town();
-        // JPanel dungeon = new JPanel();
-        // Dungeon combat = new Dungeon();
 
         world.setLayout(new GridLayout(1, 2));
         dungeon.setLayout(new GridLayout(1, 2));

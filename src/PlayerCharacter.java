@@ -14,13 +14,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    /* Constants */
    private static final int POTION_HEAL = 20; // TODO: Balance this number!
 
-   /* Variables */
-   // TODO: Determine base "starting" stats?
-   // TODO: This is set by the UI, so we can probably remove it?
-   private static final int startingMuscle = 3;
-   private static final int startingBrain = 3;
-   private static final int startingHeart = 3;
-
    /* Fields */
    // private int statpoints;
    private int gold;

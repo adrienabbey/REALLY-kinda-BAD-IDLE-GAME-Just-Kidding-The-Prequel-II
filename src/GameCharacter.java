@@ -125,6 +125,7 @@
    }
 
    public int setBrain(int newBrain) {
+      maxMagic = 10 + (5 * newBrain);
       return brain = newBrain;
    }
 
@@ -133,6 +134,7 @@
    }
 
    public int setHeart(int newHeart) {
+      maxHealth = 10 + (5 * newHeart);
       return heart = newHeart;
    }
 
