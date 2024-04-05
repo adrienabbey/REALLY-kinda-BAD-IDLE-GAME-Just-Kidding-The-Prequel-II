@@ -13,8 +13,6 @@ import java.io.ObjectOutputStream;
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
-
 
 class Driver extends JFrame {
 
