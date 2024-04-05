@@ -153,8 +153,8 @@ public class Forest extends JPanel {
                 currentlyCutting = false;
                 autoHunt(); // Start hunting process
                 if (auto) {
-                    SFX.playSound("assets/SFX/.wav"); 
-                    // TODO: play hunting sfx
+                    SFX.playSound("assets/SFX/hunting-sfx5.wav"); 
+                    // play hunting sfx
                 }
             } catch (Exception e1){
                 e1.printStackTrace();
