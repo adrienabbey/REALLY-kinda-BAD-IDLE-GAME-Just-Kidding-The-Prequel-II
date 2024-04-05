@@ -56,7 +56,7 @@ public class Equipment implements Serializable {
      *                     much better chances of upgrading a piece of equipment.
      * @return Returns true if a piece of equipment upgraded, false if not.
      */
-    public static boolean doUpgrade(int MonsterLevel, boolean isBoss, PlayerCharacter player) {
+    public boolean doUpgrade(int MonsterLevel, boolean isBoss, PlayerCharacter player) {
         float weaponUpgradeChance;
         float armourUpgradeChance;
         float hatUpgradeChance;
@@ -109,9 +109,33 @@ public class Equipment implements Serializable {
 
         // TODO: Consider implementing a more graceful player stat upgrade method.
 
-        // TODO: Implement a randomized naming algorithm to add variety to 
+        // TODO: Implement a randomized naming algorithm to add variety to
         // equipment descriptions.
 
         return itemUpgraded;
+    }
+
+    public String getWeaponDescription() {
+        return weaponDescription;
+    }
+
+    public int getWeaponLevel() {
+        return weaponLevel;
+    }
+
+    public String getArmourDescription() {
+        return armourDescription;
+    }
+
+    public int getArmourLevel() {
+        return armourLevel;
+    }
+
+    public String getHatDescription() {
+        return hatDescription;
+    }
+
+    public int getHatLevel() {
+        return hatLevel;
     }
 }
