@@ -24,7 +24,7 @@ public class SFX extends MusicPlayer{
     private static Clip currentClip = null;
     private static Control volumeControl = null;
     public static boolean isMutedSFX = false;
-    private static float currentVolumeSFX = 0.0f; // set volume
+    private static float currentVolumeSFX = -5.0f; // set volume
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
     private static List<ClipWrapper> activeClips = new ArrayList<>(); // List to keep track of active sound clips, used for the stopAllSounds method. 
 
