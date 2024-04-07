@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class Dungeon extends JPanel {
-    private Monster enemy;
-    private PlayerCharacter player;
     private static Dice dice = new Dice(20);
     /**
      * This function hosts the dungeon screen with buttons to go to town or use a potion
@@ -27,7 +25,6 @@ class Dungeon extends JPanel {
      }
 
     public Dungeon() {
-
         // TODO add the actual enemy generation and combat here
 
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -98,7 +95,7 @@ class Dungeon extends JPanel {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+                MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

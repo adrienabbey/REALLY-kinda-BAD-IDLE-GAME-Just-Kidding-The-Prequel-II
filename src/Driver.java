@@ -55,8 +55,7 @@ class Driver extends JFrame {
     public Driver() throws Exception {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
-        MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
-
+        MusicPlayer.playMusic("assets/Music/now-we-ride.wav"); 
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time
         StartScreen start = new StartScreen();
@@ -67,9 +66,9 @@ class Driver extends JFrame {
         Settings settings = new Settings();
         Credits credits = new Credits();
         Homestead home = new Homestead();
-        Shop shop = new Shop();
-        WoodCutting woodCutting = new WoodCutting();
-        Mining mining = new Mining();
+        Bazaar bazaar = new Bazaar();
+        Forest forest = new Forest();
+        Mineshaft mineshaft = new Mineshaft();
         Tavern tavern = new Tavern();
         Library library = new Library();
         Farm farm = new Farm();
@@ -80,8 +79,6 @@ class Driver extends JFrame {
         // JPanel inventory = new Inventory();
         // JPanel world = new JPanel();
         Town town = new Town();
-        // JPanel dungeon = new JPanel();
-        // Dungeon combat = new Dungeon();
 
         world.setLayout(new GridLayout(1, 2));
         dungeon.setLayout(new GridLayout(1, 2));
@@ -89,15 +86,15 @@ class Driver extends JFrame {
 
         driverPanel.setLayout(cardLayout);
         driverPanel.add(settings, "settings");
-        driverPanel.add(shop, "shop");
+        driverPanel.add(bazaar, "bazaar");
         driverPanel.add(start, "start");
         driverPanel.add(load, "load");
         driverPanel.add(cc, "cc");
         driverPanel.add(instructions, "instructions");
         driverPanel.add(credits, "credits");
         driverPanel.add(home, "home");
-        driverPanel.add(woodCutting, "wood");
-        driverPanel.add(mining, "mine");
+        driverPanel.add(forest, "forest");
+        driverPanel.add(mineshaft, "mineshaft");
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
         // driverPanel.add(player.inventory, "inventory");

@@ -38,8 +38,8 @@ class Town extends JPanel {
         // Whenever calling a getter for the player, it breaks it.
         JLabel name = new JLabel("Name: ");
 
-        JButton shop = new JButton("Bazaar");
-        buttons.add(shop);
+        JButton bazaar = new JButton("Bazaar");
+        buttons.add(bazaar);
         JButton leave = new JButton("Leave");
         buttons.add(leave);
         JButton tavern = new JButton("Tavern");
@@ -53,7 +53,7 @@ class Town extends JPanel {
         add(Box.createVerticalGlue());
         // add(name);
         add(Box.createRigidArea(new Dimension(100, 150)));
-        add(shop);
+        add(bazaar);
         add(Box.createRigidArea(new Dimension(100, 20)));
         add(tavern);
         add(Box.createRigidArea(new Dimension(100, 20)));
@@ -77,11 +77,12 @@ class Town extends JPanel {
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
-        // Button that takes player to shop panel
-        shop.addActionListener(e -> {
-            try {
+        // Button that takes player to bazaar panel
+        bazaar.addActionListener(e -> {
+            try{
+                SFX.stopAllSounds();
                 SFX.playSound("assets/SFX/interface1.wav");
-                Driver.changePanel("shop");
+                Driver.changePanel("bazaar");
                 MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -90,7 +91,8 @@ class Town extends JPanel {
 
         // Button that takes player to tavern panel
         tavern.addActionListener(e -> {
-            try {
+            try{
+                SFX.stopAllSounds();
                 SFX.playSound("assets/SFX/interface1.wav");
                 SFX.playSound("assets/SFX/door-open.wav");
                 Driver.changePanel("tavern");
@@ -103,11 +105,12 @@ class Town extends JPanel {
 
         // Button that takes player to library panel
         library.addActionListener(e -> {
-            try {
+            try{
+                SFX.stopAllSounds();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("library");
-                MusicPlayer.playMusic("assets/Music/Mystery – GoSoundtrack (No Copyright Music).wav");
-            } catch (Exception e1) {
+                MusicPlayer.playMusic("assets/Music/library2-bgm.wav");
+            } catch (Exception e1){
                 e1.printStackTrace();
             }
         });
@@ -123,14 +126,16 @@ class Town extends JPanel {
             }
         });
 
-        // Button that takes player to library panel
+        // Button that takes player to world panel
         leave.addActionListener(e -> {
-            try {
+            try{
+                SFX.stopAllSounds();
                 Driver.player.inventory.backToTown = false;
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
-                MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
-            } catch (Exception e1) {
+                MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
+                SFX.stopAllSounds();
+            } catch (Exception e1){
                 e1.printStackTrace();
             }
         });

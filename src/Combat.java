@@ -88,9 +88,11 @@ class Combat extends JPanel {
                 } else {
                     addLog(player.getName() + " is out of magic!\n");
                 }
-                Thread.sleep(1500);
+                addLog(enemy.getName() + " has " + enemy.getHealth() + " health remaining.\n\n");
+                Thread.sleep(5000);
             } else {
-                addLog("\n" + enemy.getName() + " has been defeated " + player.getName() + " has gained "
+
+                addLog("\n" + enemy.getName() + " has been defeated!\n" + player.getName() + " has gained "
                         + enemy.getGoldReward() + " gold!\n\n");
                 player.addGold(enemy.getGoldReward());// Update gold resource in inventory
 
@@ -98,6 +100,8 @@ class Combat extends JPanel {
                 player.doEquipmentUpgrade(enemy.getMonsterLevel(), enemy.isBoss());
 
                 enemy = Dungeon.getMonster();
+                Thread.sleep(10000);
+              
             }
             Driver.charScreen.update();
         }

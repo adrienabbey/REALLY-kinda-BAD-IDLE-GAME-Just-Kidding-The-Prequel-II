@@ -10,7 +10,7 @@ import javax.swing.Box;
 
 class LoadScreen extends JPanel{
     
-            @Override
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
             try {

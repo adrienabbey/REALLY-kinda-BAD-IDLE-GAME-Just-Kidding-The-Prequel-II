@@ -1,10 +1,23 @@
+/*
+ * Credits Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-class Credits extends JPanel {
+
+/*
+ * Implementation for the "Credits" panel which can be accessed from the setting screen. Uss a timer to continously update the JLabel in order to achieve a rolling effect. The label houses all the credits for the game, including the credits to the developers, professor, and to the images, music, sound effects, and voiceovers used. 
+ * 
+ * TODO: double check credits all assets used and that all assets are free to use or the rights to use them have been acquired by getting the appropriate license. 
+ */
+
+public class Credits extends JPanel {
+
     private JLabel rollingText;
     private Timer timer;
     public static int yPos = 998;
@@ -19,6 +32,8 @@ class Credits extends JPanel {
                 e.printStackTrace();
             }
     }
+
+    /* Constructor */
 
     public Credits() {
         // Set the layout with vertical alignment and padding
@@ -65,7 +80,7 @@ class Credits extends JPanel {
         // Action listener for the 'Back' button. Sets text to correct position after very opening. 
         back.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
-            MusicPlayer.playMusic("assets/Music/Brilliant1.wav");
+            MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
             Driver.changePanel("settings");
         });
 
