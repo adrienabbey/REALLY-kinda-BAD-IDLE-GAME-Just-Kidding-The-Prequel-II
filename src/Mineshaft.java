@@ -147,7 +147,7 @@ public class Mineshaft extends JPanel {
         timer = new Timer(100, new ActionListener() {
             int progress = 0;
             int ore = 1; // used to track which resource to grant
-            int scavenge = 1; // used to track which resource to grant
+            int scavenge = 0; // used to track which resource to grant
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -184,9 +184,9 @@ public class Mineshaft extends JPanel {
                         }
                     
                     if (currentlyScavenge) {
-                        if (scavenge % 3 == 0) {
+                        if (scavenge ==  0 || (scavenge % 3 == 0)) {
                             harvestLabel.setText("Magical Essence harvest!"); // Update harvest label
-                            SFX.playSound("assets/SFX/.wav");  // TODO: add magical essence sfx
+                            SFX.playSound("assets/SFX/magical-essence-sfx.wav");  // magical essence sfx
 
                             int currentMagicalEssence = inventory.getResource("Magical Essence");
                             // Increment MagicalEssence resource variable

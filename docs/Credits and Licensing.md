@@ -216,6 +216,23 @@ Credits for sound effects -
     Sound from pixabay
     Link: https://pixabay.com/sound-effects/arrow-cutting-through-the-air-39540/
 
+* magic gathering sfx:
+    - Title" Magic achievement
+    - by: Epic Stock Media
+    - Link: https://uppbeat.io/sfx/magic-achievement/8689/22656
+
+* spleenwort and tongue fern sfx:
+    - interace3 and interface2 sound effects fron teh free RPG sfx library
+
+* Meat Gathering sfx:
+    - title Hatchet Chopping Meat 
+    - Link: https://uppbeat.io/sfx/magic-achievement/8689/22656
+
+* Scavenging sfx: 
+    Title: walk on dry grass
+    Sound from pixabay
+    Source: https://pixabay.com/sound-effects/walk-on-dry-grass-22917/
+
 ======================================================
 
 ======================================================
