@@ -22,7 +22,7 @@
 
 ## Action Items
 * Group Member `Adrien`:
-	-  Add inventory implementation to player object so that potions work properly
+	- Fix feature overlap between Inventory and Player Character
 	- Add getters in equipment class
 * Group Member `Brandon`:
 	- Add stats to character screen
@@ -30,7 +30,6 @@
  	- snapshot vidoes	 
 
 * Group Member `Muhammed`:
- 	- Add inventory implementation to player object so that potions work properly
  	- Add release notes
  	- Update requirements and design documentation
     	- volume optimization
@@ -46,7 +45,7 @@
 
 
 ## Contributors
-*
+* Adrien Abbey
 *
 *
 *
