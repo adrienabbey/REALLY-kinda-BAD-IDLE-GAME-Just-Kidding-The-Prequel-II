@@ -80,7 +80,7 @@ the dungeon with low health. Explains how to regen health. Disappears after 2 se
    - Added bgm w/ ambient bird noises in forest
    - Made certain resources appear more commonly
    - Added sfx to scavenging, tongue fern, spleenwort, pelt, meat, and magical essence. 
-   - Added fullscreen (for my system), corrected relative positioning in forest panel to match fullscreen resolution.
+   - Added fullscreen to systems that did not have it before, corrected relative positioning in forest panel to match fullscreen resolution.
 
 2. Added saving/loading to UI and automatic saving:
     - added parameter for save/load methods in Driver to allow file paths to be specified.
