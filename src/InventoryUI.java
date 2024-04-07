@@ -55,7 +55,7 @@ public class InventoryUI extends JPanel {
                 Driver.changePanel("town");
                 Driver.player.inventory.backToTown = false;
             } else {
-                Driver.changePanel("shop");
+                Driver.changePanel("bazaar");
             }
         });
     }

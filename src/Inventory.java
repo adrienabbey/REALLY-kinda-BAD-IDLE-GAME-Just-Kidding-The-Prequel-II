@@ -60,24 +60,24 @@ public class Inventory extends JPanel {
         }
     }
     
-    // Method to add to Gold to inventory when defeating monsters
-    public void addGold(int amount) {
-        int currentGold = resources.get("Gold");
-        resources.put("Gold", currentGold + amount);
-        updateResourceLabels(); // Update the UI to reflect the changes
-    }
+    // // Method to add to Gold to inventory when defeating monsters
+    // public void addGold(int amount) {
+    //     int currentGold = resources.get("Gold");
+    //     resources.put("Gold", currentGold + amount);
+    //     updateResourceLabels(); // Update the UI to reflect the changes
+    // }
     
-    // Update resource labels
-    public void updateResourceLabels() {
-        // Update resource labels
-        for (String resourceName : resources.keySet()) {
-            for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
-                if (component instanceof JLabel && ((JLabel) component).getText().startsWith(resourceName)) {
-                    ((JLabel) component).setText(resourceName + ": " + resources.get(resourceName));
-                }
-            }
-        }
-    }
+    // // Update resource labels
+    // public void updateResourceLabels() {
+    //     // Update resource labels
+    //     for (String resourceName : resources.keySet()) {
+    //         for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
+    //             if (component instanceof JLabel && ((JLabel) component).getText().startsWith(resourceName)) {
+    //                 ((JLabel) component).setText(resourceName + ": " + resources.get(resourceName));
+    //             }
+    //         }
+    //     }
+    // }
 
     public Map<String, Integer> getResources() {
         return resources;

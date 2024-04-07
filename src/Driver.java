@@ -62,7 +62,7 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
-        // Inventory inventory = Inventory.getInstance();
+        InventoryUI inventory = new InventoryUI();
         Settings settings = new Settings();
         Credits credits = new Credits();
         Homestead home = new Homestead();
@@ -71,7 +71,7 @@ class Driver extends JFrame {
         Mineshaft mineshaft = new Mineshaft();
         Tavern tavern = new Tavern();
         Library library = new Library();
-        Farm farm = new Farm();
+        // Farm farm = new Farm();
         Craft craft = new Craft();
 
         // JPanel charPanel = new CharacterScreen();
@@ -97,7 +97,7 @@ class Driver extends JFrame {
         driverPanel.add(mineshaft, "mineshaft");
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
-        // driverPanel.add(player.inventory, "inventory");
+        driverPanel.add(inventory, "inventory");
         // driverPanel.add(farm, "farm");
         // driverPanel.add(craft, "craft");
         // driverPanel.add(charPanel, "charPanel");
