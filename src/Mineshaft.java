@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+    // Inventory inventory = Inventory.getInstance();
 /**
  * Implements the "Mineshaft" panel accessed through the World screen. Allows the player to mine ore or gather resources. Uses a JProgressBar to track progress. After each a process finishes a grant message will pop up to indictie which respective resource was granted to the player. This item will be added to the player's inventory.
  * 
@@ -21,7 +22,6 @@ import java.io.IOException;
  */
 public class Mineshaft extends JPanel {
 
-    Inventory inventory = Inventory.getInstance(); //initialize singleton inventory object
     private JProgressBar progressBar;
     private JButton autoScavengeButton; // button to activate scavenging
     private JButton autoMineButton; // Button to activate mining
@@ -29,9 +29,12 @@ public class Mineshaft extends JPanel {
     private Image bgImage;
     private JLabel harvestLabel; // Label to display wood harvest message
     private boolean auto; // flag that turns auto processes on or off
-    private boolean currentlyScavenge = false; // flag to determine if process is scavengeing. Used to grant appropriate resource.
-    private boolean currentlyMining = false; // flag to determine if process is mining. Used to grant appropriate resource.
-    private boolean resetProgress = true; // flag used to determine if player had left the mineshaft panel. If true reset the progress value to 0.
+    private boolean currentlyScavenge = false; // flag to determine if process is scavengeing. Used to grant appropriate
+                                               // resource.
+    private boolean currentlyMining = false; // flag to determine if process is mining. Used to grant appropriate
+                                             // resource.
+    private boolean resetProgress = true; // flag used to determine if player had left the mineshaft panel. If true
+                                          // reset the progress value to 0.
 
     public Mineshaft() { // Accepts an Inventory object
         // Load the background image
@@ -128,11 +131,11 @@ public class Mineshaft extends JPanel {
                 progressBar.setValue(0); // reset progress bar
                 auto = false; // stop auto ptocess when leaving panel
                 resetProgress = true; // will reset progress to 0 when reentering mineshaft
-                currentlyScavenge = false; 
+                currentlyScavenge = false;
                 currentlyMining = false;
                 autoMineButton.setText("Mine Ore"); // reset mining label
                 autoScavengeButton.setText("Scavenge Area"); // reset scavenge label
-                
+
                 Driver.changePanel("world");
                 SFX.stopAllSounds();
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
@@ -151,66 +154,66 @@ public class Mineshaft extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (resetProgress) { 
-                    progress = 0; // reset progress to zero if left screen prior. 
+                if (resetProgress) {
+                    progress = 0; // reset progress to zero if left screen prior.
                     resetProgress = false;
                 }
 
                 if (progress == 40) {
                     harvestLabel.setText(""); // erase grant label when progress reaches 40
                 }
-                
+
                 if (progress >= 100) {
                     progressBar.setValue(100);
 
                     if (currentlyMining) {
                         if (ore % 3 == 0) {
                             harvestLabel.setText("Metal harvest!"); // Update metal harvest label
-                            SFX.playSound("assets/SFX/metal-ringing1.wav"); 
+                            SFX.playSound("assets/SFX/metal-ringing1.wav");
 
-                            int currentMetal = inventory.getResource("Metal");
+                            int currentMetal = Driver.player.inventory.getResource("Metal");
                             // Increment metal resource variable
-                            inventory.setResource("Metal", currentMetal + 1);
+                            Driver.player.inventory.setResource("Metal", currentMetal + 1);
 
                         } else {
                             harvestLabel.setText("Stone harvest!"); // Update stone harvest label
-                            SFX.playSound("assets/SFX/stone-gathering-sfx.wav"); 
+                            SFX.playSound("assets/SFX/stone-gathering-sfx.wav");
 
-                            int currentStone = inventory.getResource("Stone");
+                            int currentStone = Driver.player.inventory.getResource("Stone");
                             // Increment stone resource variable
-                            inventory.setResource("Stone", currentStone + 1);
-                            //update resource in inventory
-                            }
+                            Driver.player.inventory.setResource("Stone", currentStone + 1);
+                            // update resource in inventory
                         }
-                    
+                    }
+
                     if (currentlyScavenge) {
                         if (scavenge ==  0 || (scavenge % 3 == 0)) {
                             harvestLabel.setText("Magical Essence harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/magical-essence-sfx.wav");  // magical essence sfx
 
-                            int currentMagicalEssence = inventory.getResource("Magical Essence");
+                            int currentMagicalEssence = Driver.player.inventory.getResource("Magical Essence");
                             // Increment MagicalEssence resource variable
-                            inventory.setResource("Magical Essence", currentMagicalEssence + 1);
+                            Driver.player.inventory.setResource("Magical Essence", currentMagicalEssence + 1);
 
                         } else if (scavenge % 2 == 0) {
                             harvestLabel.setText("Tongue Fern harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/RPG Sound Pack/interface/interface3.wav");  // play tongue fern sfx
 
-                            int currentTongueFern = inventory.getResource("Tongue Fern");
+                            int currentTongueFern = Driver.player.inventory.getResource("Tongue Fern");
                             // Increment TongueFern resource variable
-                            inventory.setResource("Tongue Fern", currentTongueFern + 1);
-                    
+                            Driver.player.inventory.setResource("Tongue Fern", currentTongueFern + 1);
+
                         } else {
                             harvestLabel.setText("Spleenwort harvest!"); // Update harvest label
                             SFX.playSound("assets/SFX/RPG Sound Pack/interface/interface3.wav"); // [lay spleenwort sfx
 
-                            int currentSpleenwort = inventory.getResource("Spleenwort");
+                            int currentSpleenwort = Driver.player.inventory.getResource("Spleenwort");
                             // Increment Spleenwort resource variable
-                            inventory.setResource("Spleenwort", currentSpleenwort + 1);
-                            }
+                            Driver.player.inventory.setResource("Spleenwort", currentSpleenwort + 1);
                         }
-                    //update resource in inventory
-                    inventory.updateResourceLabels();
+                    }
+                    // update resource in inventory
+                    Driver.inventoryUI.updateResourceLabels();
                     progress = 0;
                     ore++;
                     scavenge++;
@@ -224,7 +227,8 @@ public class Mineshaft extends JPanel {
                         SFX.playSound("assets/SFX/scavenging-sfx.wav"); // loop scavenging sfx
                     }
                 } else {
-                    progress++; ;// increment progress by 1
+                    progress++;
+                    ;// increment progress by 1
                     progressBar.setValue(progress); // set progress bar to progress value
                 }
             }
@@ -236,7 +240,7 @@ public class Mineshaft extends JPanel {
         if (!auto) {
             auto = true; // Start auto scavenging
             autoScavengeButton.setText("Stop Scavenging...");
-            harvestLabel.setText(""); 
+            harvestLabel.setText("");
             timer.start(); // Start the timer for auto scavenging
         } else {
             auto = false; // Stop auto scavenging
@@ -251,7 +255,7 @@ public class Mineshaft extends JPanel {
         if (!auto) {
             auto = true; // Start auto mining
             autoMineButton.setText("Stop Mining Ore...");
-            harvestLabel.setText(""); 
+            harvestLabel.setText("");
             timer.start(); // Start the timer for auto mining
         } else {
             auto = false; // Stop auto mining
@@ -266,7 +270,7 @@ public class Mineshaft extends JPanel {
         super.paintComponent(g);
         // Draw the background image
         if (bgImage != null) {
-            //scale it to the panel size
+            // scale it to the panel size
             Image scaledImage = bgImage.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
             g.drawImage(scaledImage, 0, 0, this);
         }
