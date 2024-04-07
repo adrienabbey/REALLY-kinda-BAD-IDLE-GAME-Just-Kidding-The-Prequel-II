@@ -32,7 +32,7 @@ public class Inventory {
         // resources.put("Potions", 0);
         resources.put("Pelt", 0);
         resources.put("Meat", 0);
-        resources.put("Magical Essense", 0);
+        resources.put("Magical Essence", 0);
         resources.put("Spleenwort", 0);
         resources.put("Tongue Fern", 0);
         resources.put("Legendary Potion of Lepus", 0);

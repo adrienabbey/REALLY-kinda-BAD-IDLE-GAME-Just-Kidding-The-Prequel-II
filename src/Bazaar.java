@@ -688,7 +688,8 @@ class Bazaar extends JPanel {
                 SFX.stopAllNonLoopingSounds();
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/town-bgm.wav");
-                SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);  
+                SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true); 
+                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default 
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

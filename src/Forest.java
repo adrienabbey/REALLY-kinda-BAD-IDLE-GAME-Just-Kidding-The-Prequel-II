@@ -104,16 +104,12 @@ public class Forest extends JPanel {
         // Initialize button panel to house action buttons
         JPanel buttonPanel = new JPanel(new GridLayout());
 
-        // Set position and size of panel, label, and progress bar using relative
-        // scaling
-        buttonPanel.setBounds((int) (width * 0.0104), (int) (height * 0.916), (int) (width * 0.9713),
-                (int) (height * 0.0463));
+        // Set position and size of panel, label, and progress bar using relative scaling
+        buttonPanel.setBounds((int) (width * 0.0134), (int) (height * 0.9500), (int) (width * 0.9713), (int) (height * 0.0483)); 
 
-        harvestedLabel.setBounds((int) (width * 0.0104), (int) (height * 0.824), (int) (width * 0.156),
-                (int) (height * 0.0555));
+        harvestedLabel.setBounds((int) (width * 0.0134), (int) (height * 0.8499), (int) (width * 0.156), (int) (height * 0.0545));
 
-        progressBar.setBounds((int) (width * 0.0104), (int) (height * 0.8703), (int) (width * 0.9713),
-                (int) (height * 0.0463));
+        progressBar.setBounds((int) (width * 0.0134), (int) (height * 0.8962), (int) (width * 0.9713), (int) (height * 0.0573));
 
         // add buttons to button panel
         buttonPanel.add(autoHuntButton);
@@ -230,6 +226,7 @@ public class Forest extends JPanel {
                 SFX.stopAllSounds(); 
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
                 SFX.playSound("assets/SFX/interface1.wav");
+                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -281,16 +278,16 @@ public class Forest extends JPanel {
                     // if player was hunting animal grant meat or pelt
                     if (currentlyHunting) {
                         if (huntIncrement % 3 == 0) {
-                            harvestedLabel.setText("Pelt harvested!"); // Update harvested label
-                            SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
-
-                            int currentPelt = Driver.player.inventory.getResource("Pelt");
-                            // Increment wood resource variable
-                            Driver.player.inventory.setResource("Pelt", currentPelt + 1);
+                        harvestedLabel.setText("Pelt harvested!"); // Update harvested label
+                        SFX.playSound("assets/SFX/cloth-heavy.wav"); // pelt gathering sfx
+    
+                        int currentPelt = Driver.player.inventory.getResource("Pelt");
+                        // Increment wood resource variable
+                        Driver.player.inventory.setResource("Pelt", currentPelt + 1);
                         } else {
                             harvestedLabel.setText("Meat harvested!"); // Update harvested label
-                            SFX.playSound("assets/SFX/.wav"); // TODO: add sfx
-
+                            SFX.playSound("assets/SFX/meat-gathering-sfx.wav"); // meat gathering sfx
+        
                             int currentMeat = Driver.player.inventory.getResource("Meat");
                             // Increment wood resource variable
                             Driver.player.inventory.setResource("Meat", currentMeat + 1);

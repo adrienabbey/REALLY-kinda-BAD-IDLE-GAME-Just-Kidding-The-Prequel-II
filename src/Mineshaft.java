@@ -104,7 +104,7 @@ public class Mineshaft extends JPanel {
                 currentlyMining = false;
                 autoScavenge();
                 if (auto) {
-                    SFX.playSound("assets/SFX/.wav"); // TODO: play scavenge sfx only when starting scavenging.
+                    SFX.playSound("assets/SFX/scavenging-sfx.wav"); // play scavenge sfx 
                 }
             }
         });
@@ -140,6 +140,7 @@ public class Mineshaft extends JPanel {
                 SFX.stopAllSounds();
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
                 SFX.playSound("assets/SFX/interface1.wav");
+                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -147,10 +148,10 @@ public class Mineshaft extends JPanel {
 
         // Timer for automatic process
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Takes 10 seconds to fill up.
-        timer = new Timer(120, new ActionListener() {
+        timer = new Timer(100, new ActionListener() {
             int progress = 0;
             int ore = 1; // used to track which resource to grant
-            int scavenge = 1; // used to track which resource to grant
+            int scavenge = 0; // used to track which resource to grant
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -167,7 +168,7 @@ public class Mineshaft extends JPanel {
                     progressBar.setValue(100);
 
                     if (currentlyMining) {
-                        if (ore % 5 == 0) {
+                        if (ore % 3 == 0) {
                             harvestLabel.setText("Metal harvest!"); // Update metal harvest label
                             SFX.playSound("assets/SFX/metal-ringing1.wav");
 
@@ -187,17 +188,17 @@ public class Mineshaft extends JPanel {
                     }
 
                     if (currentlyScavenge) {
-                        if (scavenge % 5 == 0) {
+                        if (scavenge ==  0 || (scavenge % 3 == 0)) {
                             harvestLabel.setText("Magical Essence harvest!"); // Update harvest label
-                            SFX.playSound("assets/SFX/.wav"); // TODO: add magical essence sfx
+                            SFX.playSound("assets/SFX/magical-essence-sfx.wav");  // magical essence sfx
 
                             int currentMagicalEssence = Driver.player.inventory.getResource("Magical Essence");
                             // Increment MagicalEssence resource variable
                             Driver.player.inventory.setResource("Magical Essence", currentMagicalEssence + 1);
 
-                        } else if (scavenge % 3 == 0) {
+                        } else if (scavenge % 2 == 0) {
                             harvestLabel.setText("Tongue Fern harvest!"); // Update harvest label
-                            SFX.playSound("assets/SFX/.wav"); // TODO: add magical essence sfx
+                            SFX.playSound("assets/SFX/RPG Sound Pack/interface/interface3.wav");  // play tongue fern sfx
 
                             int currentTongueFern = Driver.player.inventory.getResource("Tongue Fern");
                             // Increment TongueFern resource variable
@@ -205,7 +206,7 @@ public class Mineshaft extends JPanel {
 
                         } else {
                             harvestLabel.setText("Spleenwort harvest!"); // Update harvest label
-                            SFX.playSound("assets/SFX/.wav"); // TODO: play correct sfx
+                            SFX.playSound("assets/SFX/RPG Sound Pack/interface/interface3.wav"); // [lay spleenwort sfx
 
                             int currentSpleenwort = Driver.player.inventory.getResource("Spleenwort");
                             // Increment Spleenwort resource variable
@@ -221,10 +222,10 @@ public class Mineshaft extends JPanel {
                         timer.stop();  
                     } else if (currentlyMining) {
                         SFX.stopAllNonLoopingSounds();
-                        SFX.playSound("assets/SFX/pickaxe-sfx.wav");
+                        SFX.playSound("assets/SFX/pickaxe-sfx.wav"); // loop pickaxe-sfx
                     } else {
                         SFX.stopAllNonLoopingSounds();
-                        // TODO: ADD scavenging sfx 
+                        SFX.playSound("assets/SFX/scavenging-sfx.wav"); // loop scavenging sfx
                     }
                 } else {
                     progress++;
