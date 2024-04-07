@@ -39,27 +39,28 @@ import java.awt.BorderLayout;
 
 class Bazaar extends JPanel {
 
-    Inventory inventory = Inventory.getInstance(); // initailize the singleton object for inventory
     private boolean sellScreenOpen = false; // Flag to track if the sell screen is open
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
-    private boolean secretMerchantScreenOpen = false; // Flag to track if the secret merchant screen is open. 
+    private boolean secretMerchantScreenOpen = false; // Flag to track if the secret merchant screen is open.
     private int secretIncrement = 1; // variable that determines when the secret merchant will appear.
     private JPanel mainPanel1; // Declare buy panel at class level
     private JPanel mainPanel2; // Declare sell panel at class level
-    
+
     @Override
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/shop2.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
+        try {
+            g.drawImage(ImageIO.read(new File("assets/images/shop2.png")), 0, 0, getWidth(), getHeight(), this);
+        } catch (IOException e) {
+            // Auto-generated catch block
+            e.printStackTrace();
+        }
     }
+
     /**
      * This function hosts the town screen with buttons to buy potions or leave
+     * 
      * @param player The player character object
      * @throws IOException
      */
@@ -70,7 +71,7 @@ class Bazaar extends JPanel {
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
 
-        //Whenever calling a getter for the player, it breaks it.
+        // Whenever calling a getter for the player, it breaks it.
         JLabel name = new JLabel("Name: ");
 
         JButton buy = new JButton("Buy");
@@ -83,7 +84,7 @@ class Bazaar extends JPanel {
         buttons.add(sell);
         JButton secretMerchant = new JButton("Secret Merchant");
         buttons.add(secretMerchant);
-        
+
         // Adding the buttons to the shop panel and controlling layout
         add(Box.createVerticalGlue());
         // add(name);
@@ -99,8 +100,8 @@ class Bazaar extends JPanel {
         add(secretMerchant);
         add(Box.createVerticalGlue());
 
-        //For loop that formats all the buttons
-        for (int i = 0; i < buttons.size(); i++){
+        // For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
             buttons.get(i).setPreferredSize(new Dimension(200, 80));
@@ -109,14 +110,13 @@ class Bazaar extends JPanel {
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Times New Roman", Font.BOLD, 24));
         }
-        
+
         secretMerchant.setMaximumSize(new Dimension(250, 80));
         secretMerchant.setMaximumSize(new Dimension(250, 80));
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
         remove(secretMerchant);
-        
 
         /*
          * 
@@ -141,103 +141,116 @@ class Bazaar extends JPanel {
                 repaint();
                 }
 
-            // Create a panel to hold labels and the buy panel
-            mainPanel1 = new JPanel(new BorderLayout());
+                // Remove existing buttons
+                // this.removeAll();
+                // this.revalidate();
+                // this.repaint();
 
-            // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel("  Gold: " + inventory.getResource("Gold") + "  ");
-            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            goldLabel.setAlignmentX(CENTER_ALIGNMENT);
-            // format gold label
-            goldLabel.setForeground(new Color(253, 236, 166)); // set color of text
-            goldLabel.setBackground(new Color(139, 69, 19)); //set color of background
-            goldLabel.setOpaque(true); // background is visible 
+                // Create a panel to hold labels and the buy panel
+                mainPanel1 = new JPanel(new BorderLayout());
 
-            // Create a close button
-            JButton closeButton = new JButton("Close");
-            // format label
-            closeButton.setForeground(new Color(139, 69, 19)); 
-            closeButton.setBackground(new Color(253, 236, 166)); 
-            closeButton.setOpaque(true); 
-            closeButton.addActionListener(closeEvent -> {
-                SFX.playSound("assets/SFX/interface1.wav"); 
-                // Remove the buy panel and the close button
-                remove(mainPanel1);
-                buyScreenOpen = false; // Set sell screen as closed
-                revalidate(); // recalculate the layout of the components within the container
-                repaint(); //  repaints the GUI components
-            });
+                // Create a label to display the player's gold count
+                JLabel goldLabel = new JLabel("  Gold: " + Driver.player.getGold() + "  ");
+                goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
+                goldLabel.setAlignmentX(CENTER_ALIGNMENT);
+                // format gold label
+                goldLabel.setForeground(new Color(253, 236, 166)); // set color of text
+                goldLabel.setBackground(new Color(139, 69, 19)); // set color of background
+                goldLabel.setOpaque(true); // background is visible
 
-            // Create buy label message
-            JLabel buy_label = new JLabel(" Buy ");
-            buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            //format buy label
-            buy_label.setForeground(new Color(253, 236, 166)); 
-            buy_label.setBackground(new Color(139, 69, 19)); 
-            buy_label.setOpaque(true); 
+                // Create a close button
+                JButton closeButton = new JButton("Close");
+                // format label
+                closeButton.setForeground(new Color(139, 69, 19));
+                closeButton.setBackground(new Color(253, 236, 166));
+                closeButton.setOpaque(true);
+                closeButton.addActionListener(closeEvent -> {
+                    SFX.playSound("assets/SFX/interface1.wav");
+                    // Remove the buy panel and the close button
+                    remove(mainPanel1);
+                    buyScreenOpen = false; // Set sell screen as closed
+                    revalidate(); // recalculate the layout of the components within the container
+                    repaint(); // repaints the GUI components
+                });
 
-            // Create error message
-            JLabel err_message = new JLabel("");
-            err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
-            err_message.setForeground(new Color(253, 236, 166)); 
-            err_message.setBackground(new Color(139, 69, 19)); 
-            err_message.setOpaque(true); 
+                // Create buy label message
+                JLabel buy_label = new JLabel(" Buy ");
+                buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
+                // format buy label
+                buy_label.setForeground(new Color(253, 236, 166));
+                buy_label.setBackground(new Color(139, 69, 19));
+                buy_label.setOpaque(true);
 
-            // Add the close button to the top right corner
-            JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-            closeButtonPanel.add(closeButton);
-            // format panel
-            closeButtonPanel.setForeground(new Color(253, 236, 166)); 
-            closeButtonPanel.setBackground(new Color(139, 69, 19)); 
-            closeButtonPanel.setOpaque(true); 
-        
-            // Create a menu for buying items
-            JScrollPane scrollPane = new JScrollPane();
-            // format panel
-            scrollPane.setForeground(new Color(253, 236, 166)); 
-            scrollPane.setBackground(new Color(139, 69, 19)); 
-            scrollPane.setOpaque(true); 
+                // Create error message
+                JLabel err_message = new JLabel("");
+                err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
+                err_message.setForeground(new Color(253, 236, 166));
+                err_message.setBackground(new Color(139, 69, 19));
+                err_message.setOpaque(true);
 
-            // format Panel
-            JPanel buyPanel = new JPanel();
-            buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
-            buyPanel.setBackground(new Color(0,0,0, 192)); 
-            buyPanel.setOpaque(true); 
-        
-            // Add all items from inventory to shop. 
-            for (String resourceName : inventory.getResources().keySet()) {
-                if (!(resourceName == "Legendary Potion of Lepus") && !(resourceName == "Gold")) { // remove Lepus potion and Gold from buy list
-                    
-                    JButton buyItemButton = new JButton("Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
-                    // Format buttons
-                    buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-                    // format gold label
-                    buyItemButton.setForeground(new Color(253, 236, 166)); 
-                    buyItemButton.setBackground(new Color(102, 72, 54)); 
-                    buyItemButton.setOpaque(true); 
-                    
-                    buyItemButton.addActionListener(sellEvent -> {
-                        
-                        // If Gold is greater than 0 then buy resource, else output error message. 
-                        if ((inventory.getResource("Gold") > 0)) {
-                            err_message.setText("");
-                            inventory.setResource(resourceName, inventory.getResource(resourceName)  + 1); // add the resource from inventory
-                            int currentGold = inventory.getResource("Gold"); // update current resource amount
-                            inventory.setResource("Gold", currentGold - 1); // decrease gold 
-                            inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText("  Gold: " + inventory.getResource("Gold") + "  "); // Update the gold label
-                            buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
-                            SFX.playSound("assets/SFX/coin3.wav");
-                            
-                        } else {
-                            err_message.setText(" Cannot buy item, no more gold.");
-                        }
-                    });
-                    buyPanel.add(buyItemButton);
-                }}
-        
-            scrollPane.setViewportView(buyPanel);
-            scrollPane.setPreferredSize(new Dimension(400, 400));
+                // Add the close button to the top right corner
+                JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+                closeButtonPanel.add(closeButton);
+                // format panel
+                closeButtonPanel.setForeground(new Color(253, 236, 166));
+                closeButtonPanel.setBackground(new Color(139, 69, 19));
+                closeButtonPanel.setOpaque(true);
+
+                // Create a menu for buying items
+                JScrollPane scrollPane = new JScrollPane();
+                // format panel
+                scrollPane.setForeground(new Color(253, 236, 166));
+                scrollPane.setBackground(new Color(139, 69, 19));
+                scrollPane.setOpaque(true);
+
+                // format Panel
+                JPanel buyPanel = new JPanel();
+                buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
+                buyPanel.setBackground(new Color(0, 0, 0, 192));
+                buyPanel.setOpaque(true);
+
+                // Add all items from inventory to shop.
+                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
+                    if (!(resourceName == "Legendary Potion of Lepus") && !(resourceName == "Gold")) { // remove Lepus potion from buy list
+                        JButton buyItemButton = new JButton(
+                                "Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName) + ")");
+                        // Format buttons
+                        buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                        // format gold label
+                        buyItemButton.setForeground(new Color(253, 236, 166));
+                        buyItemButton.setBackground(new Color(102, 72, 54));
+                        buyItemButton.setOpaque(true);
+
+                        buyItemButton.addActionListener(sellEvent -> {
+
+                            // If Gold is greater than 0 then buy resource, else output error message.
+                            if ((Driver.player.getGold() > 0)) {
+                                err_message.setText("");
+                                Driver.player.inventory.setResource(resourceName,
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
+                                                                                                // inventory
+                                Driver.player.setGold(Driver.player.getGold() - 1); // decrease gold
+                                Driver.inventoryUI.updateResourceLabels(); // Update the labels
+                                goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold
+                                                                                                // label
+                                buyItemButton.setText(
+                                        "Buy " + resourceName + " ("
+                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update
+                                                                                                              // the buy
+                                                                                                              // button
+                                                                                                              // label
+                                SFX.playSound("assets/SFX/coin3.wav");
+
+                            } else {
+                                err_message.setText(" Cannot buy item, no more gold.");
+                            }
+                        });
+                        buyPanel.add(buyItemButton);
+                    }
+                }
+
+                scrollPane.setViewportView(buyPanel);
+                scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
                 mainPanel1.add(closeButtonPanel, BorderLayout.NORTH);
@@ -245,25 +258,28 @@ class Bazaar extends JPanel {
                 mainPanel1.add(scrollPane, BorderLayout.CENTER);
                 mainPanel1.add(err_message, BorderLayout.SOUTH);
                 mainPanel1.add(buy_label, BorderLayout.WEST);
-        
-            // Add the scroll pane to the center of the Shop panel
-            add(mainPanel1, BorderLayout.CENTER);
 
-            // tells the layout manager to recalculate the layout of the component. This is necessary when adding or removing components, or when changing the size or position of a component.
-            revalidate();
+                // Add the scroll pane to the center of the Shop panel
+                add(mainPanel1, BorderLayout.CENTER);
 
-            // tells the component to redraw itself. This is necessary when the appearance of the component has changed, such as when the text in a label is changed, or when the image in an image icon is changed.
-            repaint();
+                // tells the layout manager to recalculate the layout of the component. This is
+                // necessary when adding or removing components, or when changing the size or
+                // position of a component.
+                revalidate();
 
-        } else {
-            // Remove the buy panel and the close button
-            remove(mainPanel1);
-            buyScreenOpen = false; // Set sell screen as closed
-            revalidate(); // recalculate the layout of the components within the container
-            repaint(); //  repaints the GUI components
-        }
-    });
-        
+                // tells the component to redraw itself. This is necessary when the appearance
+                // of the component has changed, such as when the text in a label is changed, or
+                // when the image in an image icon is changed.
+                repaint();
+
+            } else {
+                // Remove the buy panel and the close button
+                remove(mainPanel1);
+                buyScreenOpen = false; // Set sell screen as closed
+                revalidate(); // recalculate the layout of the components within the container
+                repaint(); // repaints the GUI components
+            }
+        });
 
         /*
          * 
@@ -287,103 +303,113 @@ class Bazaar extends JPanel {
                 repaint();
                 }
 
-            // Create a panel to hold labels and the sell panel
-            mainPanel2 = new JPanel(new BorderLayout());
+                // Create a panel to hold labels and the sell panel
+                mainPanel2 = new JPanel(new BorderLayout());
 
-            // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel("  Gold:  " + inventory.getResource("Gold") + "  ");
-            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            goldLabel.setAlignmentX(CENTER_ALIGNMENT);
-            // format gold label
-            goldLabel.setForeground(new Color(253, 236, 166)); 
-            goldLabel.setBackground(new Color(139, 69, 19)); 
-            goldLabel.setOpaque(true); 
+                // Create a label to display the player's gold count
+                JLabel goldLabel = new JLabel("  Gold:  " + Driver.player.getGold() + "  ");
+                goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 28));
+                goldLabel.setAlignmentX(CENTER_ALIGNMENT);
+                // format gold label
+                goldLabel.setForeground(new Color(253, 236, 166));
+                goldLabel.setBackground(new Color(139, 69, 19));
+                goldLabel.setOpaque(true);
 
-            // Create a close button
-            JButton closeButton = new JButton("Close");
-            // format close button
-            closeButton.setForeground(new Color(139, 69, 19)); 
-            closeButton.setBackground(new Color(253, 236, 166)); 
-            closeButton.setOpaque(true); 
+                // Create a close button
+                JButton closeButton = new JButton("Close");
+                // format close button
+                closeButton.setForeground(new Color(139, 69, 19));
+                closeButton.setBackground(new Color(253, 236, 166));
+                closeButton.setOpaque(true);
 
-            closeButton.addActionListener(closeEvent -> {
-                SFX.playSound("assets/SFX/interface1.wav"); 
-                // Remove the buy panel and the close button
-                remove(mainPanel2);
-                sellScreenOpen = false; // Set sell screen as closed
-                revalidate(); // recalculate the layout of the components within the container
-                repaint(); //  repaints the GUI components
-            });
+                closeButton.addActionListener(closeEvent -> {
+                    SFX.playSound("assets/SFX/interface1.wav");
+                    // Remove the buy panel and the close button
+                    remove(mainPanel2);
+                    sellScreenOpen = false; // Set sell screen as closed
+                    revalidate(); // recalculate the layout of the components within the container
+                    repaint(); // repaints the GUI components
+                });
 
-            // Create sell label message
-            JLabel sell_label = new JLabel(" Sell ");
-            sell_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            //format sell label
-            sell_label.setForeground(new Color(253, 236, 166)); 
-            sell_label.setBackground(new Color(139, 69, 19)); 
-            sell_label.setOpaque(true); 
+                // Create sell label message
+                JLabel sell_label = new JLabel(" Sell ");
+                sell_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
+                // format sell label
+                sell_label.setForeground(new Color(253, 236, 166));
+                sell_label.setBackground(new Color(139, 69, 19));
+                sell_label.setOpaque(true);
 
-            // Create error message
-            JLabel err_message = new JLabel("");
-            err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
-            err_message.setForeground(new Color(253, 236, 166)); 
-            err_message.setBackground(new Color(139, 69, 19)); 
-            err_message.setOpaque(true); 
+                // Create error message
+                JLabel err_message = new JLabel("");
+                err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
+                err_message.setForeground(new Color(253, 236, 166));
+                err_message.setBackground(new Color(139, 69, 19));
+                err_message.setOpaque(true);
 
-            // Add the close button to the top right corner
-            JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-            closeButtonPanel.add(closeButton);
-            // format panel
-            closeButtonPanel.setForeground(new Color(253, 236, 166)); 
-            closeButtonPanel.setBackground(new Color(139, 69, 19)); 
-            closeButtonPanel.setOpaque(true); 
-        
-            // Create a menu for buying items
-            JScrollPane scrollPane = new JScrollPane();
-            scrollPane.setForeground(new Color(253, 236, 166)); 
-            scrollPane.setBackground(new Color(139, 69, 19)); 
-            scrollPane.setOpaque(true); 
+                // Add the close button to the top right corner
+                JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+                closeButtonPanel.add(closeButton);
+                // format panel
+                closeButtonPanel.setForeground(new Color(253, 236, 166));
+                closeButtonPanel.setBackground(new Color(139, 69, 19));
+                closeButtonPanel.setOpaque(true);
 
-            JPanel sellPanel = new JPanel();
-            sellPanel.setLayout(new BoxLayout(sellPanel, BoxLayout.Y_AXIS));
-            sellPanel.setBackground(new Color(0,0,0, 192)); 
-            sellPanel.setOpaque(true); 
+                // Create a menu for buying items
+                JScrollPane scrollPane = new JScrollPane();
+                scrollPane.setForeground(new Color(253, 236, 166));
+                scrollPane.setBackground(new Color(139, 69, 19));
+                scrollPane.setOpaque(true);
 
-            // Add items from the inventory to the sell panel
-            for (String resourceName : inventory.getResources().keySet()) {
-                if (!(resourceName == "Gold")) { // remove Gold from sell list
-                    
-                // if the resource amount exceeds 1 from your inventory, add it to the sell menu as a possible item to sell.
-                if (inventory.getResource(resourceName) > 0) {
-                    JButton sellItemButton = new JButton("Sell " + resourceName + " (" + inventory.getResource(resourceName) + ")");
-                    // format buttons
-                    sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-                    sellItemButton.setForeground(new Color(253, 236, 166)); 
-                    sellItemButton.setBackground(new Color(102, 72, 54)); 
-                    sellItemButton.setOpaque(true); 
-                    
-                    sellItemButton.addActionListener(sellEvent -> {
-                        // If resource is greater than 0, it is able to sell, else output error message. 
-                        if ((inventory.getResource(resourceName) > 0)) {
-                            err_message.setText("");
-                            inventory.setResource(resourceName, inventory.getResource(resourceName)  - 1); // minus the resource from inventory
-                            int currentGold = inventory.getResource("Gold"); // update current resource amount
-                            inventory.setResource("Gold", currentGold + 1); // increase gold 
-                            inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText("  Gold: " + inventory.getResource("Gold") + "  "); // Update the gold label
-                            sellItemButton.setText("Sell " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the sell button label
-                            SFX.playSound("assets/SFX/coin3.wav");
-                        } else {
-                            err_message.setText("Cannot sell item, no items left.");
+                JPanel sellPanel = new JPanel();
+                sellPanel.setLayout(new BoxLayout(sellPanel, BoxLayout.Y_AXIS));
+                sellPanel.setBackground(new Color(0, 0, 0, 192));
+                sellPanel.setOpaque(true);
+
+                // Add items from the inventory to the sell panel
+                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
+                    if (!(resourceName == "Gold")) { // remove Gold from sell list
+
+                        // if the resource amount exceeds 1 from your inventory, add it to the sell menu
+                        // as a possible item to sell.
+                        if (Driver.player.inventory.getResource(resourceName) > 0) {
+                            JButton sellItemButton = new JButton(
+                                    "Sell " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
+                                            + ")");
+                            // format buttons
+                            sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                            sellItemButton.setForeground(new Color(253, 236, 166));
+                            sellItemButton.setBackground(new Color(102, 72, 54));
+                            sellItemButton.setOpaque(true);
+
+                            sellItemButton.addActionListener(sellEvent -> {
+                                // If resource is greater than 0, it is able to sell, else output error message.
+                                if ((Driver.player.inventory.getResource(resourceName) > 0)) {
+                                    err_message.setText("");
+                                    Driver.player.inventory.setResource(resourceName,
+                                            Driver.player.inventory.getResource(resourceName) - 1); // minus the
+                                                                                                    // resource from
+                                                                                                    // inventory
+                                    Driver.player.setGold(Driver.player.getGold() + 1);
+                                    Driver.inventoryUI.updateResourceLabels(); // Update the labels
+                                    goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the
+                                                                                                    // gold label
+                                    sellItemButton.setText("Sell " + resourceName + " ("
+                                            + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the
+                                                                                                          // sell button
+                                                                                                          // label
+                                    SFX.playSound("assets/SFX/coin3.wav");
+                                } else {
+                                    err_message.setText("Cannot sell item, no items left.");
+                                }
+
+                            });
+                            sellPanel.add(sellItemButton);
                         }
-                    
-                    });
-                    sellPanel.add(sellItemButton);
-                }}
-            }
-        
-            scrollPane.setViewportView(sellPanel);
-            scrollPane.setPreferredSize(new Dimension(400, 400));
+                    }
+                }
+
+                scrollPane.setViewportView(sellPanel);
+                scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
                 mainPanel2.add(closeButtonPanel, BorderLayout.NORTH);
@@ -391,20 +417,19 @@ class Bazaar extends JPanel {
                 mainPanel2.add(scrollPane, BorderLayout.CENTER);
                 mainPanel2.add(err_message, BorderLayout.SOUTH);
                 mainPanel2.add(sell_label, BorderLayout.WEST);
-        
-          // Add the scroll pane to the center of the Shop panel
-            add(mainPanel2, BorderLayout.CENTER);
-            revalidate();
-            repaint();
-        } else {
-            // Remove the sell panel
-            remove(mainPanel2);
-            sellScreenOpen = false; // Set sell screen as closed
-            revalidate(); // recalculate the layout of the components within the container
-            repaint(); // repaints the GUI components
-        }
-    });
-            
+
+                // Add the scroll pane to the center of the Shop panel
+                add(mainPanel2, BorderLayout.CENTER);
+                revalidate();
+                repaint();
+            } else {
+                // Remove the sell panel
+                remove(mainPanel2);
+                sellScreenOpen = false; // Set sell screen as closed
+                revalidate(); // recalculate the layout of the components within the container
+                repaint(); // repaints the GUI components
+            }
+        });
 
         /*
          * 
@@ -412,7 +437,7 @@ class Bazaar extends JPanel {
          * 
          * 
          * Implementation for the secret merchant subpanel.
-         * TODO: Add secret items. 
+         * TODO: Add secret items.
          * 
          * 
          */
@@ -425,170 +450,177 @@ class Bazaar extends JPanel {
             if (!secretMerchantScreenOpen) {
                 secretMerchantScreenOpen = true;
 
-            // Remove existing buttons
-            this.removeAll();
-            this.revalidate();
-            this.repaint();    
-            
-            // Create a panel for the secret merchant screen
-            JPanel secretMerchantPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                try {
-                    // Load and draw the background image
-                    Image backgroundImage = ImageIO.read(new File("assets\\images\\1920x1080-black-solid-color-background.jpg"));
-                    g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }};
-            secretMerchantPanel.setLayout(new BorderLayout());
-
-            // Create a JLabel to hold the cat image
-            JLabel catLabel = new JLabel();
-            try {
-                // Load the image
-                BufferedImage catImage = ImageIO.read(new File("assets/images/cat1.png"));
-                // Set the image on the label
-                catLabel.setIcon(new ImageIcon(catImage));
-                // Set the preferred size of the label to the size of the image
-                catLabel.setPreferredSize(new Dimension(catImage.getWidth(), catImage.getHeight()));
+                // Remove existing buttons
+                this.removeAll();
+                this.revalidate();
+                this.repaint();    
                 
+                // Create a panel for the secret merchant screen
+                JPanel secretMerchantPanel = new JPanel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    try {
+                        // Load and draw the background image
+                        Image backgroundImage = ImageIO.read(new File("assets\\images\\1920x1080-black-solid-color-background.jpg"));
+                        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }};
+                secretMerchantPanel.setLayout(new BorderLayout());
+
+                // Create a JLabel to hold the cat image
+                JLabel catLabel = new JLabel();
+                try {
+                    // Load the image
+                    BufferedImage catImage = ImageIO.read(new File("assets/images/cat1.png"));
+                    // Set the image on the label
+                    catLabel.setIcon(new ImageIcon(catImage));
+                    // Set the preferred size of the label to the size of the image
+                    catLabel.setPreferredSize(new Dimension(catImage.getWidth(), catImage.getHeight()));
+
                 } catch (IOException e1) {
                     e1.printStackTrace();
-            }
+                }
 
-            // Add the cat label to the panel
-            secretMerchantPanel.add(catLabel, BorderLayout.WEST);
+                // Add the cat label to the panel
+                secretMerchantPanel.add(catLabel, BorderLayout.WEST);
 
-            // Create a panel to hold the main conte(excluding background)
-            JPanel mainContentPanel = new JPanel(new BorderLayout());
+                // Create a panel to hold the main conte(excluding background)
+                JPanel mainContentPanel = new JPanel(new BorderLayout());
 
-            // Create a panel to hold the gold count label and the sell panel
-            JPanel mainPanel = new JPanel(new BorderLayout());
+                // Create a panel to hold the gold count label and the sell panel
+                JPanel mainPanel = new JPanel(new BorderLayout());
 
-            // Create a label to display the player's gold count
-            JLabel goldLabel = new JLabel("    Gold: " + inventory.getResource("Gold") + " ");
-            goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
-            goldLabel.setAlignmentX(CENTER_ALIGNMENT);
-            // format gold label
-            goldLabel.setPreferredSize(new Dimension(140,65));
-            goldLabel.setPreferredSize(new Dimension(140,65));
-            goldLabel.setForeground(new Color(253, 236, 166)); 
-            goldLabel.setBackground(new Color(0,0,0)); 
-            goldLabel.setOpaque(true); 
+                // Create a label to display the player's gold count
+                JLabel goldLabel = new JLabel("    Gold: " + Driver.player.getGold() + " ");
+                goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
+                goldLabel.setAlignmentX(CENTER_ALIGNMENT);
+                // format gold label
+                goldLabel.setPreferredSize(new Dimension(140, 65));
+                goldLabel.setPreferredSize(new Dimension(140, 65));
+                goldLabel.setForeground(new Color(253, 236, 166));
+                goldLabel.setBackground(new Color(0, 0, 0));
+                goldLabel.setOpaque(true);
 
-            // Create a close button
-            JButton closeButton = new JButton("Close");
-            closeButton.setForeground(new Color(139, 69, 19)); 
-            closeButton.setBackground(new Color(253, 236, 166)); 
-            closeButton.setOpaque(true); 
+                // Create a close button
+                JButton closeButton = new JButton("Close");
+                closeButton.setForeground(new Color(139, 69, 19));
+                closeButton.setBackground(new Color(253, 236, 166));
+                closeButton.setOpaque(true);
 
-            closeButton.addActionListener(closeEvent -> {
-                SFX.playSound("assets/SFX/interface1.wav"); 
+                closeButton.addActionListener(closeEvent -> {
+                    SFX.playSound("assets/SFX/interface1.wav");
 
-                // Remove the sell panel and the close button
-                remove(mainPanel);
-                remove(secretMerchantPanel);
+                    // Remove the sell panel and the close button
+                    remove(mainPanel);
+                    remove(secretMerchantPanel);
 
-                // Adding the buttons back to shop panel.
-                add(Box.createVerticalGlue());
-                add(Box.createRigidArea(new Dimension(100, 330)));
-                add(buy);
-                add(Box.createRigidArea(new Dimension(0, 20)));
-                add(sell);
-                add(Box.createRigidArea(new Dimension(0, 20)));
-                add(inventory1);
-                add(Box.createRigidArea(new Dimension(0, 20)));
-                add(leave);
-                add(Box.createRigidArea(new Dimension(0, 20)));
-                add(secretMerchant);
-                add(Box.createVerticalGlue());
+                    // Adding the buttons back to shop panel.
+                    add(Box.createVerticalGlue());
+                    add(Box.createRigidArea(new Dimension(100, 330)));
+                    add(buy);
+                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(sell);
+                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(inventory1);
+                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(leave);
+                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(secretMerchant);
+                    add(Box.createVerticalGlue());
 
-                secretMerchantScreenOpen = false; // Set sell screen as closed
-                revalidate(); // recalculate the layout of the components within the container
-                repaint(); //  repaints the GUI components
-                MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
-            });
+                    secretMerchantScreenOpen = false; // Set sell screen as closed
+                    revalidate(); // recalculate the layout of the components within the container
+                    repaint(); // repaints the GUI components
+                    MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
+                });
 
-            // Create buy label message
-            JLabel buy_label = new JLabel("                                               Secret Merchant Shop ");
-            //buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
-            buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            buy_label.setPreferredSize(new Dimension(170,40));
-            buy_label.setPreferredSize(new Dimension(170,40));
-            // format gold label
-            buy_label.setForeground(new Color(253, 236, 166)); 
-            buy_label.setBackground(new Color(0,0,0)); 
-            buy_label.setOpaque(true); 
+                // Create buy label message
+                JLabel buy_label = new JLabel("                                               Secret Merchant Shop ");
+                // buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
+                buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
+                buy_label.setPreferredSize(new Dimension(170, 40));
+                buy_label.setPreferredSize(new Dimension(170, 40));
+                // format gold label
+                buy_label.setForeground(new Color(253, 236, 166));
+                buy_label.setBackground(new Color(0, 0, 0));
+                buy_label.setOpaque(true);
 
-            // Create error message
-            JLabel err_message = new JLabel("");
-            err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
-            // format label
-            err_message.setPreferredSize(new Dimension(170,40));
-            err_message.setPreferredSize(new Dimension(170,40));
-            err_message.setForeground(new Color(253, 236, 166)); 
-            err_message.setBackground(new Color(0,0,0)); 
-            err_message.setOpaque(true); 
+                // Create error message
+                JLabel err_message = new JLabel("");
+                err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
+                // format label
+                err_message.setPreferredSize(new Dimension(170, 40));
+                err_message.setPreferredSize(new Dimension(170, 40));
+                err_message.setForeground(new Color(253, 236, 166));
+                err_message.setBackground(new Color(0, 0, 0));
+                err_message.setOpaque(true);
 
-            // Add the close button to the top right corner
-            JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-            closeButtonPanel.add(closeButton);
-            closeButton.setPreferredSize(new Dimension(90,30));
-            closeButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
-            // format panel
-            closeButtonPanel.setForeground(new Color(253, 236, 166)); 
-            closeButtonPanel.setBackground(new Color(0,0,0)); 
-            closeButtonPanel.setOpaque(true); 
-        
-            // Create a menu for buying items
-            JScrollPane scrollPane = new JScrollPane();
-            scrollPane.setForeground(new Color(253, 236, 166)); 
-            scrollPane.setBackground(new Color(139, 69, 19)); 
-            scrollPane.setOpaque(true); 
+                // Add the close button to the top right corner
+                JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+                closeButtonPanel.add(closeButton);
+                closeButton.setPreferredSize(new Dimension(90, 30));
+                closeButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
+                // format panel
+                closeButtonPanel.setForeground(new Color(253, 236, 166));
+                closeButtonPanel.setBackground(new Color(0, 0, 0));
+                closeButtonPanel.setOpaque(true);
 
-            JPanel buyPanel = new JPanel();
-            buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
-            // format panel
-            buyPanel.setBackground(new Color(0,0,0, 192)); 
-            buyPanel.setOpaque(true); 
-        
-            // Add all items from inventory to shop. 
-            for (String resourceName : inventory.getResources().keySet()) {
-                if (!(resourceName == "Gold")) {
+                // Create a menu for buying items
+                JScrollPane scrollPane = new JScrollPane();
+                scrollPane.setForeground(new Color(253, 236, 166));
+                scrollPane.setBackground(new Color(139, 69, 19));
+                scrollPane.setOpaque(true);
 
-                    JButton buyItemButton = new JButton(" Buy " + resourceName + " (" + inventory.getResource(resourceName) + ")");
-                    // Format buttons
-                    buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 27));
-                    buyItemButton.setForeground(new Color(253, 236, 166)); 
-                    buyItemButton.setBackground(new Color(102, 72, 54)); 
-                    buyItemButton.setOpaque(true); 
+                JPanel buyPanel = new JPanel();
+                buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
+                // format panel
+                buyPanel.setBackground(new Color(0, 0, 0, 192));
+                buyPanel.setOpaque(true);
 
-                    // Code for when a buy button is pressed.
-                    buyItemButton.addActionListener(sellEvent -> {
-                        // If Gold is greater than 0 then buy resource, else output error message. 
-                        if ((inventory.getResource("Gold") > 0)) {
-                            err_message.setText("");
-                            inventory.setResource(resourceName, inventory.getResource(resourceName)  + 1); // add the resource from inventory
-                            int currentGold = inventory.getResource("Gold"); // update current resource amount
-                            inventory.setResource("Gold", currentGold - 1); // decrease gold 
-                            inventory.updateResourceLabels(); // Update the labels
-                            goldLabel.setText("    Gold: " + inventory.getResource("Gold") + " "); // Update the gold label
-                            buyItemButton.setText("Buy " + resourceName + " (" + (inventory.getResource(resourceName)) + ")"); // Update the buy button label
-                            if (resourceName == "Legendary Potion of Lepus") {
-                                SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav"); // play special sfx if player buys legendary item
+                // Add all items from inventory to shop.
+                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
+                    if (!(resourceName == "Gold")) {
+
+                        JButton buyItemButton = new JButton(
+                                " Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
+                                        + ")");
+                        // Format buttons
+                        buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+                        buyItemButton.setForeground(new Color(253, 236, 166));
+                        buyItemButton.setBackground(new Color(102, 72, 54));
+                        buyItemButton.setOpaque(true);
+
+                        // Code for when a buy button is pressed.
+                        buyItemButton.addActionListener(sellEvent -> {
+                            // If Gold is greater than 0 then buy resource,, else output error message.
+                            if ((Driver.player.getGold() > 0)) {
+                                err_message.setText("");
+                                Driver.player.inventory.setResource(resourceName,
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
+                                                                                                // inventory
+                                Driver.player.setGold(Driver.player.getGold() - 1);
+                                Driver.inventoryUI.updateResourceLabels(); // Update the labels
+                                goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the
+                                                                                                 // gold label
+                                buyItemButton.setText(
+                                        "Buy " + resourceName + " ("
+                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update
+                                                                                                              // the buy
+                                                                                                              // button
+                                                                                                              // label
+                                SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                             } else {
-                                SFX.playSound("assets/SFX/coin3.wav");
+                                err_message.setText(
+                                        "                                                  Cannot buy item, no more gold.  ");
                             }
-                        } else {
-                            err_message.setText("                                                  Cannot buy item, no more gold.  ");
-                        }
-                    });
-                    buyPanel.add(buyItemButton);
-                }}
-        
+                        });
+                        buyPanel.add(buyItemButton);
+                    }
+                }
+
                 scrollPane.setViewportView(buyPanel);
                 scrollPane.setPreferredSize(new Dimension(660, 200));
 
@@ -598,15 +630,12 @@ class Bazaar extends JPanel {
                 mainPanel.add(scrollPane, BorderLayout.CENTER);
                 mainPanel.add(err_message, BorderLayout.SOUTH);
                 mainPanel.add(buy_label, BorderLayout.NORTH);
-        
-            // Add the main panel to the main content panel
-            mainContentPanel.add(mainPanel);
 
-            // Add the main content panel to the secret merchant panel
-            secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
+                // Add the main panel to the main content panel
+                mainContentPanel.add(mainPanel);
 
-            // Add background image to secret merchant panel
-             add(secretMerchantPanel);
+                // Add the main content panel to the secret merchant panel
+                secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
 
             revalidate();
             repaint();
@@ -633,21 +662,21 @@ class Bazaar extends JPanel {
                 if (secretIncrement % 4 == 0) { // adds secret merchant screen after every 4 fourth visit. 
                     add(secretMerchant);
                 } else {
-                    remove(secretMerchant); // removes secert merchant screen after leaving. 
+                    remove(secretMerchant); // removes secert merchant screen after leaving.
                 }
 
                 if (buyScreenOpen) {
-                remove(mainPanel1); // remove buy screen if open
-                buyScreenOpen = false; // adjust flag accordingly
-                revalidate();
-                repaint();
+                    remove(mainPanel1); // remove buy screen if open
+                    buyScreenOpen = false; // adjust flag accordingly
+                    revalidate();
+                    repaint();
                 }
 
                 if (sellScreenOpen) {
-                remove(mainPanel2); // remove sell screen if open
-                sellScreenOpen = false; // adjust flag accordingly
-                revalidate();
-                repaint();
+                    remove(mainPanel2); // remove sell screen if open
+                    sellScreenOpen = false; // adjust flag accordingly
+                    revalidate();
+                    repaint();
                 }
 
                 // tells the layout manager to recalculate the layout of the component.

@@ -6,7 +6,7 @@ import javax.swing.Box;
 import java.awt.*;
 
 class Combat extends JPanel {
-    static Inventory inventory = Inventory.getInstance();
+    // static Inventory inventory = Inventory.getInstance();
 
     public enum MagicType {
         ATTACK,
@@ -94,7 +94,7 @@ class Combat extends JPanel {
 
                 addLog("\n" + enemy.getName() + " has been defeated!\n" + player.getName() + " has gained "
                         + enemy.getGoldReward() + " gold!\n\n");
-                inventory.addGold(enemy.getGoldReward());// Update gold resource in inventory
+                player.addGold(enemy.getGoldReward());// Update gold resource in inventory
 
                 // Check for equipment upgrades:
                 player.doEquipmentUpgrade(enemy.getMonsterLevel(), enemy.isBoss());
@@ -105,7 +105,7 @@ class Combat extends JPanel {
             }
             Driver.charScreen.update();
         }
-        if(player.getHealth() <= 0){
+        if (player.getHealth() <= 0) {
             logs.setForeground(Color.RED);
             logs.setBackground(Color.BLACK);
             addLog("\n" + player.getName() + " has been defeated!\n");

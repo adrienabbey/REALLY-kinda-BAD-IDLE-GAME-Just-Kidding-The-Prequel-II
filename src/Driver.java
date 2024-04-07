@@ -20,10 +20,11 @@ class Driver extends JFrame {
     // because they are used in multiple functions and need to be accessed
     private static JPanel driverPanel = new JPanel();
     private static CardLayout cardLayout = new CardLayout();
-    private static PlayerCharacter player;
+    public static PlayerCharacter player;
     private static JPanel world = new JPanel();
     private static JPanel dungeon = new JPanel();
     private static JPanel dungeonInfo = new JPanel();
+    public static InventoryUI inventoryUI = new InventoryUI();
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     public static CharacterScreen charScreen;
@@ -41,7 +42,7 @@ class Driver extends JFrame {
 
     public static void main(String[] args) throws Exception {
         new Driver();
-    }    
+    }
 
     /**
      * This is the constructor for the driver class,
@@ -61,7 +62,7 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
-        Inventory inventory = Inventory.getInstance();
+        InventoryUI inventory = new InventoryUI();
         Settings settings = new Settings();
         Credits credits = new Credits();
         Homestead home = new Homestead();
@@ -70,8 +71,13 @@ class Driver extends JFrame {
         Mineshaft mineshaft = new Mineshaft();
         Tavern tavern = new Tavern();
         Library library = new Library();
-        Farm farm = new Farm();
+        // Farm farm = new Farm();
         Craft craft = new Craft();
+
+        // JPanel charPanel = new CharacterScreen();
+        // JPanel dice = new Dice();
+        // JPanel inventory = new Inventory();
+        // JPanel world = new JPanel();
         Town town = new Town();
 
         world.setLayout(new GridLayout(1, 2));
@@ -117,7 +123,8 @@ class Driver extends JFrame {
      * This function is necessary because charScreen causes an error
      * that makes the program crash before it even launches.
      * This function adds the character screen to the world and dungeon panels.
-     * @throws InterruptedException 
+     * 
+     * @throws InterruptedException
      */
     public static void addCharScreen() throws InterruptedException {
         charScreen = new CharacterScreen();
@@ -129,7 +136,7 @@ class Driver extends JFrame {
         dungeonInfo.add(logs);
         dungeon.add(dungeonInfo);
         dungeon.add(combat);
-        
+
         // driverPanel.add(new CharacterScreen(), "charScreen");
     }
 

@@ -14,26 +14,28 @@ class Town extends JPanel {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
+        try {
+            g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
+        } catch (IOException e) {
+            // Auto-generated catch block
+            e.printStackTrace();
+        }
     }
+
     /**
      * This function hosts the town screen with buttons to buy potions or leave
+     * 
      * @param player The player character object
      * @throws IOException
      */
-    public Town() throws IOException{
+    public Town() throws IOException {
         JPanel buttonPanel = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
 
-        //Whenever calling a getter for the player, it breaks it.
+        // Whenever calling a getter for the player, it breaks it.
         JLabel name = new JLabel("Name: ");
 
         JButton bazaar = new JButton("Bazaar");
@@ -46,7 +48,7 @@ class Town extends JPanel {
         buttons.add(library);
         JButton inventory = new JButton("Inventory");
         buttons.add(inventory);
-        
+
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         // add(name);
@@ -62,8 +64,8 @@ class Town extends JPanel {
         add(leave);
         add(Box.createVerticalGlue());
 
-        //For loop that formats all the buttons
-        for (int i = 0; i < buttons.size(); i++){
+        // For loop that formats all the buttons
+        for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
             buttons.get(i).setPreferredSize(new Dimension(200, 80));
@@ -82,7 +84,7 @@ class Town extends JPanel {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("bazaar");
                 MusicPlayer.playMusic("assets/Music/Turku, Nomads of the Silk Road - -Uskudara Gideriken.wav");
-            } catch (Exception e1){
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
         });
@@ -96,7 +98,7 @@ class Town extends JPanel {
                 Driver.changePanel("tavern");
                 MusicPlayer.playMusic("assets/Music/alexander-nakarada-tavern-loop-one.wav");
 
-            } catch (Exception e1){
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
         });
@@ -115,11 +117,11 @@ class Town extends JPanel {
 
         // Button that takes player to inventory panel
         inventory.addActionListener(e -> {
-            try{
-                Inventory.backToTown = true;
+            try {
+                Driver.player.inventory.backToTown = true;
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
-            } catch (Exception e1){
+            } catch (Exception e1) {
                 e1.printStackTrace();
             }
         });
@@ -128,7 +130,7 @@ class Town extends JPanel {
         leave.addActionListener(e -> {
             try{
                 SFX.stopAllSounds();
-                Inventory.backToTown = false;
+                Driver.player.inventory.backToTown = false;
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
