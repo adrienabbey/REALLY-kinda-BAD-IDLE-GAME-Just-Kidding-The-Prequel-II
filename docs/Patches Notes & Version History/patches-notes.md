@@ -1,11 +1,11 @@
 ### Patches and Bugfixes 3/26/24:
-  - Fixed issue where gold would not be added to inventory after defeating a monster in the dungeon.
-  - Added colors to buy, sell, and merchant UIs. Redid secret merchant panel. 
-  - Added a basic book of monsters feature.
-  - Added googley eyes to startscreen goblin.
-  - Added logic for homestead purchase, added buttons for farming and crafting (wont be expanded on until after course ends).
-  - Added hunting and scavenging to forest and mineshaft respectively. Sets up the resources to be used later for cooking, crafting, alchemy, etc. 
-  - Optimized forest and mineshaft:
+  1. Fixed issue where gold would not be added to inventory after defeating a monster in the dungeon.
+  2. Added colors to buy, sell, and merchant UIs. Redid secret merchant panel. 
+  3. Added a basic book of monsters feature.
+  4. Added googley eyes to startscreen goblin.
+  5. Added logic for homestead purchase, added buttons for farming and crafting (wont be expanded on until after course ends).
+  6. Added hunting and scavenging to forest and mineshaft respectively. Sets up the resources to be used later for cooking, crafting, alchemy, etc. 
+  7. Optimized forest and mineshaft:
        - made it so grant messages go away after sometime.
        - made progress bar fill up more smoothly
        - cant play multiple sfx at once when clicking resource gathering buttons  anymore
@@ -64,11 +64,11 @@ Known bugs:
 ---
 ### Patch / bugfix notes for 4/1/24:
 
-* Added button that drops down character status bar in forest panel
-* Status bar curently shows health, magic, and gold
-* Harvesting resources regens 10% of max health and magic.
-* Added relative scaling to buttons in World screen
-* Added dungeon error message that pops up when the player tries to enter
+1. Added button that drops down character status bar in forest panel
+2. Status bar curently shows health, magic, and gold
+3. Harvesting resources regens 10% of max health and magic.
+4. Added relative scaling to buttons in World screen
+5. Added dungeon error message that pops up when the player tries to enter
 the dungeon with low health. Explains how to regen health. Disappears after 2 seconds.
 
 --- 
