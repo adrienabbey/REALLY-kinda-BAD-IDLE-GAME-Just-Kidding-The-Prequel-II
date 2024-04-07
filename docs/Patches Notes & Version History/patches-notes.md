@@ -73,3 +73,22 @@ Known bugs:
 the dungeon with low health. Explains how to regen health. Disappears after 2 seconds.
 
 --- 
+### Patch Notes / Bug Fixes for 4/7/24
+
+1. Minor improvements:
+   - Added entries to the credits
+   - Added bgm w/ ambient bird noises in forest
+   - Made certain resources appear more commonly
+   - Added sfx to scavenging, tongue fern, spleenwort, pelt, meat, and magical essence. 
+   - Added fullscreen (for my system), corrected relative positioning in forest panel to match fullscreen resolution.
+
+2. Added saving/loading to UI and automatic saving:
+    - added parameter for save/load methods in Driver to allow file paths to be specified.
+    - Added buttons for 2 save states. 
+    - Save file 1 is automatically saved by default whenever the user changes panels (enetering and leaving all panels from World, and enteirng and leaving the bazaar). 
+
+Known bugs:
+* player cant load their save file from a fresh new game, load button doesnt work. Probably something with panels not being initialized properly. 
+* save button doesnt seem to work after creating a new game and going back to the main menu to save your game.
+
+---
