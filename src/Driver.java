@@ -52,6 +52,8 @@ class Driver extends JFrame {
      * @throws Exception
      */
     public Driver() throws Exception {
+        // Set the JFrame to be undecorated, removes title bar and borders
+        setUndecorated(true);
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
         MusicPlayer.playMusic("assets/Music/now-we-ride.wav"); 
@@ -70,7 +72,7 @@ class Driver extends JFrame {
         Mineshaft mineshaft = new Mineshaft();
         Tavern tavern = new Tavern();
         Library library = new Library();
-        Farm farm = new Farm();
+        // Farm farm = new Farm();
         Craft craft = new Craft();
         Town town = new Town();
 
@@ -108,7 +110,7 @@ class Driver extends JFrame {
         ImageIcon iconImage = new ImageIcon("assets/images/windowIcon.png");
         this.setIconImage(iconImage.getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setVisible(true);
         device.setFullScreenWindow(this);
     }
@@ -121,7 +123,7 @@ class Driver extends JFrame {
      */
     public static void addCharScreen() throws InterruptedException {
         charScreen = new CharacterScreen();
-        charScreen.setPreferredSize(new Dimension(charScreen.getWidth(), 36));
+        // charScreen.setPreferredSize(new Dimension(charScreen.getWidth(), 20));
         world.add(charScreen);
         world.add(map);
         dungeonInfo.add(charScreen);

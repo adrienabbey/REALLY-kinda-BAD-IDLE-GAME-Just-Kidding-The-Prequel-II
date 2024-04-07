@@ -106,11 +106,11 @@ public class Forest extends JPanel {
         JPanel buttonPanel = new JPanel(new GridLayout());
 
         // Set position and size of panel, label, and progress bar using relative scaling
-        buttonPanel.setBounds((int) (width * 0.0104), (int) (height * 0.916), (int) (width * 0.9713), (int) (height * 0.0463)); 
+        buttonPanel.setBounds((int) (width * 0.0134), (int) (height * 0.9500), (int) (width * 0.9713), (int) (height * 0.0483)); 
 
-        harvestedLabel.setBounds((int) (width * 0.0104), (int) (height * 0.824), (int) (width * 0.156), (int) (height * 0.0555));
+        harvestedLabel.setBounds((int) (width * 0.0134), (int) (height * 0.8499), (int) (width * 0.156), (int) (height * 0.0545));
 
-        progressBar.setBounds((int) (width * 0.0104), (int) (height * 0.8703), (int) (width * 0.9713), (int) (height * 0.0463));
+        progressBar.setBounds((int) (width * 0.0134), (int) (height * 0.8962), (int) (width * 0.9713), (int) (height * 0.0573));
 
         // add buttons to button panel
         buttonPanel.add(autoHuntButton);
