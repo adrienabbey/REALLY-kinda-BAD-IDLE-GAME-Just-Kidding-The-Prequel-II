@@ -171,15 +171,16 @@ class Driver extends JFrame {
      * Saves the specified player object to a file.
      * 
      * @param playerCharacter The player object to be saved.
+     * @param saveFilePath    The file path where the player data will be saved.
      * @return Returns true if save is successful, false if not.
      */
-    public static boolean savePlayer(PlayerCharacter playerCharacter) {
+    public static boolean savePlayer(PlayerCharacter playerCharacter, String saveFilePath) {
         // Syntax referenced from:
         // https://reintech.io/blog/java-serialization-saving-restoring-objects-to-from-disk
         try {
             // TODO: Enable loading and saving more than a single player.
             // TODO: Enable saving to a different filename/directory location.
-            FileOutputStream saveFile = new FileOutputStream("saveFile.sav");
+            FileOutputStream saveFile = new FileOutputStream(saveFilePath);
             ObjectOutputStream outputStream = new ObjectOutputStream(saveFile);
             outputStream.writeObject(playerCharacter);
             outputStream.close();
@@ -200,10 +201,11 @@ class Driver extends JFrame {
     /**
      * Loads a player character from a save file.
      * 
-     * @return Returns the loaded player character if successful. Will return
+     * @param saveFilePath  The file path where the player data will be loaded from.
+     * @return  Returns the loaded player character if successful. Will return
      *         NULL objects if this process fails for any reason.
      */
-    public static PlayerCharacter loadPlayer() {
+    public static PlayerCharacter loadPlayer(String saveFilePath) {
         // Syntax referenced from:
         // https://reintech.io/blog/java-serialization-saving-restoring-objects-to-from-disk
 
@@ -213,7 +215,7 @@ class Driver extends JFrame {
         PlayerCharacter loadedCharacter = null;
         try {
 
-            FileInputStream loadFile = new FileInputStream("saveFile.sav");
+            FileInputStream loadFile = new FileInputStream(saveFilePath);
             ObjectInputStream inputStream = new ObjectInputStream(loadFile);
             loadedCharacter = (PlayerCharacter) inputStream.readObject();
             inputStream.close();

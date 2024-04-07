@@ -143,6 +143,7 @@ public class World extends JPanel{
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("home");
                 MusicPlayer.playMusic("assets/Music/homestead-bgm.wav");
+                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
                 
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -156,6 +157,7 @@ public class World extends JPanel{
                 Driver.changePanel("forest");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song]-lowered.wav");
                 SFX.playSound("assets/Music/ambient-farmland-sounds.wav", true);
+                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -168,6 +170,7 @@ public class World extends JPanel{
                 Driver.changePanel("mineshaft");
                 MusicPlayer.playMusic("assets/Music/Lamento di Tristano [Medieval Song]-lowered.wav");
                 SFX.playSound("assets/SFX/mineshaft-ambience2.wav", true);
+                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
                 
             } catch (Exception e1) {
                 e1.printStackTrace();

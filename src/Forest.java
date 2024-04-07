@@ -226,6 +226,7 @@ public class Forest extends JPanel {
                 SFX.stopAllSounds(); 
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
                 SFX.playSound("assets/SFX/interface1.wav");
+                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -280,14 +281,14 @@ public class Forest extends JPanel {
                         harvestedLabel.setText("Pelt harvested!"); // Update harvested label
                         SFX.playSound("assets/SFX/cloth-heavy.wav"); // pelt gathering sfx
     
-                        int currentPelt = inventory.getResource("Pelt");
+                        int currentPelt = Driver.player.inventory.getResource("Pelt");
                         // Increment wood resource variable
-                        inventory.setResource("Pelt", currentPelt + 1);
+                        Driver.player.inventory.setResource("Pelt", currentPelt + 1);
                         } else {
                             harvestedLabel.setText("Meat harvested!"); // Update harvested label
                             SFX.playSound("assets/SFX/meat-gathering-sfx.wav"); // meat gathering sfx
         
-                            int currentMeat = inventory.getResource("Meat");
+                            int currentMeat = Driver.player.inventory.getResource("Meat");
                             // Increment wood resource variable
                             Driver.player.inventory.setResource("Meat", currentMeat + 1);
                         }
