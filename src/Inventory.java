@@ -2,8 +2,7 @@
  * Inventory Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
  * Muhammed Abushamma, et al., Mar. 2024
  */
-import javax.swing.*;
-import java.awt.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ import java.util.Map;
  * TODO: Store equipment in inventory. Allow players to use potions from inventory and equip or unequip equipment. 
  */
 
-public class Inventory extends JPanel {
+public class Inventory {
 
     public Map<String, Integer> resources; // Map to store resource amounts
     public boolean backToHomestead = false; // flag that keeps trck if player accessed inventory from the
@@ -30,7 +29,7 @@ public class Inventory extends JPanel {
         resources.put("Wood", 250);
         resources.put("Metal", 100);
         resources.put("Stone", 250);
-        resources.put("Potions", 0);
+        // resources.put("Potions", 0);
         resources.put("Pelt", 0);
         resources.put("Meat", 0);
         resources.put("Magical Essense", 0);
@@ -59,24 +58,26 @@ public class Inventory extends JPanel {
             System.err.println("Resource '" + resourceName + "' does not exist.");
         }
     }
-    
+
     // // Method to add to Gold to inventory when defeating monsters
     // public void addGold(int amount) {
-    //     int currentGold = resources.get("Gold");
-    //     resources.put("Gold", currentGold + amount);
-    //     updateResourceLabels(); // Update the UI to reflect the changes
+    // int currentGold = resources.get("Gold");
+    // resources.put("Gold", currentGold + amount);
+    // updateResourceLabels(); // Update the UI to reflect the changes
     // }
-    
+
     // // Update resource labels
     // public void updateResourceLabels() {
-    //     // Update resource labels
-    //     for (String resourceName : resources.keySet()) {
-    //         for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
-    //             if (component instanceof JLabel && ((JLabel) component).getText().startsWith(resourceName)) {
-    //                 ((JLabel) component).setText(resourceName + ": " + resources.get(resourceName));
-    //             }
-    //         }
-    //     }
+    // // Update resource labels
+    // for (String resourceName : resources.keySet()) {
+    // for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
+    // if (component instanceof JLabel && ((JLabel)
+    // component).getText().startsWith(resourceName)) {
+    // ((JLabel) component).setText(resourceName + ": " +
+    // resources.get(resourceName));
+    // }
+    // }
+    // }
     // }
 
     public Map<String, Integer> getResources() {
