@@ -92,3 +92,9 @@ Known bugs:
 * save button doesnt seem to work after creating a new game and going back to the main menu to save your game.
 
 ---
+### Patch Notes and Bug fixes for 4/7/24
+
+1. Added status bar to mineshaft
+2. Harvesting resources regens health and magic just like in the forest now
+3. Components and panels in mineshaft now use relative positioning
+---
