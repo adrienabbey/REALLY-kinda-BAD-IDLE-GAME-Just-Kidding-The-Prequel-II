@@ -23,7 +23,6 @@ class Combat extends JPanel {
 
     public Combat(PlayerCharacter player, Monster enemy) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Color customColorBlue = new Color(46, 86, 161);
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         logs.setBackground(customColorBrown);

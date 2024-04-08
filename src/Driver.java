@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -74,7 +73,7 @@ class Driver extends JFrame {
         Tavern tavern = new Tavern();
         Library library = new Library();
         // Farm farm = new Farm();
-        Craft craft = new Craft();
+        //Craft craft = new Craft();
 
         // JPanel charPanel = new CharacterScreen();
         // JPanel dice = new Dice();

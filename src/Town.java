@@ -29,14 +29,11 @@ class Town extends JPanel {
      * @throws IOException
      */
     public Town() throws IOException {
-        JPanel buttonPanel = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
 
-        // Whenever calling a getter for the player, it breaks it.
-        JLabel name = new JLabel("Name: ");
 
         JButton bazaar = new JButton("Bazaar");
         buttons.add(bazaar);

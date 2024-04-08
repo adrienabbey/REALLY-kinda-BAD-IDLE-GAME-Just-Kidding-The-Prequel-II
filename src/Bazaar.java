@@ -65,14 +65,10 @@ class Bazaar extends JPanel {
      * @throws IOException
      */
     public Bazaar() { // Accepts an Inventory object
-        JPanel buttonPanel = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
-
-        // Whenever calling a getter for the player, it breaks it.
-        JLabel name = new JLabel("Name: ");
 
         JButton buy = new JButton("Buy");
         buttons.add(buy);

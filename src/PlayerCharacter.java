@@ -20,7 +20,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    private int potionBeltSize;
    private int potionCount;
    private boolean isAwake = true;
-   private int timeToWake = 0; // TODO: Is this something we're implementing?
+   //private int timeToWake = 0; // TODO: Is this something we're implementing?
    public Equipment equipment; // Contains all the player's equipment.
    public Inventory inventory;
 
@@ -112,7 +112,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    public boolean drinkPotion() {
       if (!isAwake) {
          isAwake = true;
-         timeToWake = 0;
+         //timeToWake = 0;
          potionCount--;
          return true;
       } else if (potionCount > 0) {
@@ -148,10 +148,11 @@ class PlayerCharacter extends GameCharacter implements Serializable {
       return gold = newGoldBalance;
    }
 
-   public void died() {
-      isAwake = false;
-      timeToWake = 5;
-   }
+   // TODO: is this something we're doing?
+   // public void died() {
+   //    isAwake = false;
+   //    timeToWake = 5;
+   // }
 
    public boolean isAwake() {
       return isAwake;
