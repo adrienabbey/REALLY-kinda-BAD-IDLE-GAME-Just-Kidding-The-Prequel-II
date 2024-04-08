@@ -104,8 +104,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
          this.setHealth(this.getHealth() + POTION_HEAL);
          return true;
       }
-      // TODO: What does drinking a potion do?
-      // TODO: What if there's no more potions to drink?
       return false;
    }
 

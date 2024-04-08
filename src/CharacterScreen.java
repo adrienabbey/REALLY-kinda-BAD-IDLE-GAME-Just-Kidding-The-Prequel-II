@@ -1,7 +1,6 @@
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-
 import java.awt.*;
 import java.awt.Dimension;
 import javax.swing.Box;
@@ -52,7 +51,6 @@ class CharacterScreen extends JPanel{
             labels.get(i).setForeground(customColorBeige);
             labels.get(i).setFont(new Font("Serif", Font.BOLD, 32));
         }
-
 
         // This is adding all objects to the screen, and controlling layout
         add(Box.createVerticalGlue());

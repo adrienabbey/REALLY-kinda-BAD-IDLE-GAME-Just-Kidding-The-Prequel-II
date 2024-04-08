@@ -78,8 +78,8 @@ class Driver extends JFrame {
         world.setLayout(new GridLayout(1, 2));
         dungeon.setLayout(new GridLayout(1, 2));
         dungeonInfo.setLayout(new GridLayout(2, 1));
-
         driverPanel.setLayout(cardLayout);
+
         driverPanel.add(settings, "settings");
         driverPanel.add(bazaar, "bazaar");
         driverPanel.add(start, "start");
@@ -126,8 +126,6 @@ class Driver extends JFrame {
         dungeonInfo.add(logs);
         dungeon.add(dungeonInfo);
         dungeon.add(combat);
-
-        // driverPanel.add(new CharacterScreen(), "charScreen");
     }
 
     public static CharacterScreen getCharScreen() {
