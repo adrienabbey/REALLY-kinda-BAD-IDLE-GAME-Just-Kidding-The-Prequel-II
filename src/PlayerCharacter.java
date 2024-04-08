@@ -148,7 +148,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
 
    public void died() {
       isAwake = false;
-      timeToWake = 5; TODO: is this something we're doing?
+      timeToWake = 5;
    }
 
    public boolean isAwake() {
