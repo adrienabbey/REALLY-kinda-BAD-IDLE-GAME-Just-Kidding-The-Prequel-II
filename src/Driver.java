@@ -180,7 +180,7 @@ class Driver extends JFrame {
         try {
             // TODO: Enable loading and saving more than a single player.
             // TODO: Enable saving to a different filename/directory location.
-            System.out.println("Attempting to save a file.");
+            // System.out.println("Attempting to save a file.");
             FileOutputStream saveFile = new FileOutputStream(saveFilePath);
             ObjectOutputStream outputStream = new ObjectOutputStream(saveFile);
             outputStream.writeObject(playerCharacter);
@@ -214,7 +214,7 @@ class Driver extends JFrame {
 
         // Create a player object to return:
         try {
-            System.out.println("Attempting to load a file.");
+            // System.out.println("Attempting to load a file.");
             FileInputStream loadFile = new FileInputStream(saveFilePath);
             ObjectInputStream inputStream = new ObjectInputStream(loadFile);
             PlayerCharacter loadedCharacter = (PlayerCharacter) inputStream.readObject();
