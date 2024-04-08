@@ -67,10 +67,6 @@ class Combat extends JPanel {
 
     public static void combatLoop() throws InterruptedException {
         while (combatActive && player.getHealth() > 0) {
-            if (player.isAwake()){
-                logs.setForeground(new Color(253, 236, 166));
-                logs.setBackground(new Color(102, 72, 54));
-            }   
             if (enemy.getHealth() > 0) {
                 // Player's turn
                 int playerRoll = dice.roll();
@@ -116,5 +112,10 @@ class Combat extends JPanel {
             addLog("\n" + player.getName() + " has been defeated!\n");
             player.died();
         }
+    }
+
+    public void update(){
+        logs.setForeground(new Color(253, 236, 166));
+        logs.setBackground(new Color(102, 72, 54));
     }
 }
