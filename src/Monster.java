@@ -39,7 +39,6 @@ class Monster extends GameCharacter {
      */
     public Monster(MonsterName name) {
         // Create a "temporary" monster that we forcibly change (painfully):
-        // super("FIXME!", 999, 999, 999);
         super((switch (name){
             case PETROCK -> "Rabid Pet Rock";
             case HOBOGOBLIN -> "Hobo Goblin";

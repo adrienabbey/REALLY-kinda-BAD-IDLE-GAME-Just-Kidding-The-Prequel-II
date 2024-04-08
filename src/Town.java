@@ -29,14 +29,10 @@ class Town extends JPanel {
      * @throws IOException
      */
     public Town() throws IOException {
-        JPanel buttonPanel = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
-
-        // Whenever calling a getter for the player, it breaks it.
-        JLabel name = new JLabel("Name: ");
 
         JButton bazaar = new JButton("Bazaar");
         buttons.add(bazaar);
@@ -51,8 +47,6 @@ class Town extends JPanel {
 
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
-        // add(name);
-        add(Box.createRigidArea(new Dimension(100, 150)));
         add(bazaar);
         add(Box.createRigidArea(new Dimension(100, 20)));
         add(tavern);
@@ -67,7 +61,6 @@ class Town extends JPanel {
         // For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-
             buttons.get(i).setPreferredSize(new Dimension(200, 80));
             buttons.get(i).setMaximumSize(new Dimension(200, 80));
             buttons.get(i).setBackground(customColorBrown);
@@ -97,7 +90,6 @@ class Town extends JPanel {
                 SFX.playSound("assets/SFX/door-open.wav");
                 Driver.changePanel("tavern");
                 MusicPlayer.playMusic("assets/Music/alexander-nakarada-tavern-loop-one.wav");
-
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
