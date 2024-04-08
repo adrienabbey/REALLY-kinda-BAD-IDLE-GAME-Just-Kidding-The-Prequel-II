@@ -126,16 +126,17 @@ class Bazaar extends JPanel {
             if (buyScreenOpen == false) { // Check if buy screen is not already open
                 buyScreenOpen = true; // Set buy screen as open
 
-            // check is sell screen is open, if yes then close it
-            if (sellScreenOpen) {
-                remove(mainPanel2); // remove sell screen if open
-                sellScreenOpen = false; // adjust flag accordingly
-                revalidate();
-                repaint();
+                // check is sell screen is open, if yes then close it
+                if (sellScreenOpen) {
+                    remove(mainPanel2); // remove sell screen if open
+                    sellScreenOpen = false; // adjust flag accordingly
+                    revalidate();
+                    repaint();
                 }
 
                 // Create a panel to hold labels and the buy panel
                 mainPanel1 = new JPanel(new BorderLayout());
+                mainPanel1.setMaximumSize(new Dimension(getWidth(), 500));
 
                 // Create a label to display the player's gold count
                 JLabel goldLabel = new JLabel("  Gold: " + Driver.player.getGold() + "  ");
@@ -238,7 +239,6 @@ class Bazaar extends JPanel {
                 }
 
                 scrollPane.setViewportView(buyPanel);
-                scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
                 mainPanel1.add(closeButtonPanel, BorderLayout.NORTH);
@@ -248,7 +248,7 @@ class Bazaar extends JPanel {
                 mainPanel1.add(buy_label, BorderLayout.WEST);
 
                 // Add the scroll pane to the center of the Shop panel
-                add(mainPanel1, BorderLayout.CENTER);
+                add(mainPanel1);
 
                 // tells the layout manager to recalculate the layout of the component. This is
                 // necessary when adding or removing components, or when changing the size or
@@ -293,6 +293,7 @@ class Bazaar extends JPanel {
 
                 // Create a panel to hold labels and the sell panel
                 mainPanel2 = new JPanel(new BorderLayout());
+                mainPanel2.setMaximumSize(new Dimension(getWidth(), 500));
 
                 // Create a label to display the player's gold count
                 JLabel goldLabel = new JLabel("  Gold:  " + Driver.player.getGold() + "  ");
@@ -374,17 +375,12 @@ class Bazaar extends JPanel {
                                 if ((Driver.player.inventory.getResource(resourceName) > 0)) {
                                     err_message.setText("");
                                     Driver.player.inventory.setResource(resourceName,
-                                            Driver.player.inventory.getResource(resourceName) - 1); // minus the
-                                                                                                    // resource from
-                                                                                                    // inventory
+                                            Driver.player.inventory.getResource(resourceName) - 1); // minus resource from inventory
                                     Driver.player.setGold(Driver.player.getGold() + 1);
                                     Driver.inventoryUI.updateResourceLabels(); // Update the labels
-                                    goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the
-                                                                                                    // gold label
+                                    goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
                                     sellItemButton.setText("Sell " + resourceName + " ("
-                                            + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the
-                                                                                                          // sell button
-                                                                                                          // label
+                                            + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the sell button label
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 } else {
                                     err_message.setText("Cannot sell item, no items left.");
@@ -397,7 +393,6 @@ class Bazaar extends JPanel {
                 }
 
                 scrollPane.setViewportView(sellPanel);
-                scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
                 mainPanel2.add(closeButtonPanel, BorderLayout.NORTH);
@@ -505,9 +500,8 @@ class Bazaar extends JPanel {
                     remove(mainPanel);
                     remove(secretMerchantPanel);
 
-                    // Adding the buttons back to shop panel.
+                    // Adding the buttons to the shop panel and controlling layout
                     add(Box.createVerticalGlue());
-                    add(Box.createRigidArea(new Dimension(100, 330)));
                     add(buy);
                     add(Box.createRigidArea(new Dimension(0, 20)));
                     add(sell);
@@ -587,19 +581,19 @@ class Bazaar extends JPanel {
                             if ((Driver.player.getGold() > 0)) {
                                 err_message.setText("");
                                 Driver.player.inventory.setResource(resourceName,
-                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
-                                                                                                // inventory
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the rsource to inventory
                                 Driver.player.setGold(Driver.player.getGold() - 1);
                                 Driver.inventoryUI.updateResourceLabels(); // Update the labels
-                                goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the
-                                                                                                 // gold label
+                                goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the gold
                                 buyItemButton.setText(
                                         "Buy " + resourceName + " ("
-                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update
-                                                                                                              // the buy
-                                                                                                              // button
-                                                                                                              // label
-                                SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
+                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update buy button label
+                                if (resourceName == "Legendary Potion of Lepus") {
+                                    SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
+                                } else {
+                                    SFX.playSound("assets/SFX/coin3.wav");
+                                }
+
                             } else {
                                 err_message.setText(
                                         "                                                  Cannot buy item, no more gold.  ");
@@ -619,11 +613,14 @@ class Bazaar extends JPanel {
                 mainPanel.add(err_message, BorderLayout.SOUTH);
                 mainPanel.add(buy_label, BorderLayout.NORTH);
 
-                // Add the main panel to the main content panel
-                mainContentPanel.add(mainPanel);
+            // Add the main panel to the main content panel
+            mainContentPanel.add(mainPanel);
 
-                // Add the main content panel to the secret merchant panel
-                secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
+            // Add the main content panel to the secret merchant panel
+            secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
+
+            // Add background image to secret merchant panel
+             add(secretMerchantPanel);
 
             revalidate();
             repaint();

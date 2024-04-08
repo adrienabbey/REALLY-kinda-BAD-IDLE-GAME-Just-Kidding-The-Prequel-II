@@ -17,22 +17,33 @@ class StartScreen extends JPanel{
     private int hoboSFX = 0; // used to loop through hobogoblin sfx 
 
     public StartScreen() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = screenSize.width;
+        int height = screenSize.height;
+
+        int eyeRadius = (int)((double) width * ((double) 18 / 1920));
+        int irisRadius = (int)((double) width * ((double) 9 / 1920));
+        int eye1Height = (int)((double) height * ((double) 571 / 1080));
+        int eye2Height = (int)((double) height * ((double) 564 / 1080));
+        int eye1X = (int)((double) width * ((double) 1636 / 1920));
+        int eye2X = (int)((double) width * ((double) 1670 / 1920));
+
         try {
             // Set first eye's properties
-            eye1.setEyePosition(new Point(1620, 550));
-            eye1.setEyeRadius(23);
-            eye1.setIrisPosition(new Point(1620, 550));
-            eye1.setIrisRadius(16);
+            eye1.setEyePosition(new Point(eye1X, eye1Height));
+            eye1.setEyeRadius(eyeRadius);
+            eye1.setIrisPosition(new Point(eye1X, eye1Height));
+            eye1.setIrisRadius(irisRadius);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
             // Set second eye's properties
-            eye2.setEyePosition(new Point(1670, 550));
-            eye2.setEyeRadius(23);
-            eye2.setIrisPosition(new Point(1670, 550));
-            eye2.setIrisRadius(16);
+            eye2.setEyePosition(new Point(eye2X, eye2Height));
+            eye2.setEyeRadius(eyeRadius);
+            eye2.setIrisPosition(new Point(eye2X, eye2Height));
+            eye2.setIrisRadius(irisRadius);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -210,5 +221,3 @@ class StartScreen extends JPanel{
         eye2.drawEye(g, eye2);
     }
 }
-
-
