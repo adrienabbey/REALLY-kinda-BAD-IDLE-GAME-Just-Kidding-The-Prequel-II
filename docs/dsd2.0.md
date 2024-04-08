@@ -92,7 +92,7 @@
 
 ## Signatures
 
-- Muhammed Abushamma
-- Brandon Walker
-- Adrien Abbey
-- Luke Davidson
+- 
+- 
+- 
+- 
