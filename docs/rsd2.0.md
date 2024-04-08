@@ -103,14 +103,15 @@
 >        1. The upgrade chance calculation considers the current level of the dungeon. It also takes into account the levels of the player's current gear. The disparity between current gear levels and potential upgrade levels is calculated accurately.
 >        2. Check whhether each combat session upgrades a single piece of equipment at most. Check wower-level gear has a higher chance to upgrade compared to higher-level gear.
 
-7. The player will be able to mine ore and cut wood in their corresponding panels.
-    1. Wood, stone, metal and various other rsources will be stored in the player's inventory.
+7. The player will be able mine ore, scaveng area, cut trees, and hunt wildlife.
+    1. Wood, stone, metal and various other resources will be stored in the player's inventory.
     2. The player can choose to either "mine ore" or "scavenge area" using buttons located in the mineshaft panel.
     3. Mining ore will allow the player to harvest stone or metal. Scavenging will allow the player to harvest magical essence, spleenwort, or tongue fern.
     5. The player can choose to either "cut wood" or "hunt wildlife" using buttons located in the forest panel.
     6. Cutting wood will allow the player to harvest wood. Hunting will allow the player to harvest pelt or meat.
     7. Harvest a resource will regenerate the player's health and magic stat by 10% of the maximum value of their health and magic stat.
        Regeneration will only occur if health and magic are below their maximum values.
+> 7. Ensure there are buttons the player can use to mine ore, scavenege area, cut trees, and hunt wildlife.
   
 8. The player will be able to buy a homestead using the "but homestead" button located in the homestead screen. The homestead screen
    can be accessed from the world screen.
