@@ -158,9 +158,6 @@
     1. The button that takes the player to the secret merchant panel will appear every fourth bazaar visit.
     2. The secret merchant will sell a secret item.
 > 14. Confirm the presence and accessibility of a secret merchant screen within the bazaar screen, with a button appearing every fourth visit, offering a secret item for sale.
-   
-15. Before the game loads up there will be a disclaimer message.
-> 15. Verify the presence of a disclaimer message displayed before the game loads up, providing necessary information or warnings to the player.
 
 
 ---
