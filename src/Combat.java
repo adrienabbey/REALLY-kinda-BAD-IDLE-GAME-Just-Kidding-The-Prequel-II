@@ -6,7 +6,6 @@ import javax.swing.Box;
 import java.awt.*;
 
 class Combat extends JPanel {
-    // static Inventory inventory = Inventory.getInstance();
 
     public enum MagicType {
         ATTACK,
