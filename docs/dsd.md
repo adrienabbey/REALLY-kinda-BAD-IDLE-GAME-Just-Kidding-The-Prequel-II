@@ -72,7 +72,6 @@
     3. The secret merchant will sell a secret item. This secret item will be added exclusively to the list of items the secret merchant sells through the absence of
        an if statement. The default list of items the player can buy in the bazaar screen excludes the secret item by using an if statement. 
    
-15. Before the game loads up there will be a disclaimer message. This will be done through the use of an extra screen that appears before the start screen. 
 
 
 
