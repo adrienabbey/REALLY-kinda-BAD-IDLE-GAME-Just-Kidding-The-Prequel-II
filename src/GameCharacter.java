@@ -3,7 +3,9 @@
  * Adrien Abbey, et al., Jan. 2024
  */
 
-class GameCharacter {
+import java.io.Serializable;
+
+class GameCharacter implements Serializable {
    /* Fields */
    private String name;
    private int muscle;
