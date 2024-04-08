@@ -41,6 +41,15 @@ public class Equipment implements Serializable {
         hatDescription = "Hair, unless you're bald.  Are you bald?";
     }
 
+    public Equipment(Equipment other) {
+        this.weaponLevel = other.weaponLevel;
+        this.weaponDescription = other.weaponDescription;
+        this.armourLevel = other.armourLevel;
+        this.armourDescription = other.armourDescription;
+        this.hatLevel = other.hatLevel;
+        this.hatDescription = other.hatDescription;
+    }
+
     /* Methods */
 
     /**

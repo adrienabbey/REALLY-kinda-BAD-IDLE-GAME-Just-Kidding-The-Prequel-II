@@ -56,7 +56,7 @@ class Driver extends JFrame {
         setUndecorated(true);
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = env.getDefaultScreenDevice();
-        MusicPlayer.playMusic("assets/Music/now-we-ride.wav"); 
+        MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
         // This panel will be for any screens before a character has been loaded, which
         // will be a solo screen at a time
         StartScreen start = new StartScreen();
@@ -163,6 +163,7 @@ class Driver extends JFrame {
         try {
             // TODO: Enable loading and saving more than a single player.
             // TODO: Enable saving to a different filename/directory location.
+            // System.out.println("Attempting to save a file.");
             FileOutputStream saveFile = new FileOutputStream(saveFilePath);
             ObjectOutputStream outputStream = new ObjectOutputStream(saveFile);
             outputStream.writeObject(playerCharacter);
@@ -184,8 +185,8 @@ class Driver extends JFrame {
     /**
      * Loads a player character from a save file.
      * 
-     * @param saveFilePath  The file path where the player data will be loaded from.
-     * @return  Returns the loaded player character if successful. Will return
+     * @param saveFilePath The file path where the player data will be loaded from.
+     * @return Returns the loaded player character if successful. Will return
      *         NULL objects if this process fails for any reason.
      */
     public static PlayerCharacter loadPlayer(String saveFilePath) {
@@ -195,12 +196,11 @@ class Driver extends JFrame {
         // TODO: Enable loading from more than a single save file.
 
         // Create a player object to return:
-        PlayerCharacter loadedCharacter = null;
         try {
-
+            // System.out.println("Attempting to load a file.");
             FileInputStream loadFile = new FileInputStream(saveFilePath);
             ObjectInputStream inputStream = new ObjectInputStream(loadFile);
-            loadedCharacter = (PlayerCharacter) inputStream.readObject();
+            PlayerCharacter loadedCharacter = (PlayerCharacter) inputStream.readObject();
             inputStream.close();
             loadFile.close();
             return loadedCharacter;

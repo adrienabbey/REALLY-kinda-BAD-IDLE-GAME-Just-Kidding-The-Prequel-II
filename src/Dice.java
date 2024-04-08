@@ -1,4 +1,6 @@
-class Dice{
+import java.io.Serializable;
+
+class Dice implements Serializable{
     private int sides;
     private int dice;
 

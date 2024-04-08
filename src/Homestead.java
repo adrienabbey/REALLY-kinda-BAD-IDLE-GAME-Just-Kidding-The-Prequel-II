@@ -167,7 +167,7 @@ class Homestead extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");
             MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
-            Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
+            Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav"); // save player data to save slot 1 by default
         });
 
         // Takes player to farm screen

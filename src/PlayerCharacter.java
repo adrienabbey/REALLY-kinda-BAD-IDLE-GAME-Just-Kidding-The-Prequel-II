@@ -45,6 +45,17 @@ class PlayerCharacter extends GameCharacter implements Serializable {
       this.inventory = new Inventory();
    }
 
+   public PlayerCharacter(PlayerCharacter other) {
+      super(other);
+      this.gold = other.gold;
+      this.potionBeltSize = other.potionBeltSize;
+      this.potionCount = other.potionCount;
+      this.isAwake = other.isAwake;
+      this.timeToWake = other.timeToWake;
+      this.equipment = other.equipment;
+      this.inventory = other.inventory;
+   }
+
    /* Methods */
 
    // Here, thou incestuous, murderous, damned Dane, Drink off this potion!
