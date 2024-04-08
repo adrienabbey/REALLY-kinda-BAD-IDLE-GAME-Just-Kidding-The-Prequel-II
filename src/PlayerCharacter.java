@@ -20,7 +20,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    private int potionBeltSize;
    private int potionCount;
    private boolean isAwake = true;
-   //private int timeToWake = 0; // TODO: Is this something we're implementing?
+   private int timeToWake = 0;
    public Equipment equipment; // Contains all the player's equipment.
    public Inventory inventory;
 
@@ -112,7 +112,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    public boolean drinkPotion() {
       if (!isAwake) {
          isAwake = true;
-         //timeToWake = 0;
+         timeToWake = 0;
          potionCount--;
          return true;
       } else if (potionCount > 0) {
@@ -120,8 +120,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
          this.setHealth(this.getHealth() + POTION_HEAL);
          return true;
       }
-      // TODO: What does drinking a potion do?
-      // TODO: What if there's no more potions to drink?
       return false;
    }
 
@@ -150,7 +148,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
 
    public void died() {
       isAwake = false;
-      // timeToWake = 5; TODO: is this something we're doing?
+      timeToWake = 5; TODO: is this something we're doing?
    }
 
    public boolean isAwake() {
