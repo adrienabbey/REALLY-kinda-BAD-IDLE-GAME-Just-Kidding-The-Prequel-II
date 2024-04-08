@@ -4,6 +4,8 @@
  */
 
 import java.io.Serializable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Player Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
@@ -33,9 +35,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    // }
 
    // Constructor for loading player stats from a save file?
-   // TODO: Include player Gear loading.
-   // TODO: Is this used by the UI when creating a new character?
-   // TODO: If so, it might need balancing.
    public PlayerCharacter(String name, int muscle, int brain, int heart, int gold, int potionBeltSize,
          int potionCount) {
       super(name, muscle, brain, heart);
@@ -44,6 +43,17 @@ class PlayerCharacter extends GameCharacter implements Serializable {
       this.potionCount = potionCount;
       this.equipment = new Equipment();
       this.inventory = new Inventory();
+   }
+
+   public PlayerCharacter(PlayerCharacter other) {
+      super(other);
+      this.gold = other.gold;
+      this.potionBeltSize = other.potionBeltSize;
+      this.potionCount = other.potionCount;
+      this.isAwake = other.isAwake;
+      this.timeToWake = other.timeToWake;
+      this.equipment = other.equipment;
+      this.inventory = other.inventory;
    }
 
    /* Methods */
@@ -88,19 +98,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
          // just throwing them away? ROFL
          potionCount = potionBeltSize;
          return potionCount;
-      }
-   }
-
-   // TODO: What does this do? there is a method for drink, and a method to add, so
-   // I am not sure what unique purpose this fills
-   public boolean setPotion(int newPotionCount) {
-      if (newPotionCount > 0 && newPotionCount < potionBeltSize) {
-         potionCount = newPotionCount;
-         return true;
-      } else {
-         System.err.println(
-               "ERROR: When setting the number of potions being carried, it cannot be negative or more than the maximum potion count.");
-         return false;
       }
    }
 
@@ -149,6 +146,23 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    public void died() {
       isAwake = false;
       timeToWake = 5;
+      this.wakeUp();
+   }
+
+   private void wakeUp() {
+      Timer timer = new Timer();
+      // TODO: integrate with harvesting regen
+      TimerTask awake = new TimerTask() {
+         public void run() {
+            timeToWake--;
+            if (timeToWake == 0) {
+               isAwake = true;
+               PlayerCharacter.this.setHealth(5);
+               timer.cancel();
+            }
+         }
+      };
+     timer.schedule(awake, 0, 1000);
    }
 
    public boolean isAwake() {

@@ -39,7 +39,6 @@ class Monster extends GameCharacter {
      */
     public Monster(MonsterName name) {
         // Create a "temporary" monster that we forcibly change (painfully):
-        // super("FIXME!", 999, 999, 999);
         super((switch (name){
             case PETROCK -> "Rabid Pet Rock";
             case HOBOGOBLIN -> "Hobo Goblin";
@@ -76,7 +75,7 @@ class Monster extends GameCharacter {
                 isBoss = false;
                 castsMagic = false;
                 imageFilePath = "assets/images/Rock2.png";
-                monsterLevel = 2;
+                monsterLevel = 99;
                 break;
             case HOBOGOBLIN:
                 setDescription(
@@ -85,7 +84,7 @@ class Monster extends GameCharacter {
                 isBoss = false;
                 castsMagic = false;
                 imageFilePath = "assets/images/hobogoblin.png";
-                monsterLevel = 2;
+                monsterLevel = 99;
                 break;
             case CYCLOPIAN_GENTLEMAN:
                 setDescription(

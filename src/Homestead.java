@@ -7,7 +7,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -58,7 +57,6 @@ class Homestead extends JPanel {
 
         // For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++) {
-            // buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
             buttons.get(i).setBackground(new Color(46, 86, 161)); // Dark wood color
             buttons.get(i).setForeground(new Color(255, 255, 255)); // White text
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 29));
@@ -169,7 +167,7 @@ class Homestead extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");
             MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
-            Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
+            Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav"); // save player data to save slot 1 by default
         });
 
         // Takes player to farm screen
