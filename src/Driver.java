@@ -213,11 +213,12 @@ class Driver extends JFrame {
         // TODO: Enable loading from more than a single save file.
 
         // Create a player object to return:
+        PlayerCharacter loadedCharacter = new PlayerCharacter("test", 1, 1, 1, 1, 1, 1);
         try {
             System.out.println("Attempting to load a file.");
             FileInputStream loadFile = new FileInputStream(saveFilePath);
             ObjectInputStream inputStream = new ObjectInputStream(loadFile);
-            PlayerCharacter loadedCharacter = (PlayerCharacter) inputStream.readObject();
+            loadedCharacter = (PlayerCharacter) inputStream.readObject();
             inputStream.close();
             loadFile.close();
             return loadedCharacter;
