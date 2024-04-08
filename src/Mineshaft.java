@@ -175,8 +175,13 @@ public class Mineshaft extends JPanel {
                 health.setBackground(Color.red);
                 magic.setForeground(Color.white);
                 magic.setBackground(Color.blue);
-                // gold.setForeground(Color.white);
                 gold.setBackground(Color.yellow);
+
+                health.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                magic.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                gold.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+
+                // add bttons to status bar
                 statusBar.add(health);
                 statusBar.add(magic);
                 statusBar.add(gold);
@@ -219,7 +224,7 @@ public class Mineshaft extends JPanel {
                 SFX.stopAllSounds(); 
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
                 SFX.playSound("assets/SFX/interface1.wav");
-                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
+                Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav"); // save player data to save slot 1 by default
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

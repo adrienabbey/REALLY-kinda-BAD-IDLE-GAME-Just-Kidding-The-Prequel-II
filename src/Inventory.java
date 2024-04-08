@@ -3,6 +3,7 @@
  * Muhammed Abushamma, et al., Mar. 2024
  */
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ import java.util.Map;
  * TODO: Store equipment in inventory. Allow players to use potions from inventory and equip or unequip equipment. 
  */
 
-public class Inventory {
+public class Inventory implements Serializable {
 
     public Map<String, Integer> resources; // Map to store resource amounts
     public boolean backToHomestead = false; // flag that keeps trck if player accessed inventory from the
@@ -37,6 +38,10 @@ public class Inventory {
         resources.put("Tongue Fern", 0);
         resources.put("Legendary Potion of Lepus", 0);
 
+    }
+
+    public Inventory(Inventory other) {
+        this.resources = other.resources;
     }
 
     // Method to get resource amount
