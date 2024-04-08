@@ -24,6 +24,7 @@
 * Group Member `Mo`
   - Add Potions to Bazaar
   - UI Scaling
+  - Add your own comments to the presentation, including "What We Learned"
 * Group Member `Luke`
   - Finalize presentation
   - Offer help where needed
