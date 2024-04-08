@@ -1,5 +1,5 @@
 # Design Specification Documenation
-- To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/edit/main/docs/rsd.md#L50)
+- To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/edit/main/docs/dsd.md#L83)
 
 
 1. Implement a base start screen class that will guide the player in their journey. This start screen will consist of buttons that will prompt them for a "New Game", "Load Game", "Instructions", and "Quit".  Other important screens will be the world map and town. The world map will help the player navigate through the gameplay loop. It will have buttons to go into dungeons to start combat, and a button to go to the shop to allow the player to buy potions to give their character effects. *See picture at end of document for early mockups of what these screens would look like*
