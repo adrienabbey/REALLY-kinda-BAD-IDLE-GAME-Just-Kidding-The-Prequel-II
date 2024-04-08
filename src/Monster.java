@@ -76,7 +76,7 @@ class Monster extends GameCharacter {
                 isBoss = false;
                 castsMagic = false;
                 imageFilePath = "assets/images/Rock2.png";
-                monsterLevel = 2;
+                monsterLevel = 99;
                 break;
             case HOBOGOBLIN:
                 setDescription(
@@ -85,7 +85,7 @@ class Monster extends GameCharacter {
                 isBoss = false;
                 castsMagic = false;
                 imageFilePath = "assets/images/hobogoblin.png";
-                monsterLevel = 2;
+                monsterLevel = 99;
                 break;
             case CYCLOPIAN_GENTLEMAN:
                 setDescription(
