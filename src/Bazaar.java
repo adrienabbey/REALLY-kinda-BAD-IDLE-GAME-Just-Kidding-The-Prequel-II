@@ -83,15 +83,14 @@ class Bazaar extends JPanel {
 
         // Adding the buttons to the shop panel and controlling layout
         add(Box.createVerticalGlue());
-        add(Box.createRigidArea(new Dimension(0, 250))); // create rigid area to be used as padding to shrink buy/sell screens' height
         add(buy);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(sell);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(inventory1);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(leave);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(secretMerchant);
         add(Box.createVerticalGlue());
 
@@ -503,15 +502,14 @@ class Bazaar extends JPanel {
 
                     // Adding the buttons to the shop panel and controlling layout
                     add(Box.createVerticalGlue());
-                    add(Box.createRigidArea(new Dimension(0, 250))); // create rigid area to be used as padding to shrink buy/sell screens' height
                     add(buy);
-                    add(Box.createRigidArea(new Dimension(0, 30)));
+                    add(Box.createRigidArea(new Dimension(0, 20)));
                     add(sell);
-                    add(Box.createRigidArea(new Dimension(0, 30)));
+                    add(Box.createRigidArea(new Dimension(0, 20)));
                     add(inventory1);
-                    add(Box.createRigidArea(new Dimension(0, 30)));
+                    add(Box.createRigidArea(new Dimension(0, 20)));
                     add(leave);
-                    add(Box.createRigidArea(new Dimension(0, 30)));
+                    add(Box.createRigidArea(new Dimension(0, 20)));
                     add(secretMerchant);
                     add(Box.createVerticalGlue());
 
