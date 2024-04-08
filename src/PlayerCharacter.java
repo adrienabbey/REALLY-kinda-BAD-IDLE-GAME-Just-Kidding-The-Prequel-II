@@ -148,11 +148,10 @@ class PlayerCharacter extends GameCharacter implements Serializable {
       return gold = newGoldBalance;
    }
 
-   // TODO: is this something we're doing?
-   // public void died() {
-   //    isAwake = false;
-   //    timeToWake = 5;
-   // }
+   public void died() {
+      isAwake = false;
+      // timeToWake = 5; TODO: is this something we're doing?
+   }
 
    public boolean isAwake() {
       return isAwake;
