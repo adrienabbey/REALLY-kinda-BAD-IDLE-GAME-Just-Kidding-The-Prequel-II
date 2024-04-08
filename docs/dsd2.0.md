@@ -57,7 +57,22 @@
     3. The library screen will have the implementation for the "book of monsters" screen, which will contain the descriptions for monsters in the game.
 10. There will be a rolling credits screen that can be accessed from the settings panel that will credit the developers, professor, art used, music used, and sound effect used.
 11. Most if not all panels will have an accompanying background image and music implemeneted by calling a MusicPlayer class.
-12. All buttons and some actions will have an accompanying sound effect that will be implemeneted by calling the SFX class.
+12. Most if not all of the buttons and will have an accompanying sound effect that will be implemeneted by calling the SFX class.
+
+13. There shall be a status bar button and panel present in the forest and mineshaft screens implemented in the forest and mineshaft panels using Jbuttons and JPanel.
+    1. The player will be able to view the status bar by clicking on the status bar button. The button will have an action listener that will, after being clicked,
+       add the components of the status bar to the panel.
+    2. The status bar panel will show the values of health, magic, and gold the player currently has by using a getter method in the Driver class to return the player object
+       which houses the methods used to get the player's health, magic, and gold. These values will be updated everytime the player opens the status bar and during regenertaion
+       of these values during resource gathering.
+
+14. There will be a secret merhcant screen that can be accessed from the bazaar screen.
+    1. The button that takes the player to the secret merchant panel will appear every fourth bazaar visit. A basic if statement is used to determine when
+       to add the secret merhcant button to the bazaar screen. 
+    3. The secret merchant will sell a secret item. This secret item will be added exclusively to the list of items the secret merchant sells through the absence of
+       an if statement. The default list of items the player can buy in the bazaar screen excludes the secret item by using an if statement. 
+   
+15. Before the game loads up there will be a disclaimer message. This will be done through the use of an extra screen that appears before the start screen. 
 
 
 
