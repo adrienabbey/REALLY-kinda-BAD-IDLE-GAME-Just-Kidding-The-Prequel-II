@@ -140,6 +140,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
 
    private void wakeUp() {
       Timer timer = new Timer();
+      // TODO: integrate with harvesting regen
       TimerTask awake = new TimerTask() {
          public void run() {
             timeToWake--;

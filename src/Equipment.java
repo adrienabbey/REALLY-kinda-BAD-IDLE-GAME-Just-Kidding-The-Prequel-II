@@ -21,6 +21,7 @@ public class Equipment implements Serializable {
     static String weaponDescription;
     static String armourDescription;
     static String hatDescription;
+    private Dice dice = new Dice(3);
 
     /* Constructor */
 
@@ -80,27 +81,31 @@ public class Equipment implements Serializable {
         // higher than the monster level. This lets players specialize.
 
         // Roll each chance to see if one upgrades:
-        boolean weaponUpgrades = (Math.random() < weaponUpgradeChance);
-        boolean armourUpgrades = (Math.random() < armourUpgradeChance);
-        boolean hatUpgrades = (Math.random() < hatUpgradeChance);
+        // boolean weaponUpgrades = (Math.random() < weaponUpgradeChance);
+        // boolean armourUpgrades = (Math.random() < armourUpgradeChance);
+        // boolean hatUpgrades = (Math.random() < hatUpgradeChance);
+        // TODO: We might bring something back with this for weighted upgrades
+        // for specializing a character.
 
         // TODO: Implement a weighted randomness algorithm to upgrade only a
         // single piece of equipment when multiple valid upgrades exist.
 
+        dice.roll();
+
         // For simplicity's sake, I'm going to allow multiple upgrades at once:
-        if (weaponUpgrades) {
+        if (dice.getLast() == 1) {
             weaponLevel += 1;
             weaponDescription = "A Big Stick +" + weaponLevel;
             itemUpgraded = true;
             player.setMuscle(player.getMuscle() + 1);
         }
-        if (armourUpgrades) {
+        if (dice.getLast() == 2) {
             armourLevel += 1;
             armourDescription = "The Skin of Your Enemies +" + armourLevel;
             itemUpgraded = true;
             player.setHeart(player.getHeart() + 1);
         }
-        if (hatUpgrades) {
+        if (dice.getLast() == 3) {
             hatLevel += 1;
             armourDescription = "A tower of " + hatLevel + " hats.";
             itemUpgraded = true;
