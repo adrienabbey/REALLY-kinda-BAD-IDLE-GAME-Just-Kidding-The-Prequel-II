@@ -113,4 +113,9 @@ class Combat extends JPanel {
             player.died();
         }
     }
+
+    public void update(){
+        logs.setForeground(new Color(253, 236, 166));
+        logs.setBackground(new Color(102, 72, 54));
+    }
 }

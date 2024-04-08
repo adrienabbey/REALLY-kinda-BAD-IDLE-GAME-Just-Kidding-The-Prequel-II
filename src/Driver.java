@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -232,5 +233,6 @@ class Driver extends JFrame {
 
     public static void dungeonUpdate() {
         charScreen.update();
+        logs.update();
     }
 }
