@@ -112,6 +112,7 @@
     7. Harvest a resource will regenerate the player's health and magic stat by 10% of the maximum value of their health and magic stat.
        Regeneration will only occur if health and magic are below their maximum values.
 > 7. Ensure there are buttons the player can use to mine ore, scavenege area, cut trees, and hunt wildlife.
+>    1. 
   
 8. The player will be able to buy a homestead using the "but homestead" button located in the homestead screen. The homestead screen
    can be accessed from the world screen.
@@ -137,7 +138,9 @@
 
 14. There will be a secret merhcant screen that can be accessed from the bazaar screen.
     1. The button that takes the player to the secret merchant panel will appear every fourth bazaar visit.
-    2. The secret merchant will sell a secret item. 
+    2. The secret merchant will sell a secret item.
+   
+15. Before the game loads up there will be a disclaimer message. 
 
 
 ---
