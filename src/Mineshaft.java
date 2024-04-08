@@ -201,17 +201,25 @@ public class Mineshaft extends JPanel {
         // Action listener for the 'Leave' button
         leave.addActionListener(e -> {
             try {
-                timer.stop(); // stop auto process when leaving
-                progressBar.setValue(0); // reset progress bar
-                auto = false; // stop auto ptocess when leaving panel
-                resetProgress = true; // will reset progress to 0 when reentering mineshaft
-                currentlyScavenge = false;
-                currentlyMining = false;
-                autoMineButton.setText("Mine Ore"); // reset mining label
-                autoScavengeButton.setText("Scavenge Area"); // reset scavenge label
+                if (statusBarOpen) {
+                    remove(statusBar);
+                    statusButton.setText(downArrow);
+                    statusBarOpen = false;
+                    statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125),
+                            (int) (height * 0.04166)); // Reset status button position
+                }
+                timer.stop();
+                progressBar.setValue(0);
+                auto = false; // stop auto mining if left panel
+                resetProgress = true;
+                currentlyMining = false; // set hunting flag to default
+                currentlyScavenge = false; // set cutting flag to default
+                // timer.stop(); // stop woodcutting process
+                autoMineButton.setText("Cut Tree"); // reset autocutting label
+                autoScavengeButton.setText("Hunt Wildlife"); // reset autohunting label
 
                 Driver.changePanel("world");
-                SFX.stopAllSounds();
+                SFX.stopAllSounds(); 
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
