@@ -6,7 +6,6 @@ import javax.swing.Box;
 import java.awt.*;
 
 class Combat extends JPanel {
-    // static Inventory inventory = Inventory.getInstance();
 
     public enum MagicType {
         ATTACK,
@@ -88,8 +87,10 @@ class Combat extends JPanel {
                 } else {
                     addLog(player.getName() + " is out of magic!\n");
                 }
-                addLog(enemy.getName() + " has " + enemy.getHealth() + " health remaining.\n\n");
-                Thread.sleep(5000);
+                double enemyHealth = enemy.getHealth();
+                enemyHealth = Math.round(enemyHealth * 10.0) / 10.0; 
+                addLog(enemy.getName() + " has " + enemyHealth + " health remaining.\n\n");
+                Thread.sleep(750);
             } else {
 
                 addLog("\n" + enemy.getName() + " has been defeated!\n" + player.getName() + " has gained "
@@ -100,7 +101,7 @@ class Combat extends JPanel {
                 player.doEquipmentUpgrade(enemy.getMonsterLevel(), enemy.isBoss());
 
                 enemy = Dungeon.getMonster();
-                Thread.sleep(10000);
+                Thread.sleep(1500);
               
             }
             Driver.charScreen.update();

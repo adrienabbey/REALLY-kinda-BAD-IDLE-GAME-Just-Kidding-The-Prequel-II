@@ -15,11 +15,7 @@ class GameCharacter implements Serializable {
    private int maxHealth;
    private double magic;
    private int maxMagic;
-   // private int dice;
    private Dice dice = new Dice(20);
-
-   // TODO: What do these stats do?
-   // TODO: When do these stats increase, if at all?
 
    /**
     * Constructor for GameCharacter class
@@ -74,7 +70,6 @@ class GameCharacter implements Serializable {
          Combat.addLog(name + " hit " + target.getName() + " for " + damage + " damage!\n");
       }
       // Method used when a character attacks another character.
-      // TODO: Implementation.
    }
 
    public void magicAttack(GameCharacter target) {
@@ -103,12 +98,13 @@ class GameCharacter implements Serializable {
       dice.roll();
       if (dice.getLast() == 20) {
          Combat.addLog(name + " critical heal's themselves for " + heal * 2 + " health!\n");
-         health += heal * 2;
-      } else if (dice.getLast() == 1) {
+         setHealth(health + (heal * 2));
+      }
+      else if(dice.getLast() == 1) {
          Combat.addLog(name + " critical missed! a heal and took 1 damage!\n");
          health -= 1;
       } else {
-         health += heal;
+         setHealth(health + (heal * 2));
          Combat.addLog(name + " healed themselves for " + heal + " health!\n");
       }
       magic -= 1;
@@ -159,7 +155,6 @@ class GameCharacter implements Serializable {
     * @return Returns the new health value.
     */
    public double setHealth(double newHealth) {
-      // TODO: Do we want to allow health to go above max?
       if (newHealth > maxHealth) {
          return health = maxHealth;
       } else {

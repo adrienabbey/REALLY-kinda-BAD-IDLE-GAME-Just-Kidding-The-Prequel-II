@@ -108,6 +108,7 @@ public class World extends JPanel{
             try {
                 player = Driver.getPlayer();
                 if (player.getHealth() > 0) {  // can't enter dungeon if low health
+                    Driver.dungeonUpdate();
                     SFX.playSound("assets/SFX/interface1.wav");
                     Driver.changePanel("dungeon");
                     MusicPlayer.playMusic("assets/Music/Fantasy Medieval Music - Song of the North.wav");
@@ -181,6 +182,7 @@ public class World extends JPanel{
         leave.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
+                Driver.removeCharScreen();
                 Driver.changePanel("start");              
             } catch (Exception e1) {
                 e1.printStackTrace();

@@ -30,7 +30,6 @@ public class Inventory implements Serializable {
         resources.put("Wood", 250);
         resources.put("Metal", 100);
         resources.put("Stone", 250);
-        // resources.put("Potions", 0);
         resources.put("Pelt", 0);
         resources.put("Meat", 0);
         resources.put("Magical Essence", 0);
@@ -63,27 +62,6 @@ public class Inventory implements Serializable {
             System.err.println("Resource '" + resourceName + "' does not exist.");
         }
     }
-
-    // // Method to add to Gold to inventory when defeating monsters
-    // public void addGold(int amount) {
-    // int currentGold = resources.get("Gold");
-    // resources.put("Gold", currentGold + amount);
-    // updateResourceLabels(); // Update the UI to reflect the changes
-    // }
-
-    // // Update resource labels
-    // public void updateResourceLabels() {
-    // // Update resource labels
-    // for (String resourceName : resources.keySet()) {
-    // for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
-    // if (component instanceof JLabel && ((JLabel)
-    // component).getText().startsWith(resourceName)) {
-    // ((JLabel) component).setText(resourceName + ": " +
-    // resources.get(resourceName));
-    // }
-    // }
-    // }
-    // }
 
     public Map<String, Integer> getResources() {
         return resources;

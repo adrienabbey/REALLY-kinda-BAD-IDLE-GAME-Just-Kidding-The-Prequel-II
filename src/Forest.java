@@ -234,7 +234,7 @@ public class Forest extends JPanel {
 
         // Timer for woodcutting/hunting process. 
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Currently, akes 10 seconds to fill up.
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer(10, new ActionListener() {
             int progress = 0;
 
             @Override

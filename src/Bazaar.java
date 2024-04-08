@@ -65,14 +65,10 @@ class Bazaar extends JPanel {
      * @throws IOException
      */
     public Bazaar() { // Accepts an Inventory object
-        JPanel buttonPanel = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
-
-        // Whenever calling a getter for the player, it breaks it.
-        JLabel name = new JLabel("Name: ");
 
         JButton buy = new JButton("Buy");
         buttons.add(buy);
@@ -87,8 +83,6 @@ class Bazaar extends JPanel {
 
         // Adding the buttons to the shop panel and controlling layout
         add(Box.createVerticalGlue());
-        // add(name);
-        add(Box.createRigidArea(new Dimension(100, 330)));
         add(buy);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(sell);
@@ -103,7 +97,6 @@ class Bazaar extends JPanel {
         // For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-
             buttons.get(i).setPreferredSize(new Dimension(200, 80));
             buttons.get(i).setMaximumSize(new Dimension(200, 80));
             buttons.get(i).setBackground(customColorBrown);
@@ -140,11 +133,6 @@ class Bazaar extends JPanel {
                 revalidate();
                 repaint();
                 }
-
-                // Remove existing buttons
-                // this.removeAll();
-                // this.revalidate();
-                // this.repaint();
 
                 // Create a panel to hold labels and the buy panel
                 mainPanel1 = new JPanel(new BorderLayout());

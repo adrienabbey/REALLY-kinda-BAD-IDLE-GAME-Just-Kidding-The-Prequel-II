@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -73,20 +72,14 @@ class Driver extends JFrame {
         Mineshaft mineshaft = new Mineshaft();
         Tavern tavern = new Tavern();
         Library library = new Library();
-        // Farm farm = new Farm();
         Craft craft = new Craft();
-
-        // JPanel charPanel = new CharacterScreen();
-        // JPanel dice = new Dice();
-        // JPanel inventory = new Inventory();
-        // JPanel world = new JPanel();
         Town town = new Town();
 
         world.setLayout(new GridLayout(1, 2));
         dungeon.setLayout(new GridLayout(1, 2));
         dungeonInfo.setLayout(new GridLayout(2, 1));
-
         driverPanel.setLayout(cardLayout);
+
         driverPanel.add(settings, "settings");
         driverPanel.add(bazaar, "bazaar");
         driverPanel.add(start, "start");
@@ -100,11 +93,6 @@ class Driver extends JFrame {
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
         driverPanel.add(inventory, "inventory");
-        // driverPanel.add(farm, "farm");
-        // driverPanel.add(craft, "craft");
-        // driverPanel.add(charPanel, "charPanel");
-        // driverPanel.add(dice, "dice");
-        // driverPanel.add(inventory, "inventory");
         driverPanel.add(world, "world");
         driverPanel.add(town, "town");
         driverPanel.add(dungeon, "dungeon");
@@ -130,7 +118,6 @@ class Driver extends JFrame {
      */
     public static void addCharScreen() throws InterruptedException {
         charScreen = new CharacterScreen();
-        // charScreen.setPreferredSize(new Dimension(charScreen.getWidth(), 20));
         world.add(charScreen);
         world.add(map);
         dungeonInfo.add(charScreen);
@@ -138,8 +125,15 @@ class Driver extends JFrame {
         dungeonInfo.add(logs);
         dungeon.add(dungeonInfo);
         dungeon.add(combat);
+    }
 
-        // driverPanel.add(new CharacterScreen(), "charScreen");
+    public static void removeCharScreen() {
+        world.remove(charScreen);
+        world.remove(map);
+        dungeonInfo.remove(charScreen);
+        dungeonInfo.remove(logs);
+        dungeon.remove(dungeonInfo);
+        dungeon.remove(combat);
     }
 
     public static CharacterScreen getCharScreen() {
@@ -164,8 +158,6 @@ class Driver extends JFrame {
     public static void setPlayer(PlayerCharacter player) {
         Driver.player = player;
     }
-
-    /* Save and Load functions for the Player object */
 
     /**
      * Saves the specified player object to a file.
@@ -236,5 +228,9 @@ class Driver extends JFrame {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void dungeonUpdate() {
+        charScreen.update();
     }
 }

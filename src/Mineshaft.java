@@ -232,7 +232,7 @@ public class Mineshaft extends JPanel {
 
         // Timer for automatic process
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Takes 10 seconds to fill up.
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer(10, new ActionListener() {
             int progress = 0;
             int ore = 1; // used to track which resource to grant
             int scavenge = 0; // used to track which resource to grant

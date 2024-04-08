@@ -25,11 +25,8 @@ class Dungeon extends JPanel {
      }
 
     public Dungeon() {
-        // TODO add the actual enemy generation and combat here
-
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         
-
         // This is creating all the objects that will be displayed on the screen
         // Need something to explicitly start combat
         // Make entry to dungeon initiate?
@@ -43,8 +40,6 @@ class Dungeon extends JPanel {
         Color customColorBrown = new Color(102, 72, 54);
         JButton start = new JButton("Start Combat");
         buttons.add(start);
-        JButton end = new JButton("End Combat");
-        buttons.add(end);
         JButton magic = new JButton("Attack Magic");
         buttons.add(magic);
         JButton potion = new JButton("Use Potion");
@@ -69,13 +64,10 @@ class Dungeon extends JPanel {
         add(Box.createRigidArea(new Dimension(20, 20)));
         add(potion);
         add(Box.createRigidArea(new Dimension(20, 20)));
-        add(end);
-        add(Box.createRigidArea(new Dimension(20, 20)));
         add(leave);
         add(Box.createHorizontalGlue());
 
         // control the layout of the buttons
-        //run.setAlignmentX(CENTER_ALIGNMENT);
         start.addActionListener(e -> {
             Combat.startCombat();
         });
@@ -88,11 +80,12 @@ class Dungeon extends JPanel {
                 magic.setText("Heal Magic");
             }
         });
-        end.addActionListener(e -> {
-            Combat.endCombat();
+        potion.addActionListener(e -> {
+            Driver.getPlayer().drinkPotion();
         });
         leave.addActionListener(e -> {
             try {
+                Combat.endCombat();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");

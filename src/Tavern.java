@@ -64,7 +64,6 @@ class Tavern extends JPanel {
             Driver.changePanel("town");
             MusicPlayer.playMusic("assets/Music/town-bgm.wav");
             SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);
-            // SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);  
         });
 
         // Action listener for the 'Purchase' button. Cycles through four different prompts. 

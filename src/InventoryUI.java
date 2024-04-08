@@ -61,7 +61,6 @@ public class InventoryUI extends JPanel {
     }
 
     // Update resource labels
-
     public void updateResourceLabels() {
         // Update resource labels
         for (String resourceName : Driver.player.inventory.resources.keySet()) {
