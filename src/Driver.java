@@ -118,7 +118,6 @@ class Driver extends JFrame {
      */
     public static void addCharScreen() throws InterruptedException {
         charScreen = new CharacterScreen();
-        // charScreen.setPreferredSize(new Dimension(charScreen.getWidth(), 20));
         world.add(charScreen);
         world.add(map);
         dungeonInfo.add(charScreen);
