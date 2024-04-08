@@ -15,12 +15,12 @@ public class Equipment implements Serializable {
 
     /* Fields */
 
-    static int weaponLevel;
-    static int armourLevel;
-    static int hatLevel;
-    static String weaponDescription;
-    static String armourDescription;
-    static String hatDescription;
+    int weaponLevel;
+    int armourLevel;
+    int hatLevel;
+    String weaponDescription;
+    String armourDescription;
+    String hatDescription;
 
     /* Constructor */
 
@@ -38,6 +38,15 @@ public class Equipment implements Serializable {
         armourDescription = "Your Birthday Suit, which is kinda lacking.";
         hatLevel = 1;
         hatDescription = "Hair, unless you're bald.  Are you bald?";
+    }
+
+    public Equipment(Equipment other) {
+        this.weaponLevel = other.weaponLevel;
+        this.weaponDescription = other.weaponDescription;
+        this.armourLevel = other.armourLevel;
+        this.armourDescription = other.armourDescription;
+        this.hatLevel = other.hatLevel;
+        this.hatDescription = other.hatDescription;
     }
 
     /* Methods */

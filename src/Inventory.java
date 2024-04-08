@@ -40,6 +40,10 @@ public class Inventory implements Serializable {
 
     }
 
+    public Inventory(Inventory other) {
+        this.resources = other.resources;
+    }
+
     // Method to get resource amount
     public int getResource(String resourceName) {
         if (resources.containsKey(resourceName)) {
