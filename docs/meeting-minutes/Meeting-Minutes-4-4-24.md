@@ -47,6 +47,6 @@
 ## Contributors
 * Adrien Abbey
 * Muhammed Abushamma
-*
+* Luke Davidson
 *
 
