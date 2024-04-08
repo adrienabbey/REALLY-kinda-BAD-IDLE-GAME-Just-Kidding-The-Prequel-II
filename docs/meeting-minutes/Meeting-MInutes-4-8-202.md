@@ -7,6 +7,7 @@
 3. Iron out any last tasks or details
 
 ## Notes
+### Required Todo:
 1. MVP code requirements finished.
 2. Presentation slides finished.
 3. Documentation, Meeting Minutes: Signatures.
