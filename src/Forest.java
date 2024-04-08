@@ -21,7 +21,6 @@ import java.util.ArrayList;
  * Add levels to the forest. Deeper levels can be a way to add more items to the game. Player can unlock deeper levels by increasing their woodcutting/hunting stat. Can use a different bgm and bg image for new levels. Maybe even add secret diaog options when unlocking new levels, such as new dialog messages in the tavern or in the forest itself. 
  */
 public class Forest extends JPanel {
-    private PlayerCharacter player = new PlayerCharacter(getName(), HEIGHT, HEIGHT, HEIGHT, HEIGHT, WIDTH, HEIGHT);
 
     private JProgressBar progressBar;
     private JButton autoHuntButton; // Button to activate hunting
@@ -161,15 +160,14 @@ public class Forest extends JPanel {
         statusButton.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
             if (!statusBarOpen) {
-                player = Driver.getPlayer(); // get player object
                 statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0453), (int) (width * 0.03125),
                         (int) (height * 0.04166)); // Set the position and size of the button
                 statusButton.setText(upArrow);
                 statusBar = new JPanel(new GridLayout()); // assign statusbar
 
                 // assign buttons to shown character statuses
-                health = new JButton("Health: " + (int) player.getHealth());
-                magic = new JButton("Magic: " + (int) player.getMagic());
+                health = new JButton("Health: " + (int) Driver.getPlayer().getHealth());
+                magic = new JButton("Magic: " + (int) Driver.getPlayer().getMagic());
                 gold = new JButton("Gold: " + Driver.player.getGold());
 
                 // format buttons
@@ -248,17 +246,17 @@ public class Forest extends JPanel {
                     progressBar.setValue(100);
 
                     // regenerate magic by 10% when player harvests a resource
-                    if (player.getMagic() < player.getMaxMagic()) { // if current magic is less than maximum magic
-                        double magicRegenRate = player.getMaxMagic() * 0.1;
-                        player.setMagic(player.getMagic() + magicRegenRate); // regenerate magic by 10% of max mana
-                        magic.setText("Magic: " + player.getMagic());
+                    if (Driver.getPlayer().getMagic() < Driver.getPlayer().getMaxMagic()) { // if current magic is less than maximum magic
+                        double magicRegenRate = Driver.getPlayer().getMaxMagic() * 0.1;
+                        Driver.getPlayer().setMagic(Driver.getPlayer().getMagic() + magicRegenRate); // regenerate magic by 10% of max mana
+                        magic.setText("Magic: " + Driver.getPlayer().getMagic());
                     }
 
                     // regenerate health by 10% when player harvests a resource
-                    if (player.getHealth() < player.getMaxHealth()) { // if current Health is less than maximum Health
-                        double HealthRegenRate = player.getMaxHealth() * 0.1;
-                        player.setHealth(player.getHealth() + HealthRegenRate); // regenerate Health by 10% of max mana
-                        health.setText("Health: " + player.getHealth());
+                    if (Driver.getPlayer().getHealth() < Driver.getPlayer().getMaxHealth()) { // if current Health is less than maximum Health
+                        double HealthRegenRate = Driver.getPlayer().getMaxHealth() * 0.1;
+                        Driver.getPlayer().setHealth(Driver.getPlayer().getHealth() + HealthRegenRate); // regenerate Health by 10% of max mana
+                        health.setText("Health: " + Driver.getPlayer().getHealth());
                     }
 
                     // if player was cutting tree grant wood
