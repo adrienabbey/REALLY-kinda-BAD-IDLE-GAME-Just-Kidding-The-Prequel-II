@@ -24,7 +24,7 @@
   - Offer help where needed
 
 ## Contributors
-* 
+* Brandon Walker
 * Luke Davidson
 * 
 * 
