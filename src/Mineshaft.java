@@ -175,8 +175,13 @@ public class Mineshaft extends JPanel {
                 health.setBackground(Color.red);
                 magic.setForeground(Color.white);
                 magic.setBackground(Color.blue);
-                // gold.setForeground(Color.white);
                 gold.setBackground(Color.yellow);
+
+                health.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                magic.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                gold.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+
+                // add bttons to status bar
                 statusBar.add(health);
                 statusBar.add(magic);
                 statusBar.add(gold);

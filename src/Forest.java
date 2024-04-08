@@ -175,7 +175,12 @@ public class Forest extends JPanel {
                 health.setBackground(Color.red);
                 magic.setForeground(Color.white);
                 magic.setBackground(Color.blue);
-                // gold.setForeground(Color.white);
+        
+                health.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                magic.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                gold.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                
+                // add components to status bar
                 gold.setBackground(Color.yellow);
                 statusBar.add(health);
                 statusBar.add(magic);
