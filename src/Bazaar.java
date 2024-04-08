@@ -126,16 +126,17 @@ class Bazaar extends JPanel {
             if (buyScreenOpen == false) { // Check if buy screen is not already open
                 buyScreenOpen = true; // Set buy screen as open
 
-            // check is sell screen is open, if yes then close it
-            if (sellScreenOpen) {
-                remove(mainPanel2); // remove sell screen if open
-                sellScreenOpen = false; // adjust flag accordingly
-                revalidate();
-                repaint();
+                // check is sell screen is open, if yes then close it
+                if (sellScreenOpen) {
+                    remove(mainPanel2); // remove sell screen if open
+                    sellScreenOpen = false; // adjust flag accordingly
+                    revalidate();
+                    repaint();
                 }
 
                 // Create a panel to hold labels and the buy panel
                 mainPanel1 = new JPanel(new BorderLayout());
+                mainPanel1.setMaximumSize(new Dimension(getWidth(), 500));
 
                 // Create a label to display the player's gold count
                 JLabel goldLabel = new JLabel("  Gold: " + Driver.player.getGold() + "  ");
@@ -238,7 +239,6 @@ class Bazaar extends JPanel {
                 }
 
                 scrollPane.setViewportView(buyPanel);
-                scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
                 mainPanel1.add(closeButtonPanel, BorderLayout.NORTH);
@@ -248,7 +248,7 @@ class Bazaar extends JPanel {
                 mainPanel1.add(buy_label, BorderLayout.WEST);
 
                 // Add the scroll pane to the center of the Shop panel
-                add(mainPanel1, BorderLayout.CENTER);
+                add(mainPanel1);
 
                 // tells the layout manager to recalculate the layout of the component. This is
                 // necessary when adding or removing components, or when changing the size or
@@ -293,6 +293,7 @@ class Bazaar extends JPanel {
 
                 // Create a panel to hold labels and the sell panel
                 mainPanel2 = new JPanel(new BorderLayout());
+                mainPanel2.setMaximumSize(new Dimension(getWidth(), 500));
 
                 // Create a label to display the player's gold count
                 JLabel goldLabel = new JLabel("  Gold:  " + Driver.player.getGold() + "  ");
@@ -397,7 +398,6 @@ class Bazaar extends JPanel {
                 }
 
                 scrollPane.setViewportView(sellPanel);
-                scrollPane.setPreferredSize(new Dimension(400, 400));
 
                 // Add components to the main panel
                 mainPanel2.add(closeButtonPanel, BorderLayout.NORTH);
