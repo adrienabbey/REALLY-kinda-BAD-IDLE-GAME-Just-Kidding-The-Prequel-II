@@ -11,6 +11,9 @@ class CharacterScreen extends JPanel{
     private PlayerCharacter player;
     private JLabel health;
     private JLabel magic;
+    private JLabel heart;
+    private JLabel brain;
+    private JLabel muscle;
     private JLabel potions;
     private JLabel gold;
 
@@ -33,6 +36,12 @@ class CharacterScreen extends JPanel{
         labels.add(health);
         magic = new JLabel("Magic: " + player.getMagic() + "/" + player.getMaxMagic());
         labels.add(magic);
+        brain = new JLabel("Brain: " + player.getBrain());
+        labels.add(brain);
+        muscle = new JLabel("Muscle: " + player.getMuscle());
+        labels.add(muscle);
+        heart = new JLabel("Heart: " + player.getHeart());
+        labels.add(heart);
         potions = new JLabel("Potions: " + player.getPotionCount() + "/" + player.getPotionBeltSize());
         labels.add(potions);
         gold = new JLabel("Gold: " + player.getGold());
@@ -54,6 +63,12 @@ class CharacterScreen extends JPanel{
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(magic);
         add(Box.createRigidArea(new Dimension(0, 20)));
+        add(brain);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(muscle);
+        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(heart);
+        add(Box.createRigidArea(new Dimension(0, 20)));
         add(potions);
         add(Box.createRigidArea(new Dimension(0, 20)));
         add(gold);
@@ -63,6 +78,9 @@ class CharacterScreen extends JPanel{
     public void update(){
         health.setText(String.format("Health: %.1f/%.1f", (float)player.getHealth(), (float)player.getMaxHealth()));
         magic.setText(String.format("Magic: %.1f/%.1f", (float)player.getMagic(), (float)player.getMaxMagic()));
+        brain.setText("Brain: " + player.getBrain());
+        muscle.setText("Muscle: " + player.getMuscle());
+        heart.setText("Heart: " + player.getHeart());
         potions.setText(String.format("Potions: %.1f/%.1f", (float)player.getPotionCount(), (float)player.getPotionBeltSize()));
         gold.setText("Gold: " + player.getGold());
         this.repaint();

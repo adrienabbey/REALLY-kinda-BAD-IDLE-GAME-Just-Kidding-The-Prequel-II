@@ -20,7 +20,7 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    private int potionBeltSize;
    private int potionCount;
    private boolean isAwake = true;
-   private int timeToWake = 0; // TODO: Is this something we're implementing?
+   private int timeToWake = 0;
    public Equipment equipment; // Contains all the player's equipment.
    public Inventory inventory;
 
@@ -33,9 +33,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    // }
 
    // Constructor for loading player stats from a save file?
-   // TODO: Include player Gear loading.
-   // TODO: Is this used by the UI when creating a new character?
-   // TODO: If so, it might need balancing.
    public PlayerCharacter(String name, int muscle, int brain, int heart, int gold, int potionBeltSize,
          int potionCount) {
       super(name, muscle, brain, heart);
@@ -88,19 +85,6 @@ class PlayerCharacter extends GameCharacter implements Serializable {
          // just throwing them away? ROFL
          potionCount = potionBeltSize;
          return potionCount;
-      }
-   }
-
-   // TODO: What does this do? there is a method for drink, and a method to add, so
-   // I am not sure what unique purpose this fills
-   public boolean setPotion(int newPotionCount) {
-      if (newPotionCount > 0 && newPotionCount < potionBeltSize) {
-         potionCount = newPotionCount;
-         return true;
-      } else {
-         System.err.println(
-               "ERROR: When setting the number of potions being carried, it cannot be negative or more than the maximum potion count.");
-         return false;
       }
    }
 
