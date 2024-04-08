@@ -619,11 +619,14 @@ class Bazaar extends JPanel {
                 mainPanel.add(err_message, BorderLayout.SOUTH);
                 mainPanel.add(buy_label, BorderLayout.NORTH);
 
-                // Add the main panel to the main content panel
-                mainContentPanel.add(mainPanel);
+            // Add the main panel to the main content panel
+            mainContentPanel.add(mainPanel);
 
-                // Add the main content panel to the secret merchant panel
-                secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
+            // Add the main content panel to the secret merchant panel
+            secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
+
+            // Add background image to secret merchant panel
+             add(secretMerchantPanel);
 
             revalidate();
             repaint();
