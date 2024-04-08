@@ -87,7 +87,9 @@ class Combat extends JPanel {
                 } else {
                     addLog(player.getName() + " is out of magic!\n");
                 }
-                addLog(enemy.getName() + " has " + enemy.getHealth() + " health remaining.\n\n");
+                double enemyHealth = enemy.getHealth();
+                enemyHealth = Math.round(enemyHealth * 10.0) / 10.0; 
+                addLog(enemy.getName() + " has " + enemyHealth + " health remaining.\n\n");
                 Thread.sleep(5000);
             } else {
 

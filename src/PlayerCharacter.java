@@ -4,6 +4,8 @@
  */
 
 import java.io.Serializable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Player Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
@@ -133,6 +135,22 @@ class PlayerCharacter extends GameCharacter implements Serializable {
    public void died() {
       isAwake = false;
       timeToWake = 5;
+      this.wakeUp();
+   }
+
+   private void wakeUp() {
+      Timer timer = new Timer();
+      TimerTask awake = new TimerTask() {
+         public void run() {
+            timeToWake--;
+            if (timeToWake == 0) {
+               isAwake = true;
+               PlayerCharacter.this.setHealth(5);
+               timer.cancel();
+            }
+         }
+      };
+     timer.schedule(awake, 0, 1000);
    }
 
    public boolean isAwake() {
