@@ -83,14 +83,15 @@ class Bazaar extends JPanel {
 
         // Adding the buttons to the shop panel and controlling layout
         add(Box.createVerticalGlue());
+        add(Box.createRigidArea(new Dimension(0, 250))); // create rigid area to be used as padding to shrink buy/sell screens' height
         add(buy);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, 30)));
         add(sell);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, 30)));
         add(inventory1);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, 30)));
         add(leave);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, 30)));
         add(secretMerchant);
         add(Box.createVerticalGlue());
 
@@ -374,17 +375,12 @@ class Bazaar extends JPanel {
                                 if ((Driver.player.inventory.getResource(resourceName) > 0)) {
                                     err_message.setText("");
                                     Driver.player.inventory.setResource(resourceName,
-                                            Driver.player.inventory.getResource(resourceName) - 1); // minus the
-                                                                                                    // resource from
-                                                                                                    // inventory
+                                            Driver.player.inventory.getResource(resourceName) - 1); // minus resource from inventory
                                     Driver.player.setGold(Driver.player.getGold() + 1);
                                     Driver.inventoryUI.updateResourceLabels(); // Update the labels
-                                    goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the
-                                                                                                    // gold label
+                                    goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
                                     sellItemButton.setText("Sell " + resourceName + " ("
-                                            + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the
-                                                                                                          // sell button
-                                                                                                          // label
+                                            + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the sell button label
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 } else {
                                     err_message.setText("Cannot sell item, no items left.");
@@ -505,17 +501,17 @@ class Bazaar extends JPanel {
                     remove(mainPanel);
                     remove(secretMerchantPanel);
 
-                    // Adding the buttons back to shop panel.
+                    // Adding the buttons to the shop panel and controlling layout
                     add(Box.createVerticalGlue());
-                    add(Box.createRigidArea(new Dimension(100, 330)));
+                    add(Box.createRigidArea(new Dimension(0, 250))); // create rigid area to be used as padding to shrink buy/sell screens' height
                     add(buy);
-                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(Box.createRigidArea(new Dimension(0, 30)));
                     add(sell);
-                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(Box.createRigidArea(new Dimension(0, 30)));
                     add(inventory1);
-                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(Box.createRigidArea(new Dimension(0, 30)));
                     add(leave);
-                    add(Box.createRigidArea(new Dimension(0, 20)));
+                    add(Box.createRigidArea(new Dimension(0, 30)));
                     add(secretMerchant);
                     add(Box.createVerticalGlue());
 
@@ -587,19 +583,19 @@ class Bazaar extends JPanel {
                             if ((Driver.player.getGold() > 0)) {
                                 err_message.setText("");
                                 Driver.player.inventory.setResource(resourceName,
-                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
-                                                                                                // inventory
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the rsource to inventory
                                 Driver.player.setGold(Driver.player.getGold() - 1);
                                 Driver.inventoryUI.updateResourceLabels(); // Update the labels
-                                goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the
-                                                                                                 // gold label
+                                goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the gold
                                 buyItemButton.setText(
                                         "Buy " + resourceName + " ("
-                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update
-                                                                                                              // the buy
-                                                                                                              // button
-                                                                                                              // label
-                                SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
+                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update buy button label
+                                if (resourceName == "Legendary Potion of Lepus") {
+                                    SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
+                                } else {
+                                    SFX.playSound("assets/SFX/coin3.wav");
+                                }
+
                             } else {
                                 err_message.setText(
                                         "                                                  Cannot buy item, no more gold.  ");
