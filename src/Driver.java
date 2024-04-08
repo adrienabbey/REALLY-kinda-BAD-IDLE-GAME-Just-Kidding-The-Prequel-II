@@ -127,6 +127,15 @@ class Driver extends JFrame {
         dungeon.add(combat);
     }
 
+    public static void removeCharScreen() {
+        world.remove(charScreen);
+        world.remove(map);
+        dungeonInfo.remove(charScreen);
+        dungeonInfo.remove(logs);
+        dungeon.remove(dungeonInfo);
+        dungeon.remove(combat);
+    }
+
     public static CharacterScreen getCharScreen() {
         return charScreen;
     }

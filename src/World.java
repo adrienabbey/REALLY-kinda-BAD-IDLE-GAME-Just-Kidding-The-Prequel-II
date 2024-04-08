@@ -182,6 +182,7 @@ public class World extends JPanel{
         leave.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
+                Driver.removeCharScreen();
                 Driver.changePanel("start");              
             } catch (Exception e1) {
                 e1.printStackTrace();
