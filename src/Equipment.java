@@ -15,12 +15,12 @@ public class Equipment implements Serializable {
 
     /* Fields */
 
-    static int weaponLevel;
-    static int armourLevel;
-    static int hatLevel;
-    static String weaponDescription;
-    static String armourDescription;
-    static String hatDescription;
+    int weaponLevel;
+    int armourLevel;
+    int hatLevel;
+    String weaponDescription;
+    String armourDescription;
+    String hatDescription;
     private Dice dice = new Dice(3);
 
     /* Constructor */
