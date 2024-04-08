@@ -7,25 +7,29 @@
 3. Iron out any last tasks or details
 
 ## Notes
-1. Make sure all documents are signed and pushed.
+1. MVP code requirements finished.
+2. Presentation slides finished.
+3. Documentation, Meeting Minutes: Signatures.
+4. Copy of Google Slides as a file included on GitHub.
+5. Git release of final code *AFTER* all above is completed.
 
 ## Action Items
 * Group Member `Adrien`
   - Clean up and reorganize where needed.
   - Offer help where needed
 * Group Member `Brandon`
-	- Make video clips
+  - Make video clips
   - Offer help where needed
 * Group Member `Mo`
-	- Potions
-  - Scaling
+  - Add Potions to Bazaar
+  - UI Scaling
 * Group Member `Luke`
-	- Finalize presentation
+  - Finalize presentation
   - Offer help where needed
 
 ## Contributors
 * Brandon Walker
 * Luke Davidson
-* 
+* Adrien Abbey
 * 
 
