@@ -1,5 +1,5 @@
 # Design Specification Documenation
-- - To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/blob/main/docs/dsd.md#L83)
+- To view definitions of terms used in this document please go [here.](https://github.com/adrienabbey/REALLY-kinda-BAD-IDLE-GAME-Just-Kidding-The-Prequel-II/edit/main/docs/rsd.md#L50)
 
 
 1. Implement a base start screen class that will guide the player in their journey. This start screen will consist of buttons that will prompt them for a "New Game", "Load Game", "Instructions", and "Quit".  Other important screens will be the world map and town. The world map will help the player navigate through the gameplay loop. It will have buttons to go into dungeons to start combat, and a button to go to the shop to allow the player to buy potions to give their character effects. *See picture at end of document for early mockups of what these screens would look like*
@@ -44,9 +44,9 @@
         2.  If an upgrade is rewarded, it will upgrade a single piece of equipment.  Which piece of equipment is upgraded will be randomly chosen by another algorithm, weighted more favorably towards weaker items.
 7. The player can mine ore and cut wood in their corresponding panels.
     1. Wood, stone, and metal will be stored in their respective variables in the inventory class.
-    2. The player can choose to either "mine ore" or "scavenge area" using buttons located on the mineshaft panel.
-    3. The player can choose to either "cut wood" or "hunt wildlife" using buttons located on the forest panel.
-    4. The forest and mineshaft panels will have background music and image.
+    2. The player can choose to either "mine ore" or "auto mine" using buttons located on the mining panel.
+    3. The player can choose to either "cut wood" or "auto cut" using buttons located on the woodcutting panel.
+    4. The woodcutting and mining panels will have background music and image.
 8. The player can choose to buy a homestead using the home panel located on the world map screen.
 9. There will be a tavern, library, and bazaar screens that can be accessed using the buttons located on the town screen menu.
     1. The tavern screen will house the implementation for chatting with townsfolk. There will be various prompts for different NPCs.
@@ -57,21 +57,7 @@
     3. The library screen will have the implementation for the "book of monsters" screen, which will contain the descriptions for monsters in the game.
 10. There will be a rolling credits screen that can be accessed from the settings panel that will credit the developers, professor, art used, music used, and sound effect used.
 11. Most if not all panels will have an accompanying background image and music implemeneted by calling a MusicPlayer class.
-12. Most if not all of the buttons and will have an accompanying sound effect that will be implemeneted by calling the SFX class.
-
-13. There shall be a status bar button and panel present in the forest and mineshaft screens implemented in the forest and mineshaft panels using Jbuttons and JPanel.
-    1. The player will be able to view the status bar by clicking on the status bar button. The button will have an action listener that will, after being clicked,
-       add the components of the status bar to the panel.
-    2. The status bar panel will show the values of health, magic, and gold the player currently has by using a getter method in the Driver class to return the player object
-       which houses the methods used to get the player's health, magic, and gold. These values will be updated everytime the player opens the status bar and during regenertaion
-       of these values during resource gathering.
-
-14. There will be a secret merhcant screen that can be accessed from the bazaar screen.
-    1. The button that takes the player to the secret merchant panel will appear every fourth bazaar visit. A basic if statement is used to determine when
-       to add the secret merhcant button to the bazaar screen. 
-    3. The secret merchant will sell a secret item. This secret item will be added exclusively to the list of items the secret merchant sells through the absence of
-       an if statement. The default list of items the player can buy in the bazaar screen excludes the secret item by using an if statement. 
-   
+12. All buttons and some actions will have an accompanying sound effect that will be implemeneted by calling the SFX class.
 
 
 
@@ -91,7 +77,7 @@
 
 ## Signatures
 
+- Muhammed Abushamma
+- Brandon Walker
 - Adrien Abbey
 - Luke Davidson
-- Brandon Walker
-- Muhammed Abushamma

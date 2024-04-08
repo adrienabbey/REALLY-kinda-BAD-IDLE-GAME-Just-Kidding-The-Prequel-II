@@ -33,7 +33,7 @@ class Town extends JPanel {
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
-
+      
         JButton bazaar = new JButton("Bazaar");
         buttons.add(bazaar);
         JButton leave = new JButton("Leave");

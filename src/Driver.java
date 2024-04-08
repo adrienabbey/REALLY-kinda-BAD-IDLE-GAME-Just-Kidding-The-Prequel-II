@@ -73,7 +73,14 @@ class Driver extends JFrame {
         Mineshaft mineshaft = new Mineshaft();
         Tavern tavern = new Tavern();
         Library library = new Library();
-        Craft craft = new Craft();
+        // Farm farm = new Farm();
+        //Craft craft = new Craft();
+
+        // JPanel charPanel = new CharacterScreen();
+        // JPanel dice = new Dice();
+        // JPanel inventory = new Inventory();
+        // JPanel world = new JPanel();
+
         Town town = new Town();
 
         world.setLayout(new GridLayout(1, 2));
