@@ -176,7 +176,7 @@
 8. Equipment: Items in te game that can be eqipped to the character and modify stats. Can be acquired through combat in the dungeon. 
 
 ## Signatures
-- Muhammed Abushamma
-- Luke Davidson
-- Adrien Abbey
-- Brandon Walker
+- 
+- 
+- 
+- 
