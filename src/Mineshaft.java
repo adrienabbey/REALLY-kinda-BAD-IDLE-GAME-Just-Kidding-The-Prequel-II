@@ -224,7 +224,7 @@ public class Mineshaft extends JPanel {
                 SFX.stopAllSounds(); 
                 MusicPlayer.playMusic("assets/Music/now-we-ride.wav");
                 SFX.playSound("assets/SFX/interface1.wav");
-                Driver.savePlayer(Driver.getPlayer(), "save-files/savefile1.sav"); // save player data to save slot 1 by default
+                Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav"); // save player data to save slot 1 by default
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
