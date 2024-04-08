@@ -80,6 +80,9 @@ class Dungeon extends JPanel {
                 magic.setText("Heal Magic");
             }
         });
+        potion.addActionListener(e -> {
+            Driver.getPlayer().drinkPotion();
+        });
         leave.addActionListener(e -> {
             try {
                 Combat.endCombat();

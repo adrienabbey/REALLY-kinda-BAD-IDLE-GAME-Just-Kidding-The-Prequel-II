@@ -221,4 +221,8 @@ class Driver extends JFrame {
             return null;
         }
     }
+
+    public static void dungeonUpdate() {
+        charScreen.update();
+    }
 }
