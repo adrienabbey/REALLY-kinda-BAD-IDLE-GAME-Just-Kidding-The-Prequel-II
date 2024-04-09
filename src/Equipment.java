@@ -14,7 +14,6 @@ public class Equipment implements Serializable {
     // TODO: Verify that equipment saves and loads properly.
 
     /* Fields */
-
     int weaponLevel;
     int armourLevel;
     int hatLevel;
@@ -66,23 +65,22 @@ public class Equipment implements Serializable {
      *                     much better chances of upgrading a piece of equipment.
      * @return Returns true if a piece of equipment upgraded, false if not.
      */
-    public boolean doUpgrade(int MonsterLevel, boolean isBoss, PlayerCharacter player) {
-        float weaponUpgradeChance;
-        float armourUpgradeChance;
-        float hatUpgradeChance;
-        boolean itemUpgraded = false;
-        ;
+    public String doUpgrade(int MonsterLevel, boolean isBoss, PlayerCharacter player) {
+        // float weaponUpgradeChance;
+        // float armourUpgradeChance;
+        // float hatUpgradeChance;
+        String itemUpgraded = "None";
 
         // TODO: Balance these numbers!
-        if (isBoss) {
-            weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.3);
-            armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.3);
-            hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.3);
-        } else {
-            weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.1);
-            armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.1);
-            hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.1);
-        }
+        // if (isBoss) {
+        //     weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.3);
+        //     armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.3);
+        //     hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.3);
+        // } else {
+        //     weaponUpgradeChance = (float) ((MonsterLevel - weaponLevel) * 0.1);
+        //     armourUpgradeChance = (float) ((MonsterLevel - armourLevel) * 0.1);
+        //     hatUpgradeChance = (float) ((MonsterLevel - hatLevel) * 0.1);
+        // }
 
         // TODO: Consider including weights of the player's initial stats in
         // these chances. For example, a character starting with really high
@@ -101,23 +99,22 @@ public class Equipment implements Serializable {
 
         dice.roll();
 
-        // For simplicity's sake, I'm going to allow multiple upgrades at once:
         if (dice.getLast() == 1) {
             weaponLevel += 1;
             weaponDescription = "A Big Stick +" + weaponLevel;
-            itemUpgraded = true;
+            itemUpgraded = "Weapon";
             player.setMuscle(player.getMuscle() + 1);
         }
         if (dice.getLast() == 2) {
             armourLevel += 1;
             armourDescription = "The Skin of Your Enemies +" + armourLevel;
-            itemUpgraded = true;
+            itemUpgraded = "Armour";
             player.setHeart(player.getHeart() + 1);
         }
         if (dice.getLast() == 3) {
             hatLevel += 1;
             armourDescription = "A tower of " + hatLevel + " hats.";
-            itemUpgraded = true;
+            itemUpgraded = "Hat";
             player.setBrain(player.getBrain() + 1);
         }
 

@@ -161,14 +161,14 @@ class PlayerCharacter extends GameCharacter{
             }
          }
       };
-     timer.schedule(awake, 0, 1000);
+     timer.schedule(awake, 0, 1200);
    }
 
    public boolean isAwake() {
       return isAwake;
    }
 
-   public boolean doEquipmentUpgrade(int monsterLevel, boolean isBoss) {
+   public String doEquipmentUpgrade(int monsterLevel, boolean isBoss) {
       return equipment.doUpgrade(monsterLevel, isBoss, this);
    }
 }

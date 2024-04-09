@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 
 public class InventoryUI extends JPanel {
     private JLabel resourceLabel; // Label to display total space
+    private int resourcePanelint = 1;
 
     public InventoryUI() {
         setLayout(new BorderLayout());
@@ -24,12 +25,7 @@ public class InventoryUI extends JPanel {
         // Resources panel
         JPanel resourcePanel = new JPanel(new GridLayout(4, 1));
         // Initialize resource labels
-        if (Driver.player != null) {
-            for (String resourceName : Driver.player.inventory.resources.keySet()) {
-                JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
-                resourcePanel.add(label);
-            }
-        }
+
         resourceLabel = new JLabel("Total Space: 0/8");
         resourcePanel.add(resourceLabel);
         add(resourcePanel, BorderLayout.SOUTH);
@@ -46,6 +42,17 @@ public class InventoryUI extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            if (resourcePanelint == 1) {
+                if (Driver.player != null) {
+                    for (String resourceName : Driver.player.inventory.resources.keySet()) {
+                        JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
+                        resourcePanel.add(label);
+                    }
+                }
+                resourcePanelint++;
+            } else {
+                updateResourceLabels();
+            }
             SFX.playSound("assets/SFX/interface1.wav");
             // if player accessed inventory from homestead, town, or bazaar go back to
             // respective screen

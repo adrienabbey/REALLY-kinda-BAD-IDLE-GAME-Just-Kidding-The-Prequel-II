@@ -19,7 +19,10 @@ public class World extends JPanel{
      * @throws IOException
      */
     public World(){
-        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.setOpaque(false);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
@@ -39,32 +42,34 @@ public class World extends JPanel{
         JButton leave = new JButton("Main Menu");
         buttons.add(leave);
 
-        add(Box.createHorizontalGlue());
-        add(leave);
-        add(Box.createHorizontalGlue());
-        add(mine);
-        add(Box.createHorizontalGlue());
-        add(home);
-        add(Box.createHorizontalGlue());
-        add(town);
-        add(Box.createHorizontalGlue());
-        add(wood);
-        add(Box.createHorizontalGlue());
-        add(dungeon);
-        add(Box.createHorizontalGlue());
-        add(quit);
-        add(Box.createHorizontalGlue());
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen 
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(leave);
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(mine);
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(home);
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(town);
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(wood);
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(dungeon);
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(quit);
+        buttonPanel.add(Box.createHorizontalGlue());
 
         // Format dungeon error message label
         dungeon_error_message = new JLabel(); // initialize JLabel
+        dungeon_error_message.setAlignmentX(CENTER_ALIGNMENT); // Center the error message
         dungeon_error_message.setForeground(Color.red); // Set error message font color to red
         dungeon_error_message.setBackground(Color.BLACK); // Set error message background color to black
         dungeon_error_message.setFont(new Font("Serif", Font.BOLD, 24)); // Set font
-        dungeon_error_message.setBounds((int) (screenSize.getWidth() / 4.5), (int) (screenSize.getHeight() * 0.70), 1150, 100); // set position and size of dungeon error message label
-        add(dungeon_error_message); // Add error message label to  panel
 
+        add(Box.createVerticalGlue());
+        add(buttonPanel);
+        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(dungeon_error_message); // Add error message label to  panel
+        add(Box.createVerticalGlue());
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
