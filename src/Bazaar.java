@@ -403,7 +403,10 @@ class Bazaar extends JPanel {
                 sellPanel.setBackground(new Color(0, 0, 0, 192));
                 sellPanel.setOpaque(true);
 
-                // Add items from the inventory to the sell panel
+
+                /* Add items from the inventory to the sell panel */
+
+                // Each resource can be sold for 2 gold.
                 for (String resourceName : Driver.player.inventory.getResources().keySet()) {
                     if (!(resourceName == "Gold")) { // remove Gold from sell list
 
@@ -411,7 +414,7 @@ class Bazaar extends JPanel {
                         // as a possible item to sell.
                         if (Driver.player.inventory.getResource(resourceName) > 0) {
                             JButton sellItemButton = new JButton(
-                                    "Sell " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
+                                    "2 Gold - Sell " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
                                             + ")");
                             // format buttons
                             sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
@@ -425,10 +428,10 @@ class Bazaar extends JPanel {
                                     err_message.setText("");
                                     Driver.player.inventory.setResource(resourceName,
                                             Driver.player.inventory.getResource(resourceName) - 1); // minus resource from inventory
-                                    Driver.player.setGold(Driver.player.getGold() + 1);
+                                    Driver.player.setGold(Driver.player.getGold() + 2);
                                     Driver.inventoryUI.updateResourceLabels(); // Update the labels
                                     goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
-                                    sellItemButton.setText("Sell " + resourceName + " ("
+                                    sellItemButton.setText("2 Gold - Sell " + resourceName + " ("
                                             + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the sell button label
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 } else {

@@ -36,9 +36,6 @@ public class Inventory implements Serializable {
         resources.put("Spleenwort", 0);
         resources.put("Tongue Fern", 0);
         resources.put("Legendary Potion of Lepus", 0);
-        resources.put("Legendary Potion of Lepus", 0);
-        resources.put("Potion Belt", 0);
-
     }
 
     public Inventory(Inventory other) {
