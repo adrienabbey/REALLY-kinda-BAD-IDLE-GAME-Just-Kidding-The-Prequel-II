@@ -17,7 +17,7 @@ class Dungeon extends JPanel {
  
          super.paintComponent(g);
              try {
-                 g.drawImage(ImageIO.read(new File("assets/images/dungeon4.png")), 0, 0, getWidth(), getHeight(), this);
+                 g.drawImage(ImageIO.read(new File("assets/images/Dungeon4.png")), 0, 0, getWidth(), getHeight(), this);
              } catch (IOException e) {
                  //Auto-generated catch block
                  e.printStackTrace();
@@ -49,8 +49,6 @@ class Dungeon extends JPanel {
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
-            buttons.get(i).setPreferredSize(new Dimension(170, 80));
-            buttons.get(i).setMaximumSize(new Dimension(170, 80));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 20));

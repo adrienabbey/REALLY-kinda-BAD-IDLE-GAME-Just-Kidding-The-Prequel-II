@@ -19,7 +19,7 @@ public class World extends JPanel{
      * @throws IOException
      */
     public World(){
-        this.setLayout(null);
+        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
@@ -39,30 +39,23 @@ public class World extends JPanel{
         JButton leave = new JButton("Main Menu");
         buttons.add(leave);
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen 
-        int centerOfScreen = (int) screenSize.getHeight() / 2 - 40; // get the position of the center of the user's screen using relative scaling
-
-        // Set position and size for all buttons. Used relative scaling for positioning. 
-        leave.setBounds((int) (screenSize.getWidth() * 0.03), centerOfScreen,175,80);
+        add(Box.createHorizontalGlue());
         add(leave);
-
-        mine.setBounds((int) (screenSize.getWidth() * 0.17), centerOfScreen,150,80);
+        add(Box.createHorizontalGlue());
         add(mine);
-
-        home.setBounds((int) (screenSize.getWidth() * 0.31), centerOfScreen,150,80);
+        add(Box.createHorizontalGlue());
         add(home);
-
-        town.setBounds((int) (screenSize.getWidth() * 0.45) , centerOfScreen,150,80);
+        add(Box.createHorizontalGlue());
         add(town);
-
-        wood.setBounds((int) (screenSize.getWidth() * 0.59), centerOfScreen,150,80);
+        add(Box.createHorizontalGlue());
         add(wood);
-        
-        dungeon.setBounds((int) (screenSize.getWidth() * 0.73), centerOfScreen,150,80);
+        add(Box.createHorizontalGlue());
         add(dungeon);
-        
-        quit.setBounds((int) (screenSize.getWidth() * 0.87), centerOfScreen,150,80);
+        add(Box.createHorizontalGlue());
         add(quit);
+        add(Box.createHorizontalGlue());
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen 
 
         // Format dungeon error message label
         dungeon_error_message = new JLabel(); // initialize JLabel

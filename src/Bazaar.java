@@ -11,8 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.BorderLayout;
@@ -50,6 +48,7 @@ class Bazaar extends JPanel {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
+        System.out.println("Bazaar paintComponent called");
         try {
             g.drawImage(ImageIO.read(new File("assets/images/Shop2.png")), 0, 0, getWidth(), getHeight(), this);
         } catch (IOException e) {
@@ -489,45 +488,51 @@ class Bazaar extends JPanel {
                 this.repaint();    
                 
                 // Create a panel for the secret merchant screen
-                JPanel secretMerchantPanel = new JPanel() {
-                @Override
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    try {
-                        // Load and draw the background image
-                        Image backgroundImage = ImageIO.read(new File("assets\\images\\1920x1080-black-solid-color-background.jpg"));
-                        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }};
-                secretMerchantPanel.setLayout(new BorderLayout());
+                JPanel secretMerchantPanel = new JPanel();
+                secretMerchantPanel.setLayout(new BoxLayout(secretMerchantPanel, BoxLayout.X_AXIS));
 
                 // Create a JLabel to hold the cat image
-                JLabel catLabel = new JLabel();
-                try {
-                    // Load the image
-                    BufferedImage catImage = ImageIO.read(new File("assets/images/cat1.png"));
-                    // Set the image on the label
-                    catLabel.setIcon(new ImageIcon(catImage));
-                    // Set the preferred size of the label to the size of the image
-                    catLabel.setPreferredSize(new Dimension(catImage.getWidth(), catImage.getHeight()));
+                JPanel catLabel = new JPanel(){
+                    protected void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        // Load the image
+                        try {
+                            g.drawImage(ImageIO.read(new File("assets/images/cat1.png")), 0, 0, getWidth(), getHeight(), this);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
 
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+                    @Override
+                    public Dimension getPreferredSize() {
+                        return new Dimension((int)(secretMerchantPanel.getWidth() * 0.6), secretMerchantPanel.getHeight());
+                    }
+                };
 
                 // Add the cat label to the panel
-                secretMerchantPanel.add(catLabel, BorderLayout.WEST);
+                secretMerchantPanel.add(catLabel);
 
-                // Create a panel to hold the main conte(excluding background)
-                JPanel mainContentPanel = new JPanel(new BorderLayout());
+                // Create a panel to hold the main content(excluding background)
+                JPanel mainContentPanel = new JPanel() {
+                    @Override
+                    protected void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        try {
+                            // Load and draw the background image
+                            // Image backgroundImage = ImageIO.read(new File("assets\\images\\1920x1080-black-solid-color-background.jpg"));
+                            g.drawImage(ImageIO.read(new File("assets/images/1920x1080-black-solid-color-background.jpg")), 0, 0, getWidth(), getHeight(), this);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }};
+                mainContentPanel.setLayout(new BoxLayout(mainContentPanel, BoxLayout.Y_AXIS));
 
                 // Create a panel to hold the gold count label and the sell panel
-                JPanel mainPanel = new JPanel(new BorderLayout());
+                // JPanel mainPanel = new JPanel(new BorderLayout());
 
                 // Create a label to display the player's gold count
                 JLabel goldLabel = new JLabel("    Gold: " + Driver.player.getGold() + " ");
+                goldLabel.setAlignmentX(CENTER_ALIGNMENT);
                 goldLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
                 goldLabel.setAlignmentX(CENTER_ALIGNMENT);
                 // format gold label
@@ -539,6 +544,7 @@ class Bazaar extends JPanel {
 
                 // Create a close button
                 JButton closeButton = new JButton("Close");
+                closeButton.setAlignmentX(CENTER_ALIGNMENT);
                 closeButton.setForeground(new Color(139, 69, 19));
                 closeButton.setBackground(new Color(253, 236, 166));
                 closeButton.setOpaque(true);
@@ -547,7 +553,7 @@ class Bazaar extends JPanel {
                     SFX.playSound("assets/SFX/interface1.wav");
 
                     // Remove the sell panel and the close button
-                    remove(mainPanel);
+                    //remove(mainPanel);
                     remove(secretMerchantPanel);
 
                     // Adding the buttons to the shop panel and controlling layout
@@ -570,7 +576,8 @@ class Bazaar extends JPanel {
                 });
 
                 // Create buy label message
-                JLabel buy_label = new JLabel("                                               Secret Merchant Shop ");
+                JLabel buy_label = new JLabel("Secret Merchant Shop");
+                buy_label.setAlignmentX(CENTER_ALIGNMENT);
                 // buy_label.setFont(new Font("Lucida Console", Font.ITALIC, 28));
                 buy_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
                 buy_label.setPreferredSize(new Dimension(170, 40));
@@ -582,6 +589,7 @@ class Bazaar extends JPanel {
 
                 // Create error message
                 JLabel err_message = new JLabel("");
+                err_message.setAlignmentX(CENTER_ALIGNMENT);
                 err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
                 // format label
                 err_message.setPreferredSize(new Dimension(170, 40));
@@ -590,10 +598,11 @@ class Bazaar extends JPanel {
                 err_message.setBackground(new Color(0, 0, 0));
                 err_message.setOpaque(true);
 
-                // Add the close button to the top right corner
-                JPanel closeButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+                // Add the close button to the top right cornergetPreferredSize()
+                JPanel closeButtonPanel = new JPanel();
+                closeButtonPanel.setAlignmentX(CENTER_ALIGNMENT);
                 closeButtonPanel.add(closeButton);
-                closeButton.setPreferredSize(new Dimension(90, 30));
+                closeButton.setPreferredSize(new Dimension(120, 50));
                 closeButton.setFont(new Font("Times New Roman", Font.BOLD, 22));
                 // format panel
                 closeButtonPanel.setForeground(new Color(253, 236, 166));
@@ -602,11 +611,13 @@ class Bazaar extends JPanel {
 
                 // Create a menu for buying items
                 JScrollPane scrollPane = new JScrollPane();
+                scrollPane.setAlignmentX(CENTER_ALIGNMENT);
                 scrollPane.setForeground(new Color(253, 236, 166));
                 scrollPane.setBackground(new Color(139, 69, 19));
                 scrollPane.setOpaque(true);
 
                 JPanel buyPanel = new JPanel();
+                buyPanel.setAlignmentX(CENTER_ALIGNMENT);
                 buyPanel.setLayout(new BoxLayout(buyPanel, BoxLayout.Y_AXIS));
                 // format panel
                 buyPanel.setBackground(new Color(0, 0, 0, 192));
@@ -645,8 +656,7 @@ class Bazaar extends JPanel {
                                 }
 
                             } else {
-                                err_message.setText(
-                                        "                                                  Cannot buy item, no more gold.  ");
+                                err_message.setText("Cannot buy item, no more gold.");
                             }
                         });
                         buyPanel.add(buyItemButton);
@@ -654,29 +664,40 @@ class Bazaar extends JPanel {
                 }
 
                 scrollPane.setViewportView(buyPanel);
-                scrollPane.setPreferredSize(new Dimension(660, 200));
+                //scrollPane.setPreferredSize(new Dimension(660, 200));
 
                 // Add components to the main panel
-                mainPanel.add(closeButtonPanel, BorderLayout.EAST);
-                mainPanel.add(goldLabel, BorderLayout.WEST);
-                mainPanel.add(scrollPane, BorderLayout.CENTER);
-                mainPanel.add(err_message, BorderLayout.SOUTH);
-                mainPanel.add(buy_label, BorderLayout.NORTH);
+                // mainPanel.add(closeButtonPanel, BorderLayout.EAST);
+                // mainPanel.add(goldLabel, BorderLayout.WEST);
+                // mainPanel.add(scrollPane, BorderLayout.CENTER);
+                // mainPanel.add(err_message, BorderLayout.SOUTH);
+                // mainPanel.add(buy_label, BorderLayout.NORTH);
 
-            // Add the main panel to the main content panel
-            mainContentPanel.add(mainPanel);
+                // Add the main panel to the main content panel
+                mainContentPanel.add(Box.createVerticalGlue());
+                mainContentPanel.add(buy_label);
+                mainContentPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+                mainContentPanel.add(closeButtonPanel);
+                mainContentPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+                mainContentPanel.add(scrollPane);
+                mainContentPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+                mainContentPanel.add(err_message);
+                mainContentPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+                mainContentPanel.add(goldLabel);
+                mainContentPanel.add(Box.createVerticalGlue());
 
-            // Add the main content panel to the secret merchant panel
-            secretMerchantPanel.add(mainContentPanel, BorderLayout.EAST);
 
-            // Add background image to secret merchant panel
-             add(secretMerchantPanel);
+                // Add the main content panel to the secret merchant panel
+                secretMerchantPanel.add(mainContentPanel);
 
-            revalidate();
-            repaint();
-            SFX.playSound("assets/SFX/meow-01-86859.wav"); // play meow sound effect when entering secret shop
-        }
-    });
+                // Add background image to secret merchant panel
+                add(secretMerchantPanel);
+
+                revalidate();
+                repaint();
+                SFX.playSound("assets/SFX/meow-01-86859.wav"); // play meow sound effect when entering secret shop
+            }
+        });
 
         // Goes to inventory
         inventory1.addActionListener(e -> {
