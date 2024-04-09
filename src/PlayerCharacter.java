@@ -3,7 +3,6 @@
  * Adrien Abbey, et al., Jan. 2024
  */
 
-import java.io.Serializable;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,7 +10,7 @@ import java.util.TimerTask;
  * Player Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
  * This class manages the player character's stats and some inventory for now
  */
-class PlayerCharacter extends GameCharacter implements Serializable {
+class PlayerCharacter extends GameCharacter{
 
    /* Constants */
    private static final int POTION_HEAL = 20; // TODO: Balance this number!
