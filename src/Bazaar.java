@@ -51,7 +51,7 @@ class Bazaar extends JPanel {
 
         super.paintComponent(g);
         try {
-            g.drawImage(ImageIO.read(new File("assets/images/shop2.png")), 0, 0, getWidth(), getHeight(), this);
+            g.drawImage(ImageIO.read(new File("assets/images/Shop2.png")), 0, 0, getWidth(), getHeight(), this);
         } catch (IOException e) {
             // Auto-generated catch block
             e.printStackTrace();
@@ -198,11 +198,14 @@ class Bazaar extends JPanel {
                 buyPanel.setBackground(new Color(0, 0, 0, 192));
                 buyPanel.setOpaque(true);
 
-                // Add all items from inventory to shop.
+
+                /* Add resources from inventory to shop. */
+
+                // Items each cost 5 gold. 
                 for (String resourceName : Driver.player.inventory.getResources().keySet()) {
-                    if (!(resourceName == "Legendary Potion of Lepus") && !(resourceName == "Gold")) { // remove Lepus potion from buy list
+                    if (!(resourceName == "Legendary Potion of Lepus")) { // remove Lepus potion  from buy list
                         JButton buyItemButton = new JButton(
-                                "Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName) + ")");
+                                "5 Gold - Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName) + ")");
                         // Format buttons
                         buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                         // format gold label
@@ -213,30 +216,77 @@ class Bazaar extends JPanel {
                         buyItemButton.addActionListener(sellEvent -> {
 
                             // If Gold is greater than 0 then buy resource, else output error message.
-                            if ((Driver.player.getGold() > 0)) {
+                            if ((Driver.player.getGold() >= 5)) {
                                 err_message.setText("");
                                 Driver.player.inventory.setResource(resourceName,
-                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
-                                                                                                // inventory
-                                Driver.player.setGold(Driver.player.getGold() - 1); // decrease gold
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from inventory
+                                Driver.player.setGold(Driver.player.getGold() - 5); // decrease gold
                                 Driver.inventoryUI.updateResourceLabels(); // Update the labels
-                                goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold
-                                                                                                // label
+                                goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
                                 buyItemButton.setText(
-                                        "Buy " + resourceName + " ("
-                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update
-                                                                                                              // the buy
-                                                                                                              // button
-                                                                                                              // label
+                                        "5 Gold - Buy " + resourceName + " ("
+                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update buy button label
                                 SFX.playSound("assets/SFX/coin3.wav");
 
                             } else {
-                                err_message.setText(" Cannot buy item, no more gold.");
+                                err_message.setText(" Cannot buy item, not enough gold.");
                             }
                         });
                         buyPanel.add(buyItemButton);
                     }
                 }
+
+                /* Adding ability to buy potions from bazaar */
+
+                // Potions cost 10 gold and is limited by the potion belt size.
+                JButton buyPotionButton = new JButton("10 Gold - Buy Potion (" + Driver.player.getPotionCount() + ")");
+                buyPotionButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                buyPotionButton.setForeground(new Color(253, 236, 166));
+                buyPotionButton.setBackground(new Color(102, 72, 54));
+                buyPotionButton.setOpaque(true);
+
+                buyPotionButton.addActionListener(event -> {
+                    if (Driver.player.getGold() >= 10 && Driver.player.getPotionCount() < Driver.player.getPotionBeltSize()) {
+                        err_message.setText("");
+                        Driver.player.addPotion(1);
+                        Driver.player.setGold(Driver.player.getGold() - 10);
+                        Driver.inventoryUI.updateResourceLabels();
+                        goldLabel.setText("  Gold: " + Driver.player.getGold() + "  ");
+                        SFX.playSound("assets/SFX/coin3.wav");
+                        buyPotionButton.setText("10 Gold - Buy Potion (" + Driver.player.getPotionCount() + ")");
+                    } else {
+                        if (Driver.player.getPotionCount() >= Driver.player.getPotionBeltSize()) {
+                            err_message.setText("Cannot buy potion, potion belt is full.");
+                        } else {
+                            err_message.setText("Cannot buy potion, not enough gold.");
+                        }
+                    }
+                });
+                buyPanel.add(buyPotionButton);
+
+                /* Add the ability to upgrade potion belt size to buy screen */ 
+                
+                // Each upgrade cost 100 gold times the current belt level. 
+                JButton upgradePotionBeltSizeButton = new JButton("100 Gold - Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ")");
+                upgradePotionBeltSizeButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+                upgradePotionBeltSizeButton.setForeground(new Color(253, 236, 166));
+                upgradePotionBeltSizeButton.setBackground(new Color(102, 72, 54));
+                upgradePotionBeltSizeButton.setOpaque(true);
+                
+                upgradePotionBeltSizeButton.addActionListener(event -> {
+                    if (Driver.player.getGold() >= Driver.player.getPotionBeltSize() * 100) {
+                        err_message.setText("");
+                        Driver.player.setPotionBeltSize(Driver.player.getPotionBeltSize() + 1);
+                        Driver.player.setGold(Driver.player.getGold() - (Driver.player.getPotionBeltSize() * 100));
+                        Driver.inventoryUI.updateResourceLabels();
+                        goldLabel.setText("  Gold: " + Driver.player.getGold() + "  ");
+                        SFX.playSound("assets/SFX/coin3.wav");
+                        upgradePotionBeltSizeButton.setText(Driver.player.getPotionBeltSize() * 100 + " Gold - Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ")");
+                    } else {
+                            err_message.setText("Cannot upgrade potion belt, not enough gold.");
+                        }
+                });
+                buyPanel.add(upgradePotionBeltSizeButton);
 
                 scrollPane.setViewportView(buyPanel);
 
