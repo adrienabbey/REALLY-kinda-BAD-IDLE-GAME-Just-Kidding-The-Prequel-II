@@ -103,6 +103,63 @@
 >        1. The upgrade chance calculation considers the current level of the dungeon. It also takes into account the levels of the player's current gear. The disparity between current gear levels and potential upgrade levels is calculated accurately.
 >        2. Check whhether each combat session upgrades a single piece of equipment at most. Check wower-level gear has a higher chance to upgrade compared to higher-level gear.
 
+7. The player will be able mine ore, scaveng area, cut trees, and hunt wildlife.
+    1. Wood, stone, metal and various other resources will be stored in the player's inventory.
+    2. The player can choose to either "mine ore" or "scavenge area" using buttons located in the mineshaft panel.
+    3. Mining ore will allow the player to harvest stone or metal. Scavenging will allow the player to harvest magical essence, spleenwort, or tongue fern.
+    5. The player can choose to either "cut wood" or "hunt wildlife" using buttons located in the forest panel.
+    6. Cutting wood will allow the player to harvest wood. Hunting will allow the player to harvest pelt or meat.
+    7. Harvest a resource will regenerate the player's health and magic stat by 10% of the maximum value of their health and magic stat. Regeneration will only occur if health and magic are below their maximum values.
+> 7. Ensure there are buttons the player can use to mine ore, scavenege area, cut trees, and hunt wildlife.
+>    1. Test the inventory system by ensuring that wood, stone, metal, and other resources are correctly added and stored.
+>    2. Verify that clicking the "mine ore" button results in the acquisition of stone or metal, and clicking "scavenge area" yields magical essence, spleenwort, or tongue fern.
+>    3. Check if selecting "cut wood" or "hunt wildlife" from the forest panel adds wood or pelt/meat to the player's inventory, respectively.
+>    4. Test health and magic regeneration by harvesting a resource and ensuring that health and magic stats increase by 10% if below their maximum values.
+>    5. Verify that health and magic regeneration does not occur if both stats are already at their maximum values.
+>    6. Ensure buttons for actions (mining ore, scavenging area, cutting wood, hunting wildlife) are functional and respond appropriately to user input.
+>    7. Test edge cases such as when resources are depleted or the player's health/magic is already at maximum to confirm robustness.
+
+  
+8. The player will be able to buy a homestead using the "but homestead" button located in the homestead screen. The homestead screen can be accessed from the world screen.
+>   8. Verify the presence and functionality of the "buy homestead" button on the homestead screen, accessible from the world screen.
+
+9. There will be a tavern, library, and bazaar screens that can be accessed using the buttons located on the town screen menu.
+    1. The tavern screen will house the implementation for chatting with townsfolk. There will be various prompts for different NPCs.
+        1. Prompts interate around a predetermined set of prompts whenever the player presses the "Talk to townsfolk" button. Prompts will loop.
+        2. Each prompt will have an accompanying voice-over sound byte narrating the prompt text.
+    2. The bazaar screen will allow the player to buy and sell items from their inventory. The bazaar will also allow the player to look into their
+    inventory by clicking on the inventory button.
+    3. The library screen will have the implementation for the "book of monsters" screen, which will contain the descriptions for monsters in the game.
+       Accessing the page of a particular momnster will play their respective round effect and display the image correlated with that monster.
+> 9. Ensure that buttons for accessing the tavern, library, and bazaar screens are present on the town screen menu.
+>     1. Test the functionality of the tavern screen, confirming the ability to chat with townsfolk and encounter various prompts, each accompanied by a corresponding voice-over sound byte.
+>     2. Verify that the bazaar screen enables the player to buy and sell items from their inventory, as well as view their inventory by clicking on the inventory button.
+>     3. Test the library screen's implementation of the "book of monsters" feature, allowing players to access monster descriptions, hear round effects, and view associated images for each monster.
+  
+10. There will be a rolling credits screen that can be accessed from the settings panel that will credit the developers, professor, art, images, music, and sound effects used.
+> 10. Confirm the existence and accessibility of a rolling credits screen within the settings panel, accurately crediting developers, professors, artists, images, music, and sound effects used in the game.
+
+11. Most if not all panels will have an accompanying background image and music.
+> 11. Validate that most, if not all, panels in the game incorporate accompanying background images and music to enhance the overall atmosphere and immersion for the player.
+    
+12. Most if not all of the buttons and will have an accompanying sound effect.
+> 12. Ensure that most, if not all, buttons and interactive elements in the game are accompanied by corresponding sound effects to provide auditory feedback and enhance the interactive experience for the player.
+
+13. There shall be a status bar button and panel present in the forest and mineshaft screens.
+    1. The player will be able to view the status bar by clicking on the status bar button.
+    2. The status bar panel will show the values of health, magic, and gold the player currently has.
+> 13. Verify the presence of a status bar button and panel on both the forest and mineshaft screens.
+>     1. Test the functionality of the status bar button to ensure it toggles the visibility of the status bar panel when clicked.
+>     2. Confirm that the status bar panel accurately displays the player's current values for health, magic, and gold.
+>     3. Ensure the status bar updates dynamically to reflect changes in the player's health, magic, and gold values during gameplay.
+>     4. Evaluate the usability and visibility of the status bar button and panel within the forest and mineshaft screens.
+
+14. There will be a secret merhcant screen that can be accessed from the bazaar screen.
+    1. The button that takes the player to the secret merchant panel will appear every fourth bazaar visit.
+    2. The secret merchant will sell a secret item.
+> 14. Confirm the presence and accessibility of a secret merchant screen within the bazaar screen, with a button appearing every fourth visit, offering a secret item for sale.
+
+
 ---
 
 ## Terms:
@@ -116,7 +173,7 @@
 8. Equipment: Items in te game that can be eqipped to the character and modify stats. Can be acquired through combat in the dungeon. 
 
 ## Signatures
-- Muhammed Abushamma
-- Luke Davidson
 - Adrien Abbey
+- Luke Davidson
 - Brandon Walker
+- Muhammed Abushamma

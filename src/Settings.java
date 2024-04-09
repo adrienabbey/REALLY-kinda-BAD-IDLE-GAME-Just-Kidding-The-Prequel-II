@@ -1,3 +1,8 @@
+/*
+ * Settings Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -10,35 +15,27 @@ import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
 
+/* 
+ * Implementation for the "Settings" panel which can be accessed fron the start screen. Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
+ */
+
 class Settings extends JPanel {
+    /* Fields */
     private static boolean isMute = true;
 
-    @Override
-    protected void paintComponent(Graphics g) {
-
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/world5.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
-    /**
-     * This function hosts the town screen with buttons to buy potions or leave
-     * @param player The player character object
-     * @throws IOException
-     */
+    /* Constructor */
     public Settings() throws IOException{
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 6, -18); // range from -70 to 6
+        // slider ranges from -70 to 5, starts at -4. The max allowable float value of the master volume is 6.0206, but set to 5 here just to ensure there are no distortions generated. Having it a 6 and increasing and decreasing the floatcontrol repeatedly gives the opportunity for distortative spikes in audio output to occur. 
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 5, -4); 
+        
         slider.setBackground(customColorBrown); // Set the background color
 
-        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 6, -16); // range from -70 to 6
+        JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 5, -5); // range from -70 to 6, starts at -5
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
         JButton mute = new JButton("Mute Music Volume");
@@ -99,6 +96,9 @@ class Settings extends JPanel {
         //Format sfx volume slider
         sliderSFX.setMaximumSize(new Dimension(270, 20));
 
+        
+        /* Methods */
+
         // Volume button mutes or unmutes master volume.
         mute.addActionListener(e -> {
             try {
@@ -131,7 +131,7 @@ class Settings extends JPanel {
                     // This loop repeatedly checks the current time until the desired wait time has passed
                 }
         
-                MusicPlayer.playMusic("assets/Music/Chevalier, Mult Estes Guariz - French Crusade Song-[AudioTrimmer.com].wav");
+                MusicPlayer.playMusic("assets/Music/3-Song-of-the-North.wav");
                 Driver.changePanel("credits");
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -169,5 +169,18 @@ class Settings extends JPanel {
                     }
                 }
             });
+    }
+
+    // draw image to backgroud
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/World5.1.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
     }
     }

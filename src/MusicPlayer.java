@@ -1,13 +1,28 @@
+/*
+ * Music Player Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import javax.sound.sampled.*;
 import java.io.File;
 
+/*
+ * Class allows audio files in the .wav format to be played. Contains methods that plays music, allow muting/unmuting of sound volume, and one to set the volume of the sound. The playMusic method creates a new thread whenever a new track starts playing, and terminates the thread whenever a new track starts playing. 
+ *
+ * This class is implemented so that only one track can be played at a time, and whenever a new track is played the previous one is stopped. If a current track finishes it loops continously. 
+ * 
+ */
+
 public class MusicPlayer {
+
+    /* Fields */
+    
     // Keep track of the current clip
     // This is used to stop the current music when a new one starts
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     private static boolean isMuted = false;
-    private static float currentVolume = -18.0f;
+    private static float currentVolume = -4.0f;// variable that alters default sound volume
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
 
     public static void setcurrentVolume(float volume) {
@@ -27,6 +42,7 @@ public class MusicPlayer {
                 // This ensures that only one music track plays at a time.
                 if (currentClip != null && currentClip.isRunning()) {
                     currentClip.stop();
+                    currentClip.close();
                     // If the current thread is in use interrupt it. 
                     if (currentThread != null) {
                         currentThread.interrupt(); // Interrupt the associated thread
@@ -39,6 +55,9 @@ public class MusicPlayer {
                 if (musicPath.exists()) {
                     // Create an AudioInputStream from the file
                     AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+
+                    // AudioSystem audioSystem = AudioSystem.getAudioSystem();
+                    
                     Clip clip = AudioSystem.getClip(); // Get a clip resource
                     clip.open(audioInput); // Open the audio clip
                     clip.loop(Clip.LOOP_CONTINUOUSLY); // This line makes the song repeat itself
@@ -91,6 +110,7 @@ public class MusicPlayer {
     // Method to toggle volume for the java slider.
     public static void setVolume(float volume) {
         if (currentClip != null && currentClip.isRunning() && isMuted == false) {
+            // A dB change of the MASTER_GAIN by a value of 6.0206 represents a doubling of the volume compared to its value at 0.0. This maximum value is so that the volume control remains withireasonable bounds, preventing excessively loud or distorted audio.
             FloatControl volumeControl = (FloatControl) currentClip.getControl(FloatControl.Type.MASTER_GAIN);
             volumeControl.setValue(volume);
             setcurrentVolume(volume);

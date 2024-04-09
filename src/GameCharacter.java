@@ -3,7 +3,9 @@
  * Adrien Abbey, et al., Jan. 2024
  */
 
- class GameCharacter {
+import java.io.Serializable;
+
+class GameCharacter implements Serializable {
    /* Fields */
    private String name;
    private int muscle;
@@ -13,11 +15,7 @@
    private int maxHealth;
    private double magic;
    private int maxMagic;
-   // private int dice;
    private Dice dice = new Dice(20);
-
-   // TODO: What do these stats do?
-   // TODO: When do these stats increase, if at all?
 
    /**
     * Constructor for GameCharacter class
@@ -39,6 +37,17 @@
       // TODO - Probably need to balance these stats.
    }
 
+   public GameCharacter(GameCharacter other) {
+      this.name = other.name;
+      this.muscle = other.muscle;
+      this.brain = other.brain;
+      this.heart = other.heart;
+      this.health = other.health;
+      this.maxHealth = other.maxHealth;
+      this.magic = other.magic;
+      this.maxMagic = other.maxMagic;
+   }
+
    /**
     * This function is used to attack another character
     * 
@@ -50,11 +59,10 @@
       damage = Math.round(damage * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
       // int resist = target.getSkin(); // This is for if we add complexity later
-      if(dice.getLast() == 20) {
+      if (dice.getLast() == 20) {
          target.health -= damage * 2;
          Combat.addLog(name + " critical hit " + target.getName() + " and they took " + damage * 2 + " damage!\n");
-      }
-      else if (dice.getLast() == 1) {
+      } else if (dice.getLast() == 1) {
          Combat.addLog(name + " critical missed and took 1 damage!\n");
          health -= 1;
       } else {
@@ -62,7 +70,6 @@
          Combat.addLog(name + " hit " + target.getName() + " for " + damage + " damage!\n");
       }
       // Method used when a character attacks another character.
-      // TODO: Implementation.
    }
 
    public void magicAttack(GameCharacter target) {
@@ -70,11 +77,11 @@
       double damage = brain * (((double) dice.getLast()) / 20);
       damage = Math.round(damage * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
-      if(dice.getLast() == 20) {
-         Combat.addLog(name + "'s magic critical hit " + target.getName() + " and the took " + damage * 2 + " damage!\n");
+      if (dice.getLast() == 20) {
+         Combat.addLog(
+               name + "'s magic critical hit " + target.getName() + " and the took " + damage * 2 + " damage!\n");
          target.health -= damage * 2;
-      }
-      else if(dice.getLast() == 1) {
+      } else if (dice.getLast() == 1) {
          Combat.addLog(name + "'s magic critical missed and they took 1 damage!\n");
          health -= 1;
       } else {
@@ -89,15 +96,15 @@
       double heal = brain * (((double) dice.getLast()) / 20);
       heal = Math.round(heal * 10.0) / 10.0; // Round to 1 decimal place
       dice.roll();
-      if(dice.getLast() == 20) {
+      if (dice.getLast() == 20) {
          Combat.addLog(name + " critical heal's themselves for " + heal * 2 + " health!\n");
-         health += heal * 2;
+         setHealth(health + (heal * 2));
       }
       else if(dice.getLast() == 1) {
          Combat.addLog(name + " critical missed! a heal and took 1 damage!\n");
          health -= 1;
       } else {
-         health += heal;
+         setHealth(health + (heal * 2));
          Combat.addLog(name + " healed themselves for " + heal + " health!\n");
       }
       magic -= 1;
@@ -125,6 +132,7 @@
    }
 
    public int setBrain(int newBrain) {
+      maxMagic = 10 + (5 * newBrain);
       return brain = newBrain;
    }
 
@@ -133,6 +141,7 @@
    }
 
    public int setHeart(int newHeart) {
+      maxHealth = 10 + (5 * newHeart);
       return heart = newHeart;
    }
 
@@ -141,12 +150,11 @@
    }
 
    /**
-    * @param newHealth Sets this character's health to a new value, up to its 
-    * max health.  Note: this CAN be negative.
+    * @param newHealth Sets this character's health to a new value, up to its
+    *                  max health. Note: this CAN be negative.
     * @return Returns the new health value.
     */
    public double setHealth(double newHealth) {
-      // TODO: Do we want to allow health to go above max?
       if (newHealth > maxHealth) {
          return health = maxHealth;
       } else {

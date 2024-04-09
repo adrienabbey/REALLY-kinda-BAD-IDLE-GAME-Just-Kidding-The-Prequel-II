@@ -1,3 +1,8 @@
+/*
+ * Tavern Class for REALLY (kinda) BAD IDLE GAME (Just Kidding) The Prequel II
+ * Muhammed Abushamma, et al., Mar. 2024
+ */
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -5,20 +10,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+/* 
+ * Implementation for the "Tavern" panel which can be accessed from the Town screen. This class is used to talk to townsfolk. Once the "Talk to townsfolk" button is pressed an audio file is played used the SFX method that plays the respective audio file to go along with the prompt. The prompt is also displayed in text on the JLabel located inside the tavern screen. 
+ */
+
 class Tavern extends JPanel {
+    /* Fields */
     int prompt = 0;
 
-        @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/tavern.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
-
+    /* Constructor */
     public Tavern() {
         // Set the layout with vertical alignment and padding
         this.setLayout(new BorderLayout());
@@ -57,15 +57,18 @@ class Tavern extends JPanel {
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
+            SFX.stopAllNonLoopingSounds();
             SFX.playSound("assets/SFX/interface1.wav");
             message.setText("");
             SFX.playSound("assets/SFX/door-close.wav");
             Driver.changePanel("town");
-            MusicPlayer.playMusic("assets/Music/Village Consort.wav");
+            MusicPlayer.playMusic("assets/Music/town-bgm.wav");
+            SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);
         });
 
-        // Action listener for the 'Purchase' button
+        // Action listener for the 'Purchase' button. Cycles through four different prompts. 
         talk.addActionListener(e -> {
+            SFX.stopAllNonLoopingSounds();
             SFX.playSound("assets/SFX/interface1.wav");
             
             if (prompt == 0 ) {
@@ -93,5 +96,17 @@ class Tavern extends JPanel {
                 prompt = 0;
             }
         });
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/tavern.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
     }
 }
