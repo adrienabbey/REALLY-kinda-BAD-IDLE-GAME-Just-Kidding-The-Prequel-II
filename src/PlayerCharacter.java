@@ -161,7 +161,7 @@ class PlayerCharacter extends GameCharacter{
             }
          }
       };
-     timer.schedule(awake, 0, 1000);
+     timer.schedule(awake, 0, 1200);
    }
 
    public boolean isAwake() {
