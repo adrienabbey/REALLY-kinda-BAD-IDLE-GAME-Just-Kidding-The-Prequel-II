@@ -58,8 +58,6 @@ public class World extends JPanel{
         buttonPanel.add(quit);
         buttonPanel.add(Box.createHorizontalGlue());
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen 
-
         // Format dungeon error message label
         dungeon_error_message = new JLabel(); // initialize JLabel
         dungeon_error_message.setAlignmentX(CENTER_ALIGNMENT); // Center the error message
