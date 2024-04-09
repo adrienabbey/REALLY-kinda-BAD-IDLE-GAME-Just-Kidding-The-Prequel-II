@@ -62,10 +62,10 @@ public class World extends JPanel{
 
         // Format dungeon error message label
         dungeon_error_message = new JLabel(); // initialize JLabel
+        dungeon_error_message.setAlignmentX(CENTER_ALIGNMENT); // Center the error message
         dungeon_error_message.setForeground(Color.red); // Set error message font color to red
         dungeon_error_message.setBackground(Color.BLACK); // Set error message background color to black
         dungeon_error_message.setFont(new Font("Serif", Font.BOLD, 24)); // Set font
-        dungeon_error_message.setBounds((int) (screenSize.getWidth() / 4.5), (int) (screenSize.getHeight() * 0.70), 1150, 100); // set position and size of dungeon error message label
 
         add(Box.createVerticalGlue());
         add(buttonPanel);
