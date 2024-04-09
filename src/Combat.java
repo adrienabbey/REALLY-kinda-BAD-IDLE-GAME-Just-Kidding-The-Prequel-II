@@ -93,11 +93,11 @@ class Combat extends JPanel {
             } else {
 
                 addLog("\n" + enemy.getName() + " has been defeated!\n" + player.getName() + " has gained "
-                        + enemy.getGoldReward() + " gold!\n\n");
+                        + enemy.getGoldReward() + " gold!\n");
                 player.addGold(enemy.getGoldReward());// Update gold resource in inventory
 
                 // Check for equipment upgrades:
-                player.doEquipmentUpgrade(enemy.getMonsterLevel(), enemy.isBoss());
+                addLog("Player's " + player.doEquipmentUpgrade(enemy.getMonsterLevel(), enemy.isBoss()) + " upgraded!\n\n\n");
 
                 enemy = Dungeon.getMonster();
                 Thread.sleep(1500);

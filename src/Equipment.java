@@ -65,12 +65,11 @@ public class Equipment implements Serializable {
      *                     much better chances of upgrading a piece of equipment.
      * @return Returns true if a piece of equipment upgraded, false if not.
      */
-    public boolean doUpgrade(int MonsterLevel, boolean isBoss, PlayerCharacter player) {
+    public String doUpgrade(int MonsterLevel, boolean isBoss, PlayerCharacter player) {
         // float weaponUpgradeChance;
         // float armourUpgradeChance;
         // float hatUpgradeChance;
-        boolean itemUpgraded = false;
-        ;
+        String itemUpgraded = "None";
 
         // TODO: Balance these numbers!
         // if (isBoss) {
@@ -103,19 +102,19 @@ public class Equipment implements Serializable {
         if (dice.getLast() == 1) {
             weaponLevel += 1;
             weaponDescription = "A Big Stick +" + weaponLevel;
-            itemUpgraded = true;
+            itemUpgraded = "Weapon";
             player.setMuscle(player.getMuscle() + 1);
         }
         if (dice.getLast() == 2) {
             armourLevel += 1;
             armourDescription = "The Skin of Your Enemies +" + armourLevel;
-            itemUpgraded = true;
+            itemUpgraded = "Armour";
             player.setHeart(player.getHeart() + 1);
         }
         if (dice.getLast() == 3) {
             hatLevel += 1;
             armourDescription = "A tower of " + hatLevel + " hats.";
-            itemUpgraded = true;
+            itemUpgraded = "Hat";
             player.setBrain(player.getBrain() + 1);
         }
 

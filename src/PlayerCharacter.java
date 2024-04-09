@@ -168,7 +168,7 @@ class PlayerCharacter extends GameCharacter{
       return isAwake;
    }
 
-   public boolean doEquipmentUpgrade(int monsterLevel, boolean isBoss) {
+   public String doEquipmentUpgrade(int monsterLevel, boolean isBoss) {
       return equipment.doUpgrade(monsterLevel, isBoss, this);
    }
 }
