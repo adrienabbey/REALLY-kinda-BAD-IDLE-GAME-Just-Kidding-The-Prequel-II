@@ -22,3 +22,4 @@ This project is focused on creating an fantasy idle game loosely inspired by Mel
 * See the [Software Development Plan](./docs/sdp.md) documentation
 * See the [Requirement Specification document](./docs/rsd.md)
 * See the [Design Specification Document](./docs/dsd.md)
+* Presentation link [Presentation](https://docs.google.com/presentation/d/1IhkBFzaC2Gv5R91MlzrjNmFNw9Ya-nX9/edit?usp=sharing&ouid=109920732234565522830&rtpof=true&sd=true)
