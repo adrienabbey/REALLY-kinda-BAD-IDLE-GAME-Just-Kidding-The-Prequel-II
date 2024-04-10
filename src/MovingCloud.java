@@ -52,7 +52,7 @@ public class MovingCloud {
 
     public void drawCloud(Graphics g) {
         // Draw the cloud
-        g.setColor(Color.WHITE);
+        g.setColor(new Color (255, 255, 255, 150));
         g.fillOval(cloudX, cloudY, cloudWidth, cloudHeight);
     }
 }
