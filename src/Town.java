@@ -5,22 +5,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.Font;
 import java.awt.Color;
 
 class Town extends JPanel {
 
-    @Override
-    protected void paintComponent(Graphics g) {
 
-        super.paintComponent(g);
-        try {
-            g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
-        } catch (IOException e) {
-            // Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+    private MovingCloud movingCloud;
 
     /**
      * This function hosts the town screen with buttons to buy potions or leave
@@ -132,5 +127,33 @@ class Town extends JPanel {
                 e1.printStackTrace();
             }
         });
-    }
+
+        // Instantiate MovingCloud
+        movingCloud = new MovingCloud(1920);
+
+        // Start cloud timer
+        Timer cloudTimer = new Timer(50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                movingCloud.moveCloud();
+                repaint(); // Repaint the panel to show the updated position of the cloud
+            }
+        });
+        cloudTimer.start();
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+
+            super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/town3.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                // Auto-generated catch block
+                e.printStackTrace();
+            }
+            movingCloud.drawCloud(g);
+
+        }
+    
 }

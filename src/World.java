@@ -3,13 +3,17 @@ import java.io.IOException;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.Color;
 
 public class World extends JPanel{
     PlayerCharacter player; // declare player object reference variable
+    MovingCloud movingCloud;
     
     private JLabel dungeon_error_message; // Declare JLabel
     private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
@@ -70,6 +74,10 @@ public class World extends JPanel{
         add(Box.createRigidArea(new Dimension(20, 20)));
         add(dungeon_error_message); // Add error message label to  panel
         add(Box.createVerticalGlue());
+
+        // // Create and add the moving cloud
+        // cloud = new MovingCloud(1920);
+        // add(cloud);
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
@@ -186,6 +194,41 @@ public class World extends JPanel{
                 e1.printStackTrace();
             }
         });
+
+
+
+
+        /* cloud isnt being drawn because world screen is painted in driver not in the world class, can fix later */
+        
+        // Add component listener to track panel resize
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if (movingCloud != null) {
+                    movingCloud.setPanelWidth(getWidth());
+                }
+            }
+        });
+
+        // Instantiate MovingCloud
+        movingCloud = new MovingCloud(1920);
+
+        // Start cloud timer
+        Timer cloudTimer = new Timer(50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                movingCloud.moveCloud();
+                repaint(); // Repaint the panel to show the updated position of the cloud
+            }
+        });
+        cloudTimer.start();
     }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            // Draw the cloud
+            movingCloud.drawCloud(g);
+        }
 }
 
