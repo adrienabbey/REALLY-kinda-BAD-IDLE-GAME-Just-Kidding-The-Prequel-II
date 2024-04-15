@@ -16,10 +16,11 @@ import javax.swing.*;
  */
 
 public class Credits extends JPanel {
+    static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private JLabel rollingText;
     private Timer timer;
-    public static int yPos = 998;
+    public static int yPos = ((screenSize.height + 1800) * 2);
 
         @Override
     protected void paintComponent(Graphics g) {
@@ -65,15 +66,16 @@ public class Credits extends JPanel {
         
         // Calculate the position of the rolling text label to center it
         int labelWidth = 850; // Set your desired width
-        int labelHeight = 1720; // Set your desired height
-        int x = (getWidth() - labelWidth) / 2;
-        int y = (getHeight() - labelHeight) / 2;
+        int labelHeight = 1800; // Set your desired height
+        // int x = (getWidth() + labelWidth) / 2;
+        // int y = getHeight() + labelHeight;
 
         // Set the position and size of the rolling text label
-        rollingText.setBounds(x, y, labelWidth, labelHeight);
+        rollingText.setBounds(((getWidth() + labelWidth) - 2), yPos, labelWidth, labelHeight);
 
         // Add components to the panel
         add(back);
+        back.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(rollingText);
 
         // Action listener for the 'Back' button. Sets text to correct position after very opening. 
@@ -86,11 +88,28 @@ public class Credits extends JPanel {
         // Timer for rolling text
         timer = new Timer(25, e -> {
             yPos--;
-            rollingText.setLocation(520, yPos);
+            int x = (getWidth() - rollingText.getWidth()) / 2;
+            rollingText.setLocation(x, yPos);
             if (yPos + rollingText.getHeight() < 0) {
-                yPos = getHeight();
+                yPos = ((screenSize.height + rollingText.getHeight()) * 2);
             }
         });
         timer.start();
     }
+
+    // @Override
+    // public void addNotify(){
+    //     super.addNotify();
+    //     yPos = ((int)screenSize.height + rollingText.getHeight()) * 2;
+    // }
+
+    // @Override
+    // public void doLayout(){
+    //     super.doLayout();
+    //     rollingText.setSize(850, 1720);
+    //     int x = (getWidth() - rollingText.getWidth()) / 2;
+    //     int y = (((int)screenSize.height + rollingText.getHeight()) * 2);
+
+    //     rollingText.setBounds(x, y, 850, 1720);
+    // }
 }
