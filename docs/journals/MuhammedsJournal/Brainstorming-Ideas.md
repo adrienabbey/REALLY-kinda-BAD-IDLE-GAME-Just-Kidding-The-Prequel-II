@@ -1,4 +1,4 @@
-**Don't start developing ANYTHING unless you have a clear plan on what the finished product looks like.**
+**Don't start developing ANYTHING unless a clear plan of what the finished product looks like is created.**
 
 *Implementation of ideas are tentative and can be changed to whatever later*
 
