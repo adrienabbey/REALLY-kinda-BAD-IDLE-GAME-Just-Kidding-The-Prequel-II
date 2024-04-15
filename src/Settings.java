@@ -26,9 +26,9 @@ class Settings extends JPanel {
     /* Fields */
     final static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private static boolean isMute = true;
-    final int buttonWidth = screenSize.width / 7;
+    final int buttonWidth = screenSize.width / 6;
     final Dimension BUTTON_SIZE = new Dimension(buttonWidth, screenSize.height / 20);
-    final Font BUTTON_FONT = new Font("Serif", Font.BOLD, 24);
+    final Font BUTTON_FONT = new Font("Serif", Font.BOLD, screenSize.width / 80);
     final Dimension BUTTON_GAP = new Dimension(0, 20);
     final Dimension SLIDER_SIZE = new Dimension(buttonWidth, screenSize.height / 40);
     final Color customColorBeige = new Color(253, 236, 166);
