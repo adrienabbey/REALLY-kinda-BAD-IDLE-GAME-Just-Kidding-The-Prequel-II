@@ -16,33 +16,30 @@ import javax.swing.*;
  */
 
 public class Credits extends JPanel {
-    static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    
 
+    final static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private JLabel rollingText;
     private Timer timer;
     public static int yPos;
-
-        @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/scene9.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
+    final static int xPos = screenSize.width / 2;
+    private Image background;
 
     /* Constructor */
 
     public Credits() {
+
+        try{
+            background = ImageIO.read(new File("assets/images/scene9.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Cannot open background image.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
         // Set the layout with vertical alignment and padding
         this.setLayout(null); // Use null layout for precise positioning
 
         // Create the 'Back' button with custom styling
         JButton back = new JButton("<- Back");
-        back.setFont(new Font("Serif", Font.BOLD, 24));
+        back.setFont(new Font("Serif", Font.BOLD, screenSize.width / 80));
         back.setForeground(new Color(255, 255, 255)); // White text
         back.setBackground(new Color(139, 69, 19)); // Dark wood color
         back.setFocusPainted(false); // Remove focus ring around the button
@@ -57,19 +54,16 @@ public class Credits extends JPanel {
         "<br><br> - Lamento di Tristano [Medieval Song]\r\n" + //
         "<br>Composer: Medieval Path\r\n" + //
         "<br>Source: https://www.youtube.com/watch?v=VsNPBWuwt7w</div></html>", SwingConstants.CENTER);
-        rollingText.setFont(new Font("Serif", Font.PLAIN, 20));
+        rollingText.setFont(new Font("Serif", Font.PLAIN, screenSize.width / 96));
         rollingText.setForeground(new Color(255, 190, 128)); // Lighter wood color
         rollingText.setBackground(new Color(0, 0, 0)); // Set the background color to black
         rollingText.setOpaque(true); // Make the background visible
 
         // Set the position and size of the 'Back' button
-        back.setBounds(10, 10, 130, 50);
-        
-        int labelWidth = 850; // Set width of label
-        int labelHeight = 1800; // Set height of label
+        back.setBounds(10, 10, screenSize.width / 15, screenSize.height / 32);
 
         // Set the position and size of the rolling text label
-        rollingText.setBounds(((getWidth() + labelWidth) - 2), yPos, labelWidth, labelHeight);
+        rollingText.setBounds(xPos, yPos, (int)(screenSize.width / 2.1), (int)(screenSize.height / 0.7));
 
         // Add components to the panel
         add(back);
@@ -83,7 +77,7 @@ public class Credits extends JPanel {
         });
 
         // Timer for rolling text
-        timer = new Timer(20, e -> {
+        timer = new Timer(12, e -> {
             yPos--;
             int x = (getWidth() - rollingText.getWidth()) / 2;
             rollingText.setLocation(x, yPos);
@@ -92,5 +86,13 @@ public class Credits extends JPanel {
             }
         });
         timer.start();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+            if (background != null) {
+                g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+            }
     }
 }

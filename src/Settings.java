@@ -18,22 +18,27 @@ import java.awt.Color;
 import java.awt.Toolkit;
 
 /* 
- * Implementation for the "Settings" panel which can be accessed fron the start screen. Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
+ * Implementation for the "Settings" panel which can be accessed fron the start screen. 
+ * Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
  */
 
 class Settings extends JPanel {
     /* Fields */
-    static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private static boolean isMute = true;
-    private static int buttonWidth = 300;
+    final int buttonWidth = screenSize.width / 7;
+    final Dimension BUTTON_SIZE = new Dimension(buttonWidth, screenSize.height / 20);
+    final Font BUTTON_FONT = new Font("Serif", Font.BOLD, 24);
+    final Dimension BUTTON_GAP = new Dimension(0, 20);
+    final Dimension SLIDER_SIZE = new Dimension(buttonWidth, screenSize.height / 40);
+    final Color customColorBeige = new Color(253, 236, 166);
+    final Color customColorBrown = new Color(102, 72, 54);
+    final Border BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 
     /* Constructor */
     public Settings() throws IOException{
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
-        Border border = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         
         // slider ranges from -70 to 5, starts at -4. The max allowable float value of the master volume is 6.0206, but set to 5 here just to ensure there are no distortions generated. Having it a 6 and increasing and decreasing the floatcontrol repeatedly gives the opportunity for distortative spikes in audio output to occur. 
         JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 5, -4); 
@@ -43,39 +48,34 @@ class Settings extends JPanel {
         JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 5, -5); // range from -70 to 6, starts at -5
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
-        // JLabel muteLabel = new JLabel("Mute Music Volume");
-        // muteLabel.setBorder(border);
-
         JButton mute = new JButton("Mute Music Volume");
-        mute.setBorder(border);
+        mute.setBorder(BORDER);
         buttons.add(mute);
         JButton adjust = new JButton("Adjust Music Volume");
-        adjust.setBorder(border);
+        adjust.setBorder(BORDER);
         buttons.add(adjust);   
         JButton sfx = new JButton("Adjust SFX Volume");
-        sfx.setBorder(border);
+        sfx.setBorder(BORDER);
         buttons.add(sfx);   
         JButton leave = new JButton("Back to Main Menu");
-        leave.setBorder(border);
+        leave.setBorder(BORDER);
         buttons.add(leave);   
         JButton credits = new JButton("Credits");
-        credits.setBorder(border);
+        credits.setBorder(BORDER);
         buttons.add(credits); 
 
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         add(mute);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(adjust);
-        add(Box.createRigidArea(new Dimension(100, 0)));
         add(slider);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(sfx);
-        add(Box.createRigidArea(new Dimension(100, 0)));
         add(sliderSFX);
-        add(Box.createRigidArea(new Dimension(100, 30)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(credits);
-        add(Box.createRigidArea(new Dimension(100, 50)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(leave);
         add(Box.createVerticalGlue());
 
@@ -84,21 +84,20 @@ class Settings extends JPanel {
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-
-            buttons.get(i).setPreferredSize(new Dimension(buttonWidth, 70));
-            buttons.get(i).setMaximumSize(new Dimension(buttonWidth, 70));
+            buttons.get(i).setPreferredSize(BUTTON_SIZE);
+            buttons.get(i).setMaximumSize(BUTTON_SIZE);
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
+            buttons.get(i).setFont(BUTTON_FONT);
         }
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
         //Format music volume slider
-        slider.setMaximumSize(new Dimension(buttonWidth, 20));
+        slider.setMaximumSize(SLIDER_SIZE);
 
         //Format sfx volume slider
-        sliderSFX.setMaximumSize(new Dimension(buttonWidth, 20));
+        sliderSFX.setMaximumSize(SLIDER_SIZE);
 
         
         /* Methods */
