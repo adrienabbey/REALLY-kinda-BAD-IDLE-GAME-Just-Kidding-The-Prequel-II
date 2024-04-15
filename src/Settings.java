@@ -5,6 +5,7 @@
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 /* 
  * Implementation for the "Settings" panel which can be accessed fron the start screen. Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
@@ -21,7 +23,9 @@ import java.awt.Color;
 
 class Settings extends JPanel {
     /* Fields */
+    static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private static boolean isMute = true;
+    private static int buttonWidth = 300;
 
     /* Constructor */
     public Settings() throws IOException{
@@ -29,6 +33,7 @@ class Settings extends JPanel {
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
+        Border border = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         
         // slider ranges from -70 to 5, starts at -4. The max allowable float value of the master volume is 6.0206, but set to 5 here just to ensure there are no distortions generated. Having it a 6 and increasing and decreasing the floatcontrol repeatedly gives the opportunity for distortative spikes in audio output to occur. 
         JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 5, -4); 
@@ -38,21 +43,27 @@ class Settings extends JPanel {
         JSlider sliderSFX = new JSlider(JSlider.HORIZONTAL, -70, 5, -5); // range from -70 to 6, starts at -5
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
+        // JLabel muteLabel = new JLabel("Mute Music Volume");
+        // muteLabel.setBorder(border);
+
         JButton mute = new JButton("Mute Music Volume");
+        mute.setBorder(border);
         buttons.add(mute);
         JButton adjust = new JButton("Adjust Music Volume");
+        adjust.setBorder(border);
         buttons.add(adjust);   
         JButton sfx = new JButton("Adjust SFX Volume");
+        sfx.setBorder(border);
         buttons.add(sfx);   
         JButton leave = new JButton("Back to Main Menu");
+        leave.setBorder(border);
         buttons.add(leave);   
         JButton credits = new JButton("Credits");
+        credits.setBorder(border);
         buttons.add(credits); 
 
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
-        // add(name);
-        add(Box.createRigidArea(new Dimension(0, 30)));
         add(mute);
         add(Box.createRigidArea(new Dimension(0, 30)));
         add(adjust);
@@ -68,33 +79,26 @@ class Settings extends JPanel {
         add(leave);
         add(Box.createVerticalGlue());
 
+
+
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
-            buttons.get(i).setPreferredSize(new Dimension(270, 70));
-            buttons.get(i).setMaximumSize(new Dimension(270, 70));
+            buttons.get(i).setPreferredSize(new Dimension(buttonWidth, 70));
+            buttons.get(i).setMaximumSize(new Dimension(buttonWidth, 70));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
-            
-            // Formats leave button
-            if (i == 5) {
-                buttons.get(5).setAlignmentX(CENTER_ALIGNMENT);
-                buttons.get(5).setBackground(Color.GRAY);
-                buttons.get(5).setForeground(Color.WHITE);
-                buttons.get(5).setPreferredSize(new Dimension(270, 70));
-                buttons.get(5).setMaximumSize(new Dimension(270, 500));
-                buttons.get(5).setFont(new Font("Times New Roman", Font.BOLD, 24));
         }
-    }
+
         this.setAlignmentX(CENTER_ALIGNMENT);
 
         //Format music volume slider
-        slider.setMaximumSize(new Dimension(270, 20));
+        slider.setMaximumSize(new Dimension(buttonWidth, 20));
 
         //Format sfx volume slider
-        sliderSFX.setMaximumSize(new Dimension(270, 20));
+        sliderSFX.setMaximumSize(new Dimension(buttonWidth, 20));
 
         
         /* Methods */
@@ -122,7 +126,7 @@ class Settings extends JPanel {
         credits.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
-                Credits.yPos = 998; // set rolling text box in correct position;
+                Credits.yPos = ((int)screenSize.height); // set rolling text box in correct position;
                 long startTime = System.currentTimeMillis();
                 long waitTime = 75; // Wait for 75 milliseconds (0.075 seconds), so that credits text is properly set to correct location without previous text's location being seen.
                 
