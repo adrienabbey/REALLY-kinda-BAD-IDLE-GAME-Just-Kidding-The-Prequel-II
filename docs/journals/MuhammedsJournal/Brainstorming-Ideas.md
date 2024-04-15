@@ -36,7 +36,7 @@
 11. Have a start screen or hobo goblin (indicate in his design which goblin he exactly is, like a certain color or blue hobo sack) They will tumble down a steep hill repeatedly in the background of the hobo village. At the top of the hill, there is a house that is impossible to get to. After defeating 20 hobogoblins a dialogue option is unlocked in the tavern that says something like: "Have you seen the hobo goblin who keeps trying to get to homestead on top of the cliff?" "The one that keeps trying over and over again but to no avail?" "Yes, that's the one. One must imagine him happy. " "Why's that?" "You'd have to ask him, if goblins could speak English that is."
    - If the player has completed the hobo village and has a level 1 in hobospeak, going back to the hobo village the player will have a 1/10 chance of encountering the special hobo goblin, after defeating him, you ask him why do you continue to climb up the hill? He will say "Its in my nature to walk this world searching for a place to stay, I have found meaning in the act of searching itself". If the player has a level 2 hobospeak you can ask him to come to your homestead and he will accept, now appearing somewhere in your homestead.
 
-12. Player can create gold through alchemy by turning piss into gold. [Reference](https://www.mgsrefining.com/blog/what-we-ve-gained-from-the-alchemist-who-tried-to-turn-pee-into-gold/)
+12. Player can create gold through alchemy by turning piss into gold. [what-we-ve-gained-from-the-alchemist-who-tried-to-turn-pee-into-gold](https://www.mgsrefining.com/blog/what-we-ve-gained-from-the-alchemist-who-tried-to-turn-pee-into-gold/)
 
 13. The tavern will now have a "Buy <NPC-name> a drink - 10 gold" --- "Talk to another townsfolk" --- "Leave" Buying him a drink will continue the conversation, the player will have some predetermined lines of dialogue such as asking "why" or "Go on".
 
@@ -52,7 +52,7 @@
 
 19. Have another story of two groups warring over land and the player must choose a side to align with.
 
-20. Parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [link](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
+20. Parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
 
    ```
    Eplanation of the story of the three fishes:
