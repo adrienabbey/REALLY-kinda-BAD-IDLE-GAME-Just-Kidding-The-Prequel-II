@@ -165,7 +165,6 @@ class StartScreen extends JPanel{
                 buttons.get(i).setMaximumSize(new Dimension(400, 500));
             }
         }
-        newGame.setFocusPainted(false); // Remove focus ring around the button
 
         // Buttons to interact with the functions of the game
         // Create new Character

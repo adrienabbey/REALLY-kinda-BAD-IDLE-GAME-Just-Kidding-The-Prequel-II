@@ -34,7 +34,6 @@ class Settings extends JPanel {
     final Dimension SLIDER_SIZE = new Dimension(buttonWidth, screenSize.height / 40);
     final Color customColorBeige = new Color(253, 236, 166);
     final Color customColorBrown = new Color(102, 72, 54);
-    final Border BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
     private Image background;
 
     /* Constructor */
@@ -59,19 +58,14 @@ class Settings extends JPanel {
         sliderSFX.setBackground(customColorBrown); // Set the background color
 
         JButton mute = new JButton("Mute Music Volume");
-        mute.setBorder(BORDER);
         buttons.add(mute);
         JButton adjust = new JButton("Adjust Music Volume");
-        adjust.setBorder(BORDER);
         buttons.add(adjust);   
         JButton sfx = new JButton("Adjust SFX Volume");
-        sfx.setBorder(BORDER);
         buttons.add(sfx);   
         JButton leave = new JButton("Back to Main Menu");
-        leave.setBorder(BORDER);
         buttons.add(leave);   
         JButton credits = new JButton("Credits");
-        credits.setBorder(BORDER);
         buttons.add(credits); 
 
         // Adding the buttons to the start panel and controlling layout
