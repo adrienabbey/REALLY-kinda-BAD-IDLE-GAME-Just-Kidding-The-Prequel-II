@@ -20,8 +20,12 @@ class GameInstructions extends JPanel {
 
     public GameInstructions() {
         // Set the layout with vertical alignment and padding
-        this.setLayout(new BorderLayout());
-        this.setBorder(new EmptyBorder(400, 490, 400, 490)); // Add padding around the panel
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBorder(new EmptyBorder(400, 400, 400, 400)); // Add padding around the panel
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = screenSize.width;
+        int height = screenSize.height;
 
         // Create the 'Back' button with custom styling
         JButton back = new JButton("<- Back");
@@ -32,14 +36,18 @@ class GameInstructions extends JPanel {
 
         // Create the information label with custom styling
         JLabel info = new JLabel("<html><div style='text-align: center;'>Hello Traveler! Welcome to B.A.D Idle Game.<br>To start your journey you will need to create a new character using the New Game button.<br>From there you will choose your stats and start adventuring into the dungeon.<br>Stop by the town bazaar for potions to heal yourself.</div></html>", SwingConstants.CENTER);
+        info.setPreferredSize(new Dimension((int) (width * .8), (int)(height * .8))); // Set the preferred size of the label (80% of the panel width and height
         info.setFont(new Font("Serif", Font.ITALIC, 20));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
         info.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
         info.setOpaque(true); // Make the background visible
 
         // Add components to the panel
-        add(back, BorderLayout.NORTH);
-        add(info, BorderLayout.CENTER);
+        add(Box.createRigidArea(new Dimension(0, 20))); // Add space between the top of the panel and the button
+        add(back);
+        add(Box.createRigidArea(new Dimension(0, 20))); // Add space between the button and the label
+        add(info);
+        add(Box.createRigidArea(new Dimension(0, 20))); // Add space between the label and the bottom of the panel
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
