@@ -60,7 +60,7 @@ public class Credits extends JPanel {
         rollingText.setOpaque(true); // Make the background visible
 
         // Set the position and size of the 'Back' button
-        back.setBounds(10, 10, screenSize.width / 15, screenSize.height / 32);
+        back.setBounds(10, 10, (screenSize.width / 15), (screenSize.height / 24));
 
         // Set the position and size of the rolling text label
         rollingText.setBounds(xPos, yPos, (int)(screenSize.width / 2.1), (int)(screenSize.height / 0.7));
