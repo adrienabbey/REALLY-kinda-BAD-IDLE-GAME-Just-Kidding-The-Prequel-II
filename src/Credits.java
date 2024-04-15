@@ -64,18 +64,14 @@ public class Credits extends JPanel {
         // Set the position and size of the 'Back' button
         back.setBounds(10, 10, 130, 50);
         
-        // Calculate the position of the rolling text label to center it
-        int labelWidth = 850; // Set your desired width
-        int labelHeight = 1800; // Set your desired height
-        // int x = (getWidth() + labelWidth) / 2;
-        // int y = getHeight() + labelHeight;
+        int labelWidth = 850; // Set width of label
+        int labelHeight = 1800; // Set height of label
 
         // Set the position and size of the rolling text label
         rollingText.setBounds(((getWidth() + labelWidth) - 2), yPos, labelWidth, labelHeight);
 
         // Add components to the panel
         add(back);
-        back.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(rollingText);
 
         // Action listener for the 'Back' button. Sets text to correct position after very opening. 

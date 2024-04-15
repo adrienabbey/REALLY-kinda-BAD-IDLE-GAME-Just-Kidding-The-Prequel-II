@@ -122,7 +122,7 @@ class Settings extends JPanel {
         credits.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
-                Credits.yPos = 998; // set rolling text box in correct position;
+                Credits.yPos = 998; // set rolling text box to correct position before the player enters the credits screen so that the label updating itself can't be seen. 
                 long startTime = System.currentTimeMillis();
                 long waitTime = 75; // Wait for 75 milliseconds (0.075 seconds), so that credits text is properly set to correct location without previous text's location being seen.
                 
