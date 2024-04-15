@@ -16,6 +16,7 @@ import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.Image;
 
 /* 
  * Implementation for the "Settings" panel which can be accessed fron the start screen. 
@@ -34,9 +35,18 @@ class Settings extends JPanel {
     final Color customColorBeige = new Color(253, 236, 166);
     final Color customColorBrown = new Color(102, 72, 54);
     final Border BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+    private Image background;
 
     /* Constructor */
     public Settings() throws IOException{
+
+        try {
+            background = ImageIO.read(new File("assets/images/World5.1.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Cannot open background image.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         
@@ -177,13 +187,9 @@ class Settings extends JPanel {
     // draw image to backgroud
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/World5.1.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
+            if (background != null) {
+                g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
             }
     }
     }
