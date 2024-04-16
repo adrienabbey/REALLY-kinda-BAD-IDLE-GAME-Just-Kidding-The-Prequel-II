@@ -1,11 +1,23 @@
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Dimension;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.BoxLayout;
+import javax.swing.Timer;
+import java.awt.Point;
+import java.awt.Image;
+import javax.swing.Box;
 
 // This class is the introductory starting screen with buttons to start a new game, load a game, read directions, go to settings, or quit
 class StartScreen extends JPanel{

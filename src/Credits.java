@@ -3,11 +3,21 @@
  * Muhammed Abushamma, et al., Mar. 2024
  */
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Dimension;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.SwingConstants;
+import java.awt.Image;
 
 /*
  * Implementation for the "Credits" panel which can be accessed from the setting screen. Uss a timer to continously update the JLabel in order to achieve a rolling effect. The label houses all the credits for the game, including the credits to the developers, professor, and to the images, music, sound effects, and voiceovers used. 

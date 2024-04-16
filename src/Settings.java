@@ -4,7 +4,6 @@
  */
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
@@ -16,6 +15,12 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.Image;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JSlider;
+import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
+import javax.swing.Box;
 
 /* 
  * Implementation for the "Settings" panel which can be accessed fron the start screen. 
