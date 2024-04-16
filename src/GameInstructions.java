@@ -1,8 +1,18 @@
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 
 class GameInstructions extends JPanel {
     Image background;
@@ -20,8 +30,16 @@ class GameInstructions extends JPanel {
             e.printStackTrace();
         }
         setLayout(null);
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(new Color(0, 0, 0, 192));
+                g.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
         panel.setLayout(new BorderLayout());
+        panel.setOpaque(false);
 
         // Create the 'Back' button with custom styling
         JButton back = new JButton("<- Back");
@@ -35,8 +53,7 @@ class GameInstructions extends JPanel {
         info.setPreferredSize(LABEL_SIZE); // Set the preferred size of the label (80% of the panel width and height
         info.setFont(new Font("Serif", Font.ITALIC, infoFont));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
-        info.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
-        info.setOpaque(true); // Make the background visible
+        info.setOpaque(false); // Make the background visible
 
         // Add components to the panel
         panel.add(back, BorderLayout.NORTH);

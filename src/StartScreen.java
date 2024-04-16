@@ -19,7 +19,7 @@ class StartScreen extends JPanel{
     final int titleSize = screenSize.width / 15;
     final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 108);
     final int buttonFont = screenSize.width / 60;
-    final Dimension BUTTON_SIZE = new Dimension(screenSize.width / 7, screenSize.height / 18);
+    final Dimension BUTTON_SIZE = new Dimension(screenSize.width / 6, screenSize.height / 12);
 
     public StartScreen() {
 
