@@ -3,10 +3,14 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 class GameInstructions extends JPanel {
     Image background;
+    final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final int infoFont = screenSize.width / 96;
+    final Dimension LABEL_SIZE = new Dimension((int)(screenSize.width / 2.1), (int)(infoFont * 10));
+    final int yPos = screenSize.height / 2 - LABEL_SIZE.height / 2;
+    final int xPos = screenSize.width / 2 - LABEL_SIZE.width / 2;
 
     public GameInstructions() {
         try {
@@ -15,35 +19,31 @@ class GameInstructions extends JPanel {
             JOptionPane.showMessageDialog(this, "Cannot open background image.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-        // Set the layout with vertical alignment and padding
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBorder(new EmptyBorder(400, 400, 400, 400)); // Add padding around the panel
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        int height = screenSize.height;
+        setLayout(null);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
 
         // Create the 'Back' button with custom styling
         JButton back = new JButton("<- Back");
-        back.setFont(new Font("Serif", Font.BOLD, 24));
+        back.setFont(new Font("Serif", Font.BOLD, screenSize.width / 80));
         back.setForeground(new Color(255, 255, 255)); // White text
         back.setBackground(new Color(139, 69, 19)); // Light wood color
         back.setFocusPainted(false); // Remove focus ring around the button
 
         // Create the information label with custom styling
         JLabel info = new JLabel("<html><div style='text-align: center;'>Hello Traveler! Welcome to B.A.D Idle Game.<br>To start your journey you will need to create a new character using the New Game button.<br>From there you will choose your stats and start adventuring into the dungeon.<br>Stop by the town bazaar for potions to heal yourself.</div></html>", SwingConstants.CENTER);
-        info.setPreferredSize(new Dimension((int) (width * .8), (int)(height * .8))); // Set the preferred size of the label (80% of the panel width and height
-        info.setFont(new Font("Serif", Font.ITALIC, 20));
+        info.setPreferredSize(LABEL_SIZE); // Set the preferred size of the label (80% of the panel width and height
+        info.setFont(new Font("Serif", Font.ITALIC, infoFont));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
         info.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
         info.setOpaque(true); // Make the background visible
 
         // Add components to the panel
-        add(Box.createRigidArea(new Dimension(0, 20))); // Add space between the top of the panel and the button
-        add(back);
-        add(Box.createRigidArea(new Dimension(0, 20))); // Add space between the button and the label
-        add(info);
-        add(Box.createRigidArea(new Dimension(0, 20))); // Add space between the label and the bottom of the panel
+        panel.add(back, BorderLayout.NORTH);
+        panel.add(info, BorderLayout.CENTER);
+        panel.setBounds(xPos, yPos, LABEL_SIZE.width, LABEL_SIZE.height);
+
+        add(panel);
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
