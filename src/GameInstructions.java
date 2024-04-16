@@ -6,19 +6,15 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 class GameInstructions extends JPanel {
-
-        @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/town2.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
+    Image background;
 
     public GameInstructions() {
+        try {
+            background = ImageIO.read(new File("assets/images/town2.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Cannot open background image.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
         // Set the layout with vertical alignment and padding
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBorder(new EmptyBorder(400, 400, 400, 400)); // Add padding around the panel
@@ -54,5 +50,13 @@ class GameInstructions extends JPanel {
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("start");
         });
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (background != null) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 }
