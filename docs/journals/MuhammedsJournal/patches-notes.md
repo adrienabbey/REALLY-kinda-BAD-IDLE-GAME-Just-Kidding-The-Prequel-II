@@ -1,3 +1,5 @@
+Document withe the patches/changes done by Muhammed A. 
+
 ### Patches and Bugfixes 3/26/24:
   1. Fixed issue where gold would not be added to inventory after defeating a monster in the dungeon.
   2. Added colors to buy, sell, and merchant UIs. Redid secret merchant panel. 
