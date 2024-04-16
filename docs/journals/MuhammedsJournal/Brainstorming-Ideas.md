@@ -67,4 +67,4 @@
 	
 21. Before incorporating any aspects of story of parables first make sure the actual gameplay is fun. Make combat, harvesting, farming, crafting etc. all fun to do. 
 
-22. Has story be disseminated through a similar way Tales of Maj'Eyal handles lore.  \It's randomly found while playing, which allows players to find out more about the world without requiring rigid story line mechanics or distracting from the core gameplay loop.
+22. Story can be disseminated through a similar way Tales of Maj'Eyal handles lore. Lore us randomly found while playing, which allows players to find out more about the world without requiring rigid story line mechanics or distracting from the core gameplay loop.
