@@ -52,7 +52,7 @@
 
 19. Have another story of two groups warring over land and the player must choose a side to align with.
 
-20.Themes and parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
+20.Themes and parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, freewill, fate, innante nature, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
 
    ```
    Eplanation of the story of the three fishes:
@@ -68,3 +68,7 @@
 21. Before incorporating any aspects of story of parables first make sure the actual gameplay is fun. Make combat, harvesting, farming, crafting etc. all fun to do. 
 
 22. Story can be disseminated through a similar way Tales of Maj'Eyal handles lore. Lore us randomly found while playing, which allows players to find out more about the world without requiring rigid story line mechanics or distracting from the core gameplay loop.
+
+23. Characters stats can be tied to other things in the game, such as harvesting speed being affected by the player's muscle stat. Stats can be upgarded through experience gained through the activities the stat affects, such as harvesting increasing the player's muscle experience bar by a small increment. Equipment will affect stats by whole numbers when the equipment level is increased, while activities will increase the stat by whole numbers when the experience bar reaches it maximum, then the experience bar is reset.
+
+24. Explore the concept of making the starting character a vagaboud or wanderer who hasn't fully realized or gained a full udnerstanding of his humanity or the human condition as a whole. Look into making the starter character a disclaimer board, with googley eyes, just so the player knows they are the discliamer board.   
