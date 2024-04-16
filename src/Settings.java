@@ -5,7 +5,6 @@
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
@@ -30,7 +29,7 @@ class Settings extends JPanel {
     final int buttonWidth = screenSize.width / 6;
     final Dimension BUTTON_SIZE = new Dimension(buttonWidth, screenSize.height / 20);
     final Font BUTTON_FONT = new Font("Serif", Font.BOLD, screenSize.width / 80);
-    final Dimension BUTTON_GAP = new Dimension(0, 20);
+    final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 54);
     final Dimension SLIDER_SIZE = new Dimension(buttonWidth, screenSize.height / 40);
     final Color customColorBeige = new Color(253, 236, 166);
     final Color customColorBrown = new Color(102, 72, 54);
