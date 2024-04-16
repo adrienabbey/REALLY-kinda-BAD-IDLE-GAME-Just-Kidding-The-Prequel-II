@@ -52,7 +52,7 @@
 
 19. Have another story of two groups warring over land and the player must choose a side to align with.
 
-20. Parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
+20.Themes and parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
 
    ```
    Eplanation of the story of the three fishes:
