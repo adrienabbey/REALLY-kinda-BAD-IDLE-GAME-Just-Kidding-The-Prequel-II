@@ -29,7 +29,7 @@ class StartScreen extends JPanel{
     private int hoboSFX = 0; // used to loop through hobogoblin sfx 
     final static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final int titleSize = screenSize.width / 15;
-    final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 108);
+    final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 100);
     final int buttonFont = screenSize.width / 60;
     final Dimension BUTTON_SIZE = new Dimension(screenSize.width / 7, screenSize.height / 18);
 

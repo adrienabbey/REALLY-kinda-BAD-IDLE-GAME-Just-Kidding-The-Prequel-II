@@ -31,11 +31,11 @@ class Settings extends JPanel {
     /* Fields */
     final static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private static boolean isMute = true;
+    final Font BUTTON_FONT = new Font("Serif", Font.BOLD, screenSize.width / 70);
     final int buttonWidth = screenSize.width / 5;
     final Dimension BUTTON_SIZE = new Dimension(buttonWidth, screenSize.height / 18);
-    final Font BUTTON_FONT = new Font("Serif", Font.BOLD, screenSize.width / 70);
     final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 54);
-    final Dimension SLIDER_SIZE = new Dimension(buttonWidth, screenSize.height / 40);
+    final Dimension SLIDER_SIZE = new Dimension(buttonWidth - 1, screenSize.height / 39);
     final Color customColorBeige = new Color(253, 236, 166);
     final Color customColorBrown = new Color(102, 72, 54);
     private Image background;
