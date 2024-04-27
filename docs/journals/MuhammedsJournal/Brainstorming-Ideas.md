@@ -23,6 +23,7 @@
      - Literary excerpts - level 4
      - ??? - level 5
    - Optional - maybe look into allowing the player learn different languages, like the hobo goblin or cyclopian language.
+   - New monsters will be added to the book of monsters as the player increases their reading level. At level 1 only the monsters in the first area of the world will be added. 
 
 7. Incorporate the mandelbrot set somewhere, maybe make it a graphic somewhere, For instance can make it a transition screen between an area where you ingest a mushroom Before entering the area ask the player "Eat the mushroom?..." with the last dot blinking. Have a narrative beforehand that explains how the player got to the point of eating the mushroom. Have the transition be an animation of the mandelbrot set. Must generate the mandelbrot programmatically as a coding exercise.
    - After ingesting the mushroom the player will be transported to a psychedelic state, where the monsters will be zany and abstract.
@@ -56,10 +57,11 @@
      	3. As the player defeats enemies the background image will progressively change showing the green cyclopian village being settled by a new cyclopian population wearing checkered purple tophats.
         4. The slideshow of background images will show the purple cyclopians peacefully settling near the village and building houses with purple roof tops at first, but as their houses inch towards and start to inhabit the green cyclopians' village a fued breaks out.
         5. This fued will be denoted as a scrimish between purple and green cycloians in the background image, with casualities on both dies. After the fued several green village houses start to get burnt down.
-        6. As the land dispute escalates a green cyclopian will appear to the player and ask the player "to join them to protect their village". If the player accepts the offer the purple hatted cyclopians will begein to appear as enemies and the backgrond images start to show the purple cyclopians losing the land dispute war and being expelled from the land.
-        7. If the player refuses the offer form the green cyclopian the purple cyclopian will appear and asks the player "to join them in their battle to defend agsint the aggresive inhabitants". If the player accepts the offer the green cyclopians will begin to appear as enemies and the background images will start to show the green cyclopians as losing the land dispute war and being expelled from the land.
-        8. If the player refuses both offers than the background images will show both sides warring with a stalemate ending in the green cyclopians occuping small pockets of the screen and the purple cyclopians occuping the rest.
+        6. As the land dispute escalates a green cyclopian will appear to the player and ask the player "to join them to protect their village". If the player accepts the offer the purple hatted cyclopians will begein to appear as enemies and the backgrond images start to show the purple cyclopians losing the land dispute war and being expelled from the land. A green cyclopian will thank the player for helping them defend against aggresive invaders.
+        7. If the player refuses the offer form the green cyclopian the purple cyclopian will appear and asks the player "to join them in their battle to defend agsint the aggresive inhabitants". If the player accepts the offer the green cyclopians will begin to appear as enemies and the background images will start to show the green cyclopians as losing the land dispute war and being expelled from the land. A purple cyclopian will thank th eplayer for helping them defned against aggresive natives.
+        8. If the player refuses both offers than the background images will show both sides warring with a stalemate ending in the green cyclopians occuping small pockets of the screen and the purple cyclopians taking over the rest.
         9. Their will be a secret option with the player being able to broker peace if some conditions are met (will expand on this later).
+           
 
 20.Themes and parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, freewill, fate, innante nature, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
 
