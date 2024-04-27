@@ -3,7 +3,7 @@
 *Implementation of ideas are tentative and can be changed to whatever later*
 
 ## Brainstorming Ideas:
-1. Have the dungeon button be renamed to "Conquest" or "Explore". Clicking the button takes you to the "Conquest" screen where the player can choose which area to go to.
+1. Have the dungeon button be renamed to "Conquest" or "Explore". Clicking the button takes you to the "Conquest" screen where the player can choose which area of the world you want to go to.
    - Can still have an area called the "dungeon" that has all monsters that infinitely loops. Button for the dungeon can still be located in the world, it just won't be unlocked until after completing the "main story" in the "Explore" tab is completed.
    - Main story should only take 20-30 minutes to complete. Story is more interactive than after games completion, so it should be short since this is an idle game. The dungeon will just be a mindless loop of combat, while combat areas in the story mode will have enemies interacting with you, lets the player make decisions, have somewhat of a cohesive storyline, etc.
 
@@ -50,7 +50,16 @@
 
 18. Have a story about how a group of cyclopians that are stuck in a cave, similar to Plato's allegory of the cave.
 
-19. Have another story of two groups warring over land and the player must choose a side to align with.
+19. Have another story of two groups of cyclopians warring over land and the player must choose a side to align with.
+	1. In the area of the world this story will take place in, the player will start by fighting random "non-people" enemies such as geoducks.
+    	2. The background image of this area will show a village with cyclopians wearing striped green tophats, with their village roofs also being green.
+     	3. As the player defeats enemies the background image will progressively change showing the green cyclopian village being settled by a new cyclopian population wearing checkered purple tophats.
+        4. The slideshow of background images will show the purple cyclopians peacefully settling near the village and building houses with purple roof tops at first, but as their houses inch towards and start to inhabit the green cyclopians' village a fued breaks out.
+        5. This fued will be denoted as a scrimish between purple and green cycloians in the background image, with casualities on both dies. After the fued several green village houses start to get burnt down.
+        6. As the land dispute escalates a green cyclopian will appear to the player and ask the player "to join them to protect their village". If the player accepts the offer the purple hatted cyclopians will begein to appear as enemies and the backgrond images start to show the purple cyclopians losing the land dispute war and being expelled from the land.
+        7. If the player refuses the offer form the green cyclopian the purple cyclopian will appear and asks the player "to join them in their battle to defend agsint the aggresive inhabitants". If the player accepts the offer the green cyclopians will begin to appear as enemies and the background images will start to show the green cyclopians as losing the land dispute war and being expelled from the land.
+        8. If the player refuses both offers than the background images will show both sides warring with a stalemate ending in the green cyclopians occuping small pockets of the screen and the purple cyclopians occuping the rest.
+        9. Their will be a secret option with the player being able to broker peace if some conditions are met (will expand on this later).
 
 20.Themes and parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, freewill, fate, innante nature, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
 
@@ -71,4 +80,6 @@
 
 23. Characters stats can be tied to other things in the game, such as harvesting speed being affected by the player's muscle stat. Stats can be upgarded through experience gained through the activities the stat affects, such as harvesting increasing the player's muscle experience bar by a small increment. Equipment will affect stats by whole numbers when the equipment level is increased, while activities will increase the stat by whole numbers when the experience bar reaches it maximum, then the experience bar is reset.
 
-24. Explore the concept of making the starting character a vagaboud or wanderer who hasn't fully realized or gained a full udnerstanding of his humanity or the human condition as a whole. Look into making the starter character a disclaimer board, with googley eyes, just so the player knows they are the discliamer board.   
+24. Explore the concept of making the starting character a vagaboud or wanderer who hasn't fully realized or gained a full udnerstanding of his humanity or the human condition as a whole. Look into making the starter character a disclaimer board, with googley eyes, just so the player knows they are the discliamer board.
+
+25. During the story phase of the gamein the "Conquest" tab the player will unlock each new area by reaching a certain in-game level. For example lvl 1 unlock the 1st area, lvl 10 the 2nd, lvl 20 the 3rd, and so on. The player can infinitely idly do combat in any level, so theoretically it would be possible for the player level jump to 50 by grinding in the 1st area for example and skip the previous areas along with their stories, but this will be discouraged by making levels get exponentially harder to progress while defeating lower level enemies, and making is so that the player can only progress at a reasonable pace by defeating enemies around their level. 
