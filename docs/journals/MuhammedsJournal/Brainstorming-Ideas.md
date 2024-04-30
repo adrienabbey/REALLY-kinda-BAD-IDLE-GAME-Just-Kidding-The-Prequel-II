@@ -61,6 +61,9 @@
         7. If the player refuses the offer form the green cyclopian the purple cyclopian will appear and asks the player "to join them in their battle to defend agsint the aggresive inhabitants". If the player accepts the offer the green cyclopians will begin to appear as enemies and the background images will start to show the green cyclopians as losing the land dispute war and being expelled from the land. A purple cyclopian will thank th eplayer for helping them defned against aggresive natives.
         8. If the player refuses both offers than the background images will show both sides warring with a stalemate ending in the green cyclopians occuping small pockets of the screen and the purple cyclopians taking over the rest.
         9. Their will be a secret option with the player being able to broker peace if some conditions are met. Will allow the player to mediate peace negociations and broker a truce. (will expand on this later).
+        10. After achieving any one of the possible outcomes (natives, settlers, or compromise), a new track will play.
+        11. Before ending is achieved play this: https://www.youtube.com/watch?v=bosF7nq2Uh4
+        12. After ending is achieved play this: https://www.youtube.com/watch?v=fVISIjjAaus&list=PLDJPO07Gg5B5jr0nfzUPI4U3HT1DiQNc2&index=5
            
 
 20.Themes and parables used so far: Sisyphus, Plato's allegory of the cave, futility, meaning, freewill, fate, innante nature, human condition, homelessness, ethics, war, mercy... - (try to incorporate different mystic/philosophical parables, like the Sufi story of the three fishes or stories by Rumi. [Story of the Three Fishes](https://the.ismaili/portugal/two-sufi-tales-2). [sufi stories](https://riyaazqawwali.com/sufi-stories/))
@@ -88,3 +91,4 @@
 
 26. Add a secret in the game where it takes the player several hours to sowly wait as an indicator in the screen slowly moves to, when the indicator reaches its final position then play the secret.
 
+27. Add a new feature in the world map called the monastary, which will unlock after the player beats the main story. The player can choose to "rebirth" and start a new game where the story will reset but the player keeps their level and stat increases and the enemies get harder (can work out what exactly happens during a rebirth later). 
