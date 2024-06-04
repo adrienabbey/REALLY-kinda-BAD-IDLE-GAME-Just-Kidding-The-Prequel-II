@@ -14,11 +14,11 @@ import java.awt.Font;
 class LoadScreen extends JPanel{
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g){
         super.paintComponent(g);
-            try {
+            try{
                 g.drawImage(ImageIO.read(new File("assets/images/World8.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
+            }catch (IOException e){
                 //Auto-generated catch block
                 e.printStackTrace();
             }
@@ -58,7 +58,7 @@ class LoadScreen extends JPanel{
         add(Box.createVerticalGlue());
 
         // For loop that formats all the buttons
-        for (int i = 0; i < buttons.size(); i++) {
+        for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
             buttons.get(i).setPreferredSize(new Dimension(200, 80));
@@ -71,17 +71,17 @@ class LoadScreen extends JPanel{
         this.setAlignmentX(CENTER_ALIGNMENT);
 
         Save1.addActionListener(e -> {
-            try {
+            try{
                 SFX.playSound("assets/SFX/interface1.wav");
                 // Save player object to save file 1
                 boolean saveSuccessful = Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav");
-                if (saveSuccessful) {
+                if (saveSuccessful){
                     Save1.setText("Saved File 1");
                     Save1.setBackground(customColorGreen);
-                } else {
-                    // TODO: maybe add handling for the case where the save operation failed
+                }else{
+                    // TODO: add handling for the case where the save operation failed
                 }
-            } catch (Exception e1) {
+            }catch (Exception e1){
                 e1.printStackTrace();
             }
         });

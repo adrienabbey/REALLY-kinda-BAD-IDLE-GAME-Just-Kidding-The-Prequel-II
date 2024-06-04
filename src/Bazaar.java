@@ -16,23 +16,25 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 
 /*
- * Implements the "Bazaar" panel which is accessed throgh the Town screen. 
- * The bazaar houses the implementation for the Buy and Sell screens, where 
+ * Implements the "Bazaar" panel which can be accessed through the Town screen. 
+ * Bazaar.java houses the implementation for the Buy and Sell screens, where 
  * the player can purchase and sell items from their inventory. The inventory
- *  panel can also be accessed from the bazaar. Any item or equipment the player
- *  has can be sold, though if they would like to buy it back the item will be at
- *  a much steeper price than the palyer sold it for. A fourth screen can be 
- * accessed from the bazaar titled "Secret Merchant", which allows the player 
- * to buy speacial items. The button that takes the player to this screen only 
- * appear after every three bazaar visits. 
+ *  panel can also be accessed from the bazaar. Any item or equipment the 
+ * player has can be sold, though buying items will be at a much steeper price 
+ * than the selling price. A fourth screen can be accessed from the bazaar 
+ * titled "Secret Merchant", which allows the player to buy speacial items. 
+ * The button that takes the player to this screen only appears after every 
+ * three bazaar visits. 
  * 
- * Current items that can be bought at the bazaar: Wood, Stone, Metal, Meat, Pelt, Potion,
- * Tongue Fern, Spleenwort, Magical Essence...
+ * Current items that can be bought at the bazaar: Wood, Stone, Metal, Meat, 
+ * Pelt, Potion, Tongue Fern, Spleenwort, Magical Essence...
  * 
  Current items that can be bought at the secret merchant: Wood, Stone, Metal, Meat, Pelt, 
  Potion, Tongue Fern, Spleenwort, Magical Essence, Lengendary Potion of Lepus...
  *
  * TODO: add prices to items. 
+ * TODO: make price tags more organized/intuitive. 
+ * TODO: Add secret items to secret merchant and other potential utility (such as reduced costs on items, randomized list of items on sale, etc. ) 
  */
 
 class Bazaar extends JPanel {
@@ -57,13 +59,8 @@ class Bazaar extends JPanel {
         }
     }
 
-    /**
-     * This function hosts the town screen with buttons to buy potions or leave
-     * 
-     * @param player The player character object
-     * @throws IOException
-     */
-    public Bazaar() { // Accepts an Inventory object
+    // constructor 
+    public Bazaar() { 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
@@ -437,7 +434,6 @@ class Bazaar extends JPanel {
                                 } else {
                                     err_message.setText("Cannot sell item, no items left.");
                                 }
-
                             });
                             sellPanel.add(sellItemButton);
                         }

@@ -71,28 +71,25 @@ class Tavern extends JPanel {
             SFX.stopAllNonLoopingSounds();
             SFX.playSound("assets/SFX/interface1.wav");
             
-            if (prompt == 0 ) {
+            if (prompt == 0){
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Markus: You can buy potions at the bazaar.</div></html>");
                 SFX.playSound("assets/SFX/Voice-overs/Potions - Frederick1.wav");
-            }
-            if (prompt == 1 ) {
+            }else if(prompt == 1){
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Guardsman: I heard you need a unique set of armor to survive the monsters in the abandoned colosseum.</div></html>");
                 SFX.playSound("assets\\SFX\\Voice-overs\\Unique set - Samuel.wav");
-            }
-            if (prompt == 2 ) {
+            }else if (prompt == 2){
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Miner: I usually find one metal for every four stone when mining down in the mineshaft out west.</div></html>");
                 SFX.playSound("assets/SFX/Voice-overs/Mining - Mark.wav");
-            }
-            if (prompt == 3 ) {
+            }else if(prompt == 3){
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Aaron: There's a secret merchant that sells a powerful potion. Some say he only comes out to the bazaar once every three blue moons.");
                 SFX.playSound("assets\\SFX\\Voice-overs\\Secret merchant - george.wav");
             }
             prompt++;
-            if (prompt == 4 ) {
+            if(prompt == 4 ){
                 prompt = 0;
             }
         });
@@ -102,9 +99,9 @@ class Tavern extends JPanel {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-            try {
+            try{
                 g.drawImage(ImageIO.read(new File("assets/images/tavern.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
+            }catch (IOException e){
                 //Auto-generated catch block
                 e.printStackTrace();
             }
