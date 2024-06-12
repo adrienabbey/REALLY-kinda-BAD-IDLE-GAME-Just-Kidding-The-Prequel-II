@@ -25,5 +25,19 @@ Start creating combat loop.
 1/31/2024 to 2/8/2024
 Halt in coding while we generate an SDP, implement meeting minutes, and document signing.
 
-3/7/2027
+3/7/2024
 Finish combat loop, add the necessary buttons to dungeon, and magicAttack/magicHeal to gameCharacter
+
+4/14/2024
+~~TODO - fix credit positioning and size~~
+~~TODO - fix start screen scaling~~
+TODO - fix GameInstructions
+TODO - fix Homestead
+TODO - fix inventory not updating on first load
+TODO - fix Library
+TODO - fix buttons on world size
+TODO - Fix Tavern
+TODO - Add hands, feet, and skin
+    - Hands will be like dexterity, improve hit chance, crit chance, and reduce miss chance, small affect on attack speed
+    - Feet will increase attack speed and dodge chance
+    - Skin will be dmg resistance

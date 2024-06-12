@@ -1,25 +1,50 @@
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Dimension;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.BoxLayout;
+import javax.swing.Timer;
+import java.awt.Point;
+import java.awt.Image;
+import javax.swing.Box;
 
 // This class is the introductory starting screen with buttons to start a new game, load a game, read directions, go to settings, or quit
 class StartScreen extends JPanel{
     private Timer timer;
-
+    private Image background;
     EyePhysics eye1 = new EyePhysics(); // Initialize the first EyePhysics object
     EyePhysics eye2 = new EyePhysics(); // Initialize the second EyePhysics object
     private boolean soundCooldown = false; // flag to track cooldown state fot sfx
     private int hoboSFX = 0; // used to loop through hobogoblin sfx 
+    final static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final int titleSize = screenSize.width / 15;
+    final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 100);
+    final int buttonFont = screenSize.width / 60;
+    final Dimension BUTTON_SIZE = new Dimension(screenSize.width / 7, screenSize.height / 18);
 
     public StartScreen() {
+
+        try {
+            background = ImageIO.read(new File("assets/images/FinalStartScreen.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Cannot open background image.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
         int height = screenSize.height;
+
 
         int eyeRadius = (int)((double) width * ((double) 18 / 1920));
         int irisRadius = (int)((double) width * ((double) 9 / 1920));
@@ -134,15 +159,15 @@ class StartScreen extends JPanel{
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         add(title);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, screenSize.height / 54)));
         add(newGame);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(loadGame);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(instructions);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(settings);
-        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(quit);
         add(Box.createVerticalGlue());
 
@@ -150,22 +175,21 @@ class StartScreen extends JPanel{
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-            buttons.get(i).setPreferredSize(new Dimension(60, 80));
-            buttons.get(i).setMaximumSize(new Dimension(600, 500));
+            buttons.get(i).setPreferredSize(BUTTON_SIZE);
+            buttons.get(i).setMaximumSize(BUTTON_SIZE);
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setFont(new Font("serif", Font.BOLD, 32));
+            buttons.get(i).setFont(new Font("serif", Font.BOLD, buttonFont));
 
             // Formats quit button
             if (i == 0) {
                 buttons.get(0).setAlignmentX(CENTER_ALIGNMENT);
                 buttons.get(0).setBackground(Color.RED);
                 buttons.get(0).setForeground(Color.WHITE);
-                buttons.get(i).setPreferredSize(new Dimension(60, 80));
-                buttons.get(i).setMaximumSize(new Dimension(400, 500));
+                buttons.get(i).setPreferredSize(BUTTON_SIZE);
+                buttons.get(i).setMaximumSize(BUTTON_SIZE);
             }
         }
-        newGame.setFocusPainted(false); // Remove focus ring around the button
 
         // Buttons to interact with the functions of the game
         // Create new Character
@@ -210,10 +234,8 @@ class StartScreen extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        try {
-            g.drawImage(ImageIO.read(new File("assets/images/FinalStartScreen.png")), 0, 0, getWidth(), getHeight(), this);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (background != null) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
         }
         // Draw the first eye
         eye1.drawEye(g, eye1);
