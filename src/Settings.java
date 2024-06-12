@@ -4,7 +4,6 @@
  */
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
@@ -14,21 +13,45 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Image;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JSlider;
+import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
+import javax.swing.Box;
 
 /* 
- * Implementation for the "Settings" panel which can be accessed fron the start screen. Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
+ * Implementation for the "Settings" panel which can be accessed fron the start screen. 
+ * Houses the buttons and sliders used to mute music volume, adjust music volume, adjust sfx volume, and to access the credits panel. 
  */
 
 class Settings extends JPanel {
     /* Fields */
+    final static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private static boolean isMute = true;
+    final Font BUTTON_FONT = new Font("Serif", Font.BOLD, screenSize.width / 70);
+    final int buttonWidth = screenSize.width / 5;
+    final Dimension BUTTON_SIZE = new Dimension(buttonWidth, screenSize.height / 18);
+    final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 54);
+    final Dimension SLIDER_SIZE = new Dimension(buttonWidth - 1, screenSize.height / 39);
+    final Color customColorBeige = new Color(253, 236, 166);
+    final Color customColorBrown = new Color(102, 72, 54);
+    private Image background;
 
     /* Constructor */
     public Settings() throws IOException{
+
+        try {
+            background = ImageIO.read(new File("assets/images/World5.1.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Cannot open background image.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
         
         // slider ranges from -70 to 5, starts at -4. The max allowable float value of the master volume is 6.0206, but set to 5 here just to ensure there are no distortions generated. Having it a 6 and increasing and decreasing the floatcontrol repeatedly gives the opportunity for distortative spikes in audio output to occur. 
         JSlider slider = new JSlider(JSlider.HORIZONTAL, -70, 5, -4); 
@@ -51,50 +74,38 @@ class Settings extends JPanel {
 
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
-        // add(name);
-        add(Box.createRigidArea(new Dimension(0, 30)));
         add(mute);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(adjust);
-        add(Box.createRigidArea(new Dimension(100, 0)));
         add(slider);
-        add(Box.createRigidArea(new Dimension(0, 30)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(sfx);
-        add(Box.createRigidArea(new Dimension(100, 0)));
         add(sliderSFX);
-        add(Box.createRigidArea(new Dimension(100, 30)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(credits);
-        add(Box.createRigidArea(new Dimension(100, 50)));
+        add(Box.createRigidArea(BUTTON_GAP));
         add(leave);
         add(Box.createVerticalGlue());
+
+
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-
-            buttons.get(i).setPreferredSize(new Dimension(270, 70));
-            buttons.get(i).setMaximumSize(new Dimension(270, 70));
+            buttons.get(i).setPreferredSize(BUTTON_SIZE);
+            buttons.get(i).setMaximumSize(BUTTON_SIZE);
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
-            
-            // Formats leave button
-            if (i == 5) {
-                buttons.get(5).setAlignmentX(CENTER_ALIGNMENT);
-                buttons.get(5).setBackground(Color.GRAY);
-                buttons.get(5).setForeground(Color.WHITE);
-                buttons.get(5).setPreferredSize(new Dimension(270, 70));
-                buttons.get(5).setMaximumSize(new Dimension(270, 500));
-                buttons.get(5).setFont(new Font("Times New Roman", Font.BOLD, 24));
+            buttons.get(i).setFont(BUTTON_FONT);
         }
-    }
+
         this.setAlignmentX(CENTER_ALIGNMENT);
 
         //Format music volume slider
-        slider.setMaximumSize(new Dimension(270, 20));
+        slider.setMaximumSize(SLIDER_SIZE);
 
         //Format sfx volume slider
-        sliderSFX.setMaximumSize(new Dimension(270, 20));
+        sliderSFX.setMaximumSize(SLIDER_SIZE);
 
         
         /* Methods */
@@ -122,7 +133,7 @@ class Settings extends JPanel {
         credits.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
-                Credits.yPos = 998; // set rolling text box in correct position;
+                Credits.yPos = ((int)screenSize.height); // set rolling text box in correct position;
                 long startTime = System.currentTimeMillis();
                 long waitTime = 75; // Wait for 75 milliseconds (0.075 seconds), so that credits text is properly set to correct location without previous text's location being seen.
                 
@@ -174,13 +185,9 @@ class Settings extends JPanel {
     // draw image to backgroud
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/World5.1.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
+            if (background != null) {
+                g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
             }
     }
     }
