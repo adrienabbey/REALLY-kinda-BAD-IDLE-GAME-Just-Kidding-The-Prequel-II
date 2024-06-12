@@ -291,9 +291,9 @@ class Bazaar extends JPanel {
 
                 // Add components to the main panel
                 mainPanel1.add(closeButtonPanel, BorderLayout.NORTH);
-                mainPanel1.add(goldLabel, BorderLayout.EAST);
+                mainPanel1.add(goldLabel, BorderLayout.SOUTH);
                 mainPanel1.add(scrollPane, BorderLayout.CENTER);
-                mainPanel1.add(err_message, BorderLayout.SOUTH);
+                mainPanel1.add(err_message, BorderLayout.EAST);
                 mainPanel1.add(buy_label, BorderLayout.WEST);
 
                 // Add the scroll pane to the center of the Shop panel
@@ -448,9 +448,9 @@ class Bazaar extends JPanel {
 
                 // Add components to the main panel
                 mainPanel2.add(closeButtonPanel, BorderLayout.NORTH);
-                mainPanel2.add(goldLabel, BorderLayout.EAST);
+                mainPanel2.add(goldLabel, BorderLayout.SOUTH);
                 mainPanel2.add(scrollPane, BorderLayout.CENTER);
-                mainPanel2.add(err_message, BorderLayout.SOUTH);
+                mainPanel2.add(err_message, BorderLayout.EAST);
                 mainPanel2.add(sell_label, BorderLayout.WEST);
 
                 // Add the scroll pane to the center of the Shop panel
@@ -471,7 +471,7 @@ class Bazaar extends JPanel {
          * 
          * 
          * 
-         * Implementation for the secret merchant subpanel.
+         * Secret merchant subpanel.
          * TODO: Add secret items.
          * 
          * 
@@ -658,7 +658,7 @@ class Bazaar extends JPanel {
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 }
 
-                            } else {
+                            }else{
                                 err_message.setText("Cannot buy item, no more gold.");
                             }
                         });
@@ -738,16 +738,16 @@ class Bazaar extends JPanel {
                     repaint();
                 }
 
-                // tells the layout manager to recalculate the layout of the component.
                 revalidate();
-
-                // tells the component to redraw itself. 
                 repaint();
+
+                // SFX and music logic for when leaving bazaar
                 SFX.playSound("assets/SFX/interface1.wav");
                 SFX.stopAllNonLoopingSounds();
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/town-bgm.wav");
                 SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true); 
+
                 Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav"); // save player data to save slot 1 by default 
             } catch (Exception e1) {
                 e1.printStackTrace();
