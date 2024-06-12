@@ -63,7 +63,7 @@ class Bazaar extends JPanel {
      * @param player The player character object
      * @throws IOException
      */
-    public Bazaar() { // Accepts an Inventory object
+    public Bazaar(){ // Accepts an Inventory object
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorBeige = new Color(253, 236, 166);
@@ -197,14 +197,13 @@ class Bazaar extends JPanel {
                 buyPanel.setBackground(new Color(0, 0, 0, 192));
                 buyPanel.setOpaque(true);
 
-
                 /* Add resources from inventory to shop. */
 
                 // Items each cost 5 gold. 
                 for (String resourceName : Driver.player.inventory.getResources().keySet()) {
-                    if (!(resourceName == "Legendary Potion of Lepus")) { // remove Lepus potion  from buy list
+                    if(!(resourceName == "Legendary Potion of Lepus")){ // remove Lepus potion  from buy list
                         JButton buyItemButton = new JButton(
-                                "5 Gold - Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName) + ")");
+                                "Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName) + ") - 5 Gold");
                         // Format buttons
                         buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                         // format gold label
@@ -215,7 +214,7 @@ class Bazaar extends JPanel {
                         buyItemButton.addActionListener(sellEvent -> {
 
                             // If Gold is greater than 0 then buy resource, else output error message.
-                            if ((Driver.player.getGold() >= 5)) {
+                            if((Driver.player.getGold() >= 5)){
                                 err_message.setText("");
                                 Driver.player.inventory.setResource(resourceName,
                                         Driver.player.inventory.getResource(resourceName) + 1); // add the resource from inventory
@@ -223,11 +222,11 @@ class Bazaar extends JPanel {
                                 Driver.inventoryUI.updateResourceLabels(); // Update the labels
                                 goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
                                 buyItemButton.setText(
-                                        "5 Gold - Buy " + resourceName + " ("
-                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update buy button label
+                                        "Buy " + resourceName + " ("
+                                                + (Driver.player.inventory.getResource(resourceName)) + ") - 5 Gold"); // Update buy button label
                                 SFX.playSound("assets/SFX/coin3.wav");
 
-                            } else {
+                            }else{
                                 err_message.setText(" Cannot buy item, not enough gold.");
                             }
                         });
@@ -238,25 +237,26 @@ class Bazaar extends JPanel {
                 /* Adding ability to buy potions from bazaar */
 
                 // Potions cost 10 gold and is limited by the potion belt size.
-                JButton buyPotionButton = new JButton("10 Gold - Buy Potion (" + Driver.player.getPotionCount() + ")");
+                JButton buyPotionButton = new JButton("Buy Potion (" + Driver.player.getPotionCount() + ") - 10 Gold");
                 buyPotionButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                 buyPotionButton.setForeground(new Color(253, 236, 166));
                 buyPotionButton.setBackground(new Color(102, 72, 54));
                 buyPotionButton.setOpaque(true);
 
+                //When player buys potion
                 buyPotionButton.addActionListener(event -> {
-                    if (Driver.player.getGold() >= 10 && Driver.player.getPotionCount() < Driver.player.getPotionBeltSize()) {
+                    if(Driver.player.getGold() >= 10 && Driver.player.getPotionCount() < Driver.player.getPotionBeltSize()){ 
                         err_message.setText("");
                         Driver.player.addPotion(1);
                         Driver.player.setGold(Driver.player.getGold() - 10);
                         Driver.inventoryUI.updateResourceLabels();
                         goldLabel.setText("  Gold: " + Driver.player.getGold() + "  ");
                         SFX.playSound("assets/SFX/coin3.wav");
-                        buyPotionButton.setText("10 Gold - Buy Potion (" + Driver.player.getPotionCount() + ")");
-                    } else {
-                        if (Driver.player.getPotionCount() >= Driver.player.getPotionBeltSize()) {
+                        buyPotionButton.setText("Buy Potion (" + Driver.player.getPotionCount() + ") - 10 Gold");
+                    }else{ // if potion belt is full output error message
+                        if(Driver.player.getPotionCount() >= Driver.player.getPotionBeltSize()){
                             err_message.setText("Cannot buy potion, potion belt is full.");
-                        } else {
+                        }else{ // if player does not have enough gold, output error message
                             err_message.setText("Cannot buy potion, not enough gold.");
                         }
                     }
@@ -264,9 +264,9 @@ class Bazaar extends JPanel {
                 buyPanel.add(buyPotionButton);
 
                 /* Add the ability to upgrade potion belt size to buy screen */ 
-                
-                // Each upgrade cost 100 gold times the current belt level. 
-                JButton upgradePotionBeltSizeButton = new JButton("100 Gold - Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ")");
+
+                // Each upgrade cost 100 gold multiplied by the current belt level. 
+                JButton upgradePotionBeltSizeButton = new JButton("Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ") - 100 Gold");
                 upgradePotionBeltSizeButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                 upgradePotionBeltSizeButton.setForeground(new Color(253, 236, 166));
                 upgradePotionBeltSizeButton.setBackground(new Color(102, 72, 54));
@@ -280,7 +280,7 @@ class Bazaar extends JPanel {
                         Driver.inventoryUI.updateResourceLabels();
                         goldLabel.setText("  Gold: " + Driver.player.getGold() + "  ");
                         SFX.playSound("assets/SFX/coin3.wav");
-                        upgradePotionBeltSizeButton.setText(Driver.player.getPotionBeltSize() * 100 + " Gold - Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ")");
+                        upgradePotionBeltSizeButton.setText("Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ") - " + Driver.player.getPotionBeltSize() * 100 + "Gold");
                     } else {
                             err_message.setText("Cannot upgrade potion belt, not enough gold.");
                         }
@@ -627,7 +627,7 @@ class Bazaar extends JPanel {
                 buyPanel.setOpaque(true);
 
                 // Add all items from inventory to shop.
-                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
+                for(String resourceName : Driver.player.inventory.getResources().keySet()){
                     if (!(resourceName == "Gold")) {
 
                         JButton buyItemButton = new JButton(
@@ -639,7 +639,7 @@ class Bazaar extends JPanel {
                         buyItemButton.setBackground(new Color(102, 72, 54));
                         buyItemButton.setOpaque(true);
 
-                        // Code for when a buy button is pressed.
+                        //When buy button is pressed.
                         buyItemButton.addActionListener(sellEvent -> {
                             // If Gold is greater than 0 then buy resource,, else output error message.
                             if ((Driver.player.getGold() > 0)) {
