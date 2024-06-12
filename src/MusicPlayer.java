@@ -7,9 +7,9 @@ import javax.sound.sampled.*;
 import java.io.File;
 
 /*
- * Class allows audio files in the .wav format to be played. Contains methods that plays music, allow muting/unmuting of sound volume, and one to set the volume of the sound. The playMusic method creates a new thread whenever a new track starts playing, and terminates the thread whenever a new track starts playing. 
+ * Class allows audio files in the .wav format to be played. Contains methods that play music, muting/unmuting of music volume, and one to set the volume of the music. The playMusic method creates a new thread whenever a new track starts playing, and terminates the thread whenever a new track starts playing. 
  *
- * This class is implemented so that only one track can be played at a time, and whenever a new track is played the previous one is stopped. If a current track finishes it loops continously. 
+ * This class is implemented so that only one track can be played at a time, and whenever a new track is played the previous one is stopped. If a current track finishes it will loops continously. 
  * 
  */
 

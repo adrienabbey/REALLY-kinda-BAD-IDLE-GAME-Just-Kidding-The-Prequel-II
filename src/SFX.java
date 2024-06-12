@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * Similar class to MusicPlayer. The Sound Effect class allows audio files in the .wav format to be played. Contains a methods that plays music, allow muting/unmuting of sound volume, one to set the volume of the sound, and one to stop all currently playing sound effects. The playMusic method creates a new thread whenever a new track starts playing, and terminates the thread whenever a new track starts playing. 
+ * Similar class to MusicPlayer. The Sound Effect class allows audio files in the .wav format to be played. Contains methods that play music, allow muting/unmuting of sound volume, one to set the volume of the sound, and one to stop all currently playing sound effects. The playMusic method creates a new thread whenever a new track starts playing, and terminates the thread whenever a new track starts playing. 
  *
  * This class is implemented so that sounds do not loop once finished, and multiple sounds can play at once. In order to fix the issue of a player repeadtedly activating sound effects, the stopAllSounds method is used to stop all currently playing sound effects in between activattions. Sometimes it is the case where multiple sound effects want to be play, for instance after the homestead purchase where mash clicking the purchase the button isn't possible, to which the stopAllSound method isn't used. 
  * 
