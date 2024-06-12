@@ -170,7 +170,7 @@ class Bazaar extends JPanel {
                 buy_label.setOpaque(true);
 
                 // Create error message
-                JLabel err_message = new JLabel("");
+                JLabel err_message = new JLabel(" ");
                 err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
                 err_message.setForeground(new Color(253, 236, 166));
                 err_message.setBackground(new Color(139, 69, 19));
@@ -215,7 +215,7 @@ class Bazaar extends JPanel {
 
                             // If Gold is greater than 0 then buy resource, else output error message.
                             if((Driver.player.getGold() >= 5)){
-                                err_message.setText("");
+                                err_message.setText(" ");
                                 Driver.player.inventory.setResource(resourceName,
                                         Driver.player.inventory.getResource(resourceName) + 1); // add the resource from inventory
                                 Driver.player.setGold(Driver.player.getGold() - 5); // decrease gold
@@ -246,7 +246,7 @@ class Bazaar extends JPanel {
                 //When player buys potion
                 buyPotionButton.addActionListener(event -> {
                     if(Driver.player.getGold() >= 10 && Driver.player.getPotionCount() < Driver.player.getPotionBeltSize()){ 
-                        err_message.setText("");
+                        err_message.setText(" ");
                         Driver.player.addPotion(1);
                         Driver.player.setGold(Driver.player.getGold() - 10);
                         Driver.inventoryUI.updateResourceLabels();
@@ -274,15 +274,16 @@ class Bazaar extends JPanel {
                 
                 upgradePotionBeltSizeButton.addActionListener(event -> {
                     if (Driver.player.getGold() >= Driver.player.getPotionBeltSize() * 100) {
-                        err_message.setText("");
+                        err_message.setText(" ");
                         Driver.player.setPotionBeltSize(Driver.player.getPotionBeltSize() + 1);
                         Driver.player.setGold(Driver.player.getGold() - (Driver.player.getPotionBeltSize() * 100));
                         Driver.inventoryUI.updateResourceLabels();
                         goldLabel.setText("  Gold: " + Driver.player.getGold() + "  ");
                         SFX.playSound("assets/SFX/coin3.wav");
-                        upgradePotionBeltSizeButton.setText("Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ") - " + Driver.player.getPotionBeltSize() * 100 + "Gold");
-                    } else {
-                            err_message.setText("Cannot upgrade potion belt, not enough gold.");
+                        upgradePotionBeltSizeButton.setText("Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ") - " + Driver.player.getPotionBeltSize() * 100 + " Gold");
+                     } else {
+                        err_message.setText("<html>Cannot upgrade potion belt.<br>Not enough gold.</html>");
+
                         }
                 });
                 buyPanel.add(upgradePotionBeltSizeButton);
@@ -378,7 +379,7 @@ class Bazaar extends JPanel {
                 sell_label.setOpaque(true);
 
                 // Create error message
-                JLabel err_message = new JLabel("");
+                JLabel err_message = new JLabel(" ");
                 err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
                 err_message.setForeground(new Color(253, 236, 166));
                 err_message.setBackground(new Color(139, 69, 19));
@@ -414,8 +415,8 @@ class Bazaar extends JPanel {
                         // as a possible item to sell.
                         if (Driver.player.inventory.getResource(resourceName) > 0) {
                             JButton sellItemButton = new JButton(
-                                    "2 Gold - Sell " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
-                                            + ")");
+                                    "Sell " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
+                                            + ") - 2 Gold");
                             // format buttons
                             sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                             sellItemButton.setForeground(new Color(253, 236, 166));
@@ -425,14 +426,14 @@ class Bazaar extends JPanel {
                             sellItemButton.addActionListener(sellEvent -> {
                                 // If resource is greater than 0, it is able to sell, else output error message.
                                 if ((Driver.player.inventory.getResource(resourceName) > 0)) {
-                                    err_message.setText("");
+                                    err_message.setText(" ");
                                     Driver.player.inventory.setResource(resourceName,
                                             Driver.player.inventory.getResource(resourceName) - 1); // minus resource from inventory
                                     Driver.player.setGold(Driver.player.getGold() + 2);
                                     Driver.inventoryUI.updateResourceLabels(); // Update the labels
                                     goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
-                                    sellItemButton.setText("2 Gold - Sell " + resourceName + " ("
-                                            + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update the sell button label
+                                    sellItemButton.setText("Sell " + resourceName + " ("
+                                            + (Driver.player.inventory.getResource(resourceName)) + ") - 2 Gold"); // Update the sell button label
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 } else {
                                     err_message.setText("Cannot sell item, no items left.");
@@ -591,7 +592,7 @@ class Bazaar extends JPanel {
                 buy_label.setOpaque(true);
 
                 // Create error message
-                JLabel err_message = new JLabel("");
+                JLabel err_message = new JLabel(" ");
                 err_message.setAlignmentX(CENTER_ALIGNMENT);
                 err_message.setFont(new Font("Times New Roman", Font.BOLD, 24));
                 // format label
@@ -643,7 +644,7 @@ class Bazaar extends JPanel {
                         buyItemButton.addActionListener(sellEvent -> {
                             // If Gold is greater than 0 then buy resource,, else output error message.
                             if ((Driver.player.getGold() > 0)) {
-                                err_message.setText("");
+                                err_message.setText(" ");
                                 Driver.player.inventory.setResource(resourceName,
                                         Driver.player.inventory.getResource(resourceName) + 1); // add the rsource to inventory
                                 Driver.player.setGold(Driver.player.getGold() - 1);
