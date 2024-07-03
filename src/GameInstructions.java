@@ -42,7 +42,7 @@ class GameInstructions extends JPanel {
         panel.setOpaque(false);
 
         // Create the 'Back' button with custom styling
-        JButton back = new JButton("<- Back");
+        JButton back = new JButton("🢐 Back");
         back.setFont(new Font("Serif", Font.BOLD, screenSize.width / 80));
         back.setForeground(new Color(255, 255, 255)); // White text
         back.setBackground(new Color(139, 69, 19)); // Light wood color

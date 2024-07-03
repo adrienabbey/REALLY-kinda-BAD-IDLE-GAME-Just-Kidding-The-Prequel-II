@@ -141,11 +141,11 @@ class StartScreen extends JPanel{
         buttons.add(quit);
         JButton newGame = new JButton("New Game");
         buttons.add(newGame);
-        JButton loadGame = new JButton("Load Game");
+        JButton loadGame = new JButton("📁 Load Game");
         buttons.add(loadGame);
-        JButton instructions = new JButton("Instructions");
+        JButton instructions = new JButton("📖 Instructions");
         buttons.add(instructions);
-        JButton settings = new JButton("Settings");
+        JButton settings = new JButton("⚙ Settings");
         buttons.add(settings);
 
         Color customColorBlue = new Color(46, 86, 161);

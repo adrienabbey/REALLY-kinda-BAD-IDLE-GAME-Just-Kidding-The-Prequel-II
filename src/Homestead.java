@@ -22,7 +22,15 @@ import javax.swing.border.EmptyBorder;
  */
 
 class Homestead extends JPanel {
-    // Inventory inventory = Inventory.getInstance();
+
+//========================================================
+// Fields
+//========================================================
+    //These are used for formating the gui elements   
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 78;
     private boolean purchaseConfirmation = false;
 
     @Override
@@ -36,58 +44,72 @@ class Homestead extends JPanel {
             }
     }
 
+//========================================================
+// Constructor
+//========================================================
     public Homestead() {
         ArrayList<JButton> buttons = new ArrayList<JButton>();
 
         // Set the layout with vertical alignment and padding
-        this.setLayout(new BorderLayout());
-        this.setBorder(new EmptyBorder(400, 490, 300, 490)); // Add padding around the panel
+        this.setLayout(null);
+        JPanel purchasePanel = new JPanel(new BorderLayout());
 
         // add buttons to "button" ArrayList.
-        JButton back = new JButton("<- Back");
+        JButton back = new JButton("↩ Back");
         buttons.add(back);
-        JButton farm = new JButton("Farm");
+        JButton farm = new JButton("🌾 Farm");
         buttons.add(farm);
-        JButton craft = new JButton("Craft");
+        JButton craft = new JButton("⚒ Craft");
         buttons.add(craft);
-        JButton purchase = new JButton("Purchase Homestead");
+        JButton purchase = new JButton("💰 Purchase Homestead");
         buttons.add(purchase);
-        JButton inventory1 = new JButton("Inventory");
+        JButton inventory1 = new JButton("🛄 Inventory");
         buttons.add(inventory1);
 
         // For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++) {
-            buttons.get(i).setBackground(new Color(46, 86, 161)); // Dark wood color
+            buttons.get(i).setBackground(new Color(46, 86, 161)); // blue color
             buttons.get(i).setForeground(new Color(255, 255, 255)); // White text
-            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 29));
+            buttons.get(i).setPreferredSize(new Dimension(width / 8, height / 22));
+            buttons.get(i).setMaximumSize(new Dimension(width / 8, height / 22));
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
-        farm.setPreferredSize(new Dimension(200, 180));
-        farm.setMaximumSize(new Dimension(200, 180));
-        craft.setPreferredSize(new Dimension(200, 180));
-        craft.setMaximumSize(new Dimension(200, 180));
-        inventory1.setPreferredSize(new Dimension(200, 180));
-        inventory1.setMaximumSize(new Dimension(200, 80));
         back.setBackground(new Color(139, 69, 19)); // light wood color
         purchase.setBackground(new Color(139, 69, 19)); // light wood color
-        back.setFont(new Font("serif", Font.BOLD, 26));
-        purchase.setFont(new Font("Serif", Font.BOLD, 26));
+        back.setFont(new Font("serif", Font.BOLD, buttonFont));
+        purchase.setFont(new Font("Serif", Font.BOLD, buttonFont));
 
         // Create the information label with custom styling
         JLabel info = new JLabel(
                 "<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>",
                 SwingConstants.CENTER);
-        info.setFont(new Font("Serif", Font.ITALIC, 20));
+        info.setFont(new Font("Serif", Font.ITALIC, buttonFont));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
         info.setBackground(new Color(0, 0, 0)); // Set the background color to black
         info.setOpaque(true); // Make the background visible
 
+        //=======================================================
+        //
+        //
+        //Relatively scaling and sizing world components
+        //
+        // 
+        purchasePanel.setBounds(width / 4, height / 4, width / 2, height / 2);
+        //==========================================================
+
         // Add components to the panel
-        add(back, BorderLayout.NORTH);
-        add(info, BorderLayout.CENTER);
-        add(purchase, BorderLayout.SOUTH);
+        purchasePanel.add(back, BorderLayout.NORTH);
+        purchasePanel.add(info, BorderLayout.CENTER);
+        purchasePanel.add(purchase, BorderLayout.SOUTH);
+        add(purchasePanel);
+
+
+//========================================================
+// Action Listeners
+//========================================================
 
         // Action listener for the 'Purchase' button
         purchase.addActionListener(e -> {
@@ -102,7 +124,7 @@ class Homestead extends JPanel {
                 if (purchaseConfirmation == false) {
                     info.setText(
                             "<html><div style='text-align: center;'> Are you sure you want to purchase the homestead?</div></html>");
-                    info.setFont(new Font("Serif", Font.ITALIC, 26));
+                    info.setFont(new Font("Serif", Font.ITALIC, buttonFont));
                     purchaseConfirmation = true;
                     return; // Exit the action listener to wait for confirmation
                 }
@@ -123,27 +145,35 @@ class Homestead extends JPanel {
                 Driver.inventoryUI.updateResourceLabels();
 
                 // Remove the purchase button and info label
-                remove(purchase);
-                remove(info);
+                remove(purchasePanel);
+                
+                back.setFont(new Font("serif", Font.BOLD, buttonFont));
+                back.setPreferredSize(new Dimension(width / 10, height / 22));
 
-                back.setPreferredSize(new Dimension(200, 80));
-                back.setMaximumSize(new Dimension(200, 80));
+                //=======================================================
+                //
+                //Relatively scaling and sizing world components
+                //
+                // 
+                int farmWidth = farm.getPreferredSize().width;
+                int farmHeight = farm.getPreferredSize().height;
+                int inventory1Width = inventory1.getPreferredSize().width;
+                int inventory1Height = inventory1.getPreferredSize().height;
+                int craftWidth = craft.getPreferredSize().width;
+                int craftHeight = craft.getPreferredSize().height;
+                int backWidth = back.getPreferredSize().width;
+                int backHeight = back.getPreferredSize().height;
 
-                this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-                // add buttons for farming, crafting, inventory, and back
-                add(Box.createVerticalGlue());
-                add(Box.createRigidArea(new Dimension(200, 150)));
+                farm.setBounds((width - farmWidth)/2, 2*(height / 7), farmWidth, farmHeight);
+                inventory1.setBounds((width - inventory1Width)/2, 3*(height / 7), inventory1Width, inventory1Height); 
+                craft.setBounds((width - craftWidth)/2, 4*(height / 7), craftWidth, craftHeight);
+                back.setBounds(backHeight / 2, backHeight / 2, backWidth, backHeight);
+                //================================================================
                 add(farm);
-                add(Box.createRigidArea(new Dimension(200, 60)));
                 add(craft);
-                add(Box.createRigidArea(new Dimension(200, 60)));
                 add(inventory1);
-                add(Box.createRigidArea(new Dimension(200, 60)));
                 add(back);
-                add(Box.createVerticalGlue());
-
-                back.setFont(new Font("serif", Font.BOLD, 28));
-
+                
                 revalidate();
                 repaint();
                 // TODO - increase player's inventory space here.
@@ -152,7 +182,7 @@ class Homestead extends JPanel {
                 // if player does not have enough resources output error message.
                 info.setText(
                         "<html><div style='text-align: center;'>You do not have enough resources to purchase the homestead.</div></html>");
-                info.setFont(new Font("Serif", Font.ITALIC, 26));
+                info.setFont(new Font("Serif", Font.ITALIC, buttonFont));
             }
         });
 
@@ -162,7 +192,7 @@ class Homestead extends JPanel {
             // set labels and flag back to default
             info.setText(
                     "<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>");
-            info.setFont(new Font("Serif", Font.ITALIC, 20));
+            info.setFont(new Font("Serif", Font.ITALIC, buttonFont));
             purchaseConfirmation = false;
             SFX.playSound("assets/SFX/interface1.wav");
             Driver.changePanel("world");

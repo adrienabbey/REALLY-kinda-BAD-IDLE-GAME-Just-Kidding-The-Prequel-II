@@ -3,11 +3,23 @@
  * Muhammed Abushamma, et al., Mar. 2024
  */
 
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 /* 
@@ -15,45 +27,76 @@ import javax.swing.border.EmptyBorder;
  */
 
 class Tavern extends JPanel {
-    /* Fields */
+
+//========================================================
+// Fields
+//========================================================
+    //These are used for formating the gui elements   
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 64;
+    
     int prompt = 0;
+    Color customDarkWood = new Color(139, 69, 19); // Dark wood color
+    Color customLightWood = new Color(205, 133, 63); // Light wood color
 
-    /* Constructor */
+//========================================================
+// Constructor
+//========================================================
     public Tavern() {
-        // Set the layout with vertical alignment and padding
-        this.setLayout(new BorderLayout());
-        this.setBorder(new EmptyBorder(400, 570, 400, 570)); // Add padding around the panel
 
-        // Create the 'Back' button with custom styling
-        JButton back = new JButton("<- Back");
-        back.setFont(new Font("Serif", Font.BOLD, 24));
-        back.setForeground(new Color(255, 255, 255)); // White text
-        back.setBackground(new Color(139, 69, 19)); // Dark wood color
+        this.setLayout(null);
+        JPanel tavernPanel = new JPanel(new BorderLayout());
 
-        // Create the 'purchase' button with custom styling
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
+        JButton back = new JButton("↩ Back");
+        buttons.add(back);
         JButton talk = new JButton("Talk to townsfolk");
-        talk.setFont(new Font("Serif", Font.BOLD, 24));
-        talk.setForeground(new Color(255, 255, 255)); // White text
-        talk.setBackground(new Color(139, 69, 19)); // Dark wood color
+        buttons.add(talk);
+
+        //format buttons
+        for (int i = 0; i < buttons.size(); i++){
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
+            buttons.get(i).setForeground(new Color(255, 255, 255)); // White text
+            buttons.get(i).setPreferredSize(new Dimension(width / 3, height / 22));
+            buttons.get(i).setMaximumSize(new Dimension(width / 3, height / 22));
+            buttons.get(i).setBackground(customDarkWood);
+        }
 
         // Create the mesage label with custom styling
         JLabel message = new JLabel("", SwingConstants.CENTER);
-        message.setFont(new Font("Serif", Font.ITALIC, 21));
-        message.setForeground(new Color(205, 133, 63)); // Dark wood color
+        message.setFont(new Font("Serif", Font.ITALIC, buttonFont));
+        message.setForeground(customLightWood);
         message.setBackground(new Color(0, 0, 0)); // Set the background color to black
         message.setOpaque(true); // Make the background visible
+        message.setBorder(new EmptyBorder(20, 30, 20, 30)); //padding so that text wont touch edge of text label
 
-        // Create the information label with custom styling
+        // Create the information label 
         JLabel info = new JLabel("", SwingConstants.CENTER);
-        info.setFont(new Font("Serif", Font.ITALIC, 20));
-        info.setForeground(new Color(205, 133, 63)); // Light wood color
-        info.setBackground(new Color(0, 0, 0, 192)); // Set the background color to black
+        info.setFont(new Font("Serif", Font.ITALIC, buttonFont));
+        info.setForeground(customLightWood);
+        info.setBackground(new Color(0, 0, 0)); // Set the background color to black and slighly transparent
         info.setOpaque(true); // Make the background visible
 
+        //=======================================================
+        //
+        //
+        //Relatively scaling and sizing world components
+        //
+        // 
+        tavernPanel.setBounds(width / 4, height / 4, width / 2, height / 2);
+        //==========================================================
+
         // Add components to the panel
-        add(back, BorderLayout.NORTH);
-        add(info, BorderLayout.CENTER);
-        add(talk, BorderLayout.SOUTH);
+        tavernPanel.add(back, BorderLayout.NORTH);
+        tavernPanel.add(info, BorderLayout.CENTER);
+        tavernPanel.add(talk, BorderLayout.SOUTH);
+        add(tavernPanel);
+
+//========================================================
+// Action Listeners
+//========================================================
 
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
@@ -70,7 +113,7 @@ class Tavern extends JPanel {
         talk.addActionListener(e -> {
             SFX.stopAllNonLoopingSounds();
             SFX.playSound("assets/SFX/interface1.wav");
-            
+
             if (prompt == 0){
                 add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Markus: You can buy potions at the bazaar.</div></html>");
