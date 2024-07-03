@@ -44,7 +44,7 @@ class Homestead extends JPanel {
         this.setBorder(new EmptyBorder(400, 490, 300, 490)); // Add padding around the panel
 
         // add buttons to "button" ArrayList.
-        JButton back = new JButton("<- Back");
+        JButton back = new JButton("↩ Back");
         buttons.add(back);
         JButton farm = new JButton("Farm");
         buttons.add(farm);

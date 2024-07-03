@@ -121,9 +121,9 @@ class CharacterCreation extends JPanel {
         muscleLabel.setPreferredSize(new Dimension(labelWidth, muscleLabel.getPreferredSize().height));
 
 
-        JButton weaker = new JButton("Weaker");
+        JButton weaker = new JButton("🡇 Weaker");
         buttons.add(weaker);
-        JButton stronger = new JButton("Stronger");
+        JButton stronger = new JButton("🡅 Stronger");
         buttons.add(stronger);
 
         musclePanel.add(Box.createHorizontalGlue());
@@ -145,9 +145,9 @@ class CharacterCreation extends JPanel {
         //new formatting
         brainLabel.setPreferredSize(new Dimension(labelWidth, brainLabel.getPreferredSize().height));
         
-        JButton dumber = new JButton("Dumber");
+        JButton dumber = new JButton("🡇 Dumber");
         buttons.add(dumber);
-        JButton smarter = new JButton("Smarter");
+        JButton smarter = new JButton("🡅 Smarter");
         buttons.add(smarter);
 
         brainPanel.add(Box.createHorizontalGlue());
@@ -169,9 +169,9 @@ class CharacterCreation extends JPanel {
         //new formatting
         heartLabel.setPreferredSize(new Dimension(labelWidth, heartLabel.getPreferredSize().height));
 
-        JButton softer = new JButton("Softer");
+        JButton softer = new JButton("🡇 Softer");
         buttons.add(softer);
-        JButton tougher = new JButton("Tougher");
+        JButton tougher = new JButton("🡅 Tougher");
         buttons.add(tougher);
 
         heartPanel.add(Box.createHorizontalGlue());

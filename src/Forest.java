@@ -34,8 +34,10 @@ public class Forest extends JPanel {
     private boolean currentlyHunting = false; // flag to determine if process is hunting. Used to grant correct resource.
     private boolean resetProgress = true;
     private int huntIncrement = 0; // used to determine whether to grant meat or pelt when hunting
-    private String downArrow = "\u25BC"; // Down-Pointing Triangle
-    private String upArrow = "\u25B2"; // Up-Pointing Triangle
+    private String downArrow = "\u25BC"; // Unicode for Down-Pointing Triangle
+    private String upArrow = "\u25B2"; // Unicode for Up-Pointing Triangle
+    // https://www.vertex42.com/ExcelTips/unicode-symbols.html
+    // https://www.vertex42.com/ExcelTips/unicode-symbols.html
     private boolean statusBarOpen = false; // flag used to determine when the status bar is open
     private JPanel statusBar;
     private JButton health;
@@ -55,9 +57,9 @@ public class Forest extends JPanel {
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorGreen = new Color(0, 100, 0);
         Color customColorGold = new Color(205, 133, 63);
-        autoHuntButton = new JButton("Hunt Wildlife");
+        autoHuntButton = new JButton("🏹 Hunt Wildlife");
         buttons.add(autoHuntButton);
-        autoCutButton = new JButton("Cut Tree");
+        autoCutButton = new JButton("⁋ Cut Tree");
         buttons.add(autoCutButton);
         statusButton = new JButton(downArrow);
         buttons.add(statusButton);
@@ -222,8 +224,8 @@ public class Forest extends JPanel {
                 currentlyHunting = false; // set hunting flag to default
                 currentlyCutting = false; // set cutting flag to default
                 // timer.stop(); // stop woodcutting process
-                autoCutButton.setText("Cut Tree"); // reset autocutting label
-                autoHuntButton.setText("Hunt Wildlife"); // reset autohunting label
+                autoCutButton.setText("⁋ Cut Tree"); // reset autocutting label
+                autoHuntButton.setText("🏹 Hunt Wildlife"); // reset autohunting label
 
                 Driver.changePanel("world");
                 SFX.stopAllSounds(); 
@@ -331,7 +333,7 @@ public class Forest extends JPanel {
             auto = false; // Stop auto hunting
             timer.stop(); // stop timer
             SFX.stopAllNonLoopingSounds();
-            autoHuntButton.setText("Hunt Wildlife");
+            autoHuntButton.setText("🏹 Hunt Wildlife");
         }
     }
 
@@ -346,7 +348,7 @@ public class Forest extends JPanel {
             auto = false; // Stop auto woodcutting when method is called again
             timer.stop(); // stop timer
             SFX.stopAllNonLoopingSounds();
-            autoCutButton.setText("Cut Tree");
+            autoCutButton.setText("⁋ Cut Tree");
         }
     }
 

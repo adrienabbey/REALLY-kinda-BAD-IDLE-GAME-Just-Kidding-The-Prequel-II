@@ -9,7 +9,9 @@ import java.awt.Color;
 
 public class World extends JPanel{
     PlayerCharacter player; // declare player object reference variable
-    
+    private String town = "🏡";
+
+
     private JLabel dungeon_error_message; // Declare JLabel
     private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
     /**
@@ -28,17 +30,17 @@ public class World extends JPanel{
 
         JButton quit = new JButton("Quit");
         buttons.add(quit);
-        JButton town = new JButton("Town");
+        JButton town = new JButton("⛪ Town");
         buttons.add(town);
-        JButton mine = new JButton("Mineshaft");
+        JButton mine = new JButton("🔥 Mineshaft");
         buttons.add(mine);
-        JButton wood = new JButton("Forest");
+        JButton wood = new JButton("🌲 Forest");
         buttons.add(wood);
-        JButton home = new JButton("Homestead");
+        JButton home = new JButton("🏠 Homestead");
         buttons.add(home);
-        JButton dungeon = new JButton("Dungeon");
+        JButton dungeon = new JButton("🏰 Dungeon");
         buttons.add(dungeon);
-        JButton leave = new JButton("Main Menu");
+        JButton leave = new JButton("☰ Main Menu");
         buttons.add(leave);
 
         buttonPanel.add(Box.createHorizontalGlue());

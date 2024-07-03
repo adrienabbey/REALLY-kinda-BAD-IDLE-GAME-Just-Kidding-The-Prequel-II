@@ -63,9 +63,9 @@ public class Mineshaft extends JPanel {
         Color customColorBlack = new Color(0,0,0);
 
         //initializes components for action and status panels. 
-        autoScavengeButton = new JButton("Scavenge Area");
+        autoScavengeButton = new JButton("🔍 Scavenge Area");
         buttons.add(autoScavengeButton);
-        autoMineButton = new JButton("Mine Ore");
+        autoMineButton = new JButton("⛏️ Mine Ore");
         buttons.add(autoMineButton);
         statusButton = new JButton(downArrow);
         buttons.add(statusButton);
@@ -347,7 +347,7 @@ public class Mineshaft extends JPanel {
             auto = false; // Stop auto scavenging
             timer.stop(); //stop timer
             SFX.stopAllNonLoopingSounds();
-            autoScavengeButton.setText("Scavenge Area");
+            autoScavengeButton.setText("🔍 Scavenge Area");
         }
     }
 
@@ -362,7 +362,7 @@ public class Mineshaft extends JPanel {
             auto = false; // Stop auto mining
             timer.stop(); //stop timer
             SFX.stopAllNonLoopingSounds();
-            autoMineButton.setText("Mine Ore");
+            autoMineButton.setText("⛏️ Mine Ore");
         }
     }
 

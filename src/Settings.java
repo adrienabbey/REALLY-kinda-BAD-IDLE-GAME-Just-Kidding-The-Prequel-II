@@ -67,9 +67,9 @@ class Settings extends JPanel {
         buttons.add(adjust);   
         JButton sfx = new JButton("Adjust SFX Volume");
         buttons.add(sfx);   
-        JButton leave = new JButton("Back to Main Menu");
+        JButton leave = new JButton("🢐 Back to Main Menu");
         buttons.add(leave);   
-        JButton credits = new JButton("Credits");
+        JButton credits = new JButton("📜 Credits");
         buttons.add(credits); 
 
         // Adding the buttons to the start panel and controlling layout
@@ -86,8 +86,6 @@ class Settings extends JPanel {
         add(Box.createRigidArea(BUTTON_GAP));
         add(leave);
         add(Box.createVerticalGlue());
-
-
 
         //For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++){

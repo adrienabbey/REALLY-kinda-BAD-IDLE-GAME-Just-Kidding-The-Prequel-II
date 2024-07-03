@@ -54,7 +54,6 @@ class Bazaar extends JPanel {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-        System.out.println("Bazaar paintComponent called");
         try {
             g.drawImage(ImageIO.read(new File("assets/images/Shop2.png")), 0, 0, getWidth(), getHeight(), this);
         } catch (IOException e) {

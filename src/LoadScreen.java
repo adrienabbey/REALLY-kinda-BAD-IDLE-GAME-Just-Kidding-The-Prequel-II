@@ -17,17 +17,16 @@ import java.awt.Font;
 
 class LoadScreen extends JPanel{
 
-        // These are used for formating the gui elements
-        final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        final private int width = screenSize.width;
-        final private int height = screenSize.height;
+    // These are used for formating the gui elements
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
 
-        final private Dimension PANEL_SIZE = new Dimension(width * 80 / 100, height / 17); // width and hight of save-detail-panel and save-button. 
-        final private int xCord = (width - (PANEL_SIZE.width)) / 2; //used for positioning, centers component to screen
-        final private int yCord = 2 * (height / 7); 
-        final private Dimension BACK_SIZE = new Dimension(width / 10, height / 10); 
-        final private int buttonFont = width / 86;
-
+    final private Dimension PANEL_SIZE = new Dimension(width * 80 / 100, height / 17); // width and hight of save-detail-panel and save-button. 
+    final private int xCord = (width - (PANEL_SIZE.width)) / 2; //used for positioning, centers component to screen
+    final private int yCord = 2 * (height / 7); 
+    final private Dimension BACK_SIZE = new Dimension(width / 10, height / 10); 
+    final private int buttonFont = width / 86;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -111,7 +110,7 @@ class LoadScreen extends JPanel{
         JButton load3 = new JButton("Load Game 3");
         buttons.add(load3);
 
-        JButton back = new JButton("<- Back");
+        JButton back = new JButton("↩ Back");
         buttons.add(back);
 
         // For loop that formats all the buttons
