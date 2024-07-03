@@ -85,7 +85,7 @@ class Town extends JPanel {
 
 
 //========================================================
-// Fields
+// Action Listeners
 //========================================================
         // Button that takes player to bazaar panel
         bazaar.addActionListener(e -> {

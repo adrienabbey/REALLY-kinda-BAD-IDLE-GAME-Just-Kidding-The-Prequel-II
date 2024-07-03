@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.BorderLayout;
@@ -42,6 +43,15 @@ import java.awt.BorderLayout;
  */
 
 class Bazaar extends JPanel {
+
+//========================================================
+// Fields
+//========================================================
+    //These are used for formating the gui elements   
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 64;
 
     private boolean sellScreenOpen = false; // Flag to track if the sell screen is open
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
@@ -88,28 +98,28 @@ class Bazaar extends JPanel {
         // Adding the buttons to the shop panel and controlling layout
         add(Box.createVerticalGlue());
         add(buy);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(sell);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(inventory1);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(leave);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(secretMerchant);
         add(Box.createVerticalGlue());
 
         // For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-            buttons.get(i).setPreferredSize(new Dimension(200, 80));
-            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setPreferredSize(new Dimension(width / 8, height / 18));
+            buttons.get(i).setMaximumSize(new Dimension(width / 8, height / 18));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setFont(new Font("Times New Roman", Font.BOLD, 24));
+            buttons.get(i).setFont(new Font("Times New Roman", Font.BOLD, buttonFont));
         }
 
-        secretMerchant.setMaximumSize(new Dimension(250, 80));
-        secretMerchant.setMaximumSize(new Dimension(250, 80));
+        secretMerchant.setPreferredSize(new Dimension(width / 6, height / 18));
+        secretMerchant.setMaximumSize(new Dimension(width / 6, height / 18));
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 

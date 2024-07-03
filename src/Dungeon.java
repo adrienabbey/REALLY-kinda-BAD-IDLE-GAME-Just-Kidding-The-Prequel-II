@@ -14,6 +14,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class Dungeon extends JPanel {
+   
+//========================================================
+// Fields
+//========================================================
+    //These are used for formating the gui elements   
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 70;
     private static Dice dice = new Dice(20);
     /**
      * This function hosts the dungeon screen with buttons to go to town or use a potion
