@@ -42,7 +42,7 @@ public class Forest extends JPanel {
     private JButton magic;
     private JButton gold;
 
-    public Forest() { // Accepts an Inventory object
+    public Forest() {
     
         // Load the background image
         try {
@@ -51,13 +51,10 @@ public class Forest extends JPanel {
             e.printStackTrace();
         }
 
-        // Set the layout with vertical alignment and padding
-        setLayout(null);
-
+        setLayout(null); //Set layout of screen to null
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         Color customColorGreen = new Color(0, 100, 0);
         Color customColorGold = new Color(205, 133, 63);
-
         autoHuntButton = new JButton("Hunt Wildlife");
         buttons.add(autoHuntButton);
         autoCutButton = new JButton("Cut Tree");
@@ -67,18 +64,20 @@ public class Forest extends JPanel {
         JButton leave = new JButton("Leave");
         buttons.add(leave);
 
-        // For loop that formats all the buttons
+
+        // Formatting all the buttons
         for (int i = 0; i < buttons.size(); i++) {
             // buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
 
             buttons.get(i).setPreferredSize(new Dimension(200, 45));
-            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setMaximumSize(new Dimension(100, 80));
             buttons.get(i).setBackground(customColorGreen);
             buttons.get(i).setForeground(customColorGold);
             buttons.get(i).setFont(new Font("Serif", Font.ITALIC, 26));
             buttons.get(i).setOpaque(true); // Make the background visible
             buttons.get(i).setFocusPainted(false); // Remove focus ring around the button
         }
+        statusButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
 
         // Create the progress bar
         progressBar = new JProgressBar();
@@ -94,37 +93,41 @@ public class Forest extends JPanel {
         harvestedLabel.setFont(new Font("Serif", Font.BOLD, 24));
         harvestedLabel.setForeground(Color.GREEN); // Green color for wood harvested message
 
+
+        //===============================================================================
+        //
+        // Relatively scaling and sizing components
+        //
+        //
+        //
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen
         double width = screenSize.getWidth(); // get the width of user's screen
         double height = screenSize.getHeight(); // get height of user's screen
-
-        // Initialize button panel to house action buttons
-        JPanel buttonPanel = new JPanel(new GridLayout());
+        JPanel buttonPanel = new JPanel(new GridLayout()); // Initialize button panel to house action buttons
 
         // Set position and size of panel, label, and progress bar using relative scaling
         buttonPanel.setBounds((int) (width * 0.0134), (int) (height * 0.9500), (int) (width * 0.9713), (int) (height * 0.0483)); 
-
         harvestedLabel.setBounds((int) (width * 0.0134), (int) (height * 0.8499), (int) (width * 0.156), (int) (height * 0.0545));
-
         progressBar.setBounds((int) (width * 0.0134), (int) (height * 0.8962), (int) (width * 0.9713), (int) (height * 0.0573));
+        statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Set the position and size of the button
+  
+        //================================================================================
 
         // add buttons to button panel
         buttonPanel.add(autoHuntButton);
         buttonPanel.add(autoCutButton);
         buttonPanel.add(leave);
-        buttonPanel.add(harvestedLabel);
-
-        // add components to layout
-        add(buttonPanel); // add panel that contains hunt wildlife, cut wood, and leave buttons
+        add(buttonPanel); // add panel that contains hunt wildlife, cut wood, and leave buttons to layout
         add(progressBar); // add progress bar to layout
         add(harvestedLabel); // Add harvested label to panel
-
-        // Create the Status button
-        statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125),
-                (int) (height * 0.04166)); // Set the position and size of the button
-        statusButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
         add(statusButton); // Add the button to the panel
 
+
+        //---
+        //
+        // Methods for actions listeners
+        //
+        //
         // Action listener for the 'status' button
         autoCutButton.addActionListener(e -> {
             try {
