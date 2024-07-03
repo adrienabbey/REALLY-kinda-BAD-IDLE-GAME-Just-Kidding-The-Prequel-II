@@ -22,7 +22,16 @@ import java.util.ArrayList;
  */
 public class Mineshaft extends JPanel {
 
-    /* Fields */
+    //========================================================
+    // Fields
+    //========================================================
+    // These are used for formating the gui elements
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 82;
+
+    // Components and variables used in mineshaft screen
     private JProgressBar progressBar;
     private JButton autoScavengeButton; // button to activate scavenging
     private JButton autoMineButton; // Button to activate mining
@@ -41,12 +50,14 @@ public class Mineshaft extends JPanel {
     // Declare stateBar panel and comeponents of the status bar
     private JPanel statusBar;
     private JButton statusButton;
-    private JButton health;
-    private JButton magic;
+    private JProgressBar health;
+    private JProgressBar magic;
     private JButton gold;
     
 
-    /* Constructor */
+    //========================================================
+    // Constructor
+    //========================================================
     public Mineshaft() { 
         // Load the background image
         try {
@@ -80,7 +91,7 @@ public class Mineshaft extends JPanel {
             buttons.get(i).setMaximumSize(new Dimension(200, 80));
             buttons.get(i).setBackground(customColorBlack);
             buttons.get(i).setForeground(customColorGold);
-            buttons.get(i).setFont(new Font("Serif", Font.ITALIC, 26));
+            buttons.get(i).setFont(new Font("Serif", Font.ITALIC, buttonFont));
             buttons.get(i).setOpaque(true); // Make the background visible
             buttons.get(i).setFocusPainted(false); // Remove focus ring around the button
         }
@@ -88,7 +99,7 @@ public class Mineshaft extends JPanel {
         // Create the progress bar
         progressBar = new JProgressBar();
         progressBar.setStringPainted(true);
-        progressBar.setFont(new Font("Serif", Font.ITALIC, 21));
+        progressBar.setFont(new Font("Serif", Font.ITALIC, buttonFont));
         progressBar.setForeground(new Color(205, 133, 63)); // Light wood color
         progressBar.setBackground(new Color(0, 0, 0)); // Set the background color to black
         progressBar.setOpaque(true); // Make the background visible
@@ -96,9 +107,15 @@ public class Mineshaft extends JPanel {
 
         // Create label for ore harvest message
         harvestLabel = new JLabel("");
-        harvestLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        harvestLabel.setFont(new Font("Serif", Font.BOLD, buttonFont));
         harvestLabel.setForeground(Color.GREEN); // Green color for ore harvest message
 
+
+        //============================================================
+        //
+        // Relative scaling components
+        //
+        //
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen
         double width = screenSize.getWidth(); // get the width of user's screen
         double height = screenSize.getHeight(); // get height of user's screen
@@ -109,25 +126,27 @@ public class Mineshaft extends JPanel {
         // Set position and size of panel, label, and progress bar using relative scaling
         buttonPanel.setBounds((int) (width * 0.0134), (int) (height * 0.9500), (int) (width * 0.9713), (int) (height * 0.0483)); 
 
-        harvestLabel.setBounds((int) (width * 0.0134), (int) (height * 0.8499), (int) (width * 0.156), (int) (height * 0.0545));
+        harvestLabel.setBounds((int) (width * 0.0134), (int) (height * 0.8499), (int) (width * 0.176), (int) (height * 0.0545));
 
         progressBar.setBounds((int) (width * 0.0134), (int) (height * 0.8962), (int) (width * 0.9713), (int) (height * 0.0573));
 
-        // add buttons to panel
+        // Create the Status button
+        statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Set the position and size of the button
+        statusButton.setFont(new Font("Times New Roman", Font.BOLD, buttonFont));
+        //===========================================================
+        // adding buttons to panel
         buttonPanel.add(autoScavengeButton);
         buttonPanel.add(autoMineButton);
         buttonPanel.add(leave);
-        buttonPanel.add(harvestLabel);
-
-        // add components to layout
-        add(buttonPanel); // add panel that contains hunt wildlife, cut wood, and leave buttons
+        add(buttonPanel); // add panel that contains mine, scavenege and leave buttons
         add(progressBar); // add progress bar to layout
         add(harvestLabel); // Add harvested label to panel
-
-        // Create the Status button
-        statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Set the position and size of the button
-        statusButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
         add(statusButton); // Add the button to the panel
+
+
+//======================================================
+// methods for action listeners
+//========================================================
 
         // Action listener for the 'Scavenge Area' button
         autoScavengeButton.addActionListener(new ActionListener() {
@@ -166,20 +185,26 @@ public class Mineshaft extends JPanel {
                 statusBar = new JPanel(new GridLayout()); // assign statusbar
 
                 // assign buttons to shown character statuses
-                health = new JButton("Health: " + (int) Driver.getPlayer().getHealth());
-                magic = new JButton("Magic: " + (int) Driver.getPlayer().getMagic());
+                health = new JProgressBar(0, Driver.getPlayer().getMaxHealth());
+                health.setStringPainted(true); // Enable string painting
+                health.setValue((int) Driver.getPlayer().getHealth());
+                health.setString("Health: " + health.getValue());
+                magic = new JProgressBar(0, Driver.getPlayer().getMaxMagic());
+                magic.setStringPainted(true); // Enable string painting
+                magic.setValue((int) Driver.getPlayer().getMagic());
+                magic.setString("Magic: " + magic.getValue());
                 gold = new JButton("Gold: " + Driver.player.getGold());
 
                 // format buttons
-                health.setForeground(Color.white);
-                health.setBackground(Color.red);
-                magic.setForeground(Color.white);
-                magic.setBackground(Color.blue);
+                health.setForeground(Color.red);
+                health.setBackground(new Color(255, 153, 153)); // light-red
+                magic.setForeground(Color.blue);
+                magic.setBackground(new Color(153, 204, 255)); // light-blue
                 gold.setBackground(Color.yellow);
 
-                health.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-                magic.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-                gold.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+                health.setFont(new Font("Times New Roman", Font.PLAIN, buttonFont));
+                magic.setFont(new Font("Times New Roman", Font.PLAIN, buttonFont));
+                gold.setFont(new Font("Times New Roman", Font.PLAIN, buttonFont));
 
                 // add bttons to status bar
                 statusBar.add(health);
@@ -214,11 +239,11 @@ public class Mineshaft extends JPanel {
                 progressBar.setValue(0);
                 auto = false; // stop auto mining if left panel
                 resetProgress = true;
-                currentlyMining = false; // set hunting flag to default
-                currentlyScavenge = false; // set cutting flag to default
+                currentlyMining = false; // set mining flag to default
+                currentlyScavenge = false; // set scavengingflag to default
                 // timer.stop(); // stop woodcutting process
-                autoMineButton.setText("Cut Tree"); // reset autocutting label
-                autoScavengeButton.setText("Hunt Wildlife"); // reset autohunting label
+                autoMineButton.setText("⛏️ Mine Ore"); // reset autocutting label
+                autoScavengeButton.setText("🔍 Scavenge Area"); // reset autohunting label
 
                 Driver.changePanel("world");
                 SFX.stopAllSounds(); 
@@ -255,14 +280,16 @@ public class Mineshaft extends JPanel {
                     if (Driver.getPlayer().getMagic() < Driver.getPlayer().getMaxMagic()) { // if current magic is less than maximum magic
                         double magicRegenRate = Driver.getPlayer().getMaxMagic() * 0.1;
                         Driver.getPlayer().setMagic(Driver.getPlayer().getMagic() + magicRegenRate); // regenerate magic by 10% of max mana
-                        magic.setText("Magic: " + Driver.getPlayer().getMagic());
+                        magic.setValue((int) Driver.getPlayer().getMagic());
+                        magic.setString("Magic: " + magic.getValue());
                     }
 
                     // regenerate health by 10% when player harvests a resource
                     if (Driver.getPlayer().getHealth() < Driver.getPlayer().getMaxHealth()) { // if current Health is less than maximum Health
-                        double HealthRegenRate = Driver.getPlayer().getMaxHealth() * 0.1;
+                        int HealthRegenRate = Driver.getPlayer().getMaxHealth() * 1 / 10;
                         Driver.getPlayer().setHealth(Driver.getPlayer().getHealth() + HealthRegenRate); // regenerate Health by 10% of max mana
-                        health.setText("Health: " + Driver.getPlayer().getHealth());
+                        health.setValue((int) Driver.getPlayer().getHealth());
+                        health.setString("Helath: " + health.getValue());
                     }
 
                     if (currentlyMining) {
@@ -333,8 +360,6 @@ public class Mineshaft extends JPanel {
             }
         });
     }
-
-    /* Methods */
 
     // Method to start/stop the automatic scavenging process
     private void autoScavenge() {

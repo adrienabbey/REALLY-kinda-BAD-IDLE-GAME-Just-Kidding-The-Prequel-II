@@ -46,13 +46,13 @@ class Homestead extends JPanel {
         // add buttons to "button" ArrayList.
         JButton back = new JButton("↩ Back");
         buttons.add(back);
-        JButton farm = new JButton("Farm");
+        JButton farm = new JButton("🌾 Farm");
         buttons.add(farm);
-        JButton craft = new JButton("Craft");
+        JButton craft = new JButton("⚒ Craft");
         buttons.add(craft);
-        JButton purchase = new JButton("Purchase Homestead");
+        JButton purchase = new JButton("💰 Purchase Homestead");
         buttons.add(purchase);
-        JButton inventory1 = new JButton("Inventory");
+        JButton inventory1 = new JButton("🛄 Inventory");
         buttons.add(inventory1);
 
         // For loop that formats all the buttons

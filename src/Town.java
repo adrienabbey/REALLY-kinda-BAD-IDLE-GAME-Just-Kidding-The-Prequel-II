@@ -37,15 +37,15 @@ class Town extends JPanel {
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
       
-        JButton bazaar = new JButton("Bazaar");
+        JButton bazaar = new JButton("💰 Bazaar");
         buttons.add(bazaar);
-        JButton leave = new JButton("Leave");
+        JButton leave = new JButton("← Leave");
         buttons.add(leave);
-        JButton tavern = new JButton("Tavern");
+        JButton tavern = new JButton("🍺 Tavern");
         buttons.add(tavern);
-        JButton library = new JButton("Library");
+        JButton library = new JButton("📚 Library");
         buttons.add(library);
-        JButton inventory = new JButton("Inventory");
+        JButton inventory = new JButton("👜 Inventory");
         buttons.add(inventory);
 
         // Adding the buttons to the start panel and controlling layout
