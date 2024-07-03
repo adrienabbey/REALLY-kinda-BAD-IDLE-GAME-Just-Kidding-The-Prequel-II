@@ -116,9 +116,6 @@ public class Mineshaft extends JPanel {
         // Relative scaling components
         //
         //
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets dimensions of user's screen
-        double width = screenSize.getWidth(); // get the width of user's screen
-        double height = screenSize.getHeight(); // get height of user's screen
 
         // Initialize button panel to house action buttons
         JPanel buttonPanel = new JPanel(new GridLayout());
@@ -131,7 +128,7 @@ public class Mineshaft extends JPanel {
         progressBar.setBounds((int) (width * 0.0134), (int) (height * 0.8962), (int) (width * 0.9713), (int) (height * 0.0573));
 
         // Create the Status button
-        statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Set the position and size of the button
+        statusButton.setBounds((width - (int) (width * 0.03125)) / 2, 0,  (int) (width * 0.03125), (int) (height * 0.04166));// Set the position and size of the button
         statusButton.setFont(new Font("Times New Roman", Font.BOLD, buttonFont));
         //===========================================================
         // adding buttons to panel
@@ -180,7 +177,7 @@ public class Mineshaft extends JPanel {
         statusButton.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
             if (!statusBarOpen) {
-                statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0453), (int) (width * 0.03125), (int) (height * 0.04166)); // Set the position and size of the button
+                statusButton.setBounds((width - (int) (width * 0.03125)) / 2, (int) (height * 0.0453),  (int) (width * 0.03125), (int) (height * 0.04166));// Set the position and size of the button
                 statusButton.setText(upArrow);
                 statusBar = new JPanel(new GridLayout()); // assign statusbar
 
@@ -195,7 +192,7 @@ public class Mineshaft extends JPanel {
                 magic.setString("Magic: " + magic.getValue());
                 gold = new JButton("Gold: " + Driver.player.getGold());
 
-                // format buttons
+                // format buttonet
                 health.setForeground(Color.red);
                 health.setBackground(new Color(255, 153, 153)); // light-red
                 magic.setForeground(Color.blue);
@@ -217,7 +214,7 @@ public class Mineshaft extends JPanel {
                 statusBarOpen = true; // set statusBarOpen to true
             } else {
                 remove(statusBar); // remove the status bar from the screen
-                statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125), (int) (height * 0.04166)); // Reset status button position
+                statusButton.setBounds((width - (int) (width * 0.03125)) / 2, 0,  (int) (width * 0.03125), (int) (height * 0.04166));// Reset status button position
                 statusButton.setText(downArrow);
                 revalidate();
                 repaint();
@@ -232,8 +229,7 @@ public class Mineshaft extends JPanel {
                     remove(statusBar);
                     statusButton.setText(downArrow);
                     statusBarOpen = false;
-                    statusButton.setBounds((int) (width * 0.5), (int) (height * 0.0), (int) (width * 0.03125),
-                            (int) (height * 0.04166)); // Reset status button position
+                    statusButton.setBounds((width - (int) (width * 0.03125)) / 2, 0,  (int) (width * 0.03125), (int) (height * 0.04166));// Reset status button position
                 }
                 timer.stop();
                 progressBar.setValue(0);
