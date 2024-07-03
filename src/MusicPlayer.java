@@ -25,7 +25,7 @@ public class MusicPlayer {
     private static Clip currentClip = null;
     private static FloatControl volumeControl = null;
     private static boolean isMuted = false;
-    private static float currentVolume = -4.0f;// variable that alters default sound volume
+    private static float currentVolume = -40.0f;// variable that alters default sound volume
     private static Thread currentThread = null; // Reference to the thread associated with the current clip
 
     public static void setcurrentVolume(float volume) {
