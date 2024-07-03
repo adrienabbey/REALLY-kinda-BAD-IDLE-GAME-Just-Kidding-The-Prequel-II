@@ -26,10 +26,10 @@ import javax.swing.Box;
 // This class manages the screen for creating a new character
 class CharacterCreation extends JPanel {
 
-    private int statPoints = 10;
-    private int muscle = 0;
-    private int brain = 0;
-    private int heart = 0;
+    public static int statPoints = 10;
+    public static int muscle = 0;
+    public static int brain = 0;
+    public static int heart = 0;
 
     // These are used for formating the gui elements
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -121,9 +121,9 @@ class CharacterCreation extends JPanel {
         muscleLabel.setPreferredSize(new Dimension(labelWidth, muscleLabel.getPreferredSize().height));
 
 
-        JButton weaker = new JButton("🡇 Weaker");
+        JButton weaker = new JButton("🡓 Weaker");
         buttons.add(weaker);
-        JButton stronger = new JButton("🡅 Stronger");
+        JButton stronger = new JButton("🡑 Stronger");
         buttons.add(stronger);
 
         musclePanel.add(Box.createHorizontalGlue());
@@ -145,9 +145,9 @@ class CharacterCreation extends JPanel {
         //new formatting
         brainLabel.setPreferredSize(new Dimension(labelWidth, brainLabel.getPreferredSize().height));
         
-        JButton dumber = new JButton("🡇 Dumber");
+        JButton dumber = new JButton("🡓 Dumber");
         buttons.add(dumber);
-        JButton smarter = new JButton("🡅 Smarter");
+        JButton smarter = new JButton("🡑 Smarter");
         buttons.add(smarter);
 
         brainPanel.add(Box.createHorizontalGlue());
@@ -169,9 +169,9 @@ class CharacterCreation extends JPanel {
         //new formatting
         heartLabel.setPreferredSize(new Dimension(labelWidth, heartLabel.getPreferredSize().height));
 
-        JButton softer = new JButton("🡇 Softer");
+        JButton softer = new JButton("🡓 Softer");
         buttons.add(softer);
-        JButton tougher = new JButton("🡅 Tougher");
+        JButton tougher = new JButton("🡑 Tougher");
         buttons.add(tougher);
 
         heartPanel.add(Box.createHorizontalGlue());
@@ -185,14 +185,21 @@ class CharacterCreation extends JPanel {
 
         // TODO: fix issue of submit button shifting when one of the stat labels text increase in size (i.e. 9 to a 10). 
         JButton submit = new JButton("Submit");
+        JButton leave = new JButton("↫ Back to Main Menu");
         // submit button formating
         submit.setAlignmentX(CENTER_ALIGNMENT);
+        leave.setAlignmentX(CENTER_ALIGNMENT);
         // submit.setPreferredSize(new Dimension(200, 80));
         // submit.setMaximumSize(new Dimension(200, 80));
         submit.setFont(new Font("Serif", Font.BOLD, buttonFont));
         submit.setBackground(customColorBlue);
         submit.setForeground(Color.WHITE);
         submit.setBounds((width * (3/4)), ((height / 6) + (6*(labelFont / 2))), submit.getPreferredSize().width, submit.getPreferredSize().height);
+
+        leave.setFont(new Font("Serif", Font.BOLD, buttonFont));
+        leave.setBackground(customColorBlue);
+        leave.setForeground(Color.WHITE);
+        leave.setBounds(width / 10, ((height / 6) + (6*(labelFont / 2))), submit.getPreferredSize().width, submit.getPreferredSize().height);
 
 
         rightPanel.add(Box.createVerticalGlue());
@@ -205,6 +212,8 @@ class CharacterCreation extends JPanel {
         rightPanel.add(heartPanel);
         rightPanel.add(Box.createVerticalStrut(10));
         rightPanel.add(submit);
+        rightPanel.add(Box.createVerticalStrut(10));
+        this.add(leave);
         rightPanel.add(Box.createVerticalGlue());
 
         this.add(Box.createVerticalGlue());
@@ -340,9 +349,36 @@ class CharacterCreation extends JPanel {
             PlayerCharacter player = new PlayerCharacter(name.getText(), muscle, brain, heart, 10 * statPoints + 1000,
                     1, 1);
             try {
+                //reset skill points
+                statPoints = 10;
+                muscle = 0;
+                brain = 0;
+                heart = 0;
+                points.setText("You have " + statPoints + " stat points left to spend.");
+                muscleLabel.setText("Muscle: " + muscle);
+                brainLabel.setText("Brain: " + brain);
+                heartLabel.setText("Heart: " + heart);
                 Driver.setPlayer(player);
                 Driver.addCharScreen();
                 Driver.changePanel("world");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        // leave to main menu
+        leave.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
+            try {
+                statPoints = 10;
+                muscle = 0;
+                brain = 0;
+                heart = 0;
+                points.setText("You have " + statPoints + " stat points left to spend.");
+                muscleLabel.setText("Muscle: " + muscle);
+                brainLabel.setText("Brain: " + brain);
+                heartLabel.setText("Heart: " + heart);
+                Driver.changePanel("start");
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

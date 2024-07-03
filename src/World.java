@@ -9,9 +9,6 @@ import java.awt.Color;
 
 public class World extends JPanel{
     PlayerCharacter player; // declare player object reference variable
-    private String town = "🏡";
-
-
     private JLabel dungeon_error_message; // Declare JLabel
     private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
     /**
