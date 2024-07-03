@@ -139,7 +139,7 @@ class StartScreen extends JPanel{
         ArrayList<JButton> buttons = new ArrayList<JButton>();
         JButton quit = new JButton("Quit");
         buttons.add(quit);
-        JButton newGame = new JButton("🎮 New Game");
+        JButton newGame = new JButton("New Game");
         buttons.add(newGame);
         JButton loadGame = new JButton("📁 Load Game");
         buttons.add(loadGame);

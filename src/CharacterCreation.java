@@ -199,7 +199,7 @@ class CharacterCreation extends JPanel {
         leave.setFont(new Font("Serif", Font.BOLD, buttonFont));
         leave.setBackground(customColorBlue);
         leave.setForeground(Color.WHITE);
-        leave.setBounds(width / 10, ((height / 6) + (6*(labelFont / 2))), submit.getPreferredSize().width, submit.getPreferredSize().height);
+        leave.setBounds(width / 10, height / 50, submit.getPreferredSize().width, submit.getPreferredSize().height);
 
 
         rightPanel.add(Box.createVerticalGlue());
@@ -213,7 +213,7 @@ class CharacterCreation extends JPanel {
         rightPanel.add(Box.createVerticalStrut(10));
         rightPanel.add(submit);
         rightPanel.add(Box.createVerticalStrut(10));
-        this.add(leave);
+        add(leave);
         rightPanel.add(Box.createVerticalGlue());
 
         this.add(Box.createVerticalGlue());
