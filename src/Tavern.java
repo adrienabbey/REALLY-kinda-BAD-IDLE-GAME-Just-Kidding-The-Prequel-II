@@ -59,8 +59,8 @@ class Tavern extends JPanel {
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
             buttons.get(i).setForeground(new Color(255, 255, 255)); // White text
-            buttons.get(i).setPreferredSize(new Dimension(width / 3, height / 18));
-            buttons.get(i).setMaximumSize(new Dimension(width / 3, height / 18));
+            buttons.get(i).setPreferredSize(new Dimension(width / 3, height / 22));
+            buttons.get(i).setMaximumSize(new Dimension(width / 3, height / 22));
             buttons.get(i).setBackground(customDarkWood);
         }
 
