@@ -4,12 +4,29 @@ import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import javax.swing.Box;
 
+
+
+//
+//Class houses UI implmentation for scroll logs that shows details regarding combat. 
+//Also houses functions on starting/stopping combat and managing the combat loop. 
+//
+
 class Combat extends JPanel {
 
+//========================================================
+// Fields
+//========================================================
+    //These are used for formating the gui elements   
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 72;
     public enum MagicType {
         ATTACK,
         HEAL
@@ -23,13 +40,17 @@ class Combat extends JPanel {
     static boolean combatActive = false;
     static JTextArea logs = new JTextArea("Combat Log Area\n", 25, 58);
 
+
+//========================================================
+// Constructor
+//========================================================
     public Combat(PlayerCharacter player, Monster enemy) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         logs.setBackground(customColorBrown);
         logs.setForeground(customColorBeige);
-        logs.setFont(new Font("Serif", Font.BOLD, 22));
+        logs.setFont(new Font("Serif", Font.BOLD, buttonFont));
         Combat.player = player;
         Combat.enemy = enemy;
         JScrollPane scroll = new JScrollPane(logs);
@@ -38,6 +59,10 @@ class Combat extends JPanel {
         add(Box.createVerticalGlue());
     }
 
+
+//========================================================
+// Methods
+//========================================================
     public static void addLog(String log) {
         logs.append(log);
         logs.setCaretPosition(logs.getDocument().getLength());

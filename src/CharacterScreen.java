@@ -4,10 +4,28 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.Box;
 import java.util.ArrayList;
 
+
+//
+//Class houses UI implmentaion for top upper left screen in the dungeon. Shows character details such as name, stats, potion count, and gold. 
+//
+//
+
 class CharacterScreen extends JPanel{
+
+//========================================================
+// Fields
+//========================================================
+    //These are used for formating the gui elements   
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 64;
+
     private PlayerCharacter player;
     private JLabel health;
     private JLabel magic;
@@ -17,13 +35,16 @@ class CharacterScreen extends JPanel{
     private JLabel potions;
     private JLabel gold;
 
-    /**
-     * This function controls the screen that will display character stats and gear
-     */
+
+//========================================================
+// Constructor
+//========================================================
     public CharacterScreen(){
+
         player = Driver.getPlayer();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
+        
         Color customColorBeige = new Color(253, 236, 166);
         Color customColorBrown = new Color(102, 72, 54);
         this.setBackground(customColorBrown);
@@ -50,30 +71,36 @@ class CharacterScreen extends JPanel{
         //format the labels
         for (int i = 0; i < labels.size(); i++){
             labels.get(i).setForeground(customColorBeige);
-            labels.get(i).setFont(new Font("Serif", Font.BOLD, 32));
+            labels.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 
         // This is adding all objects to the screen, and controlling layout
         add(Box.createVerticalGlue());
-        add(Box.createRigidArea(new Dimension(5, 0)));
+        add(Box.createRigidArea(new Dimension(5, height / 50)));
         add(name);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(health);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(magic);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(brain);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(muscle);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(heart);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(potions);
-        add(Box.createRigidArea(new Dimension(0, 20)));
+        add(Box.createRigidArea(new Dimension(0, height / 50)));
         add(gold);
         add(Box.createVerticalGlue());
     }
-
+    
+    /**
+     * 
+     * update method updates entire character detail screen, which is the screen located in the upper left-hand portion of the dungeon screen. 
+     * @param none
+     * @return none
+     */
     public void update(){
         health.setText(String.format("Health: %.1f/%.1f", (float)player.getHealth(), (float)player.getMaxHealth()));
         magic.setText(String.format("Magic: %.1f/%.1f", (float)player.getMagic(), (float)player.getMaxMagic()));

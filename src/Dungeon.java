@@ -9,9 +9,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+
+//
+//Class houses UI components for buttons on right side of screen and manages these buttons: start/stop combat, attack/heal magic, Use Potion, and Leave Dungeon. 
+//Also houses the functions for each button.
+//
+//Manages what monster appears. 
 
 class Dungeon extends JPanel {
    
@@ -22,12 +30,8 @@ class Dungeon extends JPanel {
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final private int width = screenSize.width;
     final private int height = screenSize.height;
-    final private int buttonFont = width / 70;
+    final private int buttonFont = width / 84;
     private static Dice dice = new Dice(20);
-    /**
-     * This function hosts the dungeon screen with buttons to go to town or use a potion
-     * @param player The player character object
-     */
 
      @Override
      protected void paintComponent(Graphics g) {
@@ -41,14 +45,13 @@ class Dungeon extends JPanel {
              }
      }
 
+//========================================================
+// Constructor
+//========================================================
     public Dungeon() {
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         
         // This is creating all the objects that will be displayed on the screen
-        // Need something to explicitly start combat
-        // Make entry to dungeon initiate?
-        // Should leaving the dungeon stop combat
-        // Or should the player be able to continue combat while at another screen
         // Button to start combat, button to end combat, and seperate button to leave dungeon
         // Player flag to indicate activity the player is engaged in
         // This would allow "idle" play of one content at a time
@@ -68,17 +71,17 @@ class Dungeon extends JPanel {
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 20));
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 
         // This is adding all objects to the screen, and controlling layout
         add(Box.createHorizontalGlue());
         add(start);
-        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(Box.createRigidArea(new Dimension(width / 80, height / 50)));
         add(magic);
-        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(Box.createRigidArea(new Dimension(width / 80, height / 50)));
         add(potion);
-        add(Box.createRigidArea(new Dimension(20, 20)));
+        add(Box.createRigidArea(new Dimension(width / 80, height / 50)));
         add(leave);
         add(Box.createHorizontalGlue());
 
