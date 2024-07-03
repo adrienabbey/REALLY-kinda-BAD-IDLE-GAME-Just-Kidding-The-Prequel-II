@@ -2,8 +2,11 @@ import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
+
+import java.awt.Color;
+import java.awt.Font;
+
 import javax.swing.Box;
-import java.awt.*;
 
 class Combat extends JPanel {
 

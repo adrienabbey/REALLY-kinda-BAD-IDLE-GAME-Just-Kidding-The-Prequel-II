@@ -4,7 +4,13 @@
  */
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.File;

@@ -3,11 +3,19 @@
  * Muhammed Abushamma, et al., Mar. 2024
  */
 
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 /* Implementation for the libray class which can be accessed from the Town screen. Contains the Book of Monsters feature which allows the playe to flip though pages and see the descriptions of monsters in the game. Each page has the monster image, description, and monster sfx when entering page.
