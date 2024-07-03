@@ -53,6 +53,7 @@ public class InventoryUI extends JPanel {
             } else {
                 updateResourceLabels();
             }
+            
             SFX.playSound("assets/SFX/interface1.wav");
             // if player accessed inventory from homestead, town, or bazaar go back to
             // respective screen

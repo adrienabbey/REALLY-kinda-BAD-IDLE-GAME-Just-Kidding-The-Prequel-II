@@ -123,6 +123,7 @@ public class World extends JPanel{
         // Town button takes you to the town
         town.addActionListener(e -> {
             try {
+                Driver.inventoryUI.updateResourceLabels();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/town-bgm.wav");
