@@ -29,11 +29,11 @@ class LoadScreen extends JPanel{
     final private int buttonFont = width / 86;
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g){
         super.paintComponent(g);
-            try {
+            try{
                 g.drawImage(ImageIO.read(new File("assets/images/World8.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
+            }catch (IOException e){
                 //Auto-generated catch block
                 e.printStackTrace();
             }
@@ -114,7 +114,7 @@ class LoadScreen extends JPanel{
         buttons.add(back);
 
         // For loop that formats all the buttons
-        for (int i = 0; i < buttons.size(); i++) {
+        for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
             buttons.get(i).setMaximumSize(new Dimension(BACK_SIZE.width, BACK_SIZE.height));
             buttons.get(i).setBackground(customColorBrown);
@@ -197,7 +197,7 @@ class LoadScreen extends JPanel{
                 } else {
                     System.out.println("Error: Could not save to file 1.");
                 }
-            } catch (Exception e1) {
+            }catch (Exception e1){
                 e1.printStackTrace();
             }
         });

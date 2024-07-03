@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 /*
- * Implements the "Homestead" panel accessed through World screen. Allows the player to purchase a homestead. Unlocking the homestead unlocks a greater inventory space, the farming functionaility, and crafting functionality. The inventory, farming, and crafting panels can be accessed directly from the homestead screen. 
+ * Implements the "Homestead" panel accessed through the World screen. Allows the player to purchase a homestead. Unlocking the homestead unlocks a greater inventory space, the farming functionaility, and crafting functionality. The inventory, farming, and crafting panels can be accessed directly from the homestead screen. 
  * 
  * Current cost in rsources to purchase: 1000 Gold, 250 Wood, 250 Stone, 100 Metal. Can tweak and optimize amounts later. 
  * 
