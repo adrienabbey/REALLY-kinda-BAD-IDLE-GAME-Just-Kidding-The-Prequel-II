@@ -12,10 +12,12 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.border.Border;
 import javax.swing.SwingConstants;
 import java.awt.Image;
 
@@ -34,8 +36,9 @@ public class Credits extends JPanel {
     final static int xPos = screenSize.width / 2;
     private Image background;
 
-    /* Constructor */
+    Color goldColor = Color.decode("#DAA520");
 
+    /* Constructor */
     public Credits() {
 
         try{
@@ -64,20 +67,25 @@ public class Credits extends JPanel {
         "<br><br> - Lamento di Tristano [Medieval Song]\r\n" + //
         "<br>Composer: Medieval Path\r\n" + //
         "<br>Source: https://www.youtube.com/watch?v=VsNPBWuwt7w</div></html>", SwingConstants.CENTER);
+
+        // Set the position and size of the rolling text label
+        rollingText.setBounds(xPos, yPos, (int)(screenSize.width / 2.1), (int)(rollingText.getFont().getSize() * 145));       
         rollingText.setFont(new Font("Serif", Font.PLAIN, screenSize.width / 96));
         rollingText.setForeground(new Color(255, 190, 128)); // Lighter wood color
         rollingText.setBackground(new Color(0, 0, 0)); // Set the background color to black
         rollingText.setOpaque(true); // Make the background visible
-
+        Border yellowBorder = BorderFactory.createLineBorder(goldColor, 3);
+        rollingText.setBorder(yellowBorder);
+        
         // Set the position and size of the 'Back' button
         back.setBounds(10, 10, (back.getFont().getSize() * 6), (screenSize.height / 24));
-
-        // Set the position and size of the rolling text label
-        rollingText.setBounds(xPos, yPos, (int)(screenSize.width / 2.1), (int)(rollingText.getFont().getSize() * 90));
 
         // Add components to the panel
         add(back);
         add(rollingText);
+
+
+    /* Action Listeners*/
 
         // Action listener for the 'Back' button. Sets text to correct position after very opening. 
         back.addActionListener(e -> {
