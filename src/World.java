@@ -17,13 +17,12 @@ public class World extends JPanel{
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final private int width = screenSize.width;
     final private int height = screenSize.height;
-    final private int buttonFont = width / 82;
+    final private int buttonFont = width / 76;
 
     // Components and variables used in world screen
     PlayerCharacter player; // declare player object reference variable
     private JLabel dungeon_error_message; // Declare JLabel
     private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
-
 
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon

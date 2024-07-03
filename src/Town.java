@@ -8,10 +8,20 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.Color;
 
 class Town extends JPanel {
+
+//========================================================
+// Fields
+//========================================================
+    //These are used for formating the gui elements   
+    final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    final private int width = screenSize.width;
+    final private int height = screenSize.height;
+    final private int buttonFont = width / 70;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -51,28 +61,32 @@ class Town extends JPanel {
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
         add(bazaar);
-        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(Box.createRigidArea(new Dimension(100, buttonFont * 2)));
         add(tavern);
-        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(Box.createRigidArea(new Dimension(100, buttonFont * 2)));
         add(library);
-        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(Box.createRigidArea(new Dimension(100, buttonFont * 2)));
         add(inventory);
-        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(Box.createRigidArea(new Dimension(100, buttonFont * 2)));
         add(leave);
         add(Box.createVerticalGlue());
 
         // For loop that formats all the buttons
         for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).setAlignmentX(CENTER_ALIGNMENT);
-            buttons.get(i).setPreferredSize(new Dimension(200, 80));
-            buttons.get(i).setMaximumSize(new Dimension(200, 80));
+            buttons.get(i).setPreferredSize(new Dimension(width / 8, height / 18));
+            buttons.get(i).setMaximumSize(new Dimension(width / 8, height / 18));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setFont(new Font("Serif", Font.BOLD, 24));
+            buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 
         this.setAlignmentX(CENTER_ALIGNMENT);
 
+
+//========================================================
+// Fields
+//========================================================
         // Button that takes player to bazaar panel
         bazaar.addActionListener(e -> {
             try{
