@@ -35,13 +35,15 @@ class CharacterCreation extends JPanel {
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final private int width = screenSize.width;
     final private int height = screenSize.height;
-    final private Dimension BUTTON_SIZE = new Dimension(width / 18, height / 32);
+    final private Dimension BUTTON_SIZE = new Dimension(width / 8, height / 16);
     final private Dimension BUTTON_GAP = new Dimension(0, height / 100);
-    final private int labelFont = width / 106;
-    final private int buttonFont = width / 80;
+    final private int labelFont = width / 78;
+    final private int buttonFont = width / 78;
+    final private int labelWidth = width / 16; //Set a fixed width for stat labels to prevent shifting
 
     final int imageWidth = (int) (width / 4);
     final int imageHeight = -1; // set to negative 1 to scale only one way
+
 
     /**
      * This function hosts the character creation screen
@@ -111,7 +113,14 @@ class CharacterCreation extends JPanel {
         musclePanel.setLayout(new BoxLayout(musclePanel, BoxLayout.X_AXIS));
         JLabel muscleLabel = new JLabel("Muscle: " + muscle);
         labels.add(muscleLabel);
-        muscleLabel.setBounds((width * (3/4)), ((height / 6) + (3*(labelFont / 2))), points.getPreferredSize().width, points.getPreferredSize().height);
+
+        //previous formatting
+        // muscleLabel.setBounds((height * (3/4)), ((height / 6) + (3*(labelFont / 2))), points.getPreferredSize().width, points.getPreferredSize().height);
+
+        //new formatting: sets preferred width to prevent shifting.
+        muscleLabel.setPreferredSize(new Dimension(labelWidth, muscleLabel.getPreferredSize().height));
+
+
         JButton weaker = new JButton("Weaker");
         buttons.add(weaker);
         JButton stronger = new JButton("Stronger");
@@ -129,7 +138,13 @@ class CharacterCreation extends JPanel {
         brainPanel.setLayout(new BoxLayout(brainPanel, BoxLayout.X_AXIS));
         JLabel brainLabel = new JLabel("Brain: " + brain);
         labels.add(brainLabel);
-        brainLabel.setBounds((width * (3/4)), ((height / 6) + (4*(labelFont / 2))), points.getPreferredSize().width, points.getPreferredSize().height);
+
+        //previous formatting
+        // brainLabel.setBounds((width * (3/4)), ((height / 6) + (4*(labelFont / 2))), points.getPreferredSize().width, points.getPreferredSize().height);
+        
+        //new formatting
+        brainLabel.setPreferredSize(new Dimension(labelWidth, brainLabel.getPreferredSize().height));
+        
         JButton dumber = new JButton("Dumber");
         buttons.add(dumber);
         JButton smarter = new JButton("Smarter");
@@ -147,7 +162,13 @@ class CharacterCreation extends JPanel {
         heartPanel.setLayout(new BoxLayout(heartPanel, BoxLayout.X_AXIS));
         JLabel heartLabel = new JLabel("Heart: " + heart);
         labels.add(heartLabel);
-        heartLabel.setBounds((width * (3/4)), ((height / 6) + (5*(labelFont / 2))), points.getPreferredSize().width, points.getPreferredSize().height);
+
+        //previous formatting
+        // heartLabel.setBounds((width * (3/4)), ((height / 6) + (5*(labelFont / 2))), points.getPreferredSize().width, points.getPreferredSize().height);
+
+        //new formatting
+        heartLabel.setPreferredSize(new Dimension(labelWidth, heartLabel.getPreferredSize().height));
+
         JButton softer = new JButton("Softer");
         buttons.add(softer);
         JButton tougher = new JButton("Tougher");
@@ -161,14 +182,16 @@ class CharacterCreation extends JPanel {
         heartPanel.add(heartLabel);
         heartPanel.add(Box.createHorizontalGlue());
 
+
+        // TODO: fix issue of submit button shifting when one of the stat labels text increase in size (i.e. 9 to a 10). 
         JButton submit = new JButton("Submit");
         // submit button formating
         submit.setAlignmentX(CENTER_ALIGNMENT);
-        submit.setPreferredSize(new Dimension(200, 80));
-        submit.setMaximumSize(new Dimension(200, 80));
+        // submit.setPreferredSize(new Dimension(200, 80));
+        // submit.setMaximumSize(new Dimension(200, 80));
+        submit.setFont(new Font("Serif", Font.BOLD, buttonFont));
         submit.setBackground(customColorBlue);
         submit.setForeground(Color.WHITE);
-        submit.setFont(new Font("Serif", Font.BOLD, buttonFont));
         submit.setBounds((width * (3/4)), ((height / 6) + (6*(labelFont / 2))), submit.getPreferredSize().width, submit.getPreferredSize().height);
 
 
@@ -221,7 +244,7 @@ class CharacterCreation extends JPanel {
             if (muscle > 0) {
                 muscle--;
                 statPoints++;
-                points.setText("You have :" + statPoints + " stat points left to spend.");
+                points.setText("You have " + statPoints + " stat points left to spend.");
                 muscleLabel.setText("Muscle: " + muscle);
                 message.setText(" ");
                 this.repaint();
@@ -237,7 +260,7 @@ class CharacterCreation extends JPanel {
             if (statPoints > 0) {
                 muscle++;
                 statPoints--;
-                points.setText("You have :" + statPoints + " stat points left to spend.");
+                points.setText("You have " + statPoints + " stat points left to spend.");
                 muscleLabel.setText("Muscle: " + muscle);
                 message.setText(" ");
                 this.repaint();
@@ -253,7 +276,7 @@ class CharacterCreation extends JPanel {
             if (brain > 0) {
                 brain--;
                 statPoints++;
-                points.setText("You have :" + statPoints + " stat points left to spend.");
+                points.setText("You have " + statPoints + " stat points left to spend.");
                 brainLabel.setText("Brain: " + brain);
                 message.setText(" ");
                 this.repaint();
@@ -269,7 +292,7 @@ class CharacterCreation extends JPanel {
             if (statPoints > 0) {
                 brain++;
                 statPoints--;
-                points.setText("You have :" + statPoints + " stat points left to spend.");
+                points.setText("You have " + statPoints + " stat points left to spend.");
                 brainLabel.setText("Brain: " + brain);
                 message.setText(" ");
                 this.repaint();
@@ -285,7 +308,7 @@ class CharacterCreation extends JPanel {
             if (heart > 0) {
                 heart--;
                 statPoints++;
-                points.setText("You have :" + statPoints + " stat points left to spend.");
+                points.setText("You have " + statPoints + " stat points left to spend.");
                 heartLabel.setText("Heart: " + heart);
                 message.setText(" ");
                 this.repaint();
@@ -301,7 +324,7 @@ class CharacterCreation extends JPanel {
             if (statPoints > 0) {
                 heart++;
                 statPoints--;
-                points.setText("You have :" + statPoints + " stat points left to spend.");
+                points.setText("You have " + statPoints + " stat points left to spend.");
                 heartLabel.setText("Heart: " + heart);
                 message.setText(" ");
                 this.repaint();
