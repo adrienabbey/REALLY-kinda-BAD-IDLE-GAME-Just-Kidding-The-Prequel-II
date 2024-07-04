@@ -37,7 +37,7 @@
 11. Have a start screen or hobo goblin (indicate in his design which goblin he exactly is, like a certain color or blue hobo sack) They will tumble down a steep hill repeatedly in the background of the hobo village. At the top of the hill, there is a house that is impossible to get to. After defeating 20 hobogoblins a dialogue option is unlocked in the tavern that says something like: "Have you seen the hobo goblin who keeps trying to get to homestead on top of the cliff?" "The one that keeps trying over and over again but to no avail?" "Yes, that's the one. One must imagine him happy. " "Why's that?" "You'd have to ask him, if goblins could speak English that is."
    - If the player has completed the hobo village and has a level 1 in hobospeak, going back to the hobo village the player will have a 1/10 chance of encountering the special hobo goblin, after defeating him, you ask him why do you continue to climb up the hill? He will say "Its in my nature to walk this world searching for a place to stay, I have found meaning in the act of searching itself". If the player has a level 2 hobospeak you can persuade him to come to your homestead and he will accept, now appearing somewhere in your homestead.
 
-12. Player can create gold through alchemy by turning piss into gold. [what-we-ve-gained-from-the-alchemist-who-tried-to-turn-pee-into-gold](https://www.mgsrefining.com/blog/what-we-ve-gained-from-the-alchemist-who-tried-to-turn-pee-into-gold/)
+12. Player can create various resources and unique items thrugh alchemy. 
 
 13. The tavern will now have a "Buy <NPC-name> a drink - 10 gold" --- "Talk to another townsfolk" --- "Leave" Buying him a drink will continue the conversation, the player will have some predetermined lines of dialogue such as asking "why" or "Go on".
 
@@ -89,6 +89,6 @@
 
 25. During the story phase of the gamein the "Conquest" tab the player will unlock each new area by reaching a certain in-game level. For example lvl 1 unlock the 1st area, lvl 10 the 2nd, lvl 20 the 3rd, and so on. The player can infinitely idly do combat in any level, so theoretically it would be possible for the player level jump to 50 by grinding in the 1st area for example and skip the previous areas along with their stories, but this will be discouraged by making levels get exponentially harder to progress while defeating lower level enemies, and making is so that the player can only progress at a reasonable pace by defeating enemies around their level.
 
-26. Add a secret in the game where it takes the player several hours to sowly wait as an indicator in the screen slowly moves to, when the indicator reaches its final position then play the secret.
+26. Add a secret in the game where it takes the player several hours to slowly wait as an indicator in the screen slowly moves to, when the indicator reaches its final position then play the secret.
 
 27. Add a new feature in the world map called the monastary, which will unlock after the player beats the main story. The player can choose to "rebirth" and start a new game where the story will reset but the player keeps their level and stat increases and the enemies get harder (can work out what exactly happens during a rebirth later). 
