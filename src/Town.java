@@ -128,11 +128,11 @@ class Town extends JPanel {
         inventory.addActionListener(e -> {
             try {
                 Driver.player.inventory.backToTown = true;
-                Driver.inventoryUI.updateResourceLabels();
-                Driver.inventoryUI.updateResourceLabels();
-                Driver.inventoryUI.updateResourceLabels();
-                Driver.inventoryUI.updateResourceLabels();
-                Driver.inventoryUI.updateResourceLabels();
+                // Driver.inventoryUI.updateResourceLabels();
+                // Driver.inventoryUI.updateResourceLabels();
+                // Driver.inventoryUI.updateResourceLabels();
+                // Driver.inventoryUI.updateResourceLabels();
+                // Driver.inventoryUI.updateResourceLabels();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
             } catch (Exception e1) {

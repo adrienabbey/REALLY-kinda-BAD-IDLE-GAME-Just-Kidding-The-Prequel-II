@@ -65,7 +65,7 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
-        InventoryUI inventory = new InventoryUI();
+        // InventoryUI inventory = new InventoryUI();
         Settings settings = new Settings();
         Credits credits = new Credits();
         Homestead home = new Homestead();
@@ -95,7 +95,7 @@ class Driver extends JFrame {
         driverPanel.add(mineshaft, "mineshaft");
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
-        driverPanel.add(inventory, "inventory");
+        driverPanel.add(inventoryUI, "inventory");
         driverPanel.add(world, "world");
         driverPanel.add(town, "town");
         driverPanel.add(dungeon, "dungeon");
@@ -150,6 +150,9 @@ class Driver extends JFrame {
      * @param panel the name of the panel to be shown
      */
     public static void changePanel(String panel) {
+        if (panel.equals("inventory")) {
+            inventoryUI.updateResourceLabels();
+        }
         cardLayout.show(driverPanel, panel);
     }
 

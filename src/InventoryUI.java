@@ -14,7 +14,7 @@ import java.util.Map;
 public class InventoryUI extends JPanel {
     private JLabel resourceLabel; // Label to display total space
     private JPanel resourcePanel;
-    private int resourcePanelint = 1;
+    // private int resourcePanelint = 1;
 
    
     public InventoryUI() {
@@ -59,17 +59,17 @@ public class InventoryUI extends JPanel {
     
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
-            if (resourcePanelint == 1) {
-                // if (Driver.player != null) {
-                //     for (String resourceName : Driver.player.inventory.resources.keySet()) {
-                //         JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
-                //         resourcePanel.add(label);
-                //     }
-                // }
-                resourcePanelint++;
-            } else {
-                updateResourceLabels();
-            }
+            // if (resourcePanelint == 1) {
+            //     // if (Driver.player != null) {
+            //     //     for (String resourceName : Driver.player.inventory.resources.keySet()) {
+            //     //         JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
+            //     //         resourcePanel.add(label);
+            //     //     }
+            //     // }
+            //     resourcePanelint++;
+            // } else {
+            //     updateResourceLabels();
+            // }
             
             SFX.playSound("assets/SFX/interface1.wav");
             // if player accessed inventory from homestead, town, or bazaar go back to
