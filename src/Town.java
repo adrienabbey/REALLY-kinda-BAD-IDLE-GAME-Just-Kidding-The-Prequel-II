@@ -127,8 +127,12 @@ class Town extends JPanel {
         // Button that takes player to inventory panel
         inventory.addActionListener(e -> {
             try {
-                Driver.inventoryUI.updateResourceLabels();
                 Driver.player.inventory.backToTown = true;
+                Driver.inventoryUI.updateResourceLabels();
+                Driver.inventoryUI.updateResourceLabels();
+                Driver.inventoryUI.updateResourceLabels();
+                Driver.inventoryUI.updateResourceLabels();
+                Driver.inventoryUI.updateResourceLabels();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
             } catch (Exception e1) {
