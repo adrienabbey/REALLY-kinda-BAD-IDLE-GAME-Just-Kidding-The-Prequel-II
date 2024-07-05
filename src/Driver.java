@@ -33,7 +33,8 @@ class Driver extends JFrame {
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     public static CharacterScreen charScreen;
-    private static World map = new World() { // This code puts the world map image as the background to the panel
+    public static World map = new World() { // This code puts the world map image as the background to the panel
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -45,6 +46,7 @@ class Driver extends JFrame {
         }
     };
 
+    public static boolean gremlinOn = false;
 
 //========================================================
 // Main Method
@@ -164,8 +166,12 @@ class Driver extends JFrame {
      * @param panel the name of the panel to be shown
      */
     public static void changePanel(String panel) {
-        if (panel.equals("inventory")) {
+        if(panel.equals("inventory")){
             inventoryUI.updateResourceLabels(); // whenever inventory is opened, update labels
+        }else if(panel.equals("world")){
+            if(!gremlinOn){
+            map.resetButtonArrangment(); // if the gremlin isn't let out then reset buttons to otiginal layout whenever the world map screen is changed to. 
+            }
         }
         cardLayout.show(driverPanel, panel);
     }

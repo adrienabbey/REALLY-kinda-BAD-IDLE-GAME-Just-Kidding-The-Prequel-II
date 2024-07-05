@@ -36,8 +36,20 @@ class Settings extends JPanel {
     final Dimension BUTTON_SIZE = new Dimension(buttonWidth, screenSize.height / 18);
     final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 54);
     final Dimension SLIDER_SIZE = new Dimension(buttonWidth - 1, screenSize.height / 39);
+
     final Color customColorBeige = new Color(253, 236, 166);
     final Color customColorBrown = new Color(102, 72, 54);
+    final Color customLightGray = new Color(220, 220, 220);
+    final Color customCrimson = new Color(220, 20, 60); 
+    final Color customForestGreen = new Color(34, 139, 34);  
+    final Color customDarkBlue = new Color(0, 0, 139);
+    final Color customRedOrange = new Color(255, 69, 0); 
+    final Color customSeaGreen = new Color(60, 179, 113);
+    final Color customBeigeTan = new Color(245, 245, 220);
+    final Color customFireBrick = new Color(178, 34, 34);
+    final Color customPaleYellow = new Color(255, 255, 224);
+    final Color customLimeGreen = new Color(50, 205, 50); 
+    
     private Image background;
 
     /* Constructor */
@@ -71,6 +83,8 @@ class Settings extends JPanel {
         buttons.add(leave);   
         JButton credits = new JButton("📜 Credits");
         buttons.add(credits); 
+        JButton gremlin = new JButton("👿 Let out the Code Gremlin?");
+        buttons.add(gremlin); 
 
         // Adding the buttons to the start panel and controlling layout
         add(Box.createVerticalGlue());
@@ -84,6 +98,8 @@ class Settings extends JPanel {
         add(Box.createRigidArea(BUTTON_GAP));
         add(credits);
         add(Box.createRigidArea(BUTTON_GAP));
+        add(gremlin);
+        add(Box.createRigidArea(BUTTON_GAP));
         add(leave);
         add(Box.createVerticalGlue());
 
@@ -95,6 +111,10 @@ class Settings extends JPanel {
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(BUTTON_FONT);
+            if (buttons.get(i).equals(gremlin)){
+                buttons.get(i).setBackground(customColorBrown);
+                buttons.get(i).setForeground(customColorBeige);
+            }
         }
 
         this.setAlignmentX(CENTER_ALIGNMENT);
@@ -147,6 +167,29 @@ class Settings extends JPanel {
             }
 
         });
+
+        // Unleashes the code gremlin
+        gremlin.addActionListener(e -> {
+            try {
+               if(!Driver.gremlinOn){
+                SFX.playSound("assets/SFX/interface1.wav");
+                SFX.playSound("assets/SFX/goblins/goblin-cackle-87566.wav");
+                gremlin.setText("😈 Code Gremlin Unleashed!");
+                gremlin.setBackground(customFireBrick);
+                Driver.gremlinOn = true;
+        
+            }else{
+                SFX.playSound("assets/SFX/interface1.wav");
+                SFX.playSound("assets/SFX/goblins/goblin-scream-87564 (1).wav");
+                gremlin.setText("👿 Let out the Code Gremlin?");
+                gremlin.setBackground(customColorBrown);
+                Driver.gremlinOn = false;
+            }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
         // "Back to main menu button" takes you back to the start screen
         leave.addActionListener(e -> {
             try {
