@@ -17,6 +17,10 @@ import java.awt.GridLayout;
 
 class Driver extends JFrame {
 
+
+//========================================================
+// Fields
+//========================================================
     // These are the classwide variables, these need to be class wide
     // because they are used in multiple functions and need to be accessed
     private static JPanel driverPanel = new JPanel();
@@ -41,13 +45,20 @@ class Driver extends JFrame {
         }
     };
 
+
+//========================================================
+// Main Method
+//========================================================
     public static void main(String[] args) throws Exception {
         new Driver();
     }
 
+//========================================================
+// Constructor
+//========================================================
     /**
-     * This is the constructor for the driver class,
-     * it sets up the JFrame and adds the panels to the cardLayout
+     * The constructor for the driver class
+     * sets up the JFrame and adds the panels to the cardLayout
      * This function handles all other screens to reduce code duplication
      * and increase readability/organization of the code.
      * 
@@ -65,7 +76,6 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
-        // InventoryUI inventory = new InventoryUI();
         Settings settings = new Settings();
         Credits credits = new Credits();
         Homestead home = new Homestead();
@@ -75,7 +85,7 @@ class Driver extends JFrame {
         Tavern tavern = new Tavern();
         Library library = new Library();
         // Farm farm = new Farm();
-        //Craft craft = new Craft();
+        // Craft craft = new Craft();
         Town town = new Town();
 
         world.setLayout(new GridLayout(1, 2));
@@ -112,6 +122,10 @@ class Driver extends JFrame {
         device.setFullScreenWindow(this);
     }
 
+
+//========================================================
+// Methods
+//========================================================
     /**
      * This function is necessary because charScreen causes an error
      * that makes the program crash before it even launches.
@@ -151,7 +165,7 @@ class Driver extends JFrame {
      */
     public static void changePanel(String panel) {
         if (panel.equals("inventory")) {
-            inventoryUI.updateResourceLabels();
+            inventoryUI.updateResourceLabels(); // whenever inventory is opened, update labels
         }
         cardLayout.show(driverPanel, panel);
     }

@@ -14,8 +14,7 @@ import java.util.Map;
 public class InventoryUI extends JPanel {
     private JLabel resourceLabel; // Label to display total space
     private JPanel resourcePanel;
-    // private int resourcePanelint = 1;
-
+    
    
     public InventoryUI() {
 
@@ -36,7 +35,7 @@ public class InventoryUI extends JPanel {
         resourceLabel = new JLabel("Total Space: 0/8");
         resourcePanel.add(resourceLabel);
 
-        //initailizing labels for each resource and their amount. Uses method in Inventory to retrieve starting values for all resources.
+        //initailizing labels for each resource and their amount. Using method in Inventory to retrieve starting values for all resources.
         Inventory inventory_start = new Inventory();
         Map<String, Integer> resources = inventory_start.getResources();
         for (Map.Entry<String, Integer> entry : resources.entrySet()) {
@@ -59,18 +58,6 @@ public class InventoryUI extends JPanel {
     
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
-            // if (resourcePanelint == 1) {
-            //     // if (Driver.player != null) {
-            //     //     for (String resourceName : Driver.player.inventory.resources.keySet()) {
-            //     //         JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
-            //     //         resourcePanel.add(label);
-            //     //     }
-            //     // }
-            //     resourcePanelint++;
-            // } else {
-            //     updateResourceLabels();
-            // }
-            
             SFX.playSound("assets/SFX/interface1.wav");
             // if player accessed inventory from homestead, town, or bazaar go back to
             // respective screen
@@ -89,7 +76,7 @@ public class InventoryUI extends JPanel {
     public void updateResourceLabels() {
         // Update resource labels
         for (String resourceName : Driver.player.inventory.resources.keySet()) {
-            for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
+            for (Component component : ((JPanel) this.getComponent(1)).getComponents()){
                 if (component instanceof JLabel && ((JLabel) component).getText().startsWith(resourceName)) {
                     ((JLabel) component)
                             .setText(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));

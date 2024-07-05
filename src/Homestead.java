@@ -33,16 +33,6 @@ class Homestead extends JPanel {
     final private int buttonFont = width / 78;
     private boolean purchaseConfirmation = false;
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/homestead5.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
 
 //========================================================
 // Constructor
@@ -233,5 +223,16 @@ class Homestead extends JPanel {
                 e1.printStackTrace();
             }
         });
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/homestead5.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
     }
 }
