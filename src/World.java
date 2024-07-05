@@ -34,6 +34,8 @@ public class World extends JPanel{
      //While Rectangle primarily represents a rectangle's position (x and y coordinates) and size (width and height), it can be adapted to store xpos, ypos, width, and height by extending its functionality or using it directly
     Rectangle quitBounds, townBounds, mineBounds, woodBounds, homeBounds, dungeonBounds, leaveBounds, dunErrMesBounds;
 
+    //
+
 
     //========================================================
     // Constructor

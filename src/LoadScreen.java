@@ -5,6 +5,8 @@ import javax.swing.BoxLayout;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
@@ -17,7 +19,13 @@ import java.awt.Font;
 
 class LoadScreen extends JPanel{
 
-    // These are used for formating the gui elements
+//===============================================================
+// Constructor
+//===============================================================
+    /*------------------------
+    *These variables are used for formating the GUI elements.
+    *
+    */
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final private int width = screenSize.width;
     final private int height = screenSize.height;
@@ -26,22 +34,18 @@ class LoadScreen extends JPanel{
     final private int xCord = (width - (PANEL_SIZE.width)) / 2; //used for positioning, centers component to screen
     final private int yCord = 2 * (height / 7); 
     final private Dimension BACK_SIZE = new Dimension(width / 10, height / 10); 
-    final private int buttonFont = width / 86;
+    final private int buttonFont = width / 106;
+    /*------------------------*/
 
-    @Override
-    protected void paintComponent(Graphics g){
-        super.paintComponent(g);
-            try{
-                g.drawImage(ImageIO.read(new File("assets/images/World8.png")), 0, 0, getWidth(), getHeight(), this);
-            }catch (IOException e){
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
+
+    // variables used to set save-file date time
+    private LocalDateTime currentDateTime; //get the current date and time
+    final private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a MM/dd/yyy"); // Format the current date and time 
+    private String formattedDateTime;
 
 //===============================================================
 // Constructor
-//===============================================================s
+//===============================================================
     public LoadScreen(){
         this.setLayout(null);
         // this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -56,7 +60,9 @@ class LoadScreen extends JPanel{
         // Initializing buttons and progress bars for save file components
         //
         //
-        //save file 1
+    //==============================================================
+    // save file 1
+    //==============================================================
         JButton save1 = new JButton("Save Game 1 - None - (This save state has automatic saving)");
         buttons.add(save1);
         JButton characterName1 = new JButton("Charactername");
@@ -78,7 +84,9 @@ class LoadScreen extends JPanel{
         JButton load1 = new JButton("Load Game 1");
         buttons.add(load1);
 
-        //save file 2
+    //==============================================================
+    // save file 2
+    //==============================================================
         JButton save2 = new JButton("Save State 2 - None");
         buttons.add(save2);
         JButton characterName2 = new JButton("Charactername");
@@ -94,7 +102,9 @@ class LoadScreen extends JPanel{
         JButton load2 = new JButton("Load Game 2");
         buttons.add(load2);
 
-        //save file 3
+    //==============================================================
+    // save file 3
+    //==============================================================
         JButton save3 = new JButton("Save State 3 - None");
         buttons.add(save3);
         JButton characterName3 = new JButton("Charactername");
@@ -193,6 +203,7 @@ class LoadScreen extends JPanel{
                 boolean saveSuccessful = Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav");
                 if (saveSuccessful) {
                     save1.setText("Successfully Saved Game to File 1");
+                    fileDate1.setText(getCurrentDatTime()); //set file to current time
                     save1.setBackground(customColorGreen);
                 } else {
                     System.out.println("Error: Could not save to file 1.");
@@ -226,6 +237,7 @@ class LoadScreen extends JPanel{
                 boolean saveSuccessful = Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile2.sav");
                 if (saveSuccessful) {
                     save2.setText("Successfully Saved Game to File 2");
+                    fileDate2.setText(getCurrentDatTime()); //set file to current time
                     save2.setBackground(customColorGreen);
                 } else {
                     System.out.println("Error: Could not save to file 2.");
@@ -259,6 +271,7 @@ class LoadScreen extends JPanel{
                 boolean saveSuccessful = Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile3.sav");
                 if (saveSuccessful) {
                     save3.setText("Successfully Saved Game to File 3");
+                    fileDate3.setText(getCurrentDatTime()); //set file to current time
                     save3.setBackground(customColorGreen);
                 } else {
                     System.out.println("Error: Could not save to file 3.");
@@ -302,5 +315,31 @@ class LoadScreen extends JPanel{
                 e1.printStackTrace();
             }
         });
+    }
+
+//==================================================================
+// Class Methods
+//==================================================================
+
+    /**
+     * Gets current date andtime in the format "h:mm a MM/dd/yyy"
+     * @return formattedDateTime
+     */
+    private String getCurrentDatTime(){
+        currentDateTime = LocalDateTime.now();
+        formattedDateTime = currentDateTime.format(formatter);
+        return formattedDateTime;
+    }
+
+
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+            try{
+                g.drawImage(ImageIO.read(new File("assets/images/World8.png")), 0, 0, getWidth(), getHeight(), this);
+            }catch (IOException e){
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
     }
 }
