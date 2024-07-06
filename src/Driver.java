@@ -1,9 +1,12 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,7 +36,7 @@ class Driver extends JFrame {
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     public static CharacterScreen charScreen;
-    public static World map = new World() { // This code puts the world map image as the background to the panel
+    public static World map = new World() { // This code puts the world map image as the
 
         @Override
         protected void paintComponent(Graphics g) {
@@ -47,6 +50,8 @@ class Driver extends JFrame {
     };
 
     public static boolean gremlinOn = false;
+    public static Color customColorBeige = new Color(253, 236, 166); 
+    public static Border buttonBorder = BorderFactory.createLineBorder(customColorBeige, 1);
 
 //========================================================
 // Main Method

@@ -111,6 +111,7 @@ class Settings extends JPanel {
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
             buttons.get(i).setFont(BUTTON_FONT);
+            buttons.get(i).setBorder(Driver.buttonBorder);
             if (buttons.get(i).equals(gremlin)){
                 buttons.get(i).setBackground(customColorBrown);
                 buttons.get(i).setForeground(customColorBeige);

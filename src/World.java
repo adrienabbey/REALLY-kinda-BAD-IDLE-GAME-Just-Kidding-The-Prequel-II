@@ -1,6 +1,7 @@
 import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.Rectangle;
@@ -21,6 +22,9 @@ public class World extends JPanel{
     private JLabel dungeon_error_message; // Declare JLabel
     private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
     private JButton quit, town, mine, wood, home, dungeon, leave;
+    final private Color customColorBeige = new Color(253, 236, 166);
+    final private Color customColorBrown = new Color(102, 72, 54);
+    final private Border buttonBorder = BorderFactory.createLineBorder(customColorBeige, 1);
 
     //These are used for formating the gui elements   
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -34,8 +38,6 @@ public class World extends JPanel{
      //While Rectangle primarily represents a rectangle's position (x and y coordinates) and size (width and height), it can be adapted to store xpos, ypos, width, and height by extending its functionality or using it directly
     Rectangle quitBounds, townBounds, mineBounds, woodBounds, homeBounds, dungeonBounds, leaveBounds, dunErrMesBounds;
 
-    //
-
 
     //========================================================
     // Constructor
@@ -48,8 +50,6 @@ public class World extends JPanel{
     public World(){
         this.setLayout(null);
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
 
         quit = new JButton("Quit");
         buttons.add(quit);
@@ -70,12 +70,14 @@ public class World extends JPanel{
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(buttonBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
 
             // formatting quit button
             if (i == 0) {
                 buttons.get(0).setBackground(Color.RED);
                 buttons.get(0).setForeground(Color.WHITE);
+                buttons.get(i).setBorder(buttonBorder);
             }
         }
 
@@ -90,20 +92,20 @@ public class World extends JPanel{
         //Relatively scaling and sizing world components
         //
         // 
-        quitWidth = quit.getPreferredSize().width;
-        quitHeight = quit.getPreferredSize().height;
-        leaveWidth = leave.getPreferredSize().width;
-        leaveHeight = leave.getPreferredSize().height;
-        townWidth = town.getPreferredSize().width;
-        townHeight = town.getPreferredSize().height;
-        mineWidth = mine.getPreferredSize().width;
-        mineHeight = mine.getPreferredSize().height;
-        woodWidth = wood.getPreferredSize().width;
-        woodHeight = wood.getPreferredSize().height;
-        homeWidth = home.getPreferredSize().width;
-        homeHeight = home.getPreferredSize().height;
-        dungeonWidth = dungeon.getPreferredSize().width;
-        dungeonHeight = dungeon.getPreferredSize().height;
+        quitWidth = quit.getPreferredSize().width * 11 / 10;
+        quitHeight = quit.getPreferredSize().height * 11 / 10;;
+        leaveWidth = leave.getPreferredSize().width * 11 / 10;;
+        leaveHeight = leave.getPreferredSize().height * 11 / 10;;
+        townWidth = town.getPreferredSize().width * 11 / 10;;
+        townHeight = town.getPreferredSize().height * 11 / 10;;
+        mineWidth = mine.getPreferredSize().width * 11 / 10;;
+        mineHeight = mine.getPreferredSize().height * 11 / 10;;
+        woodWidth = wood.getPreferredSize().width * 11 / 10;;
+        woodHeight = wood.getPreferredSize().height * 11 / 10;;
+        homeWidth = home.getPreferredSize().width * 11 / 10;;
+        homeHeight = home.getPreferredSize().height * 11 / 10;;
+        dungeonWidth = dungeon.getPreferredSize().width * 11 / 10;;
+        dungeonHeight = dungeon.getPreferredSize().height * 11 / 10;;
 
         quitBounds = new Rectangle(width - (width * 1 / 15), height - (height * 1 / 15), quitWidth, quitHeight);
         townBounds = new Rectangle(width * 7 / 11, height * 4 / 9, townWidth, townHeight);

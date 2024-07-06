@@ -3,6 +3,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,8 @@ class Town extends JPanel {
     final private int width = screenSize.width;
     final private int height = screenSize.height;
     final private int buttonFont = width / 70;
+    final private Color customColorBeige = new Color(253, 236, 166);
+    final private Color customColorBrown = new Color(102, 72, 54);
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -44,8 +47,6 @@ class Town extends JPanel {
     public Town() throws IOException {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
       
         JButton bazaar = new JButton("💰 Bazaar");
         buttons.add(bazaar);
@@ -78,6 +79,7 @@ class Town extends JPanel {
             buttons.get(i).setMaximumSize(new Dimension(width / 8, height / 18));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(Driver.buttonBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 

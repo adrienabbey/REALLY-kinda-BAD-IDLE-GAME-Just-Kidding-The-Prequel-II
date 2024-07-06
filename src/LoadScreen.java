@@ -1,7 +1,6 @@
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.BoxLayout;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -9,11 +8,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.Graphics;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import javax.imageio.ImageIO;
-import javax.swing.Box;
 import java.awt.Color;
 import java.awt.Font;
 

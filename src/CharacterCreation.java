@@ -1,21 +1,20 @@
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 
         // JPanel rightPanel = new JPanel();
@@ -43,6 +42,10 @@ class CharacterCreation extends JPanel {
 
     final int imageWidth = (int) (width / 4);
     final int imageHeight = -1; // set to negative 1 to scale only one way
+
+    final private Color customColorBeige = new Color(253, 236, 166);
+    final private Color customColorBrown = new Color(102, 72, 54);
+    final private Border buttonBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
 
 
     /**
@@ -99,8 +102,6 @@ class CharacterCreation extends JPanel {
         // charImage.setBounds(width / 4, height / 2, scaledImage.getWidth(charImage), scaledImage.getHeight(charImage));
         leftPanel.add(charImage);
 
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
         Color customColorBlue = new Color(46, 86, 161);
 
         JLabel message = new JLabel(" ");
@@ -241,6 +242,7 @@ class CharacterCreation extends JPanel {
             buttons.get(i).setMaximumSize(BUTTON_SIZE);
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(buttonBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
             buttons.get(i).setBounds((width * (3/4)), ((height / 6) + (6*(labelFont / 2)) + (i * (BUTTON_SIZE.height + BUTTON_GAP.height))), buttons.get(i).getPreferredSize().width, buttons.get(i).getPreferredSize().height);
         }
