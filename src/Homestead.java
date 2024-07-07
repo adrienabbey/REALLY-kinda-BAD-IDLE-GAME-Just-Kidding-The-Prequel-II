@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 /*
  * Implements the "Homestead" panel accessed through the World screen. Allows the player to purchase a homestead. Unlocking the homestead unlocks a greater inventory space, the farming functionaility, and crafting functionality. The inventory, farming, and crafting panels can be accessed directly from the homestead screen. 
@@ -33,16 +32,6 @@ class Homestead extends JPanel {
     final private int buttonFont = width / 78;
     private boolean purchaseConfirmation = false;
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/homestead5.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
 
 //========================================================
 // Constructor
@@ -233,5 +222,16 @@ class Homestead extends JPanel {
                 e1.printStackTrace();
             }
         });
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/homestead5.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
     }
 }

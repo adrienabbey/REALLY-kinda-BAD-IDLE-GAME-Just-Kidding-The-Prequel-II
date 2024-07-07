@@ -15,8 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.BoxLayout;
 import javax.swing.Timer;
+import javax.swing.border.Border;
+
 import java.awt.Point;
 import java.awt.Image;
+
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 
 // This class is the introductory starting screen with buttons to start a new game, load a game, read directions, go to settings, or quit
@@ -32,6 +36,12 @@ class StartScreen extends JPanel{
     final Dimension BUTTON_GAP = new Dimension(0, screenSize.height / 100);
     final int buttonFont = screenSize.width / 60;
     final Dimension BUTTON_SIZE = new Dimension(screenSize.width / 7, screenSize.height / 18);
+
+    final private Color customColorBlue = new Color(46, 86, 161);
+    final private Color customColorBeige = new Color(253, 236, 166);
+    final private Color customColorBrown = new Color(102, 72, 54);
+    final Color customFireBrick = new Color(178, 34, 34);
+    final private Border buttonBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
 
     public StartScreen() {
 
@@ -148,9 +158,6 @@ class StartScreen extends JPanel{
         JButton settings = new JButton("⚙ Settings");
         buttons.add(settings);
 
-        Color customColorBlue = new Color(46, 86, 161);
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
         JLabel title = new JLabel("B.A.D Idle Game");
         title.setFont(new Font("Serif", Font.BOLD, 128));
         title.setForeground(customColorBlue);
@@ -179,6 +186,7 @@ class StartScreen extends JPanel{
             buttons.get(i).setMaximumSize(BUTTON_SIZE);
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(buttonBorder);
             buttons.get(i).setFont(new Font("serif", Font.BOLD, buttonFont));
 
             // Formats quit button
@@ -188,6 +196,7 @@ class StartScreen extends JPanel{
                 buttons.get(0).setForeground(Color.WHITE);
                 buttons.get(i).setPreferredSize(BUTTON_SIZE);
                 buttons.get(i).setMaximumSize(BUTTON_SIZE);
+                buttons.get(i).setBorder(buttonBorder);
             }
         }
 

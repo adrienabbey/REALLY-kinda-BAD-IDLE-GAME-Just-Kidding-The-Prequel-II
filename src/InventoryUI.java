@@ -6,12 +6,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.Map;
+
+/*Inventory panel can be accessed from various screens in the game, such as the bazaar, homestead, and town. The inventory stores resources and equipment. The player can equip equipment and and use potions from the inventory.
+*/
 
 public class InventoryUI extends JPanel {
     private JLabel resourceLabel; // Label to display total space
-    private int resourcePanelint = 1;
-
+    private JPanel resourcePanel;
+    
+   
     public InventoryUI() {
+
         setLayout(new BorderLayout());
         // Inventory panel
         JPanel inventoryPanel = new JPanel(new GridLayout(2, 4));
@@ -23,11 +29,20 @@ public class InventoryUI extends JPanel {
         add(inventoryPanel, BorderLayout.CENTER);
 
         // Resources panel
-        JPanel resourcePanel = new JPanel(new GridLayout(4, 1));
+        resourcePanel = new JPanel(new GridLayout(4, 1));
         // Initialize resource labels
 
         resourceLabel = new JLabel("Total Space: 0/8");
         resourcePanel.add(resourceLabel);
+
+        //initailizing labels for each resource and their amount. Using method in Inventory to retrieve starting values for all resources.
+        Inventory inventory_start = new Inventory();
+        Map<String, Integer> resources = inventory_start.getResources();
+        for (Map.Entry<String, Integer> entry : resources.entrySet()) {
+            JLabel label = new JLabel(entry.getKey() + ": " + entry.getValue());
+            resourcePanel.add(label);
+        }
+
         add(resourcePanel, BorderLayout.SOUTH);
 
         // Create the 'Back' button with custom styling
@@ -40,19 +55,9 @@ public class InventoryUI extends JPanel {
         // Add component to the panel
         add(back, BorderLayout.NORTH);
 
+    
         // Action listener for the 'Back' button
         back.addActionListener(e -> {
-            if (resourcePanelint == 1) {
-                if (Driver.player != null) {
-                    for (String resourceName : Driver.player.inventory.resources.keySet()) {
-                        JLabel label = new JLabel(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));
-                        resourcePanel.add(label);
-                    }
-                }
-                resourcePanelint++;
-            } else {
-                updateResourceLabels();
-            }
             SFX.playSound("assets/SFX/interface1.wav");
             // if player accessed inventory from homestead, town, or bazaar go back to
             // respective screen
@@ -71,7 +76,7 @@ public class InventoryUI extends JPanel {
     public void updateResourceLabels() {
         // Update resource labels
         for (String resourceName : Driver.player.inventory.resources.keySet()) {
-            for (Component component : ((JPanel) this.getComponent(1)).getComponents()) {
+            for (Component component : ((JPanel) this.getComponent(1)).getComponents()){
                 if (component instanceof JLabel && ((JLabel) component).getText().startsWith(resourceName)) {
                     ((JLabel) component)
                             .setText(resourceName + ": " + Driver.player.inventory.resources.get(resourceName));

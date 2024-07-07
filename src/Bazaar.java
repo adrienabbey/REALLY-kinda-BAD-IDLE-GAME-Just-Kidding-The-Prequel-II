@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.File;
@@ -54,6 +53,8 @@ class Bazaar extends JPanel {
     final private int width = screenSize.width;
     final private int height = screenSize.height;
     final private int buttonFont = width / 64;
+    final private Color customColorBeige = new Color(253, 236, 166);
+    final private Color customColorBrown = new Color(102, 72, 54);
 
     private boolean sellScreenOpen = false; // Flag to track if the sell screen is open
     private boolean buyScreenOpen = false; // Flag to track if the buy screen is open
@@ -61,6 +62,7 @@ class Bazaar extends JPanel {
     private int secretIncrement = 1; // variable that determines when the secret merchant will appear.
     private JPanel mainPanel1; // Declare buy panel at class level
     private JPanel mainPanel2; // Declare sell panel at class level
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -78,9 +80,7 @@ class Bazaar extends JPanel {
     public Bazaar() { 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
-
+    
         JButton buy = new JButton("Buy");
         buttons.add(buy);
         JButton leave = new JButton("Leave");
@@ -112,6 +112,7 @@ class Bazaar extends JPanel {
             buttons.get(i).setMaximumSize(new Dimension(width / 8, height / 18));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(Driver.buttonBorder);
             buttons.get(i).setFont(new Font("Times New Roman", Font.BOLD, buttonFont));
         }
 
