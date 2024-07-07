@@ -233,6 +233,10 @@ Credits for sound effects -
     Sound from pixabay
     Source: https://pixabay.com/sound-effects/walk-on-dry-grass-22917/
 
+* Gremlin SFX:
+    https://pixabay.com/sound-effects/goblin-scream-87564/
+    https://pixabay.com/sound-effects/goblin-death-6729/
+
 ======================================================
 
 ======================================================

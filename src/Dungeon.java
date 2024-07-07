@@ -31,6 +31,8 @@ class Dungeon extends JPanel {
     final private int width = screenSize.width;
     final private int height = screenSize.height;
     final private int buttonFont = width / 84;
+    final private Color customColorBeige = new Color(253, 236, 166);
+    final private Color customColorBrown = new Color(102, 72, 54);
     private static Dice dice = new Dice(20);
 
      @Override
@@ -56,8 +58,6 @@ class Dungeon extends JPanel {
         // Player flag to indicate activity the player is engaged in
         // This would allow "idle" play of one content at a time
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColorBeige = new Color(253, 236, 166);
-        Color customColorBrown = new Color(102, 72, 54);
         JButton start = new JButton("Start Combat");
         buttons.add(start);
         JButton magic = new JButton("Attack Magic");
@@ -71,6 +71,7 @@ class Dungeon extends JPanel {
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(Driver.buttonBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 

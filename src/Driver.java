@@ -1,9 +1,12 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,6 +20,10 @@ import java.awt.GridLayout;
 
 class Driver extends JFrame {
 
+
+//========================================================
+// Fields
+//========================================================
     // These are the classwide variables, these need to be class wide
     // because they are used in multiple functions and need to be accessed
     private static JPanel driverPanel = new JPanel();
@@ -29,7 +36,8 @@ class Driver extends JFrame {
     private static Dungeon combat = new Dungeon();
     private static Combat logs;
     public static CharacterScreen charScreen;
-    private static World map = new World() { // This code puts the world map image as the background to the panel
+    public static World map = new World() { // This code puts the world map image as the
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -41,13 +49,23 @@ class Driver extends JFrame {
         }
     };
 
+    public static boolean gremlinOn = false;
+    public static Color customColorBeige = new Color(253, 236, 166); 
+    public static Border buttonBorder = BorderFactory.createLineBorder(customColorBeige, 1);
+
+//========================================================
+// Main Method
+//========================================================
     public static void main(String[] args) throws Exception {
         new Driver();
     }
 
+//========================================================
+// Constructor
+//========================================================
     /**
-     * This is the constructor for the driver class,
-     * it sets up the JFrame and adds the panels to the cardLayout
+     * The constructor for the driver class
+     * sets up the JFrame and adds the panels to the cardLayout
      * This function handles all other screens to reduce code duplication
      * and increase readability/organization of the code.
      * 
@@ -65,7 +83,6 @@ class Driver extends JFrame {
         LoadScreen load = new LoadScreen();
         CharacterCreation cc = new CharacterCreation();
         GameInstructions instructions = new GameInstructions();
-        InventoryUI inventory = new InventoryUI();
         Settings settings = new Settings();
         Credits credits = new Credits();
         Homestead home = new Homestead();
@@ -75,7 +92,7 @@ class Driver extends JFrame {
         Tavern tavern = new Tavern();
         Library library = new Library();
         // Farm farm = new Farm();
-        //Craft craft = new Craft();
+        // Craft craft = new Craft();
         Town town = new Town();
 
         world.setLayout(new GridLayout(1, 2));
@@ -95,7 +112,7 @@ class Driver extends JFrame {
         driverPanel.add(mineshaft, "mineshaft");
         driverPanel.add(tavern, "tavern");
         driverPanel.add(library, "library");
-        driverPanel.add(inventory, "inventory");
+        driverPanel.add(inventoryUI, "inventory");
         driverPanel.add(world, "world");
         driverPanel.add(town, "town");
         driverPanel.add(dungeon, "dungeon");
@@ -112,6 +129,10 @@ class Driver extends JFrame {
         device.setFullScreenWindow(this);
     }
 
+
+//========================================================
+// Methods
+//========================================================
     /**
      * This function is necessary because charScreen causes an error
      * that makes the program crash before it even launches.
@@ -150,6 +171,13 @@ class Driver extends JFrame {
      * @param panel the name of the panel to be shown
      */
     public static void changePanel(String panel) {
+        if(panel.equals("inventory")){
+            inventoryUI.updateResourceLabels(); // whenever inventory is opened, update labels
+        }else if(panel.equals("world")){
+            if(!gremlinOn){
+            map.resetButtonArrangment(); // if the gremlin isn't let out then reset buttons to otiginal layout whenever the world map screen is changed to. 
+            }
+        }
         cardLayout.show(driverPanel, panel);
     }
 
