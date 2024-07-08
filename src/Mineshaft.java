@@ -5,6 +5,8 @@
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +48,9 @@ public class Mineshaft extends JPanel {
     private String downArrow = "\u25BC"; // Down-Pointing Triangle
     private String upArrow = "\u25B2"; // Up-Pointing Triangle
     private boolean statusBarOpen = false; // flag used to determine when the status bar is open
+    final private Color customColorGold = new Color(253, 236, 166);
+    final private Color customColorBlack = new Color(0,0,0);
+    private Border mineBorder = BorderFactory.createLineBorder(Color.white, 1);
 
     // Declare stateBar panel and comeponents of the status bar
     private JPanel statusBar;
@@ -69,9 +74,7 @@ public class Mineshaft extends JPanel {
         // Set the layout with vertical alignment and padding
         setLayout(null);
 
-        ArrayList<JButton> buttons = new ArrayList<JButton>();
-        Color customColorGold = new Color(205, 133, 63);
-        Color customColorBlack = new Color(0,0,0);
+        ArrayList<JButton> buttons = new ArrayList<JButton>();        
 
         //initializes components for action and status panels. 
         autoScavengeButton = new JButton("🔍 Scavenge Area");
@@ -91,6 +94,7 @@ public class Mineshaft extends JPanel {
             buttons.get(i).setMaximumSize(new Dimension(200, 80));
             buttons.get(i).setBackground(customColorBlack);
             buttons.get(i).setForeground(customColorGold);
+            buttons.get(i).setBorder(mineBorder);
             buttons.get(i).setFont(new Font("Serif", Font.ITALIC, buttonFont));
             buttons.get(i).setOpaque(true); // Make the background visible
             buttons.get(i).setFocusPainted(false); // Remove focus ring around the button
@@ -102,6 +106,7 @@ public class Mineshaft extends JPanel {
         progressBar.setFont(new Font("Serif", Font.ITALIC, buttonFont));
         progressBar.setForeground(new Color(205, 133, 63)); // Light wood color
         progressBar.setBackground(new Color(0, 0, 0)); // Set the background color to black
+        progressBar.setBorder(mineBorder);
         progressBar.setOpaque(true); // Make the background visible
         progressBar.setPreferredSize(new Dimension(10, 20)); // Set the preferred size of the progress bar
 
@@ -253,7 +258,7 @@ public class Mineshaft extends JPanel {
 
         // Timer for automatic process
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Takes 10 seconds to fill up.
-        timer = new Timer(10, new ActionListener() {
+        timer = new Timer(100, new ActionListener() {
             int progress = 0;
             int ore = 1; // used to track which resource to grant
             int scavenge = 0; // used to track which resource to grant

@@ -5,6 +5,8 @@
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,6 +56,10 @@ public class Forest extends JPanel {
     private JProgressBar magic;
     private JButton gold;
 
+    final private Color customColorDarkBrown = new Color(205, 133, 63);
+    final private Color customColorBeige = new Color(253, 236, 166);
+    private Border forestBorder = BorderFactory.createLineBorder(Color.white, 1);
+
 
 
     //========================================================
@@ -88,7 +94,8 @@ public class Forest extends JPanel {
             buttons.get(i).setPreferredSize(new Dimension(200, 45));
             buttons.get(i).setMaximumSize(new Dimension(100, 80));
             buttons.get(i).setBackground(customColorGreen);
-            buttons.get(i).setForeground(customColorGold);
+            buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(forestBorder);
             buttons.get(i).setFont(new Font("Serif", Font.ITALIC, buttonFont));
             buttons.get(i).setOpaque(true); // Make the background visible
             buttons.get(i).setFocusPainted(false); // Remove focus ring around the button
@@ -101,6 +108,7 @@ public class Forest extends JPanel {
         progressBar.setFont(new Font("Serif", Font.ITALIC, buttonFont));
         progressBar.setForeground(new Color(205, 133, 63)); // Light wood color
         progressBar.setBackground(new Color(0, 100, 0)); // Set the background color to a transparent green
+        progressBar.setBorder(forestBorder);
         progressBar.setOpaque(true); // Make the background visible
         progressBar.setPreferredSize(new Dimension(10, buttonFont)); // Set the preferred size of the progress bar
 
@@ -254,7 +262,7 @@ public class Forest extends JPanel {
 
         // Timer for woodcutting/hunting process. 
         // Progress variable increases by 1 every 100 milliseconds. Progress variable needs to equal 100 for progress bar to fill up completely. Currently, akes 10 seconds to fill up.
-        timer = new Timer(10, new ActionListener() {
+        timer = new Timer(100, new ActionListener() {
             int progress = 0;
 
             @Override

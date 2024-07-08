@@ -79,6 +79,7 @@ class Dungeon extends JPanel {
             Dimension buttonSize = new Dimension(
                 ((int) buttons.get(i).getPreferredSize().getWidth() * 16 / 10), 
                 ((int)buttons.get(i).getPreferredSize().getHeight() * 16 / 10));
+            buttons.get(i).setMaximumSize(buttonSize);
             buttons.get(i).setPreferredSize(buttonSize);
             buttons.get(i).setBorder(actionBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
@@ -87,11 +88,11 @@ class Dungeon extends JPanel {
         // This is adding all objects to the screen, and controlling layout
         add(Box.createHorizontalGlue());
         add(start);
-        add(Box.createRigidArea(new Dimension(width / 80, height / 50)));
+        add(Box.createRigidArea(new Dimension(width / 60, height / 50)));
         add(magic);
-        add(Box.createRigidArea(new Dimension(width / 80, height / 50)));
+        add(Box.createRigidArea(new Dimension(width / 60, height / 50)));
         add(potion);
-        add(Box.createRigidArea(new Dimension(width / 80, height / 50)));
+        add(Box.createRigidArea(new Dimension(width / 60, height / 50)));
         add(leave);
         add(Box.createHorizontalGlue());
 

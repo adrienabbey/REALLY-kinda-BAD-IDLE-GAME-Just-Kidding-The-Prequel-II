@@ -75,7 +75,7 @@ public class World extends JPanel{
 
             // formatting quit button
             if (i == 0) {
-                buttons.get(0).setBackground(Color.RED);
+                buttons.get(0).setBackground(new Color(178, 34, 34));
                 buttons.get(0).setForeground(Color.WHITE);
                 buttons.get(i).setBorder(buttonBorder);
             }
