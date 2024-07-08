@@ -76,7 +76,7 @@ class Homestead extends JPanel {
 
         // Create the information label with custom styling
         JLabel info = new JLabel(
-                "<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>",
+                "<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will unlock farming and crafting.</div></html>",
                 SwingConstants.CENTER);
         info.setFont(new Font("Serif", Font.ITALIC, buttonFont));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
@@ -157,8 +157,8 @@ class Homestead extends JPanel {
                 int backHeight = back.getPreferredSize().height;
 
                 farm.setBounds((width - farmWidth)/2, 2*(height / 7), farmWidth, farmHeight);
-                inventory1.setBounds((width - inventory1Width)/2, 3*(height / 7), inventory1Width, inventory1Height); 
-                craft.setBounds((width - craftWidth)/2, 4*(height / 7), craftWidth, craftHeight);
+                craft.setBounds((width - craftWidth)/2, 3*(height / 7), craftWidth, craftHeight);
+                inventory1.setBounds((width - inventory1Width)/2, 4*(height / 7), inventory1Width, inventory1Height); 
                 back.setBounds(backHeight / 2, backHeight / 2, backWidth, backHeight);
                 //================================================================
                 add(farm);

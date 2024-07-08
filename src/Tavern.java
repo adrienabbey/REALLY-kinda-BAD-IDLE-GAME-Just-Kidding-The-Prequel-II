@@ -34,11 +34,11 @@ class Tavern extends JPanel {
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final private int width = screenSize.width;
     final private int height = screenSize.height;
-    final private int buttonFont = width / 64;
+    final private int buttonFont = width / 94;
     
-    int prompt = 0;
-    Color customDarkWood = new Color(139, 69, 19); // Dark wood color
-    Color customLightWood = new Color(205, 133, 63); // Light wood color
+    private int prompt = 0;
+    private Color customDarkWood = new Color(139, 69, 19); // Dark wood color
+    private Color customLightWood = new Color(205, 133, 63); // Light wood color
 
 //========================================================
 // Constructor
@@ -83,8 +83,14 @@ class Tavern extends JPanel {
         //
         //Relatively scaling and sizing world components
         //
-        // 
-        tavernPanel.setBounds(width / 4, height / 4, width / 2, height / 2);
+        // To center component on screen use this formula: 
+        // (screenWidth - componentWidth) / 2
+        // Ex. Calculation
+        //  ScreenWidth = x, componentWidth = x / 3
+        // x - (x / 3) = (2x / 3). 
+        // (2x / 3) / 2 = 2x / 6 = x / 3. 
+        // To center the screen the x-position should be (screenWidth / 3). 
+        tavernPanel.setBounds(screenSize.width / 3, screenSize.height / 3, width / 3, height / 3);
         //==========================================================
 
         // Add components to the panel
@@ -120,7 +126,7 @@ class Tavern extends JPanel {
             }else if(prompt == 1){
                 tavernPanel.add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Guardsman: I heard you need a unique set of armor to survive the monsters in the abandoned colosseum.</div></html>");
-                SFX.playSound("assets\\SFX\\Voice-overs\\Unique set - Samuel.wav");
+                SFX.playSound("assets/SFX/Voice-overs/Unique set - Samuel.wav");
             }else if (prompt == 2){
                 tavernPanel.add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Miner: I usually find one metal for every four stone when mining down in the mineshaft out west.</div></html>");
@@ -128,7 +134,7 @@ class Tavern extends JPanel {
             }else if(prompt == 3){
                 tavernPanel.add(message, BorderLayout.CENTER);
                 message.setText("<html><div style='text-align: center;'>Aaron: There's a secret merchant that sells a powerful potion. Some say he only comes out to the bazaar once every three blue moons.");
-                SFX.playSound("assets\\SFX\\Voice-overs\\Secret merchant - george.wav");
+                SFX.playSound("assets/SFX/Voice-overs/Secret merchant - george.wav");
             }
             prompt++;
             if(prompt == 4 ){
