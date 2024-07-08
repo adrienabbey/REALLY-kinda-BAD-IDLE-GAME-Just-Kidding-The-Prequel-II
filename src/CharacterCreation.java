@@ -38,7 +38,7 @@ class CharacterCreation extends JPanel {
     final private Dimension BUTTON_GAP = new Dimension(0, height / 100);
     final private int labelFont = width / 78;
     final private int buttonFont = width / 78;
-    final private int labelWidth = width / 16; //Set a fixed width for stat labels to prevent shifting
+    final private int labelWidth = width / 10; //Set a fixed width for stat labels to prevent shifting
 
     final int imageWidth = (int) (width / 4);
     final int imageHeight = -1; // set to negative 1 to scale only one way
@@ -112,7 +112,7 @@ class CharacterCreation extends JPanel {
 
         JPanel musclePanel = new JPanel();
         musclePanel.setLayout(new BoxLayout(musclePanel, BoxLayout.X_AXIS));
-        JLabel muscleLabel = new JLabel("Muscle: " + muscle);
+        JLabel muscleLabel = new JLabel(" 💪 Muscle: " + muscle);
         labels.add(muscleLabel);
 
         //previous formatting
@@ -137,7 +137,7 @@ class CharacterCreation extends JPanel {
 
         JPanel brainPanel = new JPanel();
         brainPanel.setLayout(new BoxLayout(brainPanel, BoxLayout.X_AXIS));
-        JLabel brainLabel = new JLabel("Brain: " + brain);
+        JLabel brainLabel = new JLabel(" 👤 Brain: " + brain);
         labels.add(brainLabel);
 
         //previous formatting
@@ -161,7 +161,7 @@ class CharacterCreation extends JPanel {
 
         JPanel heartPanel = new JPanel();
         heartPanel.setLayout(new BoxLayout(heartPanel, BoxLayout.X_AXIS));
-        JLabel heartLabel = new JLabel("Heart: " + heart);
+        JLabel heartLabel = new JLabel(" ❤️ Heart: " + heart);
         labels.add(heartLabel);
 
         //previous formatting
@@ -256,7 +256,7 @@ class CharacterCreation extends JPanel {
                 muscle--;
                 statPoints++;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -272,7 +272,7 @@ class CharacterCreation extends JPanel {
                 muscle++;
                 statPoints--;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -288,7 +288,7 @@ class CharacterCreation extends JPanel {
                 brain--;
                 statPoints++;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                brainLabel.setText("Brain: " + brain);
+                brainLabel.setText(" 👤 Brain: " + brain);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -304,7 +304,7 @@ class CharacterCreation extends JPanel {
                 brain++;
                 statPoints--;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                brainLabel.setText("Brain: " + brain);
+                brainLabel.setText(" 👤 Brain: " + brain);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -320,7 +320,7 @@ class CharacterCreation extends JPanel {
                 heart--;
                 statPoints++;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                heartLabel.setText("Heart: " + heart);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -336,7 +336,7 @@ class CharacterCreation extends JPanel {
                 heart++;
                 statPoints--;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                heartLabel.setText("Heart: " + heart);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -357,9 +357,9 @@ class CharacterCreation extends JPanel {
                 brain = 0;
                 heart = 0;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
-                brainLabel.setText("Brain: " + brain);
-                heartLabel.setText("Heart: " + heart);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
+                brainLabel.setText(" 👤 Brain: " + brain);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 Driver.setPlayer(player);
                 Driver.addCharScreen();
                 Driver.changePanel("world");
@@ -377,9 +377,9 @@ class CharacterCreation extends JPanel {
                 brain = 0;
                 heart = 0;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
-                brainLabel.setText("Brain: " + brain);
-                heartLabel.setText("Heart: " + heart);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
+                brainLabel.setText(" 👤 Brain: " + brain);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 Driver.changePanel("start");
             } catch (Exception e1) {
                 e1.printStackTrace();

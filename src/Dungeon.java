@@ -1,9 +1,11 @@
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -30,9 +32,11 @@ class Dungeon extends JPanel {
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final private int width = screenSize.width;
     final private int height = screenSize.height;
-    final private int buttonFont = width / 84;
+    final private int buttonFont = width / 82;
     final private Color customColorBeige = new Color(253, 236, 166);
     final private Color customColorBrown = new Color(102, 72, 54);
+    final private Border actionBorder = BorderFactory.createLineBorder(customColorBeige, 1);
+
     private static Dice dice = new Dice(20);
 
      @Override
@@ -46,6 +50,7 @@ class Dungeon extends JPanel {
                  e.printStackTrace();
              }
      }
+
 
 //========================================================
 // Constructor
@@ -71,7 +76,11 @@ class Dungeon extends JPanel {
         for (int i = 0; i < buttons.size(); i++){
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
-            buttons.get(i).setBorder(Driver.buttonBorder);
+            Dimension buttonSize = new Dimension(
+                ((int) buttons.get(i).getPreferredSize().getWidth() * 16 / 10), 
+                ((int)buttons.get(i).getPreferredSize().getHeight() * 16 / 10));
+            buttons.get(i).setPreferredSize(buttonSize);
+            buttons.get(i).setBorder(actionBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 
