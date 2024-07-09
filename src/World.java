@@ -13,15 +13,15 @@ import java.util.Random;
 
 public class World extends JPanel{
 
-    //========================================================
-    // Fields
-    //========================================================
+//========================================================
+// Fields
+//========================================================
 
     // Components and variables used in world screen
     PlayerCharacter player; // declare player object reference variable
     private JLabel dungeon_error_message; // Declare JLabel
     private boolean timerRunning = false; // flag for dungeon error message cooldown timer. 
-    private JButton quit, town, mine, wood, home, dungeon, leave;
+    private JButton quit, town, mine, wood, home, dungeon, leave, conquest;
     final private Color customColorBeige = new Color(253, 236, 166);
     final private Color customColorBrown = new Color(102, 72, 54);
     final private Border buttonBorder = BorderFactory.createLineBorder(customColorBeige, 1);
@@ -33,15 +33,16 @@ public class World extends JPanel{
     final private int buttonFont = width / 76;
     private Random random = new Random(System.currentTimeMillis()); // for the code gremlin's randomized rearranging
 
-    private int quitWidth, quitHeight, leaveWidth, leaveHeight , townWidth, townHeight, mineWidth, mineHeight, woodWidth, woodHeight, homeWidth, homeHeight, dungeonWidth, dungeonHeight;
+    private int quitWidth, quitHeight, leaveWidth, leaveHeight , townWidth, townHeight, mineWidth, mineHeight, woodWidth, woodHeight, homeWidth, homeHeight, dungeonWidth, dungeonHeight, conquestWidth, conquestHeight; 
 
      //While Rectangle primarily represents a rectangle's position (x and y coordinates) and size (width and height), it can be adapted to store xpos, ypos, width, and height by extending its functionality or using it directly
-    Rectangle quitBounds, townBounds, mineBounds, woodBounds, homeBounds, dungeonBounds, leaveBounds, dunErrMesBounds;
+    Rectangle quitBounds, townBounds, mineBounds, woodBounds, homeBounds, dungeonBounds, conquestBounds, leaveBounds, dunErrMesBounds;
 
 
-    //========================================================
-    // Constructor
-    //========================================================
+
+//========================================================
+// Constructor
+//========================================================
     /**
      * This function hosts the world map screen with buttons to go to town or dungeon
      * @param player The player character object
@@ -63,6 +64,8 @@ public class World extends JPanel{
         buttons.add(home);
         dungeon = new JButton("🏰 Dungeon");
         buttons.add(dungeon);
+        conquest = new JButton("⚔️ Conquest (Go to World Map)");
+        buttons.add(conquest);
         leave = new JButton("☰ Main Menu");
         buttons.add(leave);
 
@@ -93,31 +96,35 @@ public class World extends JPanel{
         //
         // 
         quitWidth = quit.getPreferredSize().width * 14 / 10;
-        quitHeight = quit.getPreferredSize().height * 12 / 10;;
-        leaveWidth = leave.getPreferredSize().width * 14 / 10;;
-        leaveHeight = leave.getPreferredSize().height * 12 / 10;;
-        townWidth = town.getPreferredSize().width * 14 / 10;;
-        townHeight = town.getPreferredSize().height * 12 / 10;;
-        mineWidth = mine.getPreferredSize().width * 14 / 10;;
-        mineHeight = mine.getPreferredSize().height * 12 / 10;;
-        woodWidth = wood.getPreferredSize().width * 14 / 10;;
-        woodHeight = wood.getPreferredSize().height * 12 / 10;;
-        homeWidth = home.getPreferredSize().width * 14 / 10;;
-        homeHeight = home.getPreferredSize().height * 12 / 10;;
-        dungeonWidth = dungeon.getPreferredSize().width * 14 / 10;;
-        dungeonHeight = dungeon.getPreferredSize().height * 12 / 10;;
+        quitHeight = quit.getPreferredSize().height * 12 / 10;
+        leaveWidth = leave.getPreferredSize().width * 14 / 10;
+        leaveHeight = leave.getPreferredSize().height * 12 / 10;
+        townWidth = town.getPreferredSize().width * 14 / 10;
+        townHeight = town.getPreferredSize().height * 12 / 10;
+        mineWidth = mine.getPreferredSize().width * 14 / 10;
+        mineHeight = mine.getPreferredSize().height * 12 / 10;
+        woodWidth = wood.getPreferredSize().width * 14 / 10;
+        woodHeight = wood.getPreferredSize().height * 12 / 10;
+        homeWidth = home.getPreferredSize().width * 14 / 10;
+        homeHeight = home.getPreferredSize().height * 12 / 10;
+        dungeonWidth = dungeon.getPreferredSize().width * 14 / 10;
+        dungeonHeight = dungeon.getPreferredSize().height * 12 / 10;
+        conquestWidth = conquest.getPreferredSize().width * 14 / 10;
+        conquestHeight = conquest.getPreferredSize().height * 12 / 10;
 
         townBounds = new Rectangle(width * 7 / 11, height * 4 / 9, townWidth, townHeight);
         mineBounds = new Rectangle(width * 3 / 10, height * 4 / 10, mineWidth, mineHeight);
         woodBounds = new Rectangle(width * 3 / 9, height * 7 / 10, woodWidth, woodHeight);
         homeBounds = new Rectangle(width * 6 / 11, height * 8 / 10, homeWidth, homeHeight);
         dungeonBounds = new Rectangle(width * 5 / 10, height * 2 / 10, dungeonWidth, dungeonHeight);
+
         leaveBounds = new Rectangle(leaveHeight, leaveHeight, leaveWidth, leaveHeight);
         quitBounds = new Rectangle((int) leaveBounds.getLocation().getX() + leaveWidth, (int)leaveBounds.getLocation().getY(), quitWidth, quitHeight);
-        dunErrMesBounds = new Rectangle(width * 2 / 10, height / 2, width * 6 / 10, height / 20); //centered in screen
 
-        // quitBounds = new Rectangle(width - (width * 1 / 15), height - (height * 1 / 15), quitWidth, quitHeight);
-        
+        dunErrMesBounds = new Rectangle(width * 2 / 10, height / 2, width * 6 / 10, height / 20); //centered on screen
+        conquestBounds = new Rectangle((width - conquestWidth) / 2, 0, conquestWidth, conquestHeight); 
+
+
         quit.setBounds(quitBounds); //bottom-right corner
         leave.setBounds(leaveBounds); //top-left corner
         town.setBounds(townBounds);
@@ -125,6 +132,7 @@ public class World extends JPanel{
         wood.setBounds(woodBounds);
         home.setBounds(homeBounds);
         dungeon.setBounds(dungeonBounds);
+        conquest.setBounds(conquestBounds);
         dungeon_error_message.setBounds(dunErrMesBounds); //centered and middle of screen
 
         add(quit);
@@ -134,14 +142,16 @@ public class World extends JPanel{
         add(wood);
         add(home);
         add(dungeon);
+        add(conquest);
         add(dungeon_error_message);
+        //
+        //
         //================================================================
 
 
-    //========================================================
-    //Action Listeners
-    //========================================================
-
+//========================================================
+//Action Listeners
+//========================================================
         // Quit button exits the game
         quit.addActionListener(e -> {
             System.exit(0);
@@ -253,14 +263,27 @@ public class World extends JPanel{
         leave.addActionListener(e -> {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
-                Driver.removeCharScreen();
+                Driver.removeCharScreen(); //removes some UI elements that will be duplicate dwhen player creates anotehr character. Makes it so only one element exists. 
                 Driver.changePanel("start");              
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        conquest.addActionListener(e -> {
+            try {
+                SFX.playSound("assets/SFX/interface1.wav");
+                Driver.changePanel("conquest"); 
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
         });
     }
 
+    
+//========================================================
+//Methods
+//========================================================
     /**
      * Rearrenges world map buttons randomly.
      * One of the many rampant bugs of the code gremlin.

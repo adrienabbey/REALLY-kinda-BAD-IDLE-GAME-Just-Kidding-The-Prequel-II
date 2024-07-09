@@ -91,6 +91,7 @@ class Driver extends JFrame {
         Mineshaft mineshaft = new Mineshaft();
         Tavern tavern = new Tavern();
         Library library = new Library();
+        ConquestUI conquestUI = new ConquestUI();
         // Farm farm = new Farm();
         // Craft craft = new Craft();
         Town town = new Town();
@@ -116,6 +117,7 @@ class Driver extends JFrame {
         driverPanel.add(world, "world");
         driverPanel.add(town, "town");
         driverPanel.add(dungeon, "dungeon");
+        driverPanel.add(conquestUI, "conquest");
 
         cardLayout.show(driverPanel, "start");
 
