@@ -39,19 +39,8 @@ class Library extends JPanel {
     final int imageHeight = -1; // set to negative 1 to scale only one way
     
     private int page = 1;
-    Color customDarkWood = new Color(139, 69, 19); // Dark wood color
-    Color customLightWood = new Color(205, 133, 63); // Light wood color
-
-        @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-            try {
-                g.drawImage(ImageIO.read(new File("assets/images/library5.png")), 0, 0, getWidth(), getHeight(), this);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
+    private Color customDarkWood = new Color(139, 69, 19); // Dark wood color
+    private Color customLightWood = new Color(205, 133, 63); // Light wood color
 
 //========================================================
 // Constructor
@@ -90,6 +79,7 @@ class Library extends JPanel {
         JLabel monsterImage = new JLabel();
         monsterImage.setBackground(new Color(253, 236, 166)); // Set the background color
         monsterImage.setOpaque(true); // Make the background visible
+        
 
         //=======================================================
         //
@@ -212,4 +202,16 @@ class Library extends JPanel {
             page++;
         });
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+            try {
+                g.drawImage(ImageIO.read(new File("assets/images/library5.png")), 0, 0, getWidth(), getHeight(), this);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+    }
+
 }

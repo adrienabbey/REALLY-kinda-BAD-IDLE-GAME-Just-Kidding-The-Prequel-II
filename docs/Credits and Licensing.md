@@ -69,12 +69,18 @@ Credits for background music:
     Composer: Etienne Roussel
     Music  Publisher: Etienne Roussel
 
-* Library background music 2: (no copyright, creative commons license) 
+* Library background music 2: (Npot used, no copyright, creative commons license) 
     Title: Wonder and Magic 
     Artist: Jay Man 
     Genre: Magical, Cinematic, Instrumental Music
     Feel : Feel: Mysterious, Mystical, soundtrack, Evil, Magical, mysterious, enchanted, cinematic orchestration arrangements.
     Source: https://www.youtube.com/watch?v=kXrXheF2QdA
+
+* Library background music 3: (Used, no copyright) 
+    Title: Heaven
+    Artist: David Fesliyan
+    Genre: Peaceful And Relaxing, Ambient, Sleep
+    Source:David Fesliyan
 
 * Secret Merchant background music (no copyright):
     Song: Kevin MacLeod 
