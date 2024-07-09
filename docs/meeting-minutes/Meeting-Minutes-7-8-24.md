@@ -8,7 +8,7 @@
 4. Add a very basic craft/farm mechanic, can copy from bazaar implemenation. 
 5. Finalize inventory layout. Can copy from bazaar code. Have three icons up top that shows the level of gear. 
 6. Include progression through the dungeon, add floors/levels to dungeon and make it get progressively harder. Use all monsters. 
-7. Either deploy project to broswer using webswing, or create a website to host the game files users can download.
+7. Either deploy project to browser using webswing, or create a website to host the game files users can download.
    1. If going the webswing route: figure out how to use webswing to deploy on broswer and make publically accessible.
    2. If going the downloadable game file route: create the BAD IDLE game website, deploy using something like netlify or on our own server, and add the link to the game file. 
    3. Incorporate CI/CD during development and deployment of project.
@@ -31,7 +31,7 @@
     * Work on item 1.
  
 * Luke:
-   * Create the attacked-monsters images.
+   * Create attacked-monsters images
 
 ## Contributors
 * Muhammed Abushamma
