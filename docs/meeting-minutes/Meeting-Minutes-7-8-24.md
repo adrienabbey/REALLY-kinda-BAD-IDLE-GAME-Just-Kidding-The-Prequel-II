@@ -9,9 +9,13 @@
 5. Finalize inventory layout. Can copy from bazaar UI code. Have three icons up top that shows the level of gear. 
 6. Include progression through the dungeon, add floors/levels to dungeon and make it get progressively harder. Use all monsters. 
 7. Either deploy project to browser using webswing, or create a website to host the game files users can download.
-   1. If going the webswing route: figure out how to use webswing to deploy on broswer and make publically accessible. (Pros: can be accessed easily be anyone with a browser, and on platforms other than desktop such as mobile. Cons: May take a while to figure out and might not have the best performance on a browser). 
-   2. If going the downloadable game file route: create the BAD IDLE game website, deploy using something like netlify or on our own server, and add the link to the game file. (Pros: Very simple and easy setup, can make the website look however we want and flex frontend skills; Cons: Users have to download fils in order to play the game).
-   4. Incorporate CI/CD during development and deployment of project.
+   1. If going the webswing route: figure out how to use webswing to deploy on broswer and make publically accessible.
+      * Pros: can be accessed easily be anyone with a browser, and on platforms other than desktop such as mobile.
+      * Cons: May take a while to figure out and might not have the best performance on a browser. 
+   3. If going the downloadable game file route: create the BAD IDLE game website, deploy using something like netlify or on our own server, and add the link to the game file.
+      * Pros: Very simple and easy setup, can make the website look however we want and flex frontend skills.
+      * Cons: Users have to download fils in order to play the game.
+   5. Incorporate CI/CD during development and deployment of project.
 
 ## Notes
 1. Response to Item 4:
