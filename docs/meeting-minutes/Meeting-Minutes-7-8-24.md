@@ -15,7 +15,7 @@
 
 ## Notes
 1. Response to Item 4:
-   * Since Swing is used to build desktop applications, it will be unfeasible to mix and match the UI with framworks such as angular which is for web applications. Swing apps can be deployed on a broswer indirectly through webswing, that runs the app on clusters then virtually displays the output through video. Other frameworks such as JavaFX, that can be used to play videos, code more complex animations than swing, among other functionality can be mixed and matched with Swing. And possibly LWJGL as well. 
+   * Since Swing is used to build desktop applications, it's unfeasible to mix and match the web-based UI with framweorks such as angular, since swing apps can't be natively deployed on the web. Swing apps can be deployed on a broswer indirectly through webswing, which is achieved through running the app on clusters and then virtually displaying the output through video. Other frameworks such as JavaFX can be mixed and matched with Swing, and possibly LWJGL as well though maybe not seamlessly. JavaFX provides a special JFXPanel class that allows you to embed JavaFX content into a Swing application. Similarly, SwingNode can be used to embed Swing content into a JavaFX application. JavaFX provides a more functionality than swing and allows video and more complex animation to be achieved. 
 
 ## Action Items
 * Muhammed:
