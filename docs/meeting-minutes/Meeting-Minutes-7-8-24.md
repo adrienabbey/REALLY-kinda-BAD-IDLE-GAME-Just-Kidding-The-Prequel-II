@@ -27,6 +27,7 @@
     * Work on item 3.
     * Work on item 4.
     * Work on item 5.
+    * Work on item 7
  
 * Brandon:
     * Redesign character screen 
