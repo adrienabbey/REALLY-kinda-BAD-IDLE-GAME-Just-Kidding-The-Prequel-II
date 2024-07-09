@@ -291,7 +291,7 @@ public class Forest extends JPanel {
                         double HealthRegenRate = Driver.getPlayer().getMaxHealth() * 0.1;
                         Driver.getPlayer().setHealth(Driver.getPlayer().getHealth() + HealthRegenRate); // regenerate Health by 10% of max mana
                         health.setValue((int) Driver.getPlayer().getHealth());
-                        health.setString("Helath: " + health.getValue());
+                        health.setString("Health: " + health.getValue());
                     }
 
                     // if player was cutting tree grant wood

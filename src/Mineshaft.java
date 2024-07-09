@@ -290,7 +290,7 @@ public class Mineshaft extends JPanel {
                         int HealthRegenRate = Driver.getPlayer().getMaxHealth() * 1 / 10;
                         Driver.getPlayer().setHealth(Driver.getPlayer().getHealth() + HealthRegenRate); // regenerate Health by 10% of max mana
                         health.setValue((int) Driver.getPlayer().getHealth());
-                        health.setString("Helath: " + health.getValue());
+                        health.setString("Health: " + health.getValue());
                     }
 
                     if (currentlyMining) {
