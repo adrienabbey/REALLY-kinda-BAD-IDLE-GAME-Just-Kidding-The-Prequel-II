@@ -98,9 +98,11 @@ class Dungeon extends JPanel {
 
         // control the layout of the buttons
         start.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Combat.startCombat();
         });
         magic.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Combat.toggleMagicType();
             if(Combat.magicType == Combat.MagicType.ATTACK){
                 magic.setText("Attack Magic");
@@ -110,10 +112,12 @@ class Dungeon extends JPanel {
             }
         });
         potion.addActionListener(e -> {
+            SFX.playSound("assets/SFX/interface1.wav");
             Driver.getPlayer().drinkPotion();
         });
         leave.addActionListener(e -> {
             try {
+                SFX.playSound("assets/SFX/interface1.wav");
                 Combat.endCombat();
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("world");

@@ -303,8 +303,7 @@ class Bazaar extends JPanel {
                         SFX.playSound("assets/SFX/coin3.wav");
                         upgradePotionBeltSizeButton
                                 .setText("Upgrade Potion Belt · " + Driver.player.getPotionBeltSize() * 100
-                                        + " Gold · (Current Level: " + Driver.player.getPotionBeltSize() + ")"
-                                        + Driver.player.getGold() +" " +(Driver.player.getPotionBeltSize() * 100));
+                                        + " Gold · (Current Level: " + Driver.player.getPotionBeltSize() + ")");
                     } else {
                         err_message.setText("<html>Cannot upgrade potion belt.<br>Not enough gold.</html>");
 
