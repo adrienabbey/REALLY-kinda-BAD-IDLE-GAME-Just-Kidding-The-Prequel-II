@@ -42,7 +42,7 @@ public class SFX extends MusicPlayer{
     }
 
     /**
-     * This method is designed for to handle sound effects that should loop by default. If the loop parameter is true, the sound will continuously loop until explicitly stopped.
+     * This method is designed to handle sound effects that should loop by default. If the loop parameter is true, the sound will continuously loop until explicitly called to stopped.
      * 
      * Sound effects do not automically stop when another is played. Longer sound effects must be explicitly stopped during certain points of implementation to stop many sound effects from playing on top of each other. 
      * @param filPath  The filepath of the sound effect. 
