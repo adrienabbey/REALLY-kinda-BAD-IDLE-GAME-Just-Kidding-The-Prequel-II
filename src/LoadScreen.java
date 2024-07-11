@@ -17,7 +17,7 @@ import java.awt.Font;
 class LoadScreen extends JPanel{
 
 //===============================================================
-// Constructor
+// Fields
 //===============================================================
     /*------------------------
     *These variables are used for formating the GUI elements.
@@ -37,7 +37,7 @@ class LoadScreen extends JPanel{
 
     // variables used to set save-file date time
     private LocalDateTime currentDateTime; //get the current date and time
-    final private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a MM/dd/yyy"); // Format the current date and time 
+    final private DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" MM/dd/yyy, h:mm a"); // Format the current date and time 
     private String formattedDateTime;
 
 //===============================================================
