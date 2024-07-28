@@ -45,10 +45,10 @@ import java.awt.BorderLayout;
 
 class Bazaar extends JPanel {
 
-//========================================================
-// Fields
-//========================================================
-    //These are used for formating the gui elements   
+    // ========================================================
+    // Fields
+    // ========================================================
+    // These are used for formating the gui elements
     final private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     final private int width = screenSize.width;
     final private int height = screenSize.height;
@@ -63,7 +63,6 @@ class Bazaar extends JPanel {
     private JPanel mainPanel1; // Declare buy panel at class level
     private JPanel mainPanel2; // Declare sell panel at class level
 
-
     @Override
     protected void paintComponent(Graphics g) {
 
@@ -76,11 +75,11 @@ class Bazaar extends JPanel {
         }
     }
 
-    // constructor 
-    public Bazaar() { 
+    // constructor
+    public Bazaar() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         ArrayList<JButton> buttons = new ArrayList<JButton>();
-    
+
         JButton buy = new JButton("Buy");
         buttons.add(buy);
         JButton leave = new JButton("Leave");
@@ -212,11 +211,14 @@ class Bazaar extends JPanel {
 
                 /* Add resources from inventory to shop. */
 
-                // Items each cost 5 gold. 
+                // Items each cost 5 gold.
                 for (String resourceName : Driver.player.inventory.getResources().keySet()) {
-                    if(!(resourceName == "Legendary Potion of Lepus")){ // remove Lepus potion  from buy list
+                    if (!(resourceName == "Legendary Potion of Lepus")) { // remove Lepus potion from buy list
                         JButton buyItemButton = new JButton(
-                                "Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName) + ") - 5 Gold");
+                                "Buy " + resourceName
+                                        + " · 5 Gold · ["
+                                        + (Driver.player.inventory.getResource(resourceName))
+                                        + "]");
                         // Format buttons
                         buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                         // format gold label
@@ -227,19 +229,22 @@ class Bazaar extends JPanel {
                         buyItemButton.addActionListener(sellEvent -> {
 
                             // If Gold is greater than 0 then buy resource, else output error message.
-                            if((Driver.player.getGold() >= 5)){
+                            if ((Driver.player.getGold() >= 5)) {
                                 err_message.setText(" ");
                                 Driver.player.inventory.setResource(resourceName,
-                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from inventory
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the resource from
+                                                                                                // inventory
                                 Driver.player.setGold(Driver.player.getGold() - 5); // decrease gold
-                                Driver.inventoryUI.updateResourceLabels(); // Update the labels
+     // Update the labels
                                 goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
                                 buyItemButton.setText(
-                                        "Buy " + resourceName + " ("
-                                                + (Driver.player.inventory.getResource(resourceName)) + ") - 5 Gold"); // Update buy button label
+                                        "Buy " + resourceName
+                                                + " · 5 Gold · ["
+                                                + (Driver.player.inventory.getResource(resourceName))
+                                                + "]"); // Update buy button label
                                 SFX.playSound("assets/SFX/coin3.wav");
 
-                            }else{
+                            } else {
                                 err_message.setText(" Cannot buy item, not enough gold.");
                             }
                         });
@@ -250,54 +255,59 @@ class Bazaar extends JPanel {
                 /* Adding ability to buy potions from bazaar */
 
                 // Potions cost 10 gold and is limited by the potion belt size.
-                JButton buyPotionButton = new JButton("Buy Potion (" + Driver.player.getPotionCount() + ") - 10 Gold");
+                JButton buyPotionButton = new JButton(
+                        "Buy Potion · 10 Gold · [" + Driver.player.getPotionCount() + "]");
                 buyPotionButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                 buyPotionButton.setForeground(new Color(253, 236, 166));
                 buyPotionButton.setBackground(new Color(102, 72, 54));
                 buyPotionButton.setOpaque(true);
 
-                //When player buys potion
+                // When player buys potion
                 buyPotionButton.addActionListener(event -> {
-                    if(Driver.player.getGold() >= 10 && Driver.player.getPotionCount() < Driver.player.getPotionBeltSize()){ 
+                    if (Driver.player.getGold() >= 10
+                            && Driver.player.getPotionCount() < Driver.player.getPotionBeltSize()) {
                         err_message.setText(" ");
                         Driver.player.addPotion(1);
                         Driver.player.setGold(Driver.player.getGold() - 10);
-                        Driver.inventoryUI.updateResourceLabels();
                         goldLabel.setText("  Gold: " + Driver.player.getGold() + "  ");
                         SFX.playSound("assets/SFX/coin3.wav");
-                        buyPotionButton.setText("Buy Potion (" + Driver.player.getPotionCount() + ") - 10 Gold");
-                    }else{ // if potion belt is full output error message
-                        if(Driver.player.getPotionCount() >= Driver.player.getPotionBeltSize()){
+                        buyPotionButton.setText("Buy Potion · 10 Gold · [" + Driver.player.getPotionCount() + "]");
+                    } else { // if potion belt is full output error message
+                        if (Driver.player.getPotionCount() >= Driver.player.getPotionBeltSize()) {
                             err_message.setText("Cannot buy potion, potion belt is full.");
-                        }else{ // if player does not have enough gold, output error message
+                        } else { // if player does not have enough gold, output error message
                             err_message.setText("Cannot buy potion, not enough gold.");
                         }
                     }
                 });
                 buyPanel.add(buyPotionButton);
 
-                /* Add the ability to upgrade potion belt size to buy screen */ 
+                /* Add the ability to upgrade potion belt size to buy screen */
 
-                // Each upgrade cost 100 gold multiplied by the current belt level. 
-                JButton upgradePotionBeltSizeButton = new JButton("Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ") - 100 Gold");
+                // Each upgrade cost 100 gold multiplied by the current belt level.
+                JButton upgradePotionBeltSizeButton = new JButton(
+                        "Upgrade Potion Belt · " + Driver.player.getPotionBeltSize() * 100
+                                + " Gold · (Current Level: " + Driver.player.getPotionBeltSize() + ")");
                 upgradePotionBeltSizeButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                 upgradePotionBeltSizeButton.setForeground(new Color(253, 236, 166));
                 upgradePotionBeltSizeButton.setBackground(new Color(102, 72, 54));
                 upgradePotionBeltSizeButton.setOpaque(true);
-                
+
                 upgradePotionBeltSizeButton.addActionListener(event -> {
                     if (Driver.player.getGold() >= Driver.player.getPotionBeltSize() * 100) {
                         err_message.setText(" ");
-                        Driver.player.setPotionBeltSize(Driver.player.getPotionBeltSize() + 1);
                         Driver.player.setGold(Driver.player.getGold() - (Driver.player.getPotionBeltSize() * 100));
-                        Driver.inventoryUI.updateResourceLabels();
+                        Driver.player.setPotionBeltSize(Driver.player.getPotionBeltSize() + 1);
+                        
                         goldLabel.setText("  Gold: " + Driver.player.getGold() + "  ");
                         SFX.playSound("assets/SFX/coin3.wav");
-                        upgradePotionBeltSizeButton.setText("Upgrade Potion Belt: Current Level (" + Driver.player.getPotionBeltSize() + ") - " + Driver.player.getPotionBeltSize() * 100 + " Gold");
-                     } else {
+                        upgradePotionBeltSizeButton
+                                .setText("Upgrade Potion Belt · " + Driver.player.getPotionBeltSize() * 100
+                                        + " Gold · (Current Level: " + Driver.player.getPotionBeltSize() + ")");
+                    } else {
                         err_message.setText("<html>Cannot upgrade potion belt.<br>Not enough gold.</html>");
 
-                        }
+                    }
                 });
                 buyPanel.add(upgradePotionBeltSizeButton);
 
@@ -340,18 +350,18 @@ class Bazaar extends JPanel {
          * 
          * 
          */
-        // sell button opens the UI for sell screen        
+        // sell button opens the UI for sell screen
         sell.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav");
             if (sellScreenOpen == false) { // Check if sell screen is not already open
                 sellScreenOpen = true; // Set sell screen as open
 
-            // check if buy screen is opne, if so close it
-            if (buyScreenOpen) {
-                remove(mainPanel1); // remove buy screen if open
-                buyScreenOpen = false; // adjust flag accordingly
-                revalidate();
-                repaint();
+                // check if buy screen is opne, if so close it
+                if (buyScreenOpen) {
+                    remove(mainPanel1); // remove buy screen if open
+                    buyScreenOpen = false; // adjust flag accordingly
+                    revalidate();
+                    repaint();
                 }
 
                 // Create a panel to hold labels and the sell panel
@@ -417,7 +427,6 @@ class Bazaar extends JPanel {
                 sellPanel.setBackground(new Color(0, 0, 0, 192));
                 sellPanel.setOpaque(true);
 
-
                 /* Add items from the inventory to the sell panel */
 
                 // Each resource can be sold for 2 gold.
@@ -428,8 +437,9 @@ class Bazaar extends JPanel {
                         // as a possible item to sell.
                         if (Driver.player.inventory.getResource(resourceName) > 0) {
                             JButton sellItemButton = new JButton(
-                                    "Sell " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
-                                            + ") - 2 Gold");
+                                    "Sell " + resourceName + " · 2 Gold ·"
+                                            + " [" + Driver.player.inventory.getResource(resourceName)
+                                            + "]");
                             // format buttons
                             sellItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 25));
                             sellItemButton.setForeground(new Color(253, 236, 166));
@@ -443,10 +453,13 @@ class Bazaar extends JPanel {
                                     Driver.player.inventory.setResource(resourceName,
                                             Driver.player.inventory.getResource(resourceName) - 1); // minus resource from inventory
                                     Driver.player.setGold(Driver.player.getGold() + 2);
-                                    Driver.inventoryUI.updateResourceLabels(); // Update the labels
+         // Update the labels
                                     goldLabel.setText("  Gold: " + Driver.player.getGold() + "  "); // Update the gold label
-                                    sellItemButton.setText("Sell " + resourceName + " ("
-                                            + (Driver.player.inventory.getResource(resourceName)) + ") - 2 Gold"); // Update the sell button label
+                                    sellItemButton.setText(
+                                            "Sell " + resourceName + " · 2 Gold · "
+                                                    + " [" + Driver.player.inventory.getResource(resourceName)
+                                                    + "]");
+                                    // format buttons // Update the sell button label
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 } else {
                                     err_message.setText("Cannot sell item, no items left.");
@@ -489,7 +502,9 @@ class Bazaar extends JPanel {
          * 
          * 
          */
-        // secret merchant button opens the secret merchant screen, removes all of bazaar components when doing so, re-adds and repaints original bazaar components after leaving secret merhcnat screen. 
+        // secret merchant button opens the secret merchant screen, removes all of
+        // bazaar components when doing so, re-adds and repaints original bazaar
+        // components after leaving secret merhcnat screen.
         secretMerchant.addActionListener(e -> {
             SFX.playSound("assets/SFX/interface1.wav"); // play button sound effect
             MusicPlayer.playMusic("assets/Music/secret-merchant-bgm.wav");
@@ -501,19 +516,20 @@ class Bazaar extends JPanel {
                 // Remove existing buttons
                 this.removeAll();
                 this.revalidate();
-                this.repaint();    
-                
+                this.repaint();
+
                 // Create a panel for the secret merchant screen
                 JPanel secretMerchantPanel = new JPanel();
                 secretMerchantPanel.setLayout(new BoxLayout(secretMerchantPanel, BoxLayout.X_AXIS));
 
                 // Create a JLabel to hold the cat image
-                JPanel catLabel = new JPanel(){
+                JPanel catLabel = new JPanel() {
                     protected void paintComponent(Graphics g) {
                         super.paintComponent(g);
                         // Load the image
                         try {
-                            g.drawImage(ImageIO.read(new File("assets/images/cat1.png")), 0, 0, getWidth(), getHeight(), this);
+                            g.drawImage(ImageIO.read(new File("assets/images/cat1.png")), 0, 0, getWidth(), getHeight(),
+                                    this);
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
@@ -521,7 +537,8 @@ class Bazaar extends JPanel {
 
                     @Override
                     public Dimension getPreferredSize() {
-                        return new Dimension((int)(secretMerchantPanel.getWidth() * 0.6), secretMerchantPanel.getHeight());
+                        return new Dimension((int) (secretMerchantPanel.getWidth() * 0.6),
+                                secretMerchantPanel.getHeight());
                     }
                 };
 
@@ -535,12 +552,16 @@ class Bazaar extends JPanel {
                         super.paintComponent(g);
                         try {
                             // Load and draw the background image
-                            // Image backgroundImage = ImageIO.read(new File("assets\\images\\1920x1080-black-solid-color-background.jpg"));
-                            g.drawImage(ImageIO.read(new File("assets/images/1920x1080-black-solid-color-background.jpg")), 0, 0, getWidth(), getHeight(), this);
+                            // Image backgroundImage = ImageIO.read(new
+                            // File("assets\\images\\1920x1080-black-solid-color-background.jpg"));
+                            g.drawImage(
+                                    ImageIO.read(new File("assets/images/1920x1080-black-solid-color-background.jpg")),
+                                    0, 0, getWidth(), getHeight(), this);
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
-                    }};
+                    }
+                };
                 mainContentPanel.setLayout(new BoxLayout(mainContentPanel, BoxLayout.Y_AXIS));
 
                 // Create a panel to hold the gold count label and the sell panel
@@ -569,7 +590,7 @@ class Bazaar extends JPanel {
                     SFX.playSound("assets/SFX/interface1.wav");
 
                     // Remove the sell panel and the close button
-                    //remove(mainPanel);
+                    // remove(mainPanel);
                     remove(secretMerchantPanel);
 
                     // Adding the buttons to the shop panel and controlling layout
@@ -640,38 +661,41 @@ class Bazaar extends JPanel {
                 buyPanel.setOpaque(true);
 
                 // Add all items from inventory to shop.
-                for(String resourceName : Driver.player.inventory.getResources().keySet()){
+                for (String resourceName : Driver.player.inventory.getResources().keySet()) {
                     if (!(resourceName == "Gold")) {
 
                         JButton buyItemButton = new JButton(
-                                " Buy " + resourceName + " (" + Driver.player.inventory.getResource(resourceName)
-                                        + ")");
+                                " Buy " + resourceName + " · 1 Gold · ["
+                                        + Driver.player.inventory.getResource(resourceName)
+                                        + "]");
                         // Format buttons
                         buyItemButton.setFont(new Font("Times New Roman", Font.PLAIN, 27));
                         buyItemButton.setForeground(new Color(253, 236, 166));
                         buyItemButton.setBackground(new Color(102, 72, 54));
                         buyItemButton.setOpaque(true);
 
-                        //When buy button is pressed.
+                        // When buy button is pressed.
                         buyItemButton.addActionListener(sellEvent -> {
                             // If Gold is greater than 0 then buy resource,, else output error message.
                             if ((Driver.player.getGold() > 0)) {
                                 err_message.setText(" ");
                                 Driver.player.inventory.setResource(resourceName,
-                                        Driver.player.inventory.getResource(resourceName) + 1); // add the rsource to inventory
+                                        Driver.player.inventory.getResource(resourceName) + 1); // add the rsource to
+                                                                                                // inventory
                                 Driver.player.setGold(Driver.player.getGold() - 1);
-                                Driver.inventoryUI.updateResourceLabels(); // Update the labels
+     // Update the labels
                                 goldLabel.setText("    Gold: " + Driver.player.getGold() + " "); // Update the gold
-                                buyItemButton.setText(
-                                        "Buy " + resourceName + " ("
-                                                + (Driver.player.inventory.getResource(resourceName)) + ")"); // Update buy button label
+                                buyItemButton.setText(" Buy "
+                                        + resourceName + " · 1 Gold · ["
+                                        + Driver.player.inventory.getResource(resourceName)
+                                        + "]");
                                 if (resourceName == "Legendary Potion of Lepus") {
                                     SFX.playSound("assets/SFX/cat-purring-and-meow-5928.wav");
                                 } else {
                                     SFX.playSound("assets/SFX/coin3.wav");
                                 }
 
-                            }else{
+                            } else {
                                 err_message.setText("Cannot buy item, no more gold.");
                             }
                         });
@@ -680,7 +704,7 @@ class Bazaar extends JPanel {
                 }
 
                 scrollPane.setViewportView(buyPanel);
-                //scrollPane.setPreferredSize(new Dimension(660, 200));
+                // scrollPane.setPreferredSize(new Dimension(660, 200));
 
                 // Add components to the main panel
                 // mainPanel.add(closeButtonPanel, BorderLayout.EAST);
@@ -702,7 +726,6 @@ class Bazaar extends JPanel {
                 mainContentPanel.add(goldLabel);
                 mainContentPanel.add(Box.createVerticalGlue());
 
-
                 // Add the main content panel to the secret merchant panel
                 secretMerchantPanel.add(mainContentPanel);
 
@@ -720,7 +743,7 @@ class Bazaar extends JPanel {
             try {
                 SFX.playSound("assets/SFX/interface1.wav");
                 Driver.changePanel("inventory");
-                 // TODO: Add proper inventory UI implementation
+                // TODO: Add proper inventory UI implementation
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -730,8 +753,8 @@ class Bazaar extends JPanel {
         leave.addActionListener(e -> {
             try {
 
-                secretIncrement++; // increment scrent merchant counter. 
-                if (secretIncrement % 4 == 0) { // adds secret merchant screen after every 4 fourth visit. 
+                secretIncrement++; // increment scrent merchant counter.
+                if (secretIncrement % 4 == 0) { // adds secret merchant screen after every 4 fourth visit.
                     add(secretMerchant);
                 } else {
                     remove(secretMerchant); // removes secert merchant screen after leaving.
@@ -759,9 +782,10 @@ class Bazaar extends JPanel {
                 SFX.stopAllNonLoopingSounds();
                 Driver.changePanel("town");
                 MusicPlayer.playMusic("assets/Music/town-bgm.wav");
-                SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true); 
+                SFX.playSound("assets/SFX/town-ambient-sfx2.wav", true);
 
-                Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav"); // save player data to save slot 1 by default 
+                Driver.savePlayer(Driver.getPlayer(), "save-files/saveFile1.sav"); // save player data to save slot 1 by
+                                                                                   // default
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /*
  * Implements the "Homestead" panel accessed through the World screen. Allows the player to purchase a homestead. Unlocking the homestead unlocks a greater inventory space, the farming functionaility, and crafting functionality. The inventory, farming, and crafting panels can be accessed directly from the homestead screen. 
@@ -30,6 +31,7 @@ class Homestead extends JPanel {
     final private int width = screenSize.width;
     final private int height = screenSize.height;
     final private int buttonFont = width / 78;
+    final private Border lineBorder = BorderFactory.createLineBorder(new Color(255, 255, 255));
     private boolean purchaseConfirmation = false;
 
 
@@ -61,6 +63,7 @@ class Homestead extends JPanel {
             buttons.get(i).setForeground(new Color(255, 255, 255)); // White text
             buttons.get(i).setPreferredSize(new Dimension(width / 8, height / 22));
             buttons.get(i).setMaximumSize(new Dimension(width / 8, height / 22));
+            buttons.get(i).setBorder(lineBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
 
@@ -73,7 +76,7 @@ class Homestead extends JPanel {
 
         // Create the information label with custom styling
         JLabel info = new JLabel(
-                "<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will increase your inventory space and unlock farming and crafting.</div></html>",
+                "<html><div style='text-align: center;'> Property for sale: <br> - 1000 Gold Pieces<br> - 250 wood<br> - 250 Stone<br> - 100 Metal<br><br> The above resources will be taken out from your inventory once purchased. <br>Having a home will unlock farming and crafting.</div></html>",
                 SwingConstants.CENTER);
         info.setFont(new Font("Serif", Font.ITALIC, buttonFont));
         info.setForeground(new Color(205, 133, 63)); // Light wood color
@@ -154,8 +157,8 @@ class Homestead extends JPanel {
                 int backHeight = back.getPreferredSize().height;
 
                 farm.setBounds((width - farmWidth)/2, 2*(height / 7), farmWidth, farmHeight);
-                inventory1.setBounds((width - inventory1Width)/2, 3*(height / 7), inventory1Width, inventory1Height); 
-                craft.setBounds((width - craftWidth)/2, 4*(height / 7), craftWidth, craftHeight);
+                craft.setBounds((width - craftWidth)/2, 3*(height / 7), craftWidth, craftHeight);
+                inventory1.setBounds((width - inventory1Width)/2, 4*(height / 7), inventory1Width, inventory1Height); 
                 back.setBounds(backHeight / 2, backHeight / 2, backWidth, backHeight);
                 //================================================================
                 add(farm);

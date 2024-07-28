@@ -18,8 +18,7 @@ import java.util.Map;
 public class Inventory implements Serializable {
 
     public Map<String, Integer> resources; // Map to store resource amounts
-    public boolean backToHomestead = false; // flag that keeps trck if player accessed inventory from the
-                                            // homestead screen.
+    public boolean backToHomestead = false; // flag that keeps trck if player accessed inventory from the homestead screen.
     public boolean backToTown = false; // flag that keeps trck if player accessed inventory from the town screen.
 
     public Inventory() {

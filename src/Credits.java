@@ -93,7 +93,8 @@ public class Credits extends JPanel {
         + " Jay Man &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kevin MacLeod <br><br>" 
         + " Alexander Nakarada &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Derek & Brandon Fiechter <br><br>" 
         + " Musical Discoveries &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Always Music <br><br>" 
-        + " Turku, Nomads of the Silk Road &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BrunuhVille <br><br>" 
+        + " Turku, Nomads of the Silk Road &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BrunuhVille <br><br>"
+        + " David Fesliyan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fesliyan Studios <br><br>" 
         + " Medieval Path <br><br><br><br>"
 
         + "Sound Effects brought to you by: <br><br>" 
@@ -111,7 +112,7 @@ public class Credits extends JPanel {
 
 
         // Set the position and size of the rolling text label
-        rollingText.setBounds(xPos, yPos, (rollTextWidth), (int)(screenSize.height * 1.8));       
+        rollingText.setBounds(xPos, yPos, (rollTextWidth), (int)(screenSize.height * 1.9));       
         rollingText.setFont(new Font("Serif", Font.PLAIN, screenSize.width / 96));
         rollingText.setForeground(new Color(255, 190, 128)); // Lighter wood color
         rollingText.setBackground(new Color(0, 0, 0)); // Set the background color to black

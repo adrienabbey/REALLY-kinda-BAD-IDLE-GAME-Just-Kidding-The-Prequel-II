@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
@@ -38,13 +42,14 @@ class CharacterCreation extends JPanel {
     final private Dimension BUTTON_GAP = new Dimension(0, height / 100);
     final private int labelFont = width / 78;
     final private int buttonFont = width / 78;
-    final private int labelWidth = width / 16; //Set a fixed width for stat labels to prevent shifting
+    final private int labelWidth = width / 10; //Set a fixed width for stat labels to prevent shifting
 
     final int imageWidth = (int) (width / 4);
     final int imageHeight = -1; // set to negative 1 to scale only one way
 
     final private Color customColorBeige = new Color(253, 236, 166);
     final private Color customColorBrown = new Color(102, 72, 54);
+    final private Color customColorBlue = new Color(46, 86, 161);
     final private Border buttonBorder = BorderFactory.createLineBorder(Color.BLACK, 2);
 
 
@@ -66,8 +71,16 @@ class CharacterCreation extends JPanel {
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         JLabel nameLabel = new JLabel("Name");
         labels.add(nameLabel);
-        JTextField name = new JTextField(12);
-        name.setMaximumSize(name.getPreferredSize());
+
+        // Text Field for Player's characrter name
+        JTextField name = new JTextField(18);
+        Dimension nameFieldSize = new Dimension(
+            ((int) name.getPreferredSize().getWidth() * 16 / 10), 
+            ((int)name.getPreferredSize().getHeight() * 16 / 10));
+        name.setMaximumSize(nameFieldSize);
+        name.setBackground(customColorBrown);  // Set background color
+        name.setForeground(customColorBeige); // Set text color
+        name.setFont(new Font("Serif", Font.BOLD, buttonFont));
 
         namePanel.add(Box.createHorizontalGlue());
         namePanel.add(nameLabel);
@@ -79,17 +92,49 @@ class CharacterCreation extends JPanel {
         pointsPanel.setLayout(new BoxLayout(pointsPanel, BoxLayout.X_AXIS));
         JLabel points = new JLabel("You have " + statPoints + " stat points left to spend.");
         labels.add(points);
+        JLabel errNameLabel = new JLabel("");
+        labels.add(errNameLabel);
         // points.setBounds((width * (3/4)), ((height / 6) + (labelFont / 2)), points.getPreferredSize().width, points.getPreferredSize().height);
         pointsPanel.add(Box.createHorizontalGlue());
         pointsPanel.add(points);
+        pointsPanel.add(errNameLabel);
         pointsPanel.add(Box.createHorizontalGlue());
+
+        // Set maximum length of the name field to 18 characters
+        AbstractDocument doc = (AbstractDocument) name.getDocument();
+        doc.setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                errNameLabel.setText("");
+                String currentText = fb.getDocument().getText(0, fb.getDocument().getLength());
+                String newText = currentText.substring(0, offset) + text + currentText.substring(offset + length);
+                if (newText.length() <= 18) { 
+                    errNameLabel.setText("");
+                    super.replace(fb, offset, length, text, attrs);
+                } else {
+                    errNameLabel.setText("  Name cannot exceed 18 characters."); //When the user writes more than 18 characters. 
+                }
+            }
+        
+            // Handles the case when the user deletes chars from name, and the name becomes less than the limit. Removes the error message in this case. 
+            @Override
+            public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
+                super.remove(fb, offset, length);
+                String currentText = fb.getDocument().getText(0, fb.getDocument().getLength());
+                
+                // Check length after removal
+                if (currentText.length() <= 18) {
+                    errNameLabel.setText(""); // Clear error message if within limit
+                }
+            }
+        });
+        
 
         JPanel splitPanel = new JPanel();
         splitPanel.setLayout(new BoxLayout(splitPanel, BoxLayout.X_AXIS));
         JPanel rightPanel = new JPanel();
         JPanel leftPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-        // leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
 
         splitPanel.add(leftPanel);
         splitPanel.add(rightPanel);
@@ -102,8 +147,6 @@ class CharacterCreation extends JPanel {
         // charImage.setBounds(width / 4, height / 2, scaledImage.getWidth(charImage), scaledImage.getHeight(charImage));
         leftPanel.add(charImage);
 
-        Color customColorBlue = new Color(46, 86, 161);
-
         JLabel message = new JLabel(" ");
         labels.add(message);
         message.setBounds((width * (3/4)), ((height / 6) + (2*(labelFont / 2))), points.getPreferredSize().width, points.getPreferredSize().height);
@@ -112,7 +155,7 @@ class CharacterCreation extends JPanel {
 
         JPanel musclePanel = new JPanel();
         musclePanel.setLayout(new BoxLayout(musclePanel, BoxLayout.X_AXIS));
-        JLabel muscleLabel = new JLabel("Muscle: " + muscle);
+        JLabel muscleLabel = new JLabel(" 💪 Muscle: " + muscle);
         labels.add(muscleLabel);
 
         //previous formatting
@@ -137,7 +180,7 @@ class CharacterCreation extends JPanel {
 
         JPanel brainPanel = new JPanel();
         brainPanel.setLayout(new BoxLayout(brainPanel, BoxLayout.X_AXIS));
-        JLabel brainLabel = new JLabel("Brain: " + brain);
+        JLabel brainLabel = new JLabel(" 👤 Brain: " + brain);
         labels.add(brainLabel);
 
         //previous formatting
@@ -161,7 +204,7 @@ class CharacterCreation extends JPanel {
 
         JPanel heartPanel = new JPanel();
         heartPanel.setLayout(new BoxLayout(heartPanel, BoxLayout.X_AXIS));
-        JLabel heartLabel = new JLabel("Heart: " + heart);
+        JLabel heartLabel = new JLabel(" ❤️ Heart: " + heart);
         labels.add(heartLabel);
 
         //previous formatting
@@ -256,7 +299,7 @@ class CharacterCreation extends JPanel {
                 muscle--;
                 statPoints++;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -272,7 +315,7 @@ class CharacterCreation extends JPanel {
                 muscle++;
                 statPoints--;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -288,7 +331,7 @@ class CharacterCreation extends JPanel {
                 brain--;
                 statPoints++;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                brainLabel.setText("Brain: " + brain);
+                brainLabel.setText(" 👤 Brain: " + brain);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -304,7 +347,7 @@ class CharacterCreation extends JPanel {
                 brain++;
                 statPoints--;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                brainLabel.setText("Brain: " + brain);
+                brainLabel.setText(" 👤 Brain: " + brain);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -320,7 +363,7 @@ class CharacterCreation extends JPanel {
                 heart--;
                 statPoints++;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                heartLabel.setText("Heart: " + heart);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -336,7 +379,7 @@ class CharacterCreation extends JPanel {
                 heart++;
                 statPoints--;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                heartLabel.setText("Heart: " + heart);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 message.setText(" ");
                 this.repaint();
             } else {
@@ -357,9 +400,9 @@ class CharacterCreation extends JPanel {
                 brain = 0;
                 heart = 0;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
-                brainLabel.setText("Brain: " + brain);
-                heartLabel.setText("Heart: " + heart);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
+                brainLabel.setText(" 👤 Brain: " + brain);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 Driver.setPlayer(player);
                 Driver.addCharScreen();
                 Driver.changePanel("world");
@@ -377,9 +420,9 @@ class CharacterCreation extends JPanel {
                 brain = 0;
                 heart = 0;
                 points.setText("You have " + statPoints + " stat points left to spend.");
-                muscleLabel.setText("Muscle: " + muscle);
-                brainLabel.setText("Brain: " + brain);
-                heartLabel.setText("Heart: " + heart);
+                muscleLabel.setText(" 💪 Muscle: " + muscle);
+                brainLabel.setText(" 👤 Brain: " + brain);
+                heartLabel.setText(" ❤️ Heart: " + heart);
                 Driver.changePanel("start");
             } catch (Exception e1) {
                 e1.printStackTrace();

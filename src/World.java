@@ -75,7 +75,7 @@ public class World extends JPanel{
 
             // formatting quit button
             if (i == 0) {
-                buttons.get(0).setBackground(Color.RED);
+                buttons.get(0).setBackground(new Color(178, 34, 34));
                 buttons.get(0).setForeground(Color.WHITE);
                 buttons.get(i).setBorder(buttonBorder);
             }
@@ -92,29 +92,31 @@ public class World extends JPanel{
         //Relatively scaling and sizing world components
         //
         // 
-        quitWidth = quit.getPreferredSize().width * 11 / 10;
-        quitHeight = quit.getPreferredSize().height * 11 / 10;;
-        leaveWidth = leave.getPreferredSize().width * 11 / 10;;
-        leaveHeight = leave.getPreferredSize().height * 11 / 10;;
-        townWidth = town.getPreferredSize().width * 11 / 10;;
-        townHeight = town.getPreferredSize().height * 11 / 10;;
-        mineWidth = mine.getPreferredSize().width * 11 / 10;;
-        mineHeight = mine.getPreferredSize().height * 11 / 10;;
-        woodWidth = wood.getPreferredSize().width * 11 / 10;;
-        woodHeight = wood.getPreferredSize().height * 11 / 10;;
-        homeWidth = home.getPreferredSize().width * 11 / 10;;
-        homeHeight = home.getPreferredSize().height * 11 / 10;;
-        dungeonWidth = dungeon.getPreferredSize().width * 11 / 10;;
-        dungeonHeight = dungeon.getPreferredSize().height * 11 / 10;;
+        quitWidth = quit.getPreferredSize().width * 14 / 10;
+        quitHeight = quit.getPreferredSize().height * 12 / 10;;
+        leaveWidth = leave.getPreferredSize().width * 14 / 10;;
+        leaveHeight = leave.getPreferredSize().height * 12 / 10;;
+        townWidth = town.getPreferredSize().width * 14 / 10;;
+        townHeight = town.getPreferredSize().height * 12 / 10;;
+        mineWidth = mine.getPreferredSize().width * 14 / 10;;
+        mineHeight = mine.getPreferredSize().height * 12 / 10;;
+        woodWidth = wood.getPreferredSize().width * 14 / 10;;
+        woodHeight = wood.getPreferredSize().height * 12 / 10;;
+        homeWidth = home.getPreferredSize().width * 14 / 10;;
+        homeHeight = home.getPreferredSize().height * 12 / 10;;
+        dungeonWidth = dungeon.getPreferredSize().width * 14 / 10;;
+        dungeonHeight = dungeon.getPreferredSize().height * 12 / 10;;
 
-        quitBounds = new Rectangle(width - (width * 1 / 15), height - (height * 1 / 15), quitWidth, quitHeight);
         townBounds = new Rectangle(width * 7 / 11, height * 4 / 9, townWidth, townHeight);
         mineBounds = new Rectangle(width * 3 / 10, height * 4 / 10, mineWidth, mineHeight);
         woodBounds = new Rectangle(width * 3 / 9, height * 7 / 10, woodWidth, woodHeight);
         homeBounds = new Rectangle(width * 6 / 11, height * 8 / 10, homeWidth, homeHeight);
         dungeonBounds = new Rectangle(width * 5 / 10, height * 2 / 10, dungeonWidth, dungeonHeight);
-        leaveBounds = new Rectangle(2 * leaveHeight, 2 * leaveHeight, leaveWidth, leaveHeight);
-        dunErrMesBounds = new Rectangle(width * 2 / 10, height / 2, width * 6 / 10, height / 20);
+        leaveBounds = new Rectangle(leaveHeight, leaveHeight, leaveWidth, leaveHeight);
+        quitBounds = new Rectangle((int) leaveBounds.getLocation().getX() + leaveWidth, (int)leaveBounds.getLocation().getY(), quitWidth, quitHeight);
+        dunErrMesBounds = new Rectangle(width * 2 / 10, height / 2, width * 6 / 10, height / 20); //centered in screen
+
+        // quitBounds = new Rectangle(width - (width * 1 / 15), height - (height * 1 / 15), quitWidth, quitHeight);
         
         quit.setBounds(quitBounds); //bottom-right corner
         leave.setBounds(leaveBounds); //top-left corner

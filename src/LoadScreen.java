@@ -126,9 +126,14 @@ class LoadScreen extends JPanel{
             buttons.get(i).setMaximumSize(new Dimension(BACK_SIZE.width, BACK_SIZE.height));
             buttons.get(i).setBackground(customColorBrown);
             buttons.get(i).setForeground(customColorBeige);
+            buttons.get(i).setBorder(Driver.buttonBorder);
             buttons.get(i).setFont(new Font("Serif", Font.BOLD, buttonFont));
         }
         back.setBackground(customColorTan);
+        Dimension buttonSize = new Dimension(
+            ((int) back.getPreferredSize().getWidth() * 18 / 10), 
+            ((int)back.getPreferredSize().getHeight() * 14 / 10));
+        back.setPreferredSize(buttonSize);
 
         // this.setAlignmentX(CENTER_ALIGNMENT);
 
